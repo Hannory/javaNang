@@ -1,0 +1,119 @@
+package view;
+
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+
+public class LoginPage extends JPanel {
+	
+	MainFrame mf;
+	JPanel lp;
+	private JTextField idField;
+	private JTextField pwField;
+
+
+	
+	public LoginPage(MainFrame mf) {
+		
+		
+		this.mf = mf;
+		this.lp = this;
+		
+		this.setSize(432,753);
+		this.setBackground(Color.white);
+		setLayout(null);
+		
+		JLabel logo = new JLabel(new ImageIcon(new ImageIcon("images/won/java.PNG").getImage().getScaledInstance(130, 100, 0)));
+		logo.setBounds(140, 91, 150, 180);
+		add(logo);
+		
+		
+		JLabel idlb = new JLabel("ID");
+		idlb.setBounds(63, 301, 62, 18);
+		add(idlb);
+		
+		JLabel pwlb = new JLabel("PW");
+		pwlb.setBounds(63, 366, 62, 18);
+		add(pwlb);
+		
+		idField = new JTextField();
+		idField.setBounds(151, 294, 171, 32);
+		add(idField);
+		idField.setColumns(10);
+		
+		pwField = new JPasswordField();
+		pwField.setColumns(10);
+		pwField.setBounds(151, 359, 171, 32);
+		add(pwField);
+		
+		JButton loginBtn = new JButton("로그인");
+		loginBtn.setForeground(Color.WHITE);
+		loginBtn.setBackground(Color.GRAY);
+		loginBtn.setBounds(151, 525, 105, 40);
+		loginBtn.setBorderPainted(false);
+		add(loginBtn);
+		
+		JButton signUpBtn = new JButton("회원가입");
+		signUpBtn.setBounds(151, 605, 105, 40);
+		//외각선 없애주기
+		signUpBtn.setBorderPainted(false);
+		signUpBtn.setFocusPainted(false);
+		add(signUpBtn);
+		
+		JButton backBtn = new JButton("<-");
+		backBtn.setForeground(Color.WHITE);
+		backBtn.setBackground(Color.BLACK);
+		backBtn.setBounds(14, 49, 74, 27);
+		add(backBtn);
+		
+		
+		backBtn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ChangePanel.changePanel(mf, lp, new AllRecipe(mf, lp));
+				
+			}
+			
+			
+		});
+		
+		
+		loginBtn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ChangePanel.changePanel(mf, lp, new MainMenu(mf));
+			}
+		});
+		
+		
+		signUpBtn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ChangePanel.changePanel(mf, lp, new Agree(mf));
+			}
+		});
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		}
+}
