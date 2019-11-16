@@ -23,14 +23,15 @@ import view.ModiMember.MyMouseAdapter;
 
 public class QuitMember extends JPanel{
 
-	public MainFrame mf;
-	public JPanel subbPage2;
-
+	 MainFrame mf;
+	 JPanel quitMember;
+     JPanel lp;
+    
 	public QuitMember(MainFrame mf) {
 		this.mf = mf;
-		this.subbPage2 = this;
+		this.quitMember = this;
 
-		this.setBounds(0,0,500,750);
+		this.setBounds(0,0,445,770);
 		this.setLayout(null);
 
 
@@ -63,9 +64,9 @@ public class QuitMember extends JPanel{
 
 
 		JPanel panel = new JPanel();
-		panel.setSize(431,140);
+		panel.setSize(402,123);
 		panel.setLocation(30,150);
-		panel.setLayout(null);
+		panel.setLayout(null); 
 
 		panel.setBackground(Color.LIGHT_GRAY);
 
@@ -76,7 +77,7 @@ public class QuitMember extends JPanel{
 		JLabel lb6 = new JLabel("하거나 복구하는 것이 불가능하오니 탈퇴시 유의하십시오.");
 		 lb2.setBounds(30,-20,323,100);
 		 lb3.setBounds(30,0,387,100);
-		 lb4.setBounds(30,20,300,100);
+		 lb4.setBounds(30,20,300,100);  
 		 lb5.setBounds(30,40,300,100);
 		 lb6.setBounds(30,60,406,100);
 		 panel.add(lb2);
@@ -89,7 +90,7 @@ public class QuitMember extends JPanel{
 
 			JPanel panel2 = new JPanel(); // 여기 윗 부분
 			panel2.setLocation(0, 0);
-			panel2.setSize(1000,70);
+			panel2.setSize(432,73);
 			panel2.setLayout(null);
 			
 			panel2.setBackground(Color.black);
@@ -110,14 +111,14 @@ public class QuitMember extends JPanel{
 			
 			JButton button = new JButton("");
 			button.setBounds(65, 12, -59, 27);
-			panel2.add(button);
 			button.setForeground(Color.WHITE);
 			button.setBackground(Color.BLACK);
-			button.addMouseListener(new MyMouseAdapter());
+			button.addMouseListener(new MyMouseAdapter1());
+			panel2.add(button);
 			
 			JButton btnNewButton_1 = new JButton("New button");
 			btnNewButton_1.setBounds(14, 25, 37, 27);
-			btnNewButton_1.addMouseListener(new MyMouseAdapter());
+			btnNewButton_1.addMouseListener(new MyMouseAdapter1());
 			panel2.add(btnNewButton_1);
 			
 			
@@ -139,7 +140,7 @@ public class QuitMember extends JPanel{
 			Dialog sd = new Dialog(mf, "탈퇴 완료");
 			sd.setBounds(200,200,300,100);
 			JButton jbt11 = new JButton("탈퇴가 완료되었습니다. 안녕히 가세요..");
-		
+			jbt11.addMouseListener(new MyMouseAdapter2());
 			sd.add(jbt11);
 			panel3.add(btnNewButton);
 			
@@ -155,7 +156,8 @@ public class QuitMember extends JPanel{
 					
 					@Override
 					public void actionPerformed(ActionEvent e) {
-		                         sd.dispose();        //닫기 눌렀을때 닫히게
+						jbt11.addMouseListener(new MyMouseAdapter2());      
+				//		sd.dispose();        //닫기 눌렀을때 닫히게
 		                                              //쓸 일이 좀 있을거다
 					}
 				});
@@ -186,10 +188,16 @@ public class QuitMember extends JPanel{
 	}
 
 
-	 class MyMouseAdapter extends MouseAdapter{
+	 class MyMouseAdapter1 extends MouseAdapter{
 		   @Override
 		   public void mouseClicked(MouseEvent e) {
-		   ChangePanel.changePanel(mf, subbPage2, new ModiMember(mf));
+		   ChangePanel.changePanel(mf, quitMember, new ModiMember(mf));
+		   }
+	   }
+	 class MyMouseAdapter2 extends MouseAdapter{
+		   @Override
+		   public void mouseClicked(MouseEvent e) {
+		   ChangePanel.changePanel(mf, quitMember, new AllRecipe(mf,lp));
 		   }
 	   }
 
