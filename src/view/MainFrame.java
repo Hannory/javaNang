@@ -6,6 +6,7 @@ public class MainFrame extends JFrame {
 	
 	public MainFrame() {
 		this.setTitle("java.³Ã");
+		this.setLocation(500, 100);
 		this.setSize(450, 800);
 		this.setLayout(null);
 		

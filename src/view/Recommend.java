@@ -30,13 +30,13 @@ public class Recommend extends JPanel {
 		imageTest = this;
 		
 		//바탕 패널
-		this.setSize(432, 770);
+		this.setSize(445, 770);
 		this.setLayout(null);
 		
 		//맨 위 바 영억
 		JPanel bar = new JPanel();
 		bar.setLocation(0, 0);
-		bar.setSize(450, 73);
+		bar.setSize(445, 73);
 		bar.setLayout(null);
 		bar.setBackground(Color.BLACK);
 		

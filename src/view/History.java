@@ -23,13 +23,13 @@ public class History extends JPanel {
 		history = this;
 		
 		
-		this.setSize(432, 770);
+		this.setSize(445, 770);
 		this.setLayout(null);
 		
 		//맨 위 바 영억
 		JPanel bar = new JPanel();
 		bar.setLocation(0, 0);
-		bar.setSize(450, 100);
+		bar.setSize(445, 73);
 		bar.setLayout(null);
 		bar.setBackground(Color.BLACK);
 		
@@ -51,7 +51,7 @@ public class History extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				cp.changePanel(mf, history, new MainMenu(mf));
+				cp.changePanel(mf, history, new MyFridge(mf));
 				
 			}
 			
@@ -65,7 +65,7 @@ public class History extends JPanel {
 		//첫번째 히스토리
 		JPanel panel1 = new JPanel();
 		panel1.setLocation(0, 100);
-		panel1.setSize(432, 167);
+		panel1.setSize(445, 167);
 		
 		Image photo1 = new ImageIcon("images/park/potato.jpg").getImage().getScaledInstance(200, 167, 0);
 		JLabel photoLabel1 = new JLabel(new ImageIcon(photo1));
@@ -88,7 +88,7 @@ public class History extends JPanel {
 		//두번째 히스토리
 		JPanel panel2 = new JPanel();
 		panel2.setLocation(0, 267);
-		panel2.setSize(432, 167);
+		panel2.setSize(445, 167);
 		
 		Image photo2 = new ImageIcon("images/park/cheeseBall.jpg").getImage().getScaledInstance(200, 167, 0);
 		JLabel photoLabel2 = new JLabel(new ImageIcon(photo2));
@@ -111,7 +111,7 @@ public class History extends JPanel {
 		//세번째 히스토리
 		JPanel panel3 = new JPanel();
 		panel3.setLocation(0, 434);
-		panel3.setSize(432, 167);
+		panel3.setSize(445, 167);
 		
 		Image photo3 = new ImageIcon("images/park/soup.jpg").getImage().getScaledInstance(200, 167, 0);
 		JLabel photoLabel3 = new JLabel(new ImageIcon(photo1));
@@ -134,7 +134,7 @@ public class History extends JPanel {
 		//네번째 히스토리
 		JPanel panel4 = new JPanel();
 		panel4.setLocation(0, 601);
-		panel4.setSize(432, 167);
+		panel4.setSize(445, 167);
 		
 		Image photo4 = new ImageIcon("images/park/steamed potato.jpg").getImage().getScaledInstance(200, 167, 0);
 		JLabel photoLabel4 = new JLabel(new ImageIcon(photo4));
