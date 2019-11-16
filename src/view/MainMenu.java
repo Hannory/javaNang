@@ -92,7 +92,7 @@ public class MainMenu extends JPanel {
 		JPanel panel3 = new JPanel();
 		panel3.setSize(432,73);
 		panel3.setLayout(null);
-		panel3.setBackground(new Color(100, 149, 237));
+panel3.setBackground(new Color(100, 149, 237));
 
 		panel3.add(lb);
 		this.add(panel3);

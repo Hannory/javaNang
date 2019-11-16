@@ -65,7 +65,7 @@ public class MyFridge extends JPanel{
 		panel2.setSize(432,73);
 		panel2.setLayout(null);
 		panel2.setBackground(Color.black);
-
+ 
 
 		JButton jbt2 = new JButton("←");
 		jbt2.setBounds(14,14,24,27);
@@ -106,7 +106,7 @@ public class MyFridge extends JPanel{
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			ChangePanel.changePanel(mf, myFridge, new MainMenu(mf)); 
-		}            //My냉장고에서 메인메뉴류 듈아가게 하려고 한건데
+		}          
 	}
 
 }

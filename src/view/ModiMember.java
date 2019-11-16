@@ -66,8 +66,6 @@ public class ModiMember extends JPanel{
 
 		
 		
-		JPasswordField password = new JPasswordField();
-
 		JPanel panel = new JPanel();
 		panel.setSize(90,50);
 		panel.setLocation(191,552);
@@ -80,9 +78,11 @@ public class ModiMember extends JPanel{
 	    jbt1.setBounds(0,0,90,50);	    	    
 	    jbt1.setForeground(Color.white);
 	    jbt1.setBackground(Color.orange);
+	    if(jpf2 == jpf3) {
 	    Dialog sd = new Dialog(mf, "수정 완료");
 	    sd.setBounds(200,200,300,100);
 	    JButton jbt11 = new JButton("비밀번호가 수정되었습니다.");
+	    
 	    sd.add(jbt11);
 	    panel.add(jbt1);
 	    //비밀번호 확인해서 비밀번호 맞으면 변경 완료
@@ -103,7 +103,10 @@ public class ModiMember extends JPanel{
                                               //쓸 일이 좀 있을거다
 			}
 		});
-	    
+	    }
+	    if(jpf2 != jpf3) {
+	    	//변경 PW를 확인해주세요
+	    }
 	    
 	    JPanel panel2 = new JPanel();
         panel2.setLocation(0,0);
@@ -113,7 +116,7 @@ public class ModiMember extends JPanel{
 	    this.add(panel2);
 	    
 	    JLabel label = new JLabel("회원정보 수정");
-	    label.setFont(new Font("Serif", Font.BOLD, 20));
+	    label.setFont(new Font("Serif", Font.BOLD, 20)); 
 		label.setForeground(Color.WHITE);
 		label.setBounds(83, 12, 141, 26);
 		panel2.add(label);
@@ -137,6 +140,8 @@ public class ModiMember extends JPanel{
 	    jpf3 = new JPasswordField();
 	    jpf3.setBounds(135, 212, 239, 35);
 	    this.add(jpf3);
+	    
+	    
 	    
 	    JLabel label2 = new JLabel("");
 	    label2.setBounds(176, 220, 62, 18);

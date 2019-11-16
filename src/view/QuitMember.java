@@ -64,9 +64,9 @@ public class QuitMember extends JPanel{
 
 
 		JPanel panel = new JPanel();
-		panel.setSize(432,73);
+		panel.setSize(402,123);
 		panel.setLocation(30,150);
-		panel.setLayout(null);
+		panel.setLayout(null); 
 
 		panel.setBackground(Color.LIGHT_GRAY);
 
