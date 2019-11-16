@@ -26,36 +26,36 @@ public class RecipePage extends JPanel {
 		this.rp = this;
 		this.lp = lp;
 		
-		this.setSize(432,753);
+		this.setSize(450,770);
 		this.setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBackground(Color.BLACK);
-		panel.setBounds(0, 0, 432, 110);
+		panel.setBackground(new Color(63, 141, 197));
+		panel.setBounds(0, 0, 450, 73);
 		add(panel);
 		panel.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("레시피 정보");
 		lblNewLabel.setFont(new Font("굴림", Font.PLAIN, 25));
 		lblNewLabel.setForeground(Color.WHITE);
-		lblNewLabel.setBounds(137, 44, 139, 30);
+		lblNewLabel.setBounds(150, 25, 139, 30);
 		panel.add(lblNewLabel);
 		
 		JButton button = new JButton("<-");
 		button.setBounds(14, 23, 59, 27);
 		panel.add(button);
 		
-		JButton button_1 = new JButton("\uB85C\uADF8\uC778");
-		button_1.setBounds(343, 23, 75, 27);
+		JButton button_1 = new JButton("로그인");
+		button_1.setBounds(360, 23, 75, 27);
 		panel.add(button_1);
 		
-		JLabel recipeImage = new JLabel(new ImageIcon(new ImageIcon("images/won/까르보나라.PNG").getImage().getScaledInstance(432, 253, 0)));
-		recipeImage.setBounds(0, 123, 432, 253);
+		JLabel recipeImage = new JLabel(new ImageIcon(new ImageIcon("images/won/까르보나라.PNG").getImage().getScaledInstance(450, 280, 0)));
+		recipeImage.setBounds(0, 85, 450, 280);
 		add(recipeImage);
 		
 		JTextPane textPane = new JTextPane();
-		textPane.setBounds(0, 389, 432, 364);
+		textPane.setBounds(0, 389, 450, 430);
 		add(textPane);
 		
 		
