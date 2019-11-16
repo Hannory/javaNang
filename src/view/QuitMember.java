@@ -77,7 +77,7 @@ public class QuitMember extends JPanel{
 		JLabel lb6 = new JLabel("하거나 복구하는 것이 불가능하오니 탈퇴시 유의하십시오.");
 		 lb2.setBounds(30,-20,323,100);
 		 lb3.setBounds(30,0,387,100);
-		 lb4.setBounds(30,20,300,100);
+		 lb4.setBounds(30,20,300,100); 
 		 lb5.setBounds(30,40,300,100);
 		 lb6.setBounds(30,60,406,100);
 		 panel.add(lb2);

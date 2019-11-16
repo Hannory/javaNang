@@ -109,7 +109,7 @@ public class ModiMember extends JPanel{
 	    }
 	    
 	    JPanel panel2 = new JPanel();
-        panel2.setLocation(0,0);
+        panel2.setLocation(0,0); 
         panel2.setSize(432,73);
         panel2.setLayout(null);
         panel2.setBackground(Color.black);
