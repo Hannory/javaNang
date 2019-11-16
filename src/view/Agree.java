@@ -78,9 +78,9 @@ public class Agree extends JPanel{
 		
 		
 		
-		button1 = new JCheckBox("이용약관에 동의합니다.");
+		button1 = new JCheckBox("(필수) 이용약관에 동의합니다.");
 		button1.setLocation(45, 320);
-		button1.setSize(210, 40);
+		button1.setSize(250, 40);
 		
 		
 		JLabel pterms = new JLabel("개인정보 수집 및 이용 동의");
@@ -104,9 +104,9 @@ public class Agree extends JPanel{
 	
 		
 		
-		button2 = new JCheckBox("개인정보 수집 · 이용약관에 동의합니다.");
+		button2 = new JCheckBox("(필수) 개인정보 수집 · 이용약관에 동의합니다.");
 		button2.setLocation(45, 580);
-		button2.setSize(270, 50);
+		button2.setSize(300, 50);
 		
 		
 		btn1 = new JButton("동의함");
@@ -133,6 +133,16 @@ public class Agree extends JPanel{
 		this.add(btn1);
 		this.add(btn2);
 		
+		
+		button.addMouseListener(new MyMouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ChangePanel.changePanel(mf, agree, new LoginPage(mf));
+			}
+		});
+		
+		
+		
 		button1.addItemListener(new ItemListener() {
 			
 			@Override
@@ -148,8 +158,18 @@ public class Agree extends JPanel{
 		});
 		
 		
+		
+		
 		btn1.addMouseListener(new MyMouseAdapter());
-		btn2.addMouseListener(new MyMouseAdapter());
+		btn2.addMouseListener(new MyMouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ChangePanel.changePanel(mf, agree, new LoginPage(mf));
+			}
+		});
+		
+		
+		
 		
 		mf.add(this);
 	}
@@ -222,5 +242,8 @@ public class Agree extends JPanel{
 			}
 		}
 
+
+
 	}
+
 }
