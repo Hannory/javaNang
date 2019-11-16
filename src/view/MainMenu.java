@@ -113,7 +113,7 @@ panel3.setBackground(new Color(100, 149, 237));
 	class MyMouseAdapter3 extends MouseAdapter{
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			ChangePanel.changePanel(mf, mainMenu, new UpRecipe(mf));
+			ChangePanel.changePanel(mf, mainMenu, new UpRecipe(mf)); 
 		}
 	}
 	class MyMouseAdapter4 extends MouseAdapter{

@@ -87,7 +87,7 @@ public class MyFridge extends JPanel{
 	class MyMouseAdapter2 extends MouseAdapter{
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			ChangePanel.changePanel(mf, myFridge, new CheckIngred(mf));
+			ChangePanel.changePanel(mf, myFridge, new CheckIngred(mf)); 
 		}
 	}
 	class MyMouseAdapter3 extends MouseAdapter{
