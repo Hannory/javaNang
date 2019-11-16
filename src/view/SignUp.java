@@ -14,7 +14,8 @@ import javax.swing.JTextField;
 public class SignUp extends JPanel{
 	MainFrame mf;
 	JPanel signUp;
-	private JButton button;
+	JButton button;
+	
 	
 	public SignUp(MainFrame mf) {
 		this.mf = mf;
@@ -124,7 +125,11 @@ public class SignUp extends JPanel{
 		this.add(join);
 		
 		button.addMouseListener(new MyMouseAdapter());
+		
+		
 	}
+	
+	
 	class MyMouseAdapter extends MouseAdapter{
 		@Override
 		public void mouseClicked(MouseEvent e) {
