@@ -13,48 +13,44 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import view.MyFridge.MyMouseAdapter;
-
 public class MainMenu extends JPanel {
-	private MainFrame mf;
-	private JPanel mainPage1;
+	 MainFrame mf;
+	 JPanel mainMenu;
 
 	public MainMenu(MainFrame mf) {
 		this.mf = mf;
-		mainPage1 = this;
-		
-		this.setBounds(0, 0 , 500, 750);
-        this.setLayout(null);
-		
-        JButton btn = new JButton("요리 추천");
-		btn.setBounds(140,130,180,50);
-		btn.setBackground(Color.LIGHT_GRAY);
-		//버튼눌렀을때 changepanel 되도록해야
-		//subpage로 넘어가야? 맞나? 일단 change만 생각
+		mainMenu = this;
 
+		this.setBounds(0, 0 , 445, 770);
+		this.setLayout(null);
+
+		JButton btn1 = new JButton("요리 추천");
+		btn1.setBounds(140,130,180,50);
+		btn1.setBackground(Color.LIGHT_GRAY);
+		btn1.addMouseListener(new MyMouseAdapter1());
 		JButton btn2 = new JButton("재료 입력");
 		btn2.setBounds(140,230,180,50);
-		  btn2.setBackground(Color.LIGHT_GRAY);
+		btn2.setBackground(Color.LIGHT_GRAY);
+		btn2.addMouseListener(new MyMouseAdapter2());
 		JButton btn3 = new JButton("레시피 공유");
 		btn3.setBounds(140,330,180,50);
-		 btn3.setBackground(Color.LIGHT_GRAY);
+		btn3.setBackground(Color.LIGHT_GRAY);
+		btn3.addMouseListener(new MyMouseAdapter3());
 		JButton btn4 = new JButton("My 냉장고");
 		btn4.setBounds(140,430,180,50);
 		btn4.setBackground(Color.LIGHT_GRAY);
-		btn4.addMouseListener(new MyMouseAdapter());
-		
-		this.add(btn);
+		btn4.addMouseListener(new MyMouseAdapter4());
+
+		this.add(btn1);
 		this.add(btn2);
 		this.add(btn3);
 		this.add(btn4);
-		
+
 		mf.add(this);
 
-		//작은 사이즈 패널 만들어도 되겟징 ㅎ 큰 패널안에
-		//되려나 일단 해보자
 		JPanel panel2 = new JPanel();
-		panel2.setSize(500,150);
-		panel2.setLocation(0,620);
+		panel2.setSize(500,100);
+		panel2.setLocation(0,665);
 		panel2.setLayout(null);
 
 		panel2.setBackground(Color.LIGHT_GRAY);
@@ -72,41 +68,58 @@ public class MainMenu extends JPanel {
 		this.add(panel2);
 
 
-        Image icon = new ImageIcon("images/hwang/milk.PNG").getImage().getScaledInstance(110, 110, 0);
-        
-         JLabel lb4 = new JLabel(new ImageIcon(icon));
-          lb4.setBounds(0,0,100,100);
-         panel2.add(lb4); // 이거 아무 소용없는데 왜 붙여 논거야 이씨 위치를 어떻게 정할까?
-                          
-          this.add(panel2); 
-         
+		Image icon = new ImageIcon("images/hwang/milk.PNG").getImage().getScaledInstance(110, 110, 0);
 
-	  mf.add(this);
-	  
-	  
+		JLabel lb4 = new JLabel(new ImageIcon(icon));
+		lb4.setBounds(0,0,100,100);
+		panel2.add(lb4); 
+
+		this.add(panel2); 
+
+
+		mf.add(this);
+
+
 
 		JLabel lb = new JLabel("메인 메뉴");
 		lb.setBounds(50,-20,100,100); 
 		lb.setLayout(null);
 
-	    lb.setForeground(Color.white);
-      lb.setFont(new Font("Serif", Font.BOLD, 20));     
+		lb.setForeground(Color.white);
+		lb.setFont(new Font("Serif", Font.BOLD, 20));     
 		this.add(lb);
-		
+
 		JPanel panel3 = new JPanel();
-		panel3.setSize(500,70);
+		panel3.setSize(432,73);
 		panel3.setLayout(null);
-		panel3.setBackground(Color.black);
-		
-      panel3.add(lb);
-      this.add(panel3);
+		panel3.setBackground(new Color(100, 149, 237));
+
+		panel3.add(lb);
+		this.add(panel3);
 	}
 
-	 class MyMouseAdapter extends MouseAdapter{
-		   @Override
-		   public void mouseClicked(MouseEvent e) {
-			   ChangePanel.changePanel(mf, mainPage1, new MyFridge(mf));
-		   }
-	   }
+	class MyMouseAdapter1 extends MouseAdapter{
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			ChangePanel.changePanel(mf, mainMenu, new Recommend(mf));
+		}
 	}
-	
+	class MyMouseAdapter2 extends MouseAdapter{
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			ChangePanel.changePanel(mf, mainMenu, new InputIngred(mf));
+		}
+	}
+	class MyMouseAdapter3 extends MouseAdapter{
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			ChangePanel.changePanel(mf, mainMenu, new MyFridge(mf));
+		}
+	}
+	class MyMouseAdapter4 extends MouseAdapter{
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			ChangePanel.changePanel(mf, mainMenu, new MyFridge(mf));
+		}
+	}
+}

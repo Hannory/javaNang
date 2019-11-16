@@ -23,14 +23,15 @@ import view.ModiMember.MyMouseAdapter;
 
 public class QuitMember extends JPanel{
 
-	public MainFrame mf;
-	public JPanel subbPage2;
-
+	 MainFrame mf;
+	 JPanel quitMember;
+     JPanel lp;
+    
 	public QuitMember(MainFrame mf) {
 		this.mf = mf;
-		this.subbPage2 = this;
+		this.quitMember = this;
 
-		this.setBounds(0,0,500,750);
+		this.setBounds(0,0,445,770);
 		this.setLayout(null);
 
 
@@ -63,7 +64,7 @@ public class QuitMember extends JPanel{
 
 
 		JPanel panel = new JPanel();
-		panel.setSize(431,140);
+		panel.setSize(432,73);
 		panel.setLocation(30,150);
 		panel.setLayout(null);
 
@@ -89,7 +90,7 @@ public class QuitMember extends JPanel{
 
 			JPanel panel2 = new JPanel(); // ¿©±â À­ ºÎºÐ
 			panel2.setLocation(0, 0);
-			panel2.setSize(1000,70);
+			panel2.setSize(432,73);
 			panel2.setLayout(null);
 			
 			panel2.setBackground(Color.black);
@@ -110,14 +111,14 @@ public class QuitMember extends JPanel{
 			
 			JButton button = new JButton("");
 			button.setBounds(65, 12, -59, 27);
-			panel2.add(button);
 			button.setForeground(Color.WHITE);
 			button.setBackground(Color.BLACK);
-			button.addMouseListener(new MyMouseAdapter());
+			button.addMouseListener(new MyMouseAdapter1());
+			panel2.add(button);
 			
 			JButton btnNewButton_1 = new JButton("New button");
 			btnNewButton_1.setBounds(14, 25, 37, 27);
-			btnNewButton_1.addMouseListener(new MyMouseAdapter());
+			btnNewButton_1.addMouseListener(new MyMouseAdapter1());
 			panel2.add(btnNewButton_1);
 			
 			
@@ -139,7 +140,7 @@ public class QuitMember extends JPanel{
 			Dialog sd = new Dialog(mf, "Å»Åð ¿Ï·á");
 			sd.setBounds(200,200,300,100);
 			JButton jbt11 = new JButton("Å»Åð°¡ ¿Ï·áµÇ¾ú½À´Ï´Ù. ¾È³çÈ÷ °¡¼¼¿ä..");
-		
+			jbt11.addMouseListener(new MyMouseAdapter2());
 			sd.add(jbt11);
 			panel3.add(btnNewButton);
 			
@@ -155,7 +156,8 @@ public class QuitMember extends JPanel{
 					
 					@Override
 					public void actionPerformed(ActionEvent e) {
-		                         sd.dispose();        //´Ý±â ´­·¶À»¶§ ´ÝÈ÷°Ô
+						jbt11.addMouseListener(new MyMouseAdapter2());      
+				//		sd.dispose();        //´Ý±â ´­·¶À»¶§ ´ÝÈ÷°Ô
 		                                              //¾µ ÀÏÀÌ Á» ÀÖÀ»°Å´Ù
 					}
 				});
@@ -186,10 +188,16 @@ public class QuitMember extends JPanel{
 	}
 
 
-	 class MyMouseAdapter extends MouseAdapter{
+	 class MyMouseAdapter1 extends MouseAdapter{
 		   @Override
 		   public void mouseClicked(MouseEvent e) {
-		   ChangePanel.changePanel(mf, subbPage2, new ModiMember(mf));
+		   ChangePanel.changePanel(mf, quitMember, new ModiMember(mf));
+		   }
+	   }
+	 class MyMouseAdapter2 extends MouseAdapter{
+		   @Override
+		   public void mouseClicked(MouseEvent e) {
+		   ChangePanel.changePanel(mf, quitMember, new AllRecipe(mf,lp));
 		   }
 	   }
 

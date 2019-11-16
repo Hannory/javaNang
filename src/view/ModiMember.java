@@ -19,8 +19,8 @@ import javax.swing.JPasswordField;
 
 public class ModiMember extends JPanel{
 
-	public MainFrame mf;
-	public JPanel subPage2;
+	 MainFrame mf;
+	 JPanel modiMember;
 	 
 	private JPasswordField jpf1;
 	private JPasswordField jpf2;
@@ -30,30 +30,30 @@ public class ModiMember extends JPanel{
 	
 	public ModiMember(MainFrame mf) {
 		this.mf = mf;
-		this.subPage2 = this;
+		this.modiMember = this;
 		
-		this.setBounds(0,0,500,750);
+		this.setBounds(0,0,445,770);
         this.setLayout(null);
 		JLabel lb = new JLabel("회원정보 수정");// 회원정보수정
-		lb.setBounds(150, 50, 200 ,100);
+		lb.setBounds(120, 50, 200 ,100);
 		lb.setFont(new Font("Serif", Font.BOLD, 30));  
 		JLabel lb2 = new JLabel("ID");
-		lb2.setBounds(90, 150, 27, 50);
+		lb2.setBounds(60, 150, 27, 50);
 		lb2.setFont(new Font("Serif", Font.BOLD, 20));
 		JLabel lb3 = new JLabel("현재 PW");// 현재 PW
-		lb3.setBounds(56, 202, 92 ,50);
+		lb3.setBounds(26, 202, 92 ,50);
 		lb3.setFont(new Font("Serif", Font.BOLD, 20));
 		JLabel lb4 = new JLabel("변경 PW");// 변경 PW
-		lb4.setBounds(56, 252, 92 ,50);
+		lb4.setBounds(26, 252, 92 ,50);
 		lb4.setFont(new Font("Serif", Font.BOLD, 20));
 		JLabel lb5 = new JLabel("확인 PW");// 확인 PW
-		lb5.setBounds(56, 309, 92 ,50);
+		lb5.setBounds(26, 309, 92 ,50);
 		lb5.setFont(new Font("Serif", Font.BOLD, 20));
 		JLabel lb6 = new JLabel("닉네임");// 닉네임
-		lb6.setBounds(66, 364, 83 ,50);
+		lb6.setBounds(36, 364, 83 ,50);
 		lb6.setFont(new Font("Serif", Font.BOLD, 20));
 		JLabel lb7 = new JLabel("E-MAIL");// Email
-		lb7.setBounds(65, 406, 83 ,50);
+		lb7.setBounds(30, 406, 83 ,50);
 		lb7.setFont(new Font("Serif", Font.BOLD, 20));
 
 		this.add(lb);
@@ -69,15 +69,15 @@ public class ModiMember extends JPanel{
 		JPasswordField password = new JPasswordField();
 
 		JPanel panel = new JPanel();
-		panel.setSize(120,50);
-		panel.setLocation(191,572);
+		panel.setSize(90,50);
+		panel.setLocation(191,552);
 		panel.setLayout(null);
 		panel.setBackground(Color.orange);
 
 	    this.add(panel);
 	    
 	    JButton jbt1 = new JButton("확인");
-	    jbt1.setBounds(0,0,120,50);	    	    
+	    jbt1.setBounds(0,0,90,50);	    	    
 	    jbt1.setForeground(Color.white);
 	    jbt1.setBackground(Color.orange);
 	    Dialog sd = new Dialog(mf, "수정 완료");
@@ -107,7 +107,7 @@ public class ModiMember extends JPanel{
 	    
 	    JPanel panel2 = new JPanel();
         panel2.setLocation(0,0);
-        panel2.setSize(1000,70);
+        panel2.setSize(432,73);
         panel2.setLayout(null);
         panel2.setBackground(Color.black);
 	    this.add(panel2);
@@ -127,15 +127,15 @@ public class ModiMember extends JPanel{
         jbt2.addMouseListener(new MyMouseAdapter());
 	   
         jpf1 = new JPasswordField();
-	    jpf1.setBounds(165, 262, 269, 35);
+	    jpf1.setBounds(135, 262, 239, 35);
 	    this.add(jpf1);
 	    
 	    jpf2 = new JPasswordField();
-	    jpf2.setBounds(165,312,269,35);
+	    jpf2.setBounds(135,312,239,35);
 	    this.add(jpf2);
 	    
 	    jpf3 = new JPasswordField();
-	    jpf3.setBounds(165, 212, 269, 35);
+	    jpf3.setBounds(135, 212, 239, 35);
 	    this.add(jpf3);
 	    
 	    JLabel label2 = new JLabel("");
@@ -143,7 +143,7 @@ public class ModiMember extends JPanel{
 	    this.add(label2);
 	    
 	    JButton jbt3 = new JButton("회원 탈퇴");
-	    jbt3.setBounds(384, 668, 96, 35);
+	    jbt3.setBounds(334, 668, 96, 35);
 	    jbt3.setBackground(Color.LIGHT_GRAY);
 	    jbt3.addMouseListener(new MyMouseAdapter2());
 	    this.add(jbt3);
@@ -153,13 +153,13 @@ public class ModiMember extends JPanel{
 	 class MyMouseAdapter extends MouseAdapter{
 		   @Override
 		   public void mouseClicked(MouseEvent e) {
-		   ChangePanel.changePanel(mf, subPage2, new MyFridge(mf));
+		   ChangePanel.changePanel(mf, modiMember, new MyFridge(mf));
 		   }
 	   }
 	 class MyMouseAdapter2 extends MouseAdapter{
 		   @Override
 		   public void mouseClicked(MouseEvent e) {
-		   ChangePanel.changePanel(mf, subPage2, new QuitMember(mf));
+		   ChangePanel.changePanel(mf, modiMember, new QuitMember(mf));
 		   }
 	   }
 }
