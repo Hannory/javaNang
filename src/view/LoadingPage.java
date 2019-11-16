@@ -19,14 +19,14 @@ public class LoadingPage extends JPanel {
 		this.lp = this;
 		
 		
-		this.setSize(432,750);
+		this.setSize(445,770);
 		
 		mf.add(this);
 		setLayout(null);
 		
-		Image icon = new ImageIcon("images/won/intro.gif").getImage().getScaledInstance(450	, 800, 0);
+		Image icon = new ImageIcon("images/won/intro.gif").getImage().getScaledInstance(445	, 770, 0);
 		JLabel label = new JLabel(new ImageIcon(icon));
-		label.setSize(432,753);
+		label.setSize(445,770);
 		
 		
 		
@@ -40,7 +40,6 @@ public class LoadingPage extends JPanel {
 		}
 		
 		new AllRecipe(mf, this);
-		//new MainPage(mf, this);
 
 	}
 	

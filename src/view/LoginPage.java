@@ -31,12 +31,12 @@ public class LoginPage extends JPanel {
 		this.mf = mf;
 		this.lp = this;
 		
-		this.setSize(432,753);
+		this.setSize(445,770);
 		this.setBackground(Color.white);
 		setLayout(null);
 		
 		JLabel logo = new JLabel(new ImageIcon(new ImageIcon("images/won/java.PNG").getImage().getScaledInstance(130, 100, 0)));
-		logo.setBounds(140, 91, 150, 180);
+		logo.setBounds(140, 101, 150, 180);
 		add(logo);
 		
 		
@@ -61,12 +61,12 @@ public class LoginPage extends JPanel {
 		JButton loginBtn = new JButton("로그인");
 		loginBtn.setForeground(Color.WHITE);
 		loginBtn.setBackground(Color.GRAY);
-		loginBtn.setBounds(151, 525, 105, 40);
+		loginBtn.setBounds(151, 525, 150, 40);
 		loginBtn.setBorderPainted(false);
 		add(loginBtn);
 		
 		JButton signUpBtn = new JButton("회원가입");
-		signUpBtn.setBounds(151, 605, 105, 40);
+		signUpBtn.setBounds(151, 605, 150, 40);
 		//외각선 없애주기
 		signUpBtn.setBorderPainted(false);
 		signUpBtn.setFocusPainted(false);
@@ -104,13 +104,6 @@ public class LoginPage extends JPanel {
 				ChangePanel.changePanel(mf, lp, new Agree(mf));
 			}
 		});
-		
-		
-		
-		
-		
-		
-		
 		
 		
 		
