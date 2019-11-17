@@ -111,11 +111,7 @@ public UpRecipe(MainFrame mf) {
 	panel4.setBounds(268,12,80,162);
 	panel2.add(panel4);
 	panel4.setLayout(null);
-	
-	JLabel recipePhoto5 = new JLabel (new ImageIcon(new ImageIcon("images/YU/빵.png").getImage().getScaledInstance(130, 180, 0)));
-	recipePhoto5.setBounds(0, 12, 80, 138);
-	panel4.add(recipePhoto5);
-	
+
 	JTextPane textpane3= new JTextPane();
 	textpane3.setBounds(28,562,48,35);
 	panel2.add(textpane3);
@@ -126,23 +122,30 @@ public UpRecipe(MainFrame mf) {
 	panel7.setBounds(354,12,80,162);
 	panel2.add(panel7);
 	panel7.setLayout(null);
-	
-	JLabel recipePhoto2 = new JLabel(new ImageIcon(new ImageIcon("images/YU/고기.png").getImage().getScaledInstance(130, 180, 0)));
-	recipePhoto2.setBounds(0, 12, 80, 138);
-	panel7.add(recipePhoto2);
+
 	
 	
-	JLabel recipePhoto = new JLabel(new ImageIcon(new ImageIcon("images/YU/야채.PNG").getImage().getScaledInstance(130, 180, 0)));
+	JLabel recipePhoto = new JLabel(new ImageIcon(new ImageIcon("images/yu/vegetables.PNG").getImage().getScaledInstance(130, 180, 0)));
 	recipePhoto.setBounds(0,12,90,138);
 	panel3.add(recipePhoto);
 	
-	JLabel recipePhoto3 = new JLabel(new ImageIcon(new ImageIcon("images/YU/생선.PNG").getImage().getScaledInstance(130, 180, 0)));
+	JLabel recipePhoto3 = new JLabel(new ImageIcon(new ImageIcon("images/yu/fish.PNG").getImage().getScaledInstance(130, 180, 0)));
 	recipePhoto3.setBounds(0,12,80,138);
 	panel5.add(recipePhoto3);
 	
-	JLabel recipePhoto4 = new JLabel(new ImageIcon(new ImageIcon("images/YU/우유.PNG").getImage().getScaledInstance(130, 180, 0)));
+	JLabel recipePhoto4 = new JLabel(new ImageIcon(new ImageIcon("images/yu/meat.PNG").getImage().getScaledInstance(130, 180, 0)));
 	recipePhoto4.setBounds(0,12,80,138);
 	panel6.add(recipePhoto4);
+	
+	
+	JLabel recipePhoto5 = new JLabel (new ImageIcon(new ImageIcon("images/yu/bread.png").getImage().getScaledInstance(130, 180, 0)));
+	recipePhoto5.setBounds(0, 12, 80, 138);
+	panel4.add(recipePhoto5);
+	
+	
+	JLabel recipePhoto2 = new JLabel(new ImageIcon(new ImageIcon("images/yu/milk.png").getImage().getScaledInstance(130, 180, 0)));
+	recipePhoto2.setBounds(0, 12, 80, 138);
+	panel7.add(recipePhoto2);
 	
 	//텍스트 필드 추가
 	
