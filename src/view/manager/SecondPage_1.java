@@ -17,14 +17,21 @@ import view.manager.MainPage.MyItem2;
 public class SecondPage_1 extends JPanel {
 
 	JFrame mf;
-	SecondPage_1 sp;
+	SecondPage_1 mp;
 
 
 
 	public SecondPage_1(JFrame mf) {
+		
+		//필드값 초기화 
+		this.mf=mf;
+		this.mp=this;
+		
+		//
+		
 		setBackground(UIManager.getColor("CheckBox.background"));
 		setLayout(null);
-		setSize(432,705);
+		setSize(445,770);
 
 
 		JPanel panel_1 = new JPanel();
@@ -52,7 +59,7 @@ public class SecondPage_1 extends JPanel {
 		button_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				ChangePanel.changePanel(mf,sp, new MainPage(mf));
+				ChangePanel.changePanel(mf,mp, new MainPage(mf));
 			}
 		});
 		

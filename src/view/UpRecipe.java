@@ -1,181 +1,172 @@
 package view;
 
-import java.awt.Button;
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Panel;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
-//import com.jgoodies.forms.factories.DefaultComponentFactory;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
-import javax.swing.border.EmptyBorder;
 
-public class UpRecipe extends JFrame {
-	//추가 해야 함 
-	private JPanel contentPane;
-
-
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					UpRecipe frame = new UpRecipe();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-
-	public UpRecipe() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 800);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
-
-		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(Color.WHITE);
-		panel_1.setBounds(0, 0, 432, 783);
-		contentPane.add(panel_1);
-		panel_1.setLayout(null);
-
-		JButton button_1 = new JButton("\uACF5\uC720\uD558\uAE30");
-		button_1.setBounds(112, 664, 204, 48);
-		panel_1.add(button_1);
-		button_1.setForeground(Color.DARK_GRAY);
-		button_1.setFont(new Font("맑은 고딕", Font.BOLD, 23));
-		button_1.setBackground(Color.WHITE);
-
-		JButton button_2 = new JButton("\uD30C\uC77C \uC120\uD0DD");
-		button_2.setBounds(315, 571, 103, 33);
-		panel_1.add(button_2);
-		button_2.setForeground(Color.DARK_GRAY);
-		button_2.setFont(new Font("맑은 고딕", Font.BOLD, 15));
-		button_2.setBackground(Color.WHITE);
-
-		JTextPane textPane_1 = new JTextPane();
-		textPane_1.setBounds(14, 236, 73, 36);
-		panel_1.add(textPane_1);
-		textPane_1.setText("\uC694\uB9AC\uBA85");
-		textPane_1.setFont(new Font("맑은 고딕", Font.BOLD, 20));
-
-		JTextPane textPane_2 = new JTextPane();
-		textPane_2.setBounds(14, 296, 73, 36);
-		panel_1.add(textPane_2);
-		textPane_2.setText("\uB808\uC2DC\uD53C");
-		textPane_2.setFont(new Font("맑은 고딕", Font.BOLD, 20));
-
-
-		JTextPane textPane_3 = new JTextPane();
-		textPane_3.setBounds(28, 568, 52, 36);
-		panel_1.add(textPane_3);
-		textPane_3.setText("\uC0AC\uC9C4");
-		textPane_3.setFont(new Font("맑은 고딕", Font.BOLD, 20));
-
-		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 432, 76);
-		panel_1.add(panel);
-		panel.setBackground(new Color(70, 130, 180));
-		panel.setLayout(null);
-
-		JTextPane textPane = new JTextPane();
-		textPane.setBounds(104, 12, 220, 52);
-		textPane.setEditable(false);
-		panel.add(textPane);
-		textPane.setBackground(new Color(70, 130, 180));
-		textPane.setForeground(Color.WHITE);
-		textPane.setFont(new Font("굴림", Font.PLAIN, 32));
-		textPane.setText("\uB808\uC2DC\uD53C \uC5C5\uB85C\uB4DC ");
-
-		Button button = new Button("\u226A");
-		button.setBounds(29, 22, 38, 33);
-		panel.add(button);
-		button.setBackground(new Color(70, 130, 180));
-
-		Panel panel_2 = new Panel();
-		panel_2.setBounds(0, 82, 80, 123);
-		panel_1.add(panel_2);
-		panel_2.setLayout(null);
-		
-				
-				//음식 사진 5개 추가 
-		
-				JLabel recipePhoto = new JLabel(new ImageIcon(new ImageIcon("images/YU/채소류.PNG").getImage().getScaledInstance(130, 180, 0)));
-				recipePhoto.setBounds(0, 0, 80, 123);
-				panel_2.add(recipePhoto);
-
-		Panel panel_4 = new Panel();
-		panel_4.setBounds(80, 82, 80, 123);
-		panel_1.add(panel_4);
-		panel_4.setLayout(null);
-		
-				JLabel recipePhoto2 = new JLabel(new ImageIcon(new ImageIcon("images/YU/육류.PNG").getImage().getScaledInstance(130, 180, 0)));
-				recipePhoto2.setBounds(0, 0, 80, 123);
-				panel_4.add(recipePhoto2);
-
-		Panel panel_5 = new Panel();
-		panel_5.setBounds(175, 82, 80, 123);
-		panel_1.add(panel_5);
-		panel_5.setLayout(null);
-		
-		
-				JLabel recipePhoto5 = new JLabel(new ImageIcon(new ImageIcon("images/YU/수산물.PNG").getImage().getScaledInstance(130, 180, 0)));
-				recipePhoto5.setBounds(0, 0, 80, 123);
-				panel_5.add(recipePhoto5);
-
-		Panel panel_6 = new Panel();
-		panel_6.setBounds(261, 82, 80, 123);
-		panel_1.add(panel_6);
-		panel_6.setLayout(null);
-		
-				JLabel recipePhoto3 = new JLabel(new ImageIcon(new ImageIcon("images/YU/유제품.PNG").getImage().getScaledInstance(130, 180, 0)));
-				recipePhoto3.setBounds(0, 0, 80, 123);
-				panel_6.add(recipePhoto3);
-
-		Panel panel_7 = new Panel();
-		panel_7.setBounds(347, 82, 80, 123);
-		panel_1.add(panel_7);
-		panel_7.setLayout(null);
-		
-		
-				JLabel recipePhoto4 = new JLabel(new ImageIcon(new ImageIcon("images/YU/기타.PNG").getImage().getScaledInstance(130, 180, 0)));
-				recipePhoto4.setBounds(0, 0, 73, 123);
-				panel_7.add(recipePhoto4);
-
-		//텍스트 필드 추가한거 
-		JTextField recipeName = new JTextField();
-		recipeName.setBounds(117, 236, 255, 33);
-		panel_1.add(recipeName);
-
-		JTextField recipeCont = new JTextField();
-		recipeCont.setBounds(117,305,255,233);
-		panel_1.add(recipeCont);
-
-		JTextField recipefile = new JTextField();
-		recipefile.setBounds(103,571,204,33);
-		panel_1.add(recipefile);
+public class UpRecipe extends JPanel {
+MainFrame mf;
+JPanel mp;
 
 
 
-		//뒤로가기 버튼
-		//button.addMouseListener(new MouseAdapter() {
+//해보고 없애기 
 
-		//	@Override
-		//	public void mouseClicked(MouseEvent e) {
-		//		ChangePanel.changePanel(mf, rp, new MainMenu(mf , lp));
-		//	}
+public UpRecipe(MainFrame mf) {
+	
+	//필드값 초기화
+	this.mf=mf;
+	this.mp=this;
+	//전체 패널(제일 큰 패널) 기본 설정 	//색 설정
+	this.setSize(445,770);
+	this.setBackground(new Color(190,190,190));
+	setLayout(null);
+	
+	
+	mf.getContentPane().add(mp);
 
-		// });
+	//상단 패널 설정
+	JPanel panel = new JPanel();
+	panel.setBackground(new Color(63,141,197));
+	panel.setBounds(0,0,445,70);
+	mp.add(panel);
+	panel.setLayout(null);
+	
+	
+	//하단 패널 설정 
+	JPanel panel2 = new JPanel();
+	panel2.setBackground(Color.WHITE);
+	panel2.setBounds(0,70,445,700);
+	mp.add(panel2);
+	panel.setLayout(null);
+	
+	
+	JButton button0 = new JButton("<<");
+	button0.setBounds(29,22,58,33);
+	panel.add(button0);
+	button0.setBackground(new Color(70,130,180));
+	
+		JTextPane textpane4 = new JTextPane();
+		panel.add(textpane4);
+		textpane4.setBounds(112,15,209,43);
+		textpane4.setEditable(false);
+		textpane4.setBackground(new Color(70,130,180));
+		textpane4.setForeground(Color.white);
+		textpane4.setFont(new Font("굴림",Font.PLAIN,32));
+		textpane4.setText("레시피 업로드" );
+	panel2.setLayout(null);
+	
+	JButton button1 = new JButton("공유하기");
+	button1.setBounds(175,632,129,41);
+	panel2.add(button1);
+	button1.setForeground(Color.DARK_GRAY);
+	button1.setFont(new Font("Dialog", Font.BOLD, 21));
+	button1.setBackground(Color.white);
+	
+	JButton button2 = new JButton("파일선택");
+	button2.setBounds(305,562,117,37);
+	panel2.add(button2);
+	button2.setForeground(Color.DARK_GRAY);
+	button2.setFont(new Font("Dialog", Font.BOLD, 18));
+	button2.setBackground(Color.WHITE);
+	
+	JTextPane textpane1= new JTextPane();
+	textpane1.setBounds(28,210,69,35);
+	panel2.add(textpane1);
+	textpane1.setText("요리명"); 
+	textpane1.setFont(new Font("맑은고딕",Font.BOLD,20));
+	
+	JTextPane textpane2 = new JTextPane();
+	textpane2.setBounds(28,267,69,35);
+	panel2.add(textpane2);
+	textpane2.setText("레시피");
+	textpane2.setFont(new Font("맑은고딕",Font.BOLD,20));
+	
+	Panel panel3 = new Panel();
+	panel3.setBounds(0,12,90,162);
+	panel2.add(panel3);
+	panel3.setLayout(null);
+	
+	Panel panel5 = new Panel();
+	panel5.setBounds(96,12,80,162);
+	panel2.add(panel5);
+	panel5.setLayout(null);
+	
+	Panel panel6 = new Panel();
+	panel6.setBounds(182,12,80,162);
+	panel2.add(panel6);
+	panel6.setLayout(null);
+	
 
-	}
+	Panel panel4 = new Panel();
+	panel4.setBounds(268,12,80,162);
+	panel2.add(panel4);
+	panel4.setLayout(null);
+	
+	JLabel recipePhoto5 = new JLabel (new ImageIcon(new ImageIcon("images/YU/빵.png").getImage().getScaledInstance(130, 180, 0)));
+	recipePhoto5.setBounds(0, 12, 80, 138);
+	panel4.add(recipePhoto5);
+	
+	JTextPane textpane3= new JTextPane();
+	textpane3.setBounds(28,562,48,35);
+	panel2.add(textpane3);
+	textpane3.setText("사진");
+	textpane3.setFont(new Font("맑은고딕",Font.BOLD,20));
+	
+	Panel panel7 = new Panel();
+	panel7.setBounds(354,12,80,162);
+	panel2.add(panel7);
+	panel7.setLayout(null);
+	
+	JLabel recipePhoto2 = new JLabel(new ImageIcon(new ImageIcon("images/YU/고기.png").getImage().getScaledInstance(130, 180, 0)));
+	recipePhoto2.setBounds(0, 12, 80, 138);
+	panel7.add(recipePhoto2);
+	
+	
+	JLabel recipePhoto = new JLabel(new ImageIcon(new ImageIcon("images/YU/야채.PNG").getImage().getScaledInstance(130, 180, 0)));
+	recipePhoto.setBounds(0,12,90,138);
+	panel3.add(recipePhoto);
+	
+	JLabel recipePhoto3 = new JLabel(new ImageIcon(new ImageIcon("images/YU/생선.PNG").getImage().getScaledInstance(130, 180, 0)));
+	recipePhoto3.setBounds(0,12,80,138);
+	panel5.add(recipePhoto3);
+	
+	JLabel recipePhoto4 = new JLabel(new ImageIcon(new ImageIcon("images/YU/우유.PNG").getImage().getScaledInstance(130, 180, 0)));
+	recipePhoto4.setBounds(0,12,80,138);
+	panel6.add(recipePhoto4);
+	
+	//텍스트 필드 추가
+	
+	JTextField recipeName = new JTextField();
+	recipeName.setBounds(116,220,306,35);
+	panel2.add(recipeName);
+	
+	JTextField recipeCont = new JTextField();
+	recipeCont.setBounds(111,278,311,235);
+	panel2.add(recipeCont);
+	
+	JTextField recipefile = new JTextField();
+	recipefile.setBounds(112,562,179,32);
+	panel2.add(recipefile);
+
+	button0.addMouseListener(new MouseAdapter() {
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			ChangePanel.changePanel(mf, mp, new MainMenu(mf )); //뒤로가기 버튼을 누르면 메인 메뉴가 나와야 함! 
+		}
+	});
+	
+	mf.repaint();
 }
+}
+
+
