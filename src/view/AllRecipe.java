@@ -46,7 +46,7 @@ public class AllRecipe extends JPanel {
 		panel.add(btnNewButton);
 		
 		JLabel label = new JLabel("¸ðµç ·¹½ÃÇÇ");
-		label.setFont(new Font("±¼¸²", Font.PLAIN, 25));
+		label.setFont(new Font("±¼¸²", Font.BOLD, 25));
 		label.setBackground(Color.WHITE);
 		label.setForeground(Color.white);
 		label.setBounds(138, 26, 146, 39);
@@ -62,7 +62,7 @@ public class AllRecipe extends JPanel {
 		recipe1.add(recipeImage1);
 		
 		JLabel rp1 = new JLabel("# \uB808\uC2A4\uD1A0\uB791 \uBD80\uB7FD\uC9C0\uC54A\uC740 \uD06C\uB9BC \uD30C\uC2A4\uD0C0 \uB9CC\uB4E4\uAE30~!");
-		rp1.setFont(new Font("±¼¸²", Font.PLAIN, 15));
+		rp1.setFont(new Font("±¼¸²", Font.BOLD, 15));
 		rp1.setBounds(135,13,295,104);
 		recipe1.add(rp1);
 		
@@ -78,7 +78,7 @@ public class AllRecipe extends JPanel {
 		JLabel rp2 = new JLabel("# \uB808\uC2A4\uD1A0\uB791 \uBD80\uB7FD\uC9C0\uC54A\uC740 \uD06C\uB9BC \uD30C\uC2A4\uD0C0 \uB9CC\uB4E4\uAE30~!");
 		rp2.setBounds(135, 13, 295, 104);
 		recipe2.add(rp2);
-		rp2.setFont(new Font("±¼¸²", Font.PLAIN, 15));
+		rp2.setFont(new Font("±¼¸²", Font.BOLD, 15));
 		
 		JPanel recipe3 = new JPanel();
 		recipe3.setBounds(0, 385, 445, 145);
@@ -90,7 +90,7 @@ public class AllRecipe extends JPanel {
 		recipe3.add(recipeImage3);
 		
 		JLabel rp3 = new JLabel("# \uB808\uC2A4\uD1A0\uB791 \uBD80\uB7FD\uC9C0\uC54A\uC740 \uD06C\uB9BC \uD30C\uC2A4\uD0C0 \uB9CC\uB4E4\uAE30~!");
-		rp3.setFont(new Font("±¼¸²", Font.PLAIN, 15));
+		rp3.setFont(new Font("±¼¸²",Font.BOLD, 15));
 		rp3.setBounds(135, 13, 295, 104);
 		recipe3.add(rp3);
 		
@@ -104,7 +104,7 @@ public class AllRecipe extends JPanel {
 		recipe4.add(recipeImage4);
 		
 		JLabel rp4 = new JLabel("# \uB808\uC2A4\uD1A0\uB791 \uBD80\uB7FD\uC9C0\uC54A\uC740 \uD06C\uB9BC \uD30C\uC2A4\uD0C0 \uB9CC\uB4E4\uAE30~!");
-		rp4.setFont(new Font("±¼¸²", Font.PLAIN, 15));
+		rp4.setFont(new Font("±¼¸²", Font.BOLD, 15));
 		rp4.setBounds(135, 13, 295, 104);
 		recipe4.add(rp4);
 		
