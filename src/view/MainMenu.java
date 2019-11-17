@@ -13,6 +13,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import view.QuitMember.MyMouseAdapter1;
+
 public class MainMenu extends JPanel {
 	 MainFrame mf;
 	 JPanel mainMenu;
@@ -66,7 +68,8 @@ public class MainMenu extends JPanel {
 
 		panel2.add(lb3);
 		this.add(panel2);
-
+		
+		
 
 		Image icon = new ImageIcon("images/hwang/milk.PNG").getImage().getScaledInstance(110, 110, 0);
 
@@ -79,10 +82,14 @@ public class MainMenu extends JPanel {
 
 		mf.add(this);
 
+		//여기서 파일에 저장된 재료 중 유통기한이 제일 임박한 상품의 이미지를 불러와서
+		//위 라벨에 재료명적고,아래 라벨에 유통기한이 몇일 남았는지 넣어줘야해
+		
+		
 
 
 		JLabel lb = new JLabel("메인 메뉴");
-		lb.setBounds(50,-20,100,100); 
+		lb.setBounds(64, 25, 94, 26); 
 		lb.setLayout(null);
 
 		lb.setForeground(Color.white);
@@ -92,10 +99,16 @@ public class MainMenu extends JPanel {
 		JPanel panel3 = new JPanel();
 		panel3.setSize(432,73);
 		panel3.setLayout(null);
-panel3.setBackground(new Color(100, 149, 237));
+        panel3.setBackground(new Color(100, 149, 237));
 
 		panel3.add(lb);
 		this.add(panel3);
+	
+		JButton btnNewButton_1 = new JButton("←");
+		btnNewButton_1.setBounds(14, 25, 50, 27);
+		btnNewButton_1.addMouseListener(new MyMouseAdapter5());
+		panel3.add(btnNewButton_1);
+
 	}
 
 	class MyMouseAdapter1 extends MouseAdapter{
@@ -113,13 +126,19 @@ panel3.setBackground(new Color(100, 149, 237));
 	class MyMouseAdapter3 extends MouseAdapter{
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			ChangePanel.changePanel(mf, mainMenu, new UpRecipe(mf)); 
+			ChangePanel.changePanel(mf, mainMenu, new UpRecipe(mf));
 		}
 	}
 	class MyMouseAdapter4 extends MouseAdapter{
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			ChangePanel.changePanel(mf, mainMenu, new MyFridge(mf));
+		}
+	}
+	class MyMouseAdapter5 extends MouseAdapter{
+		@Override
+		public void mouseClicked(MouseEvent e) {
+            ChangePanel.changePanel(mf, mainMenu, new AllRecipe(mf));
 		}
 	}
 }
