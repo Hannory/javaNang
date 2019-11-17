@@ -29,22 +29,23 @@ public class History extends JPanel {
 		//맨 위 바 영억
 		JPanel bar = new JPanel();
 		bar.setLocation(0, 0);
-		bar.setSize(445, 73);
+		bar.setSize(445, 70);
 		bar.setLayout(null);
-		bar.setBackground(Color.BLACK);
+		bar.setBackground(new Color(52, 152, 219));
 		
-		Font font = new Font("맑은 고딕", Font.BOLD, 25);
-		Font font2 = new Font("맑은 고딕", Font.BOLD, 20);
+		Font font = new Font("MD아트체", Font.BOLD, 25);
+		Font font2 = new Font("MD아트체", Font.BOLD, 20);
 		Font font3 = new Font("맑은 고딕", Font.ITALIC, 15);
 		
 		JLabel barTitle = new JLabel("히스토리");
-		barTitle.setLocation(80, 25);
+		barTitle.setLocation(80, 10);
 		barTitle.setSize(200, 50);
 		barTitle.setForeground(Color.WHITE);
 		barTitle.setFont(font);
 		
-		JButton back = new JButton("←");
-		back.setLocation(10, 25);
+		Image backImg = new ImageIcon("images/park/back blue.png").getImage().getScaledInstance(50,  50,  0);
+		JButton back = new JButton(new ImageIcon(backImg));
+		back.setLocation(10, 10);
 		back.setSize(50, 50);
 		
 		back.addActionListener(new ActionListener() {
@@ -57,20 +58,20 @@ public class History extends JPanel {
 			
 		});
 		
-		Image person = new ImageIcon("images/park/person in black.png").getImage().getScaledInstance(50, 50, 0);
+		Image person = new ImageIcon("images/park/person in blue.png").getImage().getScaledInstance(50, 50, 0);
 		JButton logIn = new JButton(new ImageIcon(person));
-		logIn.setLocation(370, 25);
+		logIn.setLocation(380, 10);
 		logIn.setSize(50, 50);
 		
 		//첫번째 히스토리
 		JPanel panel1 = new JPanel();
-		panel1.setLocation(0, 100);
-		panel1.setSize(445, 167);
+		panel1.setLocation(0, 70);
+		panel1.setSize(445, 175);
 		
-		Image photo1 = new ImageIcon("images/park/potato.jpg").getImage().getScaledInstance(200, 167, 0);
+		Image photo1 = new ImageIcon("images/park/potato.jpg").getImage().getScaledInstance(225, 175, 0);
 		JLabel photoLabel1 = new JLabel(new ImageIcon(photo1));
-		photoLabel1.setLocation(232, 0);
-		photoLabel1.setSize(200, 167);
+		photoLabel1.setLocation(220, 0);
+		photoLabel1.setSize(225, 175);
 		
 		
 		JLabel recipeName1 = new JLabel("# 감자당근볶음");
@@ -87,13 +88,13 @@ public class History extends JPanel {
 
 		//두번째 히스토리
 		JPanel panel2 = new JPanel();
-		panel2.setLocation(0, 267);
-		panel2.setSize(445, 167);
+		panel2.setLocation(0, 245);
+		panel2.setSize(445, 175);
 		
-		Image photo2 = new ImageIcon("images/park/cheeseBall.jpg").getImage().getScaledInstance(200, 167, 0);
+		Image photo2 = new ImageIcon("images/park/cheeseBall.jpg").getImage().getScaledInstance(225, 175, 0);
 		JLabel photoLabel2 = new JLabel(new ImageIcon(photo2));
-		photoLabel2.setLocation(232, 0);
-		photoLabel2.setSize(200, 167);
+		photoLabel2.setLocation(220, 0);
+		photoLabel2.setSize(225, 175);
 		
 		
 		JLabel recipeName2 = new JLabel("# 치즈볼");
@@ -110,13 +111,13 @@ public class History extends JPanel {
 
 		//세번째 히스토리
 		JPanel panel3 = new JPanel();
-		panel3.setLocation(0, 434);
-		panel3.setSize(445, 167);
+		panel3.setLocation(0, 420);
+		panel3.setSize(445, 175);
 		
-		Image photo3 = new ImageIcon("images/park/soup.jpg").getImage().getScaledInstance(200, 167, 0);
-		JLabel photoLabel3 = new JLabel(new ImageIcon(photo1));
-		photoLabel3.setLocation(232, 0);
-		photoLabel3.setSize(200, 167);
+		Image photo3 = new ImageIcon("images/park/soup.jpg").getImage().getScaledInstance(225, 175, 0);
+		JLabel photoLabel3 = new JLabel(new ImageIcon(photo3));
+		photoLabel3.setLocation(220, 0);
+		photoLabel3.setSize(225, 175);
 		
 		
 		JLabel recipeName3 = new JLabel("# 소고기찌개");
@@ -133,13 +134,13 @@ public class History extends JPanel {
 
 		//네번째 히스토리
 		JPanel panel4 = new JPanel();
-		panel4.setLocation(0, 601);
-		panel4.setSize(445, 167);
+		panel4.setLocation(0, 595);
+		panel4.setSize(445, 175);
 		
-		Image photo4 = new ImageIcon("images/park/steamed potato.jpg").getImage().getScaledInstance(200, 167, 0);
+		Image photo4 = new ImageIcon("images/park/steamed potato.jpg").getImage().getScaledInstance(225, 175, 0);
 		JLabel photoLabel4 = new JLabel(new ImageIcon(photo4));
-		photoLabel4.setLocation(232, 0);
-		photoLabel4.setSize(200, 167);
+		photoLabel4.setLocation(220, 0);
+		photoLabel4.setSize(225, 175);
 		
 		
 		JLabel recipeName4 = new JLabel("# 찐감자");
