@@ -16,7 +16,7 @@ import javax.swing.UIManager;
 import javax.swing.JTextField;
 
 public class SecondPage__2 extends JPanel {
-
+//
 	JFrame mf;
 	SecondPage__2 mp;
 	private JTextField textField;

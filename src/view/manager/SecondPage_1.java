@@ -14,7 +14,7 @@ import javax.swing.UIManager;
 
 import view.manager.MainPage.MyItem;
 import view.manager.MainPage.MyItem2;
-
+//
 public class SecondPage_1 extends JPanel {
 
 	JFrame mf;

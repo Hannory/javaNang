@@ -20,9 +20,9 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 
 public class MainPage extends JPanel {
-
+//
 	JFrame mf;
-	JPanel mp;
+	JPanel mp; 
 
 
 	public MainPage(JFrame mf) {

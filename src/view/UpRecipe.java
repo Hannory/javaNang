@@ -157,9 +157,8 @@ public UpRecipe(MainFrame mf) {
 	JTextField recipeName = new JTextField();
 	recipeName.setBounds(116,220,306,35);
 	panel2.add(recipeName);
-	Scanner sc= new Scanner(System.in);
-	String recipeName2 = sc.nextLine();
-	System.out.println("레시피 이름: "+recipeName2);
+	
+	
 	
 	JTextField recipeCont = new JTextField();
 	recipeCont.setBounds(111,278,311,235);
