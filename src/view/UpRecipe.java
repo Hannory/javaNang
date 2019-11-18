@@ -5,13 +5,18 @@ import java.awt.Font;
 import java.awt.Panel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import java.util.Scanner;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.filechooser.FileSystemView;
 
 public class UpRecipe extends JPanel {
 MainFrame mf;
@@ -152,6 +157,9 @@ public UpRecipe(MainFrame mf) {
 	JTextField recipeName = new JTextField();
 	recipeName.setBounds(116,220,306,35);
 	panel2.add(recipeName);
+	Scanner sc= new Scanner(System.in);
+	String recipeName2 = sc.nextLine();
+	System.out.println("레시피 이름: "+recipeName2);
 	
 	JTextField recipeCont = new JTextField();
 	recipeCont.setBounds(111,278,311,235);
@@ -161,6 +169,7 @@ public UpRecipe(MainFrame mf) {
 	recipefile.setBounds(112,562,179,32);
 	panel2.add(recipefile);
 
+	// 뒤로가기 버튼 
 	button0.addMouseListener(new MouseAdapter() {
 		@Override
 		public void mouseClicked(MouseEvent e) {
@@ -168,8 +177,44 @@ public UpRecipe(MainFrame mf) {
 		}
 	});
 	
-	mf.repaint();
+	
+	button2.addMouseListener(new MouseAdapter() {
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			File();
+		}
+	});
+  	mf.repaint();
+  	
+  	
 }
+	    public String File(){
+	        
+	        String folderPath = "";
+	        
+	        JFileChooser Photo = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+	        Photo.setCurrentDirectory(new File("/")); 
+	        Photo.setAcceptAllFileFilterUsed(true);  
+	        Photo.setDialogTitle("레시피 사진 탐색"); // 
+	        Photo.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES); 
+	        
+	        FileNameExtensionFilter filter = new FileNameExtensionFilter("Binary File", "cd11"); 
+	        Photo.setFileFilter(filter); 
+	        
+	        int returnVal = Photo.showOpenDialog(null); 
+	        
+	        if(returnVal == JFileChooser.APPROVE_OPTION) { 
+	            folderPath = Photo.getSelectedFile().toString();
+	        }else if(returnVal == JFileChooser.CANCEL_OPTION){
+	            System.out.println("cancel"); 
+	            folderPath = "";
+	        }
+	        
+	        return folderPath;
+
+	    }
+
 }
+
 
 

@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -35,6 +36,7 @@ public class SecondPage__2 extends JPanel {
 		setBackground(UIManager.getColor("CheckBox.background"));
 		setLayout(null);
 		setSize(445,770);
+		
 		
 		mf.getContentPane().add(mp);
 		
@@ -140,6 +142,7 @@ public class SecondPage__2 extends JPanel {
 		textArea.setText("\uD68C\uC6D0 \uC81C\uC7AC");
 		textArea.setBounds(145, 13, 153, 47);
 		panel_1.add(textArea);
+		textArea.setLayout(null);
 		
 		JButton button_1 = new JButton("<<");
 		button_1.setBackground(new Color(70, 130, 180));
@@ -148,8 +151,6 @@ public class SecondPage__2 extends JPanel {
 		
 	
 
-		
-		//이부분 추가한 부분 
 		button_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -157,6 +158,13 @@ public class SecondPage__2 extends JPanel {
 			}
 		});
 
+		//제제 등록 누를때 삭제 기능을 추가 못할 시 팝업창이라도 띄우기
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked (MouseEvent e) {
+				JOptionPane.showMessageDialog(null, "제제 등록이 완료 되었습니다.");
+			}
+		});
 
 		mf.repaint();
 

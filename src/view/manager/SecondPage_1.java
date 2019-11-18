@@ -7,6 +7,7 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
@@ -48,6 +49,7 @@ public class SecondPage_1 extends JPanel {
 		textField.setBounds(108, 32, 196, 40);
 		panel_1.add(textField);
 		textField.setColumns(10);
+		textField.setLayout(null);
 		
 		JButton button_1 = new JButton("<<");
 		button_1.setBackground(new Color(70, 130, 180));
@@ -99,10 +101,19 @@ public class SecondPage_1 extends JPanel {
 		add(btnNewButton);
 
 		
-		
-		
+		btnNewButton_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked (MouseEvent e) {
+				JOptionPane.showMessageDialog(null, "사용자 제제 등록이 완료 되었습니다.");
+			}
+		});
 
+		mf.repaint();
+
+
+	}
+
+		
 			}
 
-}
 	
