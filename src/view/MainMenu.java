@@ -57,6 +57,8 @@ public class MainMenu extends JPanel {
 
 		panel2.setBackground(Color.LIGHT_GRAY);
 		JLabel lb2 = new JLabel("우유");
+		//여기서는 유통기한이 제일 임박한 재료의 이름을 파일에서 불러와야 한다.
+		
 		lb2.setBounds(120,20,110,25);
 		lb2.setFont(new Font("Serif", Font.BOLD, 23));        
 
@@ -65,14 +67,16 @@ public class MainMenu extends JPanel {
 
 		JLabel lb3 = new JLabel("유통기한이 3일 남았습니다.");
 		lb3.setBounds(120,50,210,25);
-
+        //여기서는 유통기한이 제일 임박한 재료의 유통기한 남은 일수를 파일에서 불러와야 한다.
 		panel2.add(lb3);
 		this.add(panel2);
 		
 		
 
 		Image icon = new ImageIcon("images/hwang/milk.PNG").getImage().getScaledInstance(110, 110, 0);
-
+        //여기서는 유통기한이 제일 임박한 재료의 사진을 파일에서 불러와야 한다. 
+		
+		
 		JLabel lb4 = new JLabel(new ImageIcon(icon));
 		lb4.setBounds(0,0,100,100);
 		panel2.add(lb4); 
@@ -138,7 +142,7 @@ public class MainMenu extends JPanel {
 	class MyMouseAdapter5 extends MouseAdapter{
 		@Override
 		public void mouseClicked(MouseEvent e) {
-            ChangePanel.changePanel(mf, mainMenu, new AllRecipe(mf));
+            ChangePanel.changePanel(mf, mainMenu, new AllRecipe(mf, mainMenu));
 		}
 	}
 }

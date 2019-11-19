@@ -16,24 +16,27 @@ import java.util.Map;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import com.kh.collection.silsub1.model.vo.Board;
-
+import model.dao.UserDao;
 import view.ModiMember.MyMouseAdapter;
 
 public class QuitMember extends JPanel{
 
+	UserDao ud = new UserDao();
+	
 	 MainFrame mf;
 	 JPanel quitMember;
      JPanel lp;
      private JPasswordField jpf1;
+     private JTextField jtf1;
      
-     private String userId = "";
- 	 private String userPw = "";
+     private String userId;
+ 	 private String userPw;
      
 	public QuitMember(MainFrame mf) {
 		this.mf = mf;
@@ -114,6 +117,7 @@ public class QuitMember extends JPanel{
 			panel2.add(label_1);
 			
 			
+			
 			JButton btnNewButton_1 = new JButton("←");
 			btnNewButton_1.setBounds(14, 25, 50, 27);
 			btnNewButton_1.addMouseListener(new MyMouseAdapter1());
@@ -132,33 +136,32 @@ public class QuitMember extends JPanel{
 			btnNewButton.setBounds(0, 0, 170, 60);
 			btnNewButton.setBackground(Color.red);
 			btnNewButton.setForeground(Color.WHITE);
-			//이거 누르면  탈퇴하시겠습니까? 확인 취소
-			// 확인 버튼 누르면 모든레시피(초기페이지)
-			// 취소 버튼 누르면 다시 페이지
-			Dialog sd = new Dialog(mf, "탈퇴 완료");
-			sd.setBounds(200,200,300,100);
-			JButton jbt11 = new JButton("탈퇴가 완료되었습니다. 안녕히 가세요..");
-			jbt11.addMouseListener(new MyMouseAdapter2());
-			sd.add(jbt11);
+			
+               
+	//if(PW입력을 정확하게 했을 때){//그 회원의 정보를 삭제한다. delete? or 
+			btnNewButton.addMouseListener(new MyMouseAdapter1() {
+			 @Override
+			 public void mouseClicked(MouseEvent e) {
+				 if(jpf1.getText().equals(ud.mar[0].getUserPw())) {
+				//jpf1.getText()는 패스워드필드에 입력한 PW, 뒤에건 배열에 담긴 유저의 PW
+				//나중에 뒤에건 파일에 담긴 ~번째유저의 PW값을 받아와야 한다.
+	            //그리고 나중에 파일에 담긴 로그인한 회원 객체의 정보를 삭제해야한다	
+					 JOptionPane.showMessageDialog(null, "탈퇴가 완료되었습니다");
+					 ChangePanel.changePanel(mf, quitMember, new AllRecipe(mf, quitMember));
+				     //ud.mar[0].
+				 }else {
+					 JOptionPane.showMessageDialog(null, "비밀번호를 확인하세요");
+				 }
+			 }
+			});
+           			
+			
+				
 			panel3.add(btnNewButton);
 			
-			  btnNewButton.addActionListener(new ActionListener() {
-					
-					@Override
-					public void actionPerformed(ActionEvent e) {
-		                         sd.setVisible(true);				
-					}
-				});
+		
 				
-				jbt11.addActionListener(new ActionListener() {
-					
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						jbt11.addMouseListener(new MyMouseAdapter2());      
-				//		sd.dispose();        //닫기 눌렀을때 닫히게
-		                                              //쓸 일이 좀 있을거다
-					}
-				});
+			
 			
 			
 			
@@ -168,16 +171,20 @@ public class QuitMember extends JPanel{
 			
 			
 			JLabel label2 = new JLabel("탈퇴 사유를 입력해주세요");
-			label2.setBounds(145, 468, 200, 18);
+			label2.setBounds(145, 465, 200, 18);
 			this.add(label2);
+			
 			
 			JTextField jtf1 = new JTextField();
 			jtf1.setBounds(135, 360, 230, 29);
             jtf1.setEditable(false);
 			this.add(jtf1);
 	
-			
-			jpf1 = new JPasswordField();
+			 JLabel Label = new JLabel(ud.mar[0].getUserId());
+		        Label.setBounds(5,0,230,29);
+		        jtf1.add(Label);
+		        
+		        jpf1 = new JPasswordField();
 			jpf1.setBounds(135, 411, 230, 29);
 			this.add(jpf1);
 
@@ -211,12 +218,6 @@ public class QuitMember extends JPanel{
 		   @Override
 		   public void mouseClicked(MouseEvent e) {
 		   ChangePanel.changePanel(mf, quitMember, new ModiMember(mf));
-		   }
-	   }
-	 class MyMouseAdapter2 extends MouseAdapter{
-		   @Override
-		   public void mouseClicked(MouseEvent e) {
-		   ChangePanel.changePanel(mf, quitMember, new AllRecipe(mf));
 		   }
 	   }
 
