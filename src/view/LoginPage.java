@@ -93,7 +93,18 @@ public class LoginPage extends JPanel {
 		loginBtn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				ChangePanel.changePanel(mf, lp, new MainMenu(mf));
+				
+				if(idField.getText().equals("asd")&&pwField.getText().equals("asd")) {
+					
+					ChangePanel.changePanel(mf, lp, new MainMenu(mf));
+					
+					AllRecipe.login =  true;
+					
+				}else {
+					JOptionPane.showMessageDialog(null, "아이디 또는 비밀번호를 확인 후\n다시 로그인해주세요.");
+					AllRecipe.login  = false;
+				}
+				
 			}
 		});
 		
