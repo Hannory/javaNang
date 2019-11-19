@@ -10,25 +10,45 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Properties;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import model.vo.User;
+import model.dao.UserDao;
 import view.MainMenu.MyMouseAdapter5;
 
 public class ModiMember extends JPanel{
-
-	 MainFrame mf;
+  
+	 UserDao ud = new UserDao();
+	
+     MainFrame mf;
 	 JPanel modiMember;
+	 Matcher m;
 	 
 	private JPasswordField jpf1;
 	private JPasswordField jpf2;
 	private JPasswordField jpf3;
-
+    private JTextField jtf1;
+    private JTextField jtf2;
+    private JTextField jtf3;
+	
 	private String userId = "";
 	private String userPw = "";
 	private String checkPw = "";
@@ -37,11 +57,21 @@ public class ModiMember extends JPanel{
 	
 	
 	
-	
 	public ModiMember(MainFrame mf) {
+	
 		this.mf = mf;
 		this.modiMember = this;
 		
+		//char[] input = jpf2.getPassword();
+        //String input2 = new String(input);
+		
+
+		
+		
+//		String regExp_symbol = "([0-9].*[!,@,#,$,%,^,&,*,(,)]|[!,@,#,$,%,^,&,*,(,)].*[0-9])";
+//		Pattern pattern_symbol = Pattern.compile(regExp_symbol);
+//		Matcher matcher_symbol = pattern_symbol.matcher(jpf2.getText());
+	
 		this.setBounds(0,0,445,770);
         this.setLayout(null);
 		JLabel lb = new JLabel("회원정보 수정");// 회원정보수정
@@ -88,30 +118,45 @@ public class ModiMember extends JPanel{
 	    jbt1.setBounds(0,0,90,50);	    	    
 	    jbt1.setForeground(Color.white);
 	    jbt1.setBackground(Color.orange);
-	    Dialog sd = new Dialog(mf, "수정 완료");
-	    sd.setBounds(100,100,200,100);
-	    JButton jbt11 = new JButton("확인");
-	    jbt11.setSize(50,50);
-	    sd.add(jbt11);
+	
+	    
+	Pattern p = Pattern.compile("([a-zA-Z0-9].*[!,@,#,$,%,^,&,*,?,_,~])|([!,@,#,$,%,^,&,*,?,_,~].*[a-zA-Z0-9])");
+		m = p.matcher(""/* jpf2.getText() */); 
+	    
+	//if(입력한 PW가 현재 PW와 같고 && 패스워드 유효성검사에 통과한다면) { //회원의 PW를 변경 PW로 변경해주는 작업도 해야한다.(덮어쓰기?)
+	jbt1.addMouseListener(new MyMouseAdapter() {
+		     @Override
+	    	public void mouseClicked(MouseEvent e) {
+	    		if(jpf1.getText().equals(ud.mar[0].getUserPw())&&
+	    				jpf2.getText().equals(jpf3.getText())&&
+	    				jpf2.getText().length() <= 12 &&
+	    				jpf2.getText().length() >= 8  &&
+	    		       m.find())
+	    				
+	    			 { //jpf1.getText().equals("asd")
+	    			JOptionPane.showMessageDialog(null, "수정이 완료되었습니다");
+	    			//회원정보가 담긴 파일에서 패스워드를 수정해주는 자겅ㅂ도 해야 한다.
+	   	}else if (!jpf1.getText().equals(ud.mar[0].getUserPw())) {
+	   		        JOptionPane.showMessageDialog(null, "현재 PW를 정확하게 입력해주세요");
+	    		}else if(!jpf2.getText().equals(jpf3.getText())) {
+	    			JOptionPane.showMessageDialog(null, "변경할 PW를 정확하게 입력해주세요");
+	    		}else if(jpf2.getText().length() > 12 || jpf3.getText().length() > 12
+	    		|| jpf3.getText().length() < 8 || jpf3.getText().length() < 8) {
+	    			JOptionPane.showMessageDialog(null, "변경PW는 8글자이상 12자 이하로 입력해주세요");
+	    		}
+	    		else if(!m.find()) {
+	    			JOptionPane.showMessageDialog(null, "변경PW는 특수문자와숫자를 적어도 하나 포함하고 있어야 합니다.");
+	    		}
+	    		
+	    	 }
+	    	});
+
+	
+	//}else if(입력한 PW가 현재PW와 맞지 않을 때){
+	// 현재 PW를 정확하게 입력해주세요 
+	//}else if(변경PW와 확인 PW가 서로 같지 않을때)     
+	// 변경 PW를 정확하게 입력해주세요    
 	    panel.add(jbt1);
-	    //비밀번호 확인해서 비밀번호 맞으면 변경 완료
-	    //비밀번호 확인해서 비밀번호 맞지않으면 
-        jbt1.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-                         sd.setVisible(true);				
-			}
-		});
-		
-		jbt11.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-                         sd.dispose();        //닫기 눌렀을때 닫히게
-                                              //쓸 일이 좀 있을거다
-			}
-		});
 	    
 	    
 	    JPanel panel2 = new JPanel();
@@ -134,35 +179,50 @@ public class ModiMember extends JPanel{
         //이 버튼을 누르면은 메인페이지로 다시 갈 수 있게
         jbt2.addMouseListener(new MyMouseAdapter());
 	   
-        JTextField jtf1 = new JTextField();
+        jtf1 = new JTextField();
+       
         jtf1.setBounds(135,162,239,35);
         this.add(jtf1);
         jtf1.setEditable(false);
+        //회원정보를 불러 올 수 있어야 한다. 어떤식으로 불러올지? get을 이용하긴해야할텐데.
+         
+        JLabel Label = new JLabel(ud.mar[0].getUserId()); 
+        Label.setBounds(5,0,239,35);
+        jtf1.add(Label);
         
         jpf1 = new JPasswordField();
         jpf1.setBounds(135, 212, 239, 35);
         this.add(jpf1);
-
+        //현재PW와 jpf1에 입력한 PW가 같은지
         jpf2 = new JPasswordField();
 	    jpf2.setBounds(135, 262, 239, 35);
 	    this.add(jpf2);
-	    
+	    //변경PW이 유효성검사를 통과하는지
 	    jpf3 = new JPasswordField();
 	    jpf3.setBounds(135,312,239,35);
 	    this.add(jpf3);
-	    
-	    
-	    JTextField jtf2 = new JTextField();
+	    //확인PW이 변경PW와 같은지
+	    jtf2 = new JTextField();
         jtf2.setBounds(135,362,239,35);
         this.add(jtf2);
         jtf2.setEditable(false);
         
-        JTextField jtf3 = new JTextField();
+        JLabel Label2 = new JLabel(ud.mar[0].getNickname());
+        Label2.setBounds(5,0,239,35);
+        jtf2.add(Label2);
+        
+        jtf3 = new JTextField();
         jtf3.setBounds(135,412,239,35);
         this.add(jtf3);
         jtf3.setEditable(false);
 	    
-	    
+        JLabel Label3 = new JLabel(ud.mar[0].getEmail());
+        Label3.setBounds(5,0,239,35);
+        jtf3.add(Label3);
+        //텍스트,패스워드필드에 입력된 값들을 꺼내려면은 => 변수.getText(); 사용한다
+        //각 필드들은 회원정보가 들어있는 파일을 불러와서 써야한다. 
+        //그럼 JTF,TPF랑 파일 읽는 부분의 클래스가 다를텐데 그걸 어떻게 받을지?
+
 	    JLabel label2 = new JLabel("");
 	    label2.setBounds(176, 220, 62, 18);
 	    this.add(label2);
@@ -172,8 +232,24 @@ public class ModiMember extends JPanel{
 	    jbt3.setBackground(Color.LIGHT_GRAY);
 	    jbt3.addMouseListener(new MyMouseAdapter2());
 	    this.add(jbt3);
-	
 	}
+
+	
+//	   void insertData() {
+//		      User u = new User();
+//		        	u.setUserId(jtf1.getText());
+//		        u.setUserPw(jpf1.getText());
+//		        u.setCheckPw(jpf2.getPassword());
+//		        u.setNickname(jtf2.getText());
+//		        u.setEmail(jtf3.getText()); // User
+//		         //jtf,jpf에 입력한 정보들을 User클래스 변수에 각가 담아준 작업 한거
+//		         //이것 들을 파일에 담아줄 수 있는 작업이 필요할 것 같다.
+//		        //id,email,닉네임이랑 패스워드 입력하는 부분 다르게 해야할 것 같은데?
+//		        //id,email,닉네임은 파일을 불러와야하는거야
+             //값 안 받아질때 아래처럼 텍스트필드로 받자 
+	//		 //TextField passwordText = new TextField(6);
+         //passwordText.setEchoChar('*');   
+//	   }
 	
 	 class MyMouseAdapter extends MouseAdapter{
 		   @Override
