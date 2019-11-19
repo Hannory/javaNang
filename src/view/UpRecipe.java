@@ -5,13 +5,18 @@ import java.awt.Font;
 import java.awt.Panel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import java.util.Scanner;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.filechooser.FileSystemView;
 
 public class UpRecipe extends JPanel {
 MainFrame mf;
@@ -111,11 +116,7 @@ public UpRecipe(MainFrame mf) {
 	panel4.setBounds(268,12,80,162);
 	panel2.add(panel4);
 	panel4.setLayout(null);
-	
-	JLabel recipePhoto5 = new JLabel (new ImageIcon(new ImageIcon("images/YU/빵.png").getImage().getScaledInstance(130, 180, 0)));
-	recipePhoto5.setBounds(0, 12, 80, 138);
-	panel4.add(recipePhoto5);
-	
+
 	JTextPane textpane3= new JTextPane();
 	textpane3.setBounds(28,562,48,35);
 	panel2.add(textpane3);
@@ -126,29 +127,38 @@ public UpRecipe(MainFrame mf) {
 	panel7.setBounds(354,12,80,162);
 	panel2.add(panel7);
 	panel7.setLayout(null);
-	
-	JLabel recipePhoto2 = new JLabel(new ImageIcon(new ImageIcon("images/YU/고기.png").getImage().getScaledInstance(130, 180, 0)));
-	recipePhoto2.setBounds(0, 12, 80, 138);
-	panel7.add(recipePhoto2);
+
 	
 	
-	JLabel recipePhoto = new JLabel(new ImageIcon(new ImageIcon("images/YU/야채.PNG").getImage().getScaledInstance(130, 180, 0)));
+	JLabel recipePhoto = new JLabel(new ImageIcon(new ImageIcon("images/yu/vegetables.PNG").getImage().getScaledInstance(130, 180, 0)));
 	recipePhoto.setBounds(0,12,90,138);
 	panel3.add(recipePhoto);
 	
-	JLabel recipePhoto3 = new JLabel(new ImageIcon(new ImageIcon("images/YU/생선.PNG").getImage().getScaledInstance(130, 180, 0)));
+	JLabel recipePhoto3 = new JLabel(new ImageIcon(new ImageIcon("images/yu/fish.PNG").getImage().getScaledInstance(130, 180, 0)));
 	recipePhoto3.setBounds(0,12,80,138);
 	panel5.add(recipePhoto3);
 	
-	JLabel recipePhoto4 = new JLabel(new ImageIcon(new ImageIcon("images/YU/우유.PNG").getImage().getScaledInstance(130, 180, 0)));
+	JLabel recipePhoto4 = new JLabel(new ImageIcon(new ImageIcon("images/yu/meat.PNG").getImage().getScaledInstance(130, 180, 0)));
 	recipePhoto4.setBounds(0,12,80,138);
 	panel6.add(recipePhoto4);
+	
+	
+	JLabel recipePhoto5 = new JLabel (new ImageIcon(new ImageIcon("images/yu/bread.png").getImage().getScaledInstance(130, 180, 0)));
+	recipePhoto5.setBounds(0, 12, 80, 138);
+	panel4.add(recipePhoto5);
+	
+	
+	JLabel recipePhoto2 = new JLabel(new ImageIcon(new ImageIcon("images/yu/milk.png").getImage().getScaledInstance(130, 180, 0)));
+	recipePhoto2.setBounds(0, 12, 80, 138);
+	panel7.add(recipePhoto2);
 	
 	//텍스트 필드 추가
 	
 	JTextField recipeName = new JTextField();
 	recipeName.setBounds(116,220,306,35);
 	panel2.add(recipeName);
+	
+	
 	
 	JTextField recipeCont = new JTextField();
 	recipeCont.setBounds(111,278,311,235);
@@ -158,6 +168,7 @@ public UpRecipe(MainFrame mf) {
 	recipefile.setBounds(112,562,179,32);
 	panel2.add(recipefile);
 
+	// 뒤로가기 버튼 
 	button0.addMouseListener(new MouseAdapter() {
 		@Override
 		public void mouseClicked(MouseEvent e) {
@@ -165,8 +176,44 @@ public UpRecipe(MainFrame mf) {
 		}
 	});
 	
-	mf.repaint();
+	
+	button2.addMouseListener(new MouseAdapter() {
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			File();
+		}
+	});
+  	mf.repaint();
+  	
+  	
 }
+	    public String File(){
+	        
+	        String folderPath = "";
+	        
+	        JFileChooser Photo = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+	        Photo.setCurrentDirectory(new File("/")); 
+	        Photo.setAcceptAllFileFilterUsed(true);  
+	        Photo.setDialogTitle("레시피 사진 탐색"); // 
+	        Photo.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES); 
+	        
+	        FileNameExtensionFilter filter = new FileNameExtensionFilter("Binary File", "cd11"); 
+	        Photo.setFileFilter(filter); 
+	        
+	        int returnVal = Photo.showOpenDialog(null); 
+	        
+	        if(returnVal == JFileChooser.APPROVE_OPTION) { 
+	            folderPath = Photo.getSelectedFile().toString();
+	        }else if(returnVal == JFileChooser.CANCEL_OPTION){
+	            System.out.println("cancel"); 
+	            folderPath = "";
+	        }
+	        
+	        return folderPath;
+
+	    }
+
 }
+
 
 

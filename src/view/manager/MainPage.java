@@ -20,9 +20,9 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 
 public class MainPage extends JPanel {
-
+//
 	JFrame mf;
-	JPanel mp;
+	JPanel mp; 
 
 
 	public MainPage(JFrame mf) {
@@ -34,7 +34,7 @@ public class MainPage extends JPanel {
 		//전체 패널 기본 설정 
 		this.setSize(445, 770);
 		this.setBackground(UIManager.getColor("CheckBox.background"));
-		this.setLayout(null);
+		setLayout(null);
 		
 		
 		mf.getContentPane().add(this);
@@ -58,6 +58,7 @@ public class MainPage extends JPanel {
 				textArea.setFont(new Font("문체부 쓰기 정체", Font.BOLD, 32));
 				textArea.setBackground(new Color(70, 130, 180));
 				textArea.setText("\uAD00\uB9AC\uC790 \uBAA8\uB4DC");
+				textArea.setLayout(null);
 		
 		//하단 패널 설정
 		JPanel bottpanel = new JPanel();
