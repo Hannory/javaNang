@@ -41,13 +41,13 @@ public class Agree extends JPanel{
 		this.mf = mf;
 		this.agree = this;
 		
-		this.setSize(450, 800);
+		this.setSize(445, 770);
 		this.setLayout(null);
 		
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
 		panel.setLocation(0, 0);
-		panel.setSize(450, 80);
+		panel.setSize(445, 70);
 		panel.setBackground(new Color(39, 50, 56));
 		
 		JLabel label = new JLabel("이용약관 동의");
@@ -56,7 +56,7 @@ public class Agree extends JPanel{
 		label.setForeground(Color.white);
 		
 		JButton button = new JButton("<");
-		button.setLocation(15, 17);
+		button.setLocation(11, 13);
 		button.setSize(50, 50);
 		
 		JLabel terms = new JLabel("회원약관");
