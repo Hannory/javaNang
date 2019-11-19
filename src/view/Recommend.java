@@ -21,6 +21,7 @@ public class Recommend extends JPanel {
 	private ChangePanel cp;
 	private JPanel imageTest;
 
+	//Test해보기 위한 수정 주석
 	public Recommend(MainFrame mf) {		
 		
 		this.mf = mf;
