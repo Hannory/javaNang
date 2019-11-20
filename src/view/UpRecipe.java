@@ -34,12 +34,12 @@ public class UpRecipe extends JPanel {
 	JPanel mp;
 	JTextField recipeCont;
 
-
+//
 
 	public UpRecipe(MainFrame mf) {
 
-		//필드값 초기화
-		this.mf=mf;
+		//필드값 초기화  
+		this.mf=mf; 
 		this.mp=this;
 		
 		//전체 패널(제일 큰 패널) 기본 설정 	//색 설정

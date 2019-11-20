@@ -28,7 +28,7 @@ public class SecondPage_1 extends JPanel {
 		this.mf=mf;
 		this.mp=this;
 		
-		//
+		////
 		
 		setBackground(UIManager.getColor("CheckBox.background"));
 		setLayout(null);
@@ -66,7 +66,7 @@ public class SecondPage_1 extends JPanel {
 		});
 		
 		
-		
+		  
 
 		JPanel panel_2 = new JPanel();
 		panel_2.setBounds(14, 323, 404, 317);

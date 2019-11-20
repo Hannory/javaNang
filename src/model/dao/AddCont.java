@@ -8,6 +8,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 import model.vo.Cont;
+//
 
 public class AddCont {
 
@@ -29,7 +30,7 @@ public class AddCont {
 	}
 	
 		
-	
+	 
 
 
 public void openFile() {

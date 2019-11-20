@@ -20,14 +20,14 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 
 public class MainPage extends JPanel {
-//
+////
 	JFrame mf;
 	JPanel mp; 
 
-
+ 
 	public MainPage(JFrame mf) {
 
-		//필드값 초기화
+		//필드값 초기화 
 		this.mf = mf;
 		this.mp = this;
 

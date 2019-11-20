@@ -16,7 +16,7 @@ import javax.swing.UIManager;
 import javax.swing.JTextField;
 
 public class SecondPage__2 extends JPanel {
-//
+////
 	JFrame mf;
 	SecondPage__2 mp;
 	private JTextField textField;
@@ -134,7 +134,7 @@ public class SecondPage__2 extends JPanel {
 											}
 										});
 		
-		
+		 
 		
 		JTextArea textArea = new JTextArea();
 		textArea.setBackground(new Color(70, 130, 180));
@@ -148,7 +148,7 @@ public class SecondPage__2 extends JPanel {
 		button_1.setBackground(new Color(70, 130, 180));
 		button_1.setBounds(29, 22, 58, 33);
 		panel_1.add(button_1);
-		
+		 
 	
 
 		button_1.addMouseListener(new MouseAdapter() {

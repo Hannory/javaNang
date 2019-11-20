@@ -34,12 +34,12 @@ public class RecipeList extends JPanel {
 	JPanel mp;
 	JTextField recipeCont;
 
-
+//
 
 	public RecipeList(MainFrame mf) {
 
 		//필드값 초기화
-		this.mf=mf;
+		this.mf=mf;   
 		this.mp=this;
 		
 		//전체 패널(제일 큰 패널) 기본 설정 	//색 설정

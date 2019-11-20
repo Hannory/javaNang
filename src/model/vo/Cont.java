@@ -2,7 +2,7 @@ package model.vo;
 
 import java.io.Serializable;
 import java.util.Date;
-
+//
 public class Cont implements Serializable{
 	
 //	private String userId;
@@ -19,7 +19,7 @@ public class Cont implements Serializable{
 	public Cont(String recipeCont) {
 		
 		
-		super();
+		super();  
 //		this.userId = userId;
 //		this.recipeName = recipeName;
 		this.recipeCont = recipeCont;
