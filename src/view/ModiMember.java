@@ -62,16 +62,6 @@ public class ModiMember extends JPanel{
 		this.mf = mf;
 		this.modiMember = this;
 		
-		//char[] input = jpf2.getPassword();
-        //String input2 = new String(input);
-		
-
-		
-		
-//		String regExp_symbol = "([0-9].*[!,@,#,$,%,^,&,*,(,)]|[!,@,#,$,%,^,&,*,(,)].*[0-9])";
-//		Pattern pattern_symbol = Pattern.compile(regExp_symbol);
-//		Matcher matcher_symbol = pattern_symbol.matcher(jpf2.getText());
-	
 		this.setBounds(0,0,445,770);
         this.setLayout(null);
 		JLabel lb = new JLabel("회원정보 수정");// 회원정보수정
@@ -120,34 +110,39 @@ public class ModiMember extends JPanel{
 	    jbt1.setBackground(Color.orange);
 	
 	    
-	Pattern p = Pattern.compile("([a-zA-Z0-9].*[!,@,#,$,%,^,&,*,?,_,~])|([!,@,#,$,%,^,&,*,?,_,~].*[a-zA-Z0-9])");
-		m = p.matcher(""/* jpf2.getText() */); 
-	    
 	//if(입력한 PW가 현재 PW와 같고 && 패스워드 유효성검사에 통과한다면) { //회원의 PW를 변경 PW로 변경해주는 작업도 해야한다.(덮어쓰기?)
 	jbt1.addMouseListener(new MyMouseAdapter() {
 		     @Override
 	    	public void mouseClicked(MouseEvent e) {
-	    		if(jpf1.getText().equals(ud.mar[0].getUserPw())&&
+		    	 char[] input = jpf2.getPassword();
+		 	    String input2 = new String(input);
+		 			
+		 	    Pattern p = Pattern.compile("([a-zA-Z0-9].*[!,@,#,$,%,^,&,*,?,_,~])|([!,@,#,$,%,^,&,*,?,_,~].*[a-zA-Z0-9])");
+		 	    m = p.matcher(input2);
+		    	 
+		 	    if(jpf1.getText().equals(ud.mar[0].getUserPw())&&
 	    				jpf2.getText().equals(jpf3.getText())&&
 	    				jpf2.getText().length() <= 12 &&
-	    				jpf2.getText().length() >= 8  &&
-	    		       m.find())
-	    				
-	    			 { //jpf1.getText().equals("asd")
+	    				jpf2.getText().length() >= 8  &&    //getPassword()는 값이 제대로 안 불러와져서 비교불가. . 
+	    		        m.find()){ //패스워드필드에 입력한 값이 유저의 패스워드와 같고 &&
+		 	    	              //변경 PW와 확인 PW이 같고 &&
+		 	    	              //변경 PW이 8~12글자 사이이고
+		 	    	              //특수문자와영문자를 적어도 하나씩 포함하고 있으면
 	    			JOptionPane.showMessageDialog(null, "수정이 완료되었습니다");
-	    			//회원정보가 담긴 파일에서 패스워드를 수정해주는 자겅ㅂ도 해야 한다.
+	    			ud.mar[0].setUserPw(input2); //입력받은 PW로 수정하기 위한 작업 이 작업이 맞으려나?
+	    			//회원정보가 담긴 파일에서 패스워드를 수정해주는 작업도 해야 한다.
 	   	}else if (!jpf1.getText().equals(ud.mar[0].getUserPw())) {
 	   		        JOptionPane.showMessageDialog(null, "현재 PW를 정확하게 입력해주세요");
 	    		}else if(!jpf2.getText().equals(jpf3.getText())) {
 	    			JOptionPane.showMessageDialog(null, "변경할 PW를 정확하게 입력해주세요");
 	    		}else if(jpf2.getText().length() > 12 || jpf3.getText().length() > 12
 	    		|| jpf3.getText().length() < 8 || jpf3.getText().length() < 8) {
-	    			JOptionPane.showMessageDialog(null, "변경PW는 8글자이상 12자 이하로 입력해주세요");
+	    			JOptionPane.showMessageDialog(null, "변경할 PW는 8글자이상 12자 이하로 입력해주세요");
 	    		}
-	    		else if(!m.find()) {
-	    			JOptionPane.showMessageDialog(null, "변경PW는 특수문자와숫자를 적어도 하나 포함하고 있어야 합니다.");
+	    		else {
+	    			JOptionPane.showMessageDialog(null, "변경할 PW는 영문자와 특수문자를 적어도 하나씩 포함하고 있어야 합니다.");
 	    		}
-	    		
+	    	
 	    	 }
 	    	});
 
@@ -196,7 +191,9 @@ public class ModiMember extends JPanel{
         //현재PW와 jpf1에 입력한 PW가 같은지
         jpf2 = new JPasswordField();
 	    jpf2.setBounds(135, 262, 239, 35);
+		
 	    this.add(jpf2);
+	  
 	    //변경PW이 유효성검사를 통과하는지
 	    jpf3 = new JPasswordField();
 	    jpf3.setBounds(135,312,239,35);
@@ -237,7 +234,7 @@ public class ModiMember extends JPanel{
 	
 //	   void insertData() {
 //		      User u = new User();
-//		        	u.setUserId(jtf1.getText());
+//		        u.setUserId(jtf1.getText());
 //		        u.setUserPw(jpf1.getText());
 //		        u.setCheckPw(jpf2.getPassword());
 //		        u.setNickname(jtf2.getText());
