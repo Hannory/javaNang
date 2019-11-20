@@ -7,6 +7,9 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.swing.JPanel;
 
@@ -19,18 +22,23 @@ public class AddUser {
 	
 	public void writeUserList(JPanel SignUp, User u) {	
 		
-		System.out.println("test");
+		HashMap umap = new HashMap();
+		umap.put(u.getUserId(), u);
 		
-		System.out.println(u);
+		System.out.print("umap : " );
+		System.out.println(umap);
 		
-		System.out.println("test2");
+		/*Collection users = umap.values();
+		
+		Object[] uar = users.toArray();*/
 		
 		ObjectOutputStream oos = null;
 		
 		try {
 			oos = new ObjectOutputStream(new FileOutputStream("userList.dat", true));
+		
+			oos.writeObject(umap);
 			
-			oos.writeObject(u);
 			
 			oos.flush();
 			
@@ -48,21 +56,27 @@ public class AddUser {
 		}
 
 	}
-	
-	public void readUserList() {
+
+	/*public Object readUserList() {
+
+		System.out.println("리드 메소드 진입 ");
+		Object umap = null;
+
 		ObjectInputStream ois = null;
-		
+
 		try {
 			ois = new ObjectInputStream(new FileInputStream("userList.dat"));
-			
-			User user = (User) ois.readObject();
-			
-			System.out.println(user);
-			
-			//ois.readObject();
-			
-			 
-		
+
+			umap =   ois.readObject();
+
+
+
+			System.out.println("Object umap : " + umap);
+
+
+
+
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
@@ -74,62 +88,13 @@ public class AddUser {
 				e.printStackTrace();
 			}
 		}
-		
-	}
+		System.out.println("리턴 직전");
+		return umap;
 
-	
-	
-	
-	/*public ArrayList<User> readUserList() {
-		ObjectInputStream ois = null;
-		ArrayList<User> list = null;
-		
-		try {
-			ois = new ObjectInputStream(new FileInputStream("userList.dat"));
-			
-			list = (ArrayList<User>)ois.readObject();
-			
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException | IOException e) {
-			e.printStackTrace();
-		}finally {
-			try {
-				ois.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			
-		}
-		return list;
-		
-		
-	}
-	
-	
-	public int writeUserList(ArrayList<User> list) {
-		ObjectOutputStream oos = null;
-		
-		int result = 0;
-		try {
-			oos = new ObjectOutputStream(new FileOutputStream("userList.dat", true));
-			
-			oos.writeObject(list);
-			
-			result++;
-			
-		} catch (IOException e) {
-			e.printStackTrace();
-		}finally {
-			try {
-				oos.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-		return result;
-		
-	}
-	*/
-	
+
+
+
+
+
+}*/
 }
