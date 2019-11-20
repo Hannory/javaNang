@@ -83,12 +83,12 @@ public class MgrRecipeDao {
 				new Recipe("recipe04", "content4", rcPic4, rcIngred04)
 		};*/
 		
-		recipeList.add(new Recipe("recipe01", "content1", rcPic1, rcIngred01));
-		recipeList.add(new Recipe("recipe02", "content2", rcPic2, rcIngred02));
-		recipeList.add(new Recipe("recipe03", "content3", rcPic3, rcIngred03));
-		recipeList.add(new Recipe("recipe04", "content4", rcPic4, rcIngred04));
-		recipeList.add(new Recipe("recipe05", "content5", rcPic5, rcIngred05));
-		recipeList.add(new Recipe("recipe06", "content6", rcPic6, rcIngred06));
+		recipeList.add(new Recipe("짜장면", "짜장면을 볶습니다.", rcPic1, rcIngred01));
+		recipeList.add(new Recipe("까르보나라", "크림을 준비합니다.", rcPic2, rcIngred02));
+		recipeList.add(new Recipe("토마토 스파게티", "먼저 토마토를 사세요", rcPic3, rcIngred03));
+		recipeList.add(new Recipe("찐감자", "감자를 찝니다.", rcPic4, rcIngred04));
+		recipeList.add(new Recipe("치즈볼", "치즈를 녹입니다.", rcPic5, rcIngred05));
+		recipeList.add(new Recipe("감자당근볶음", "감자와 당근을 채썹니다.", rcPic6, rcIngred06));
 		
 		try(ObjectOutputStream objOut = new ObjectOutputStream(new FileOutputStream("MgrRecipe.dat"));) {
 			

@@ -23,7 +23,7 @@ public class Recommend extends JPanel {
 	
 	private MainFrame mf;
 	private ChangePanel cp;
-	private JPanel imageTest;
+	private JPanel rc;
 	
 	private MgrRecipeDao mrd = new MgrRecipeDao();
 	private UserDao ud = new UserDao();
@@ -34,12 +34,8 @@ public class Recommend extends JPanel {
 	
 	public Recommend(MainFrame mf) {		
 		
-		System.out.println("3rd check");
-		
 		this.mf = mf;
-		imageTest = this;
-		
-		System.out.println("1st check");
+		rc = this;
 		
 		//User, Recipe 정보 저장   ->  향후 입력 값으로 대체
 		ud.fileSave();
@@ -74,7 +70,7 @@ public class Recommend extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				cp.changePanel(mf, imageTest, new MainMenu(mf));
+				cp.changePanel(mf, rc, new MainMenu(mf));
 				
 			}
 			
@@ -85,15 +81,26 @@ public class Recommend extends JPanel {
 		logIn.setLocation(380, 10);
 		logIn.setSize(50, 50);
 		
+		logIn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				cp.changePanel(mf, rc, new MyFridge(mf));
+				
+			}
+			
+		});		
+		
 		//레시피 추천 분류
 		rm.categorizing();
 		
-		//현재 재료로
+		//현재 재료로 패널 영역
 		JPanel panel = new JPanel();
 		panel.setLocation(0, 70);
 		panel.setSize(445, 233);
 		panel.setLayout(null);
 		
+		//현재 재료로에 출력될 이미지
 		Image[] nowIcon = new Image[RecMgt.nowCtn];
 		
 		for(int i = 0; i < nowIcon.length; i++) {
@@ -140,6 +147,22 @@ public class Recommend extends JPanel {
 			}
 			
 		});
+		
+		//요리 상세 페이지로 이동 (nowClickCtn) 활용
+		JButton specificPage = new JButton(" ");
+		specificPage.setLocation(50, 0);
+		specificPage.setSize(345, 233);
+		specificPage.setOpaque(false);
+		
+		specificPage.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				cp.changePanel(mf, rc, new RecipePage2(mf, rm.nowRecipe(nowClickCtn)));
+				
+			}
+			
+		});		
 		
 		//추가 재료로
 		JPanel panel2 = new JPanel();
@@ -194,6 +217,22 @@ public class Recommend extends JPanel {
 			
 		});
 		
+		//요리 상세 페이지로 이동 (nowClickCtn) 활용
+		JButton specificPage2 = new JButton(" ");
+		specificPage2.setLocation(50, 0);
+		specificPage2.setSize(345, 233);
+		specificPage2.setOpaque(false);
+		
+		specificPage2.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				cp.changePanel(mf, rc, new RecipePage3(mf, rm.addRecipe(addClickCtn)));
+				
+			}
+			
+		});	
+		
 		//모든 레시피 패널
 		JPanel panel3 = new JPanel();
 		panel3.setLocation(0, 536);
@@ -219,10 +258,12 @@ public class Recommend extends JPanel {
 		panel.add(left);
 		panel.add(right);
 		panel.add(label);
+		panel.add(specificPage);
 		
 		panel2.add(left2);
 		panel2.add(right2);
 		panel2.add(label2);
+		panel2.add(specificPage2);
 		
 		label3.add(allBtn);
 		panel3.add(label3);

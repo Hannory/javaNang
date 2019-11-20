@@ -19,8 +19,13 @@ public class RecMgt {
 	
 	UserDao ud = new UserDao();
 	
+	//레시피 사진 주소값 반환을 위한 배열
 	ArrayList now = new ArrayList();
 	ArrayList add = new ArrayList();
+	
+	//Recipe자료형 객체 반환을 위한 배열
+	ArrayList nowRecipe = new ArrayList();
+	ArrayList addRecipe = new ArrayList();
 	
 	
 	public void categorizing() {
@@ -58,17 +63,19 @@ public class RecMgt {
 			
 			if(judgement(userIngred01, mr[i].getRecipeIngred()) == 'a') {
 				now.add(mr[i].getRecipePicAdr());
+				nowRecipe.add(mr[i]);
 			}else if(judgement(userIngred01, mr[i].getRecipeIngred()) == 'b') {
 				add.add(mr[i].getRecipePicAdr());
+				addRecipe.add(mr[i]);
 			}
-			System.out.println((i + 1) + "번째 요리의 추천 여부 : " + judgement(userIngred01, mr[i].getRecipeIngred()));
+			//System.out.println((i + 1) + "번째 요리의 추천 여부 : " + judgement(userIngred01, mr[i].getRecipeIngred()));
 		}
 		
 		nowCtn = now.size();
 		addCtn = add.size();
 		
-		System.out.println("now.size() : " + now.size());
-		System.out.println("add.size() : " + add.size());
+		//System.out.println("now.size() : " + now.size());
+		//System.out.println("add.size() : " + add.size());
 	}
 	
 	public char judgement(TreeSet userIngred, ArrayList recipeIngred) {
@@ -98,5 +105,13 @@ public class RecMgt {
 	
 	public String addPicAdr(int k) {
 		return (String) add.get(k);
+	}
+	
+	public Recipe nowRecipe(int k) {
+		return (Recipe) nowRecipe.get(k);
+	}
+	
+	public Recipe addRecipe(int k) {
+		return (Recipe) addRecipe.get(k);
 	}
 }
