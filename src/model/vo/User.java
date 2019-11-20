@@ -1,27 +1,31 @@
 package model.vo;
 
+import java.util.TreeSet;
+
 public class User implements java.io.Serializable{
-	private int userNo;
+
 	private String userId;
 	private String userPw;
 	//private String checkPw;
 	private String nickname;
 	private String email;
+	private TreeSet userIngred;
 	
 	
 	public User() {}
 	
-
+	public User(String userId, TreeSet userIngred) {
+		super();
+		this.userId = userId;
+		this.userIngred = userIngred;
+	}
 	
-	public User(int userNo, String userId, String userPw, String nickname, String email) {
+	public User(int userNo, String userId, String userPw, String nickname, String email, TreeSet userIngerd) {
 		this.userId = userId;
 		this.userPw = userPw;
 		this.nickname = nickname;
 		this.email = email;
-	}
-	
-	public int getUserNo() {
-		return userNo;
+		this.userIngred = userIngerd;
 	}
 
 	public String getUserId() {
@@ -43,10 +47,11 @@ public class User implements java.io.Serializable{
 	public String getEmail() {
 		return email;
 	}
-	public void setUserNo(int userNo) {
-		this.userNo = userNo;
-	}
 	
+	public TreeSet getUserIngred() {
+		return userIngred;
+	}
+
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
@@ -66,9 +71,16 @@ public class User implements java.io.Serializable{
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
+	public void setUserIngred(TreeSet userIngred) {
+		this.userIngred = userIngred;
+	}
 
 	@Override
 	public String toString() {
-		return userId + "/" + userPw + "/" + nickname + "/" + email;
+		return "User [userId=" + userId + ", userPw=" + userPw + ", nickname=" + nickname + ", email=" + email
+				+ ", userIngred=" + userIngred + "]";
 	}
+
+	
 }
