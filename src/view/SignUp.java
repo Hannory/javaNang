@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import model.dao.AddUser;
+import model.dao.UserDao;
 import model.vo.User;
 
 public class SignUp extends JPanel{
@@ -138,8 +138,8 @@ public class SignUp extends JPanel{
 				JOptionPane.showMessageDialog(null, "가입이 완료되었습니다.");
 				ChangePanel.changePanel(mf, signUp, new LoginPage(mf));
 			  
-				AddUser au = new AddUser();
-				au.writeUserList(signUp, inputUser());
+				UserDao ud = new UserDao();
+				ud.writeUserList(signUp, inputUser());
 		
 				
 				
