@@ -26,6 +26,7 @@ public class MainMenu extends JPanel {
 		this.setBounds(0, 0 , 445, 770);
 		this.setLayout(null);
 
+		
 		JButton btn1 = new JButton("요리 추천");
 		btn1.setBounds(140,130,180,50);
 		btn1.setBackground(Color.LIGHT_GRAY);

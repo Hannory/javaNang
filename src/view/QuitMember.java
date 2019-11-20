@@ -11,6 +11,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.font.TextAttribute;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.swing.JButton;
@@ -28,7 +29,7 @@ import view.ModiMember.MyMouseAdapter;
 public class QuitMember extends JPanel{
 
 	UserDao ud = new UserDao();
-	
+	HashMap hmap = new HashMap();
 	 MainFrame mf;
 	 JPanel quitMember;
      JPanel lp;
@@ -147,8 +148,11 @@ public class QuitMember extends JPanel{
 				//나중에 뒤에건 파일에 담긴 ~번째유저의 PW값을 받아와야 한다.
 	            //그리고 나중에 파일에 담긴 로그인한 회원 객체의 정보를 삭제해야한다	
 					 JOptionPane.showMessageDialog(null, "탈퇴가 완료되었습니다");
+					 
 					 ChangePanel.changePanel(mf, quitMember, new AllRecipe(mf, quitMember));
-				     //ud.mar[0].
+				     //UserDao에 있는 회원정보를 어떻게 지울까??
+					 //ud.mar[0].
+                      ud.delete();
 				 }else {
 					 JOptionPane.showMessageDialog(null, "비밀번호를 확인하세요");
 				 }
