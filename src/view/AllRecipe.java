@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 public class AllRecipe extends JPanel {
 	
 	public static Boolean login = false;
+	public static String loginId;
 	
 	MainFrame mf;
 	JPanel mp;
@@ -134,7 +135,7 @@ public class AllRecipe extends JPanel {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if(login == true) {
+				if(AllRecipe.login == true) {
 
 					ChangePanel.changePanel(mf, mp, new MainMenu(mf));
 

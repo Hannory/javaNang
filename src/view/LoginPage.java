@@ -100,6 +100,9 @@ public class LoginPage extends JPanel {
 					
 					AllRecipe.login =  true;
 					
+					AllRecipe.loginId = idField.getText();
+					
+					
 				}else {
 					JOptionPane.showMessageDialog(null, "아이디 또는 비밀번호를 확인 후\n다시 로그인해주세요.");
 					AllRecipe.login  = false;
