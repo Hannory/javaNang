@@ -6,6 +6,12 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -15,6 +21,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+
+import model.dao.UserDao;
+import model.vo.User;
 
 public class LoginPage extends JPanel {
 	
@@ -94,16 +103,50 @@ public class LoginPage extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				if(idField.getText().equals("asd")&&pwField.getText().equals("asd")) {
+				
+				
+			try {
+				ObjectInputStream objIn = new ObjectInputStream(new FileInputStream("userList.dat"));
+				
+				try {
+					HashMap asds = (HashMap) objIn.readObject();
 					
-					ChangePanel.changePanel(mf, lp, new MainMenu(mf));
 					
-					AllRecipe.login =  true;
+					String idd = idField.getText();
 					
-				}else {
-					JOptionPane.showMessageDialog(null, "아이디 또는 비밀번호를 확인 후\n다시 로그인해주세요.");
-					AllRecipe.login  = false;
+					User u1 = (User) asds.get(idd);
+					
+					if(pwField.getText().equals(u1.getUserPw())) {
+						
+						ChangePanel.changePanel(mf, lp, new MainMenu(mf));
+						
+						AllRecipe.login =  true;
+						
+						AllRecipe.loginId = idField.getText();
+						
+						
+					}else {
+						JOptionPane.showMessageDialog(null, "아이디 또는 비밀번호를 확인 후\n다시 로그인해주세요.");
+						AllRecipe.login  = false;
+					}
+					
+					
+				  
+				  
+				  
+				  
+					
+					
+				} catch (ClassNotFoundException e1) {
+					e1.printStackTrace();
 				}
+				
+			} catch (FileNotFoundException e1) {
+				e1.printStackTrace();
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+				
 				
 			}
 		});
