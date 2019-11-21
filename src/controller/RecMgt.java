@@ -10,6 +10,7 @@ import java.util.TreeSet;
 import model.dao.MgrRecipeDao;
 import model.dao.UserDao;
 import model.vo.Recipe;
+import view.AllRecipe;
 
 public class RecMgt {
 	
@@ -32,7 +33,8 @@ public class RecMgt {
 		//MgrRecipe[] rar = new MgrRecipe[recipeLength];
 		/*TreeSet userIngred01 = ud.fileOpen(0);
 		TreeSet userIngred02 = ud.fileOpen(1);*/
-		TreeSet userIngred01 = ud.userIngred01();
+		TreeSet userIngred = ud.userIngred();
+		//TreeSet userIngred01 = AllRecipe.loginId;
 		
 		ArrayList recipeList = new ArrayList();
 
@@ -52,6 +54,7 @@ public class RecMgt {
 			e.printStackTrace();
 		}
 		
+		System.out.println("레시피 목록 수: " + MgrRecipeDao.recipeLength);
 			
 		for(int i = 0; i < MgrRecipeDao.recipeLength; i++) {
 			
@@ -61,10 +64,11 @@ public class RecMgt {
 			mr[i] = (Recipe) recipeList.get(i);
 			
 			
-			if(judgement(userIngred01, mr[i].getRecipeIngred()) == 'a') {
+			
+			if(judgement(userIngred, mr[i].getRecipeIngred()) == 'a') {
 				now.add(mr[i].getRecipePicAdr());
 				nowRecipe.add(mr[i]);
-			}else if(judgement(userIngred01, mr[i].getRecipeIngred()) == 'b') {
+			}else if(judgement(userIngred, mr[i].getRecipeIngred()) == 'b') {
 				add.add(mr[i].getRecipePicAdr());
 				addRecipe.add(mr[i]);
 			}
@@ -74,8 +78,8 @@ public class RecMgt {
 		nowCtn = now.size();
 		addCtn = add.size();
 		
-		//System.out.println("now.size() : " + now.size());
-		//System.out.println("add.size() : " + add.size());
+		System.out.println("now.size() : " + now.size());
+		System.out.println("add.size() : " + add.size());
 	}
 	
 	public char judgement(TreeSet userIngred, ArrayList recipeIngred) {

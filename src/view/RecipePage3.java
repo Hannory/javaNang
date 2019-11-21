@@ -1,15 +1,23 @@
 package view;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextPane;
+import javax.swing.ScrollPaneConstants;
 
 import model.vo.Recipe;
 
@@ -89,11 +97,27 @@ public class RecipePage3 extends JPanel {
 		ate.setLocation(150, 377);
 		ate.setFont(font2);
 		
-		//레시피 설명
-		JLabel recipeCont = new JLabel(rc.getRecipeCont());
-		recipeCont.setSize(345, 200);
-		recipeCont.setLocation(50, 427);
-		recipeCont.setFont(font3);
+		//"레시피 순서" 글씨
+		JLabel contTitle = new JLabel("레시피 순서");
+		contTitle.setSize(150, 50);
+		contTitle.setLocation(40, 427);
+		contTitle.setFont(font2);
+		
+		
+		//txt파일 레시피 설명
+		JTextPane tp = new JTextPane();
+		TextFromFile(tp, rc);
+		
+		//스크롤바
+		JScrollPane scrollPane = new JScrollPane(tp, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollPane.setBounds(40, 477, 365, 170);
+		scrollPane.setVisible(true);
+		
+		//"추가 필요 재료" 글씨
+		JLabel addRcTitle = new JLabel("추가 필요 재료");
+		addRcTitle.setSize(150, 50);
+		addRcTitle.setLocation(40, 647);
+		addRcTitle.setFont(font3);
 		
 		//add 영역
 		bar.add(barTitle);
@@ -105,8 +129,36 @@ public class RecipePage3 extends JPanel {
 		this.add(bar);
 		this.add(panel);
 		this.add(ate);
-		this.add(recipeCont);
+		this.add(contTitle);
+		this.add(scrollPane);
+		this.add(addRcTitle);
 		
 		mf.add(this);		
+	}
+	
+	private void TextFromFile(JTextPane tp, Recipe rc) {
+		FileReader fr = null;
+		try {
+			String terms3 = rc.getRecipeCont();
+			File file = new File(terms3);
+			fr = new FileReader(terms3);
+			while(fr.read() != -1) {
+				tp.read(fr, null);
+			}
+		
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+
+			e.printStackTrace();
+		}finally {
+			try {
+				fr.close();
+			} catch (IOException e) {
+		
+				e.printStackTrace();
+			}
+		}
+		
 	}
 }

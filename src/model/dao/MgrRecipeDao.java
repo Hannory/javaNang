@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.TreeSet;
 
 import controller.RecMgt;
@@ -15,20 +16,12 @@ import model.vo.Recipe;
 
 public class MgrRecipeDao {
 	
-	//public int recipeLength = 4;	// 전체 레시피 수
-	
-	//UserDao ud = new UserDao();
-	
-	//TreeSet userIngred01 = ud.fileOpen(0);
-	//TreeSet userIngred02 = ud.fileOpen(1);
-	
-	//public static int nowCtn = 0;
-	
-	//RecommendMgt rm = new RecommendMgt();
-	
 	ArrayList recipeList = new ArrayList();
-	public static int recipeLength = 0;
 	
+	//하기를 레시피 입력 시스템을 만들면 입력한 수를 count해서 하기에 입력되도록 변경.
+	public static int recipeLength = 6;
+	
+	//이미 수동 레시피 정보가 dat 파일에 저장되어 있어, 추가로 Recommend에서 하기 메소드를 불러오지 않게 주석처리함.
 	public void fileSave() {
 		//요리1
 		ArrayList rcIngred01 = new ArrayList();
@@ -76,19 +69,22 @@ public class MgrRecipeDao {
 		String rcPic5 = "images/park/cheeseBall.jpg";
 		String rcPic6 = "images/park/potato.jpg";
 		
-		/*Recipe[] rar = {
-				new Recipe("recipe01", "content1", rcPic1, rcIngred01),
-				new Recipe("recipe02", "content2", rcPic2, rcIngred02),
-				new Recipe("recipe03", "content3", rcPic3, rcIngred03),
-				new Recipe("recipe04", "content4", rcPic4, rcIngred04)
-		};*/
-		
-		recipeList.add(new Recipe("짜장면", "짜장면을 볶습니다.", rcPic1, rcIngred01));
-		recipeList.add(new Recipe("까르보나라", "크림을 준비합니다.", rcPic2, rcIngred02));
+		recipeList.add(new Recipe("짜장면", "documents/recipe/black noodle.txt", rcPic1, rcIngred01));
+		recipeList.add(new Recipe("까르보나라", "documents/recipe/steamed potato.txt", rcPic2, rcIngred02));
 		recipeList.add(new Recipe("토마토 스파게티", "먼저 토마토를 사세요", rcPic3, rcIngred03));
-		recipeList.add(new Recipe("찐감자", "감자를 찝니다.", rcPic4, rcIngred04));
+		recipeList.add(new Recipe("찐감자", "documents/recipe/steamed potato.txt", rcPic4, rcIngred04));
 		recipeList.add(new Recipe("치즈볼", "치즈를 녹입니다.", rcPic5, rcIngred05));
 		recipeList.add(new Recipe("감자당근볶음", "감자와 당근을 채썹니다.", rcPic6, rcIngred06));
+		
+		
+		Scanner sc = new Scanner(System.in);
+		System.out.print("요리명 : ");
+		String rcName = sc.nextLine();
+		System.out.print("레시피 내용 텍스트파일 주소 : ");
+		String rcContAdr = sc.nextLine();
+		System.out.print("레시피 사진 이미지파일 주소 : ");
+		String rcPicAdr = sc.nextLine();
+		
 		
 		try(ObjectOutputStream objOut = new ObjectOutputStream(new FileOutputStream("MgrRecipe.dat"));) {
 			
@@ -126,104 +122,4 @@ public class MgrRecipeDao {
 		return rar[k].getRecipeIngred();
 	}
 	
-	/*public String fileOpenNowPicAdr(int k) {
-		Recipe[] rar = new Recipe[recipeLength];
-
-		try(ObjectInputStream objIn = 
-				new ObjectInputStream(new FileInputStream("MgrRecipe.dat"));) {
-			
-			for(int i = 0; i < rar.length; i++) {
-				rar[i] = (Recipe) objIn.readObject();
-			}
-			
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-		
-		//rar[0]
-		
-		ArrayList now = new ArrayList();
-		ArrayList add = new ArrayList();
-		
-		for(int i = 0; i < recipeLength; i++) {
-			if(judgement(userIngred01, rar[i].getRecipeIngred()) == 'a') {
-				now.add(rar[i].getRecipePicAdr());
-			}else if(judgement(userIngred01, rar[i].getRecipeIngred()) == 'b') {
-				add.add(rar[i].getRecipePicAdr());
-			}
-		}
-		//System.out.println(judgement(userIngred01, rar[0].getRecipeIngred()));
-		
-		RecMgt.nowCtn = now.size();
-		
-		return (String) now.get(k);
-	}*/
-	
-	/*public String AddPicAdr(int k) {
-		Recipe[] rar = new Recipe[recipeLength];
-
-		try(ObjectInputStream objIn = 
-				new ObjectInputStream(new FileInputStream("MgrRecipe.dat"));) {
-			
-			for(int i = 0; i < rar.length; i++) {
-				rar[i] = (Recipe) objIn.readObject();
-			}
-			
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-		
-		//rar[0]
-		
-		ArrayList now = new ArrayList();
-		ArrayList add = new ArrayList();
-		
-		for(int i = 0; i < recipeLength; i++) {
-			if(judgement(userIngred01, rar[i].getRecipeIngred()) == 'a') {
-				now.add(rar[i].getRecipePicAdr());
-			}else if(judgement(userIngred01, rar[i].getRecipeIngred()) == 'b') {
-				add.add(rar[i].getRecipePicAdr());
-			}
-		}
-		//System.out.println(judgement(userIngred01, rar[0].getRecipeIngred()));
-		
-		RecMgt.nowCtn = now.size();
-		
-		return (String) now.get(k);
-	}*/
-	
-	
-	//현재 추천된 레시피 수
-	/*public int nowLength() {
-		//int fileLength = 2;
-		System.out.println(RecMgt.nowCtn);
-		return 2nowCtn;
-	}*/
-	
-	/*public char judgement(TreeSet userIngred, ArrayList recommendMgrIngred) {
-		int count = 0;
-		for(int i = 0; i < recommendMgrIngred.size(); i++) {
-			boolean contains = userIngred.contains(recommendMgrIngred.get(i));
-			if(contains == false) {
-				count++;
-			}
-		}
-
-		char recommend = ' ';
-		switch(count) {
-		case 0: recommend = 'a'; break;
-		case 1: case 2: recommend = 'b'; break;
-		default: recommend = 'c';
-		}
-		
-		return recommend;
-	}*/
 }
