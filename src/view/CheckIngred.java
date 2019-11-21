@@ -41,7 +41,7 @@ public class CheckIngred extends JPanel{
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				System.out.println("뒤로가기 클릭");
-				new ChangePanel().changePanel(mf, nowp, new InputIngred(mf));
+				new ChangePanel().changePanel(mf, nowp, new MyFridge(mf));
 			}
 		}
 				);
@@ -59,7 +59,6 @@ public class CheckIngred extends JPanel{
 		
 		//현재 재료를 통해 인덱스 만들기
 		Object[] al = LoginPage.ingredStatic.toArray();
-		System.out.println(al.length);
 		String[] sarr = new String[55];
 		
 		
@@ -78,15 +77,6 @@ public class CheckIngred extends JPanel{
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				System.out.println("재료확인에 있는 버튼");
-				
-				
-				
-				
-				
-				
-				
-				
-				
 			}
 		}
 				);

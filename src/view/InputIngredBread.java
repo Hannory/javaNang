@@ -39,6 +39,7 @@ public class InputIngredBread extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				System.out.println("뒤로가기 클릭");
+				new AddIngred().modifyData();	//재료 저장 메소드 호출
 				new ChangePanel().changePanel(mf, nowp, new InputIngred(mf));
 			}
 		}
@@ -61,10 +62,7 @@ public class InputIngredBread extends JPanel {
 		btn1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				System.out.println("버튼1 클릭");
 				new AddIngred().makeTreeSet(5001);
-				ChangePanel.changePanel(mf, nowp, new CheckIngred(mf));
-
 			}
 		}
 				);
@@ -76,8 +74,6 @@ public class InputIngredBread extends JPanel {
 		btn2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				System.out.println("버튼2 클릭");
-				
 				new AddIngred().makeTreeSet(5002);
 			}
 		}
@@ -109,7 +105,6 @@ public class InputIngredBread extends JPanel {
 		btn4.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				System.out.println("버튼4 클릭");
 				new AddIngred().makeTreeSet(5004);
 			}
 		}
@@ -126,7 +121,6 @@ public class InputIngredBread extends JPanel {
 		btn5.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				System.out.println("버튼5 클릭");
 				new AddIngred().makeTreeSet(5005);
 			}
 		}
@@ -142,7 +136,6 @@ public class InputIngredBread extends JPanel {
 		btn6.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				System.out.println("버튼6 클릭");
 				new AddIngred().makeTreeSet(5006);
 			}
 		}
@@ -158,7 +151,6 @@ public class InputIngredBread extends JPanel {
 		btn7.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				System.out.println("버튼7 클릭");
 				new AddIngred().makeTreeSet(5007);
 			}
 		}
@@ -174,7 +166,6 @@ public class InputIngredBread extends JPanel {
 		btn8.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				System.out.println("버튼8 클릭");
 				new AddIngred().makeTreeSet(5008);
 			}
 		}
@@ -190,7 +181,6 @@ public class InputIngredBread extends JPanel {
 		btn9.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				System.out.println("버튼9 클릭");
 				new AddIngred().makeTreeSet(5009);
 			}
 		}

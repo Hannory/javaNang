@@ -40,7 +40,7 @@ public class CheckIngred6 extends JPanel{
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				System.out.println("뒤로가기 클릭");
-				new ChangePanel().changePanel(mf, nowp, new InputIngred(mf));
+				new ChangePanel().changePanel(mf, nowp, new MyFridge(mf));
 			}
 		}
 				);
@@ -60,7 +60,6 @@ public class CheckIngred6 extends JPanel{
 
 		//현재 재료를 통해 인덱스 만들기
 		Object[] al = LoginPage.ingredStatic.toArray();
-		System.out.println(al.length);
 		String[] sarr = new String[55];
 
 

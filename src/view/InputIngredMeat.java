@@ -31,7 +31,7 @@ public class InputIngredMeat extends JPanel {
 		topP.setLayout(null);
 		topP.setBounds(0,0,445,70);
 
-		//상단 바 패널 꾸미기 //임시 색상 지정 //뒤로가기 버튼 셋팅
+		//상단 바 패널 꾸미기 //임시 색상 지정 //뒤로가기 버튼 셋팅//뒤로가기시 재료 저장 메소드 실행
 		topP.setBackground(Color.BLUE);
 		JButton btnBack = new JButton("<");
 		btnBack.setBounds(10,10,50,50);
@@ -39,8 +39,7 @@ public class InputIngredMeat extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				System.out.println("뒤로가기 클릭");
-				new AddIngred().modifyData();
-
+				new AddIngred().modifyData();	//재료 저장 메소드 호출
 				new ChangePanel().changePanel(mf, nowp, new InputIngred(mf));
 			}
 		}

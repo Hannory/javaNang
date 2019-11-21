@@ -39,6 +39,7 @@ public class InputIngredFish extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				System.out.println("뒤로가기 클릭");
+				new AddIngred().modifyData();	//재료 저장 메소드 호출
 				new ChangePanel().changePanel(mf, nowp, new InputIngred(mf));
 			}
 		}
