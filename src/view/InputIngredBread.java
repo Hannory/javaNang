@@ -10,6 +10,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import model.dao.AddIngred;
+
 public class InputIngredBread extends JPanel {
 	//(육류) 페이지
 	
@@ -60,6 +62,7 @@ public class InputIngredBread extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				System.out.println("버튼1 클릭");
+				new AddIngred().makeTreeSet(5001);
 				ChangePanel.changePanel(mf, nowp, new CheckIngred(mf));
 
 			}
@@ -74,6 +77,8 @@ public class InputIngredBread extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				System.out.println("버튼2 클릭");
+				
+				new AddIngred().makeTreeSet(5002);
 			}
 		}
 				);
@@ -89,6 +94,7 @@ public class InputIngredBread extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				System.out.println("버튼3 클릭");
+				new AddIngred().makeTreeSet(5003);
 			}
 		}
 				);
@@ -104,6 +110,7 @@ public class InputIngredBread extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				System.out.println("버튼4 클릭");
+				new AddIngred().makeTreeSet(5004);
 			}
 		}
 				);
@@ -120,6 +127,7 @@ public class InputIngredBread extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				System.out.println("버튼5 클릭");
+				new AddIngred().makeTreeSet(5005);
 			}
 		}
 				);
@@ -135,6 +143,7 @@ public class InputIngredBread extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				System.out.println("버튼6 클릭");
+				new AddIngred().makeTreeSet(5006);
 			}
 		}
 				);
@@ -150,6 +159,7 @@ public class InputIngredBread extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				System.out.println("버튼7 클릭");
+				new AddIngred().makeTreeSet(5007);
 			}
 		}
 				);
@@ -165,6 +175,7 @@ public class InputIngredBread extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				System.out.println("버튼8 클릭");
+				new AddIngred().makeTreeSet(5008);
 			}
 		}
 				);
@@ -180,6 +191,7 @@ public class InputIngredBread extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				System.out.println("버튼9 클릭");
+				new AddIngred().makeTreeSet(5009);
 			}
 		}
 				);

@@ -10,6 +10,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import model.dao.AddIngred;
+
 public class InputIngredFish extends JPanel {
 	//(육류) 페이지
 	
@@ -60,6 +62,8 @@ public class InputIngredFish extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				System.out.println("버튼1 클릭");
+				new AddIngred().makeTreeSet(2001);
+				
 				ChangePanel.changePanel(mf, nowp, new CheckIngred(mf));
 
 			}
@@ -74,6 +78,7 @@ public class InputIngredFish extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				System.out.println("버튼2 클릭");
+				new AddIngred().makeTreeSet(2002);
 			}
 		}
 				);
@@ -89,6 +94,7 @@ public class InputIngredFish extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				System.out.println("버튼3 클릭");
+				new AddIngred().makeTreeSet(2003);
 			}
 		}
 				);
@@ -104,6 +110,7 @@ public class InputIngredFish extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				System.out.println("버튼4 클릭");
+				new AddIngred().makeTreeSet(2004);
 			}
 		}
 				);
@@ -120,6 +127,7 @@ public class InputIngredFish extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				System.out.println("버튼5 클릭");
+				new AddIngred().makeTreeSet(2005);
 			}
 		}
 				);
@@ -135,6 +143,7 @@ public class InputIngredFish extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				System.out.println("버튼6 클릭");
+				new AddIngred().makeTreeSet(2006);
 			}
 		}
 				);
@@ -150,6 +159,7 @@ public class InputIngredFish extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				System.out.println("버튼7 클릭");
+				new AddIngred().makeTreeSet(2007);
 			}
 		}
 				);
@@ -165,6 +175,7 @@ public class InputIngredFish extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				System.out.println("버튼8 클릭");
+				new AddIngred().makeTreeSet(2008);
 			}
 		}
 				);
@@ -180,6 +191,7 @@ public class InputIngredFish extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				System.out.println("버튼9 클릭");
+				new AddIngred().makeTreeSet(2009);
 			}
 		}
 				);

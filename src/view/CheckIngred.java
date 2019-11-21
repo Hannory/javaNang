@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import model.dao.AddIngred;
 import run.Run;
 
 public class CheckIngred extends JPanel{
@@ -68,6 +69,21 @@ public class CheckIngred extends JPanel{
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				System.out.println("재료확인에 있는 버튼");
+				
+				
+				
+				//////삭제할것
+				
+				System.out.println();
+				
+				
+				///////////
+				
+				
+				
+				
+				
+				
 			}
 		}
 				);
