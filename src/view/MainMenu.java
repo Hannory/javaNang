@@ -88,26 +88,34 @@ public class MainMenu extends JPanel {
 		mf.add(this);
 
 		JLabel lb4 = new JLabel("메인 메뉴");
-		lb4.setBounds(64, 25, 94, 26); 
+		lb4.setBounds(95, 11 ,207 ,46); 
 		lb4.setLayout(null);
 
 		lb4.setForeground(Color.white);
-		lb4.setFont(new Font("Serif", Font.BOLD, 20));     
+		lb4.setFont(new Font("맑은 고딕", Font.BOLD, 27));     
 		this.add(lb4);
 
+//		Image person = new ImageIcon("images/person sky.png").getImage().getScaledInstance(50,50,0);
+//	      JButton logIn = new JButton(new ImageIcon(person));
+//	      logIn.setLocation(380,10);
+//	      logIn.setSize(50,50);
+//	      this.add(logIn);
+	      
+          
 		JPanel panel3 = new JPanel();
-		panel3.setSize(445,73);
+		panel3.setSize(445,70);
 		panel3.setLayout(null);
-		panel3.setBackground(new Color(100, 149, 237));
+		panel3.setBackground(new Color(102, 204, 204));
 
 		panel3.add(lb4);
+
+		Image backImg = new ImageIcon("images/back sky.png").getImage().getScaledInstance(50,50,0);
+		JButton back = new JButton(new ImageIcon(backImg));
+		back.setLocation(10,10);
+		back.setSize(50,50);
+		back.addMouseListener(new MyMouseAdapter5());
+		panel3.add(back);
 		this.add(panel3);
-
-		JButton btn5 = new JButton("←");
-		btn5.setBounds(14, 25, 50, 27);
-		btn5.addMouseListener(new MyMouseAdapter5());
-		panel3.add(btn5);
-
 	}
 
 	class MyMouseAdapter1 extends MouseAdapter{//요리추천으로

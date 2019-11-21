@@ -5,6 +5,7 @@ package view;
 import java.awt.Color;
 import java.awt.Dialog;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -21,6 +22,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -32,7 +34,6 @@ import javax.swing.JTextField;
 
 import model.dao.UserDao;
 import model.vo.User;
-import view.ModiMember.MyMouseAdapter;
 
 public class QuitMember extends JPanel{
 
@@ -111,27 +112,34 @@ public class QuitMember extends JPanel{
 
 		JPanel panel2 = new JPanel(); 
 		panel2.setLocation(0, 0);
-		panel2.setSize(445,73);
+		panel2.setSize(445,70);
 		panel2.setLayout(null);
-		panel2.setBackground(new Color(100, 149, 237));
+		panel2.setBackground(new Color(102, 204, 204));
 
 		this.add(panel2);
 
 		JLabel label_1 = new JLabel("회원 탈퇴");
 		label_1.setForeground(Color.WHITE);
-		label_1.setFont(new Font("Serif", Font.BOLD, 20));
-		label_1.setBounds(64, 25, 94, 26);
+		label_1.setFont(new Font("맑은 고딕", Font.BOLD, 27));
+		label_1.setBounds(95, 11, 207, 46);
 		panel2.add(label_1);
 
-
-
-		JButton btnNewButton_1 = new JButton("←");
-		btnNewButton_1.setBounds(14, 25, 50, 27);
-		btnNewButton_1.addMouseListener(new MyMouseAdapter1());
-		panel2.add(btnNewButton_1);
-
-
-		JPanel panel3 = new JPanel();
+		  Image person = new ImageIcon("images/person sky.png").getImage().getScaledInstance(50,50,0);
+	      JButton logIn = new JButton(new ImageIcon(person));
+	      logIn.setLocation(380,10);
+	      logIn.setSize(50,50);
+	      logIn.addMouseListener(new MyMouseAdapter1());
+	      panel2.add(logIn);
+	      
+	      Image backImg = new ImageIcon("images/back sky.png").getImage().getScaledInstance(50,50,0);
+	      JButton back = new JButton(new ImageIcon(backImg));
+	      back.setLocation(10,10);
+	      back.setSize(50,50);
+          back.addMouseListener(new MyMouseAdapter2());
+	      panel2.add(back);
+	      
+          
+ 		JPanel panel3 = new JPanel();
 		panel3.setSize(170,60);
 		panel3.setLocation(160,650);
 		panel3.setLayout(null);
@@ -146,7 +154,7 @@ public class QuitMember extends JPanel{
 
 
 		//if(PW입력을 정확하게 했을 때){//그 회원의 정보를 삭제한다.
-		btnNewButton.addMouseListener(new MyMouseAdapter1() {
+		btnNewButton.addMouseListener(new MyMouseAdapter3() {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -228,14 +236,23 @@ public class QuitMember extends JPanel{
 
 	}
 
-	class MyMouseAdapter1 extends MouseAdapter{//회원정보수정으로
+	class MyMouseAdapter1 extends MouseAdapter{//메인메뉴로(뒤로가기)
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			ChangePanel.changePanel(mf, quitMember, new MainMenu(mf));
+		}
+	}
+	class MyMouseAdapter2 extends MouseAdapter{//회원정보수정으로
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			ChangePanel.changePanel(mf, quitMember, new ModiMember(mf));
 		}
 	}
-
-
+	class MyMouseAdapter3 extends MouseAdapter{//회원정보수정으로
+		@Override
+		public void mouseClicked(MouseEvent e) {
+		}
+	}
 
 
 }
