@@ -52,9 +52,8 @@ public class UserDao {
 			
 			//유저리스트를 읽어주는 메소드
 			//리턴타입으로 HashMap 
-			public HashMap<String, User> readUserList() {
+			public HashMap readUserList() {
 				HashMap<String, User> umap = null;
-				User u = new User();
 				ObjectInputStream ois = null;
 				
 				try {
