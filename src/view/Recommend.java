@@ -12,6 +12,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.plaf.FontUIResource;
 
@@ -32,14 +33,24 @@ public class Recommend extends JPanel {
 	int nowClickCtn = 0;	// 현재재료로 클릭 카운트. 추천 로직과 연결됨.
 	int addClickCtn = 0;	// 추가재료로 클릭 카운트. 추천 로직과 연결됨.
 	
+	JLabel label;
+	JButton left;
+	JButton right;
+	JButton specificPage;
+	
+	JLabel label2;
+	JButton left2;
+	JButton right2;
+	JButton specificPage2;
+	
 	public Recommend(MainFrame mf) {		
 		
 		this.mf = mf;
 		rc = this;
 		
 		//User, Recipe 정보 저장   ->  향후 입력 값으로 대체
-		ud.fileSave();
-		mrd.fileSave();
+		//ud.fileSave();
+		//mrd.fileSave();
 		
 		//바탕 패널
 		this.setSize(445, 770);
@@ -100,69 +111,108 @@ public class Recommend extends JPanel {
 		panel.setSize(445, 233);
 		panel.setLayout(null);
 		
+
+		
 		//현재 재료로에 출력될 이미지
-		Image[] nowIcon = new Image[RecMgt.nowCtn];
-		
-		for(int i = 0; i < nowIcon.length; i++) {
-			nowIcon[i] = new ImageIcon(rm.nowPicAdr(i)).getImage().getScaledInstance(345, 233, 0);
-		}
-
-		JLabel label = new JLabel(new ImageIcon(nowIcon[nowClickCtn]));
-		label.setLocation(50, 0);
-		label.setSize(345, 233);
-		
-		JButton left = new JButton("◀");
-		left.setSize(50, 233);
-		left.setLocation(0, 0);
-		
-		left.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
+		if(RecMgt.nowCtn != 0) {
+			
+			Image[] nowIcon = new Image[RecMgt.nowCtn];
+			
+			for(int i = 0; i < nowIcon.length; i++) {
+				nowIcon[i] = new ImageIcon(rm.nowPicAdr(i)).getImage().getScaledInstance(345, 233, 0);
+			}
+			
+			label = new JLabel(new ImageIcon(nowIcon[nowClickCtn]));
+			
+			label.setLocation(50, 0);
+			label.setSize(345, 233);
+			
+			left = new JButton("◀");
+			left.setSize(50, 233);
+			left.setLocation(0, 0);
+			
+			left.addActionListener(new ActionListener() {
 				
-				nowClickCtn--;
-				if(nowClickCtn < 0) {
-					nowClickCtn += RecMgt.nowCtn;
-					label.setIcon(new ImageIcon(nowIcon[nowClickCtn % RecMgt.nowCtn]));
-				}else {
-					label.setIcon(new ImageIcon(nowIcon[nowClickCtn % RecMgt.nowCtn]));
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					
+					nowClickCtn--;
+					if(nowClickCtn < 0) {
+						nowClickCtn += RecMgt.nowCtn;
+						label.setIcon(new ImageIcon(nowIcon[nowClickCtn % RecMgt.nowCtn]));
+					}else {
+						label.setIcon(new ImageIcon(nowIcon[nowClickCtn % RecMgt.nowCtn]));
+					}
+					
 				}
 				
-			}
+			});
 			
-		});
-		
-		JButton right = new JButton("▶");
-		right.setSize(50, 233);
-		right.setLocation(395, 0);
-		
-		right.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				
-				nowClickCtn++;
-				label.setIcon(new ImageIcon(nowIcon[nowClickCtn % RecMgt.nowCtn]));
-				
-			}
+			right = new JButton("▶");
+			right.setSize(50, 233);
+			right.setLocation(395, 0);
 			
-		});
-		
-		//요리 상세 페이지로 이동 (nowClickCtn) 활용
-		JButton specificPage = new JButton(" ");
-		specificPage.setLocation(50, 0);
-		specificPage.setSize(345, 233);
-		specificPage.setOpaque(false);
-		
-		specificPage.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				cp.changePanel(mf, rc, new RecipePage2(mf, rm.nowRecipe(nowClickCtn)));
+			right.addActionListener(new ActionListener() {
 				
-			}
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					
+					nowClickCtn++;
+					label.setIcon(new ImageIcon(nowIcon[nowClickCtn % RecMgt.nowCtn]));
+					
+				}
+				
+			});
 			
-		});		
+			//요리 상세 페이지로 이동 (nowClickCtn) 활용
+			specificPage = new JButton(" ");
+			specificPage.setLocation(50, 0);
+			specificPage.setSize(345, 233);
+			specificPage.setOpaque(false);
+			
+			specificPage.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					cp.changePanel(mf, rc, new RecipePage2(mf, rm.nowRecipe(nowClickCtn % RecMgt.nowCtn)));
+					
+				}
+				
+			});		
+			
+		}else {
+			
+			Image nowIcon = new ImageIcon("images/park/no recommend.png").getImage().getScaledInstance(345, 233, 0);
+			label = new JLabel(new ImageIcon(nowIcon));
+			
+			label.setLocation(50, 0);
+			label.setSize(345, 233);
+			
+			left = new JButton("◀");
+			left.setSize(50, 233);
+			left.setLocation(0, 0);
+			
+			right = new JButton("▶");
+			right.setSize(50, 233);
+			right.setLocation(395, 0);		
+			
+			//My 냉장고 페이지로 이동
+			specificPage = new JButton(" ");
+			specificPage.setLocation(50, 0);
+			specificPage.setSize(345, 233);
+			specificPage.setOpaque(false);
+			
+			specificPage.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					//cp.changePanel(mf, rc, new MyFridge(mf));
+					JOptionPane.showMessageDialog(null, "냉장고가 비어 있습니다.\n재료를 새로 입력해주세요.");
+					
+				}
+				
+			});
+		}
 		
 		//추가 재료로
 		JPanel panel2 = new JPanel();
@@ -170,68 +220,103 @@ public class Recommend extends JPanel {
 		panel2.setSize(445, 233);
 		panel2.setLayout(null);
 		
-		Image[] addIcon = new Image[RecMgt.addCtn];
-		
-		for(int i = 0; i < addIcon.length; i++) {
-			addIcon[i] = new ImageIcon(rm.addPicAdr(i)).getImage().getScaledInstance(345, 233, 0);
-		}
-		
-		JLabel label2 = new JLabel(new ImageIcon(addIcon[addClickCtn]));
-		label2.setLocation(50, 0);
-		label2.setSize(345, 233);
-		
-		JButton left2 = new JButton("◀");
-		left2.setSize(50, 233);
-		left2.setLocation(0, 0);
-		
-		left2.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
+		if(RecMgt.addCtn != 0) {
+			
+			Image[] addIcon = new Image[RecMgt.addCtn];
+			
+			for(int i = 0; i < addIcon.length; i++) {
+				addIcon[i] = new ImageIcon(rm.addPicAdr(i)).getImage().getScaledInstance(345, 233, 0);
+			}
+			
+			label2 = new JLabel(new ImageIcon(addIcon[addClickCtn]));
+			label2.setLocation(50, 0);
+			label2.setSize(345, 233);
+			
+			left2 = new JButton("◀");
+			left2.setSize(50, 233);
+			left2.setLocation(0, 0);
+			
+			left2.addActionListener(new ActionListener() {
 				
-				addClickCtn--;
-				if(addClickCtn < 0) {
-					addClickCtn += RecMgt.addCtn;
-					label2.setIcon(new ImageIcon(addIcon[addClickCtn % RecMgt.addCtn]));
-				}else {
-					label2.setIcon(new ImageIcon(addIcon[addClickCtn % RecMgt.addCtn]));
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					
+					addClickCtn--;
+					if(addClickCtn < 0) {
+						addClickCtn += RecMgt.addCtn;
+						label2.setIcon(new ImageIcon(addIcon[addClickCtn % RecMgt.addCtn]));
+					}else {
+						label2.setIcon(new ImageIcon(addIcon[addClickCtn % RecMgt.addCtn]));
+					}
+					
 				}
 				
-			}
+			});
 			
-		});
-		
-		JButton right2 = new JButton("▶");
-		right2.setSize(50, 233);
-		right2.setLocation(395, 0);
-		
-		right2.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				
-				addClickCtn++;
-				label2.setIcon(new ImageIcon(addIcon[addClickCtn % RecMgt.addCtn]));
-				
-			}
+			right2 = new JButton("▶");
+			right2.setSize(50, 233);
+			right2.setLocation(395, 0);
 			
-		});
-		
-		//요리 상세 페이지로 이동 (nowClickCtn) 활용
-		JButton specificPage2 = new JButton(" ");
-		specificPage2.setLocation(50, 0);
-		specificPage2.setSize(345, 233);
-		specificPage2.setOpaque(false);
-		
-		specificPage2.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				cp.changePanel(mf, rc, new RecipePage3(mf, rm.addRecipe(addClickCtn)));
+			right2.addActionListener(new ActionListener() {
 				
-			}
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					
+					addClickCtn++;
+					label2.setIcon(new ImageIcon(addIcon[addClickCtn % RecMgt.addCtn]));
+					
+				}
+				
+			});
 			
-		});	
+			//요리 상세 페이지로 이동 (nowClickCtn) 활용
+			specificPage2 = new JButton(" ");
+			specificPage2.setLocation(50, 0);
+			specificPage2.setSize(345, 233);
+			specificPage2.setOpaque(false);
+			
+			specificPage2.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					cp.changePanel(mf, rc, new RecipePage3(mf, rm.addRecipe(addClickCtn % RecMgt.addCtn)));
+					
+				}
+				
+			});	
+			
+		}else {
+			
+			Image nowIcon = new ImageIcon("images/park/no recommend.png").getImage().getScaledInstance(345, 233, 0);
+			label2 = new JLabel(new ImageIcon(nowIcon));
+			
+			label2.setLocation(50, 0);
+			label2.setSize(345, 233);
+			
+			left2 = new JButton("◀");
+			left2.setSize(50, 233);
+			left2.setLocation(0, 0);
+			
+			right2 = new JButton("▶");
+			right2.setSize(50, 233);
+			right2.setLocation(395, 0);		
+			
+			//My 냉장고 페이지로 이동
+			specificPage2 = new JButton(" ");
+			specificPage2.setLocation(50, 0);
+			specificPage2.setSize(345, 233);
+			specificPage2.setOpaque(false);
+			
+			specificPage2.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					//cp.changePanel(mf, rc, new MyFridge(mf));
+					JOptionPane.showMessageDialog(null, "냉장고가 비어 있습니다.\n재료를 새로 입력해주세요.");
+				}
+				
+			});
+		}
 		
 		//모든 레시피 패널
 		JPanel panel3 = new JPanel();

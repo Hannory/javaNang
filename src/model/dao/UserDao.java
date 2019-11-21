@@ -12,6 +12,7 @@ import java.util.TreeSet;
 import javax.swing.JPanel;
 
 import model.vo.User;
+import view.AllRecipe;
 
 public class UserDao {
 	
@@ -112,12 +113,12 @@ public class UserDao {
 	}*/
 	
 	//재료 입력 로직 구현 전에 특정 유저 값 테스트로 불러오기
-	public TreeSet userIngred01() {
+	public TreeSet userIngred() {
 		HashMap umap = new HashMap();
 		User u = new User();
 		
 		try(ObjectInputStream objIn = 
-				new ObjectInputStream(new FileInputStream("userList.dat"/*"member.dat"*/));) {
+				new ObjectInputStream(new FileInputStream("userList.dat"));) {
 
 			umap = (HashMap) objIn.readObject();
 			
@@ -126,14 +127,9 @@ public class UserDao {
 		}
 		
 		//향후에는 "user01"을 로그인한 id로 넣어주어야 함.
-		u = (User) umap.get("user01");
+		u = (User) umap.get(AllRecipe.loginId);
 		//u.getUserPw(); 		// id가 user01인 회원의 현재 비밀번호 불러오기
 		//u.setUserPw("새로운 비밀번호 값");  // id가 user01인 회원이 입력한 비밀번호로 수정
-		
-
-		
-		
-		System.out.println("4th check : " + u.getUserIngred());
 		
 		return u.getUserIngred();
 	}

@@ -188,7 +188,7 @@ public class Agree extends JPanel{
 	private void TextFromFile(JTextPane tp) {
 		FileReader fr = null;
 		try {
-			String terms3 = "terms.txt";
+			String terms3 = "documents/terms.txt";
 			File file = new File(terms3);
 			fr = new FileReader(terms3);
 			while(fr.read() != -1) {
@@ -215,7 +215,7 @@ public class Agree extends JPanel{
 	private void TextFromFile2(JTextPane tp2) {
 		FileReader fr = null;
 		try {
-			String pterms3 = "pterms.txt";
+			String pterms3 = "documents/pterms.txt";
 			File file = new File(pterms3);
 			fr = new FileReader(pterms3);
 			while(fr.read() != -1) {

@@ -6,6 +6,7 @@ public class Recipe implements java.io.Serializable {
 	
 	private String recipeName;
 	private String recipeCont;
+	//private String recipeContAdr;
 	private String recipePicAdr;
 	private ArrayList recipeIngred;
 	
@@ -16,7 +17,8 @@ public class Recipe implements java.io.Serializable {
 		this.recipePicAdr = recipePicAdr;
 		this.recipeIngred = recipeIngred;
 	}
-
+	
+	
 	public String getRecipeName() {
 		return recipeName;
 	}
