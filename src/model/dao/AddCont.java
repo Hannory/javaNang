@@ -6,8 +6,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-
-import model.vo.Cont;
 //
 
 public class AddCont {
@@ -16,7 +14,7 @@ public class AddCont {
 
 		ObjectOutputStream oop = null;
 		try {
-			oop = new ObjectOutputStream(new FileOutputStream("recipeTitle.txt"));
+			oop = new ObjectOutputStream(new FileOutputStream("recipeCont.txt"));
 			oop.writeObject("마라탕 만들기");
 			oop.flush();
 
@@ -29,15 +27,26 @@ public class AddCont {
 		}
 	}
 	
-		
-	 
-
+	public void saveFile2() {
+		ObjectOutputStream oop1 = null;
+		try { 
+			oop1 = new ObjectOutputStream(new FileOutputStream("recipeTitle.txt"));
+			oop1.writeObject("햄버거 만들기");
+			oop1.flush();
+		}catch (IOException e) {
+			e.printStackTrace();
+		}try {
+			oop1.close();
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 public void openFile() {
 	ObjectInputStream oip = null;
 	
 	try {
-	oip =new ObjectInputStream(new FileInputStream ("recipeTitle.txt"));
+	oip =new ObjectInputStream(new FileInputStream ("recipeCont.txt"));
 	//콘솔창에서 잘 출력이 되는지 보기 위함
 	System.out.println(oip.readObject().toString());
 	
@@ -55,6 +64,26 @@ public void openFile() {
 		}
 	}
 }
+
+public void openFile2() {
+	ObjectInputStream oip2 = null;
+	try {
+		oip2 = new ObjectInputStream(new FileInputStream ("recipetitle.txt"));
+		System.out.println(oip2.readObject().toString());
+	}catch (FileNotFoundException e) {
+		e.printStackTrace();
+	}catch(IOException e) {
+		e.printStackTrace();
+	}catch(ClassNotFoundException e) {
+		e.printStackTrace();
+	}finally {
+		try {
+			oip2.close();
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+	}
 }
 
-//레시피 제목 내용1.하고 사진  내용을 텍스트파일 제이텍스트필드랑 > 등록하기를 눌러 관리자 관리자만 볼수있는 게시판 승인.제제 
+}
+
