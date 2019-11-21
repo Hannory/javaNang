@@ -33,6 +33,7 @@ public class Agree extends JPanel{
 	
 	public Agree(MainFrame mf) {
 		
+		
 		this.mf = mf;
 		this.agree = this;
 		

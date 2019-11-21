@@ -56,6 +56,7 @@ public class UserDao {
 			User u = new User();
 			ObjectInputStream ois = null;
 			
+			
 			try {
 				ois = new ObjectInputStream(new FileInputStream("userList.dat"));
 				

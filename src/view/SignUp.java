@@ -296,8 +296,6 @@ public class SignUp extends JPanel{
 		
 	
 	
-
-	
 	
 	//비밀번호 유효성 검사(영문자, 숫자, 특수문자 모두 포함하고 8~16글자 제한)
 	public boolean pwPattern() {
@@ -310,6 +308,7 @@ public class SignUp extends JPanel{
 	
 	//비밀번호와 비밀번호 확인이 일치하는지 검사
 	public boolean checkPw() {
+		
 		
 		if(String.valueOf(pwpf.getPassword()).equals(String.valueOf(cpwpf.getPassword()))) {
 			return true;
