@@ -2,6 +2,8 @@ package view;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.MouseAdapter;
@@ -11,6 +13,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
@@ -44,17 +47,23 @@ public class Agree extends JPanel{
 		panel.setLayout(null);
 		panel.setLocation(0, 0);
 		panel.setSize(445, 70);
-		panel.setBackground(new Color(39, 50, 56));
+		panel.setBackground(new Color(102, 204, 204));
+		
+		Font font = new Font("맑은 고딕", Font.BOLD, 27);
+	    Font font2 = new Font("맑은 고딕", Font.BOLD, 20);
 		
 		//바에 넣을 패널 제목
 		JLabel label = new JLabel("이용약관 동의");
-		label.setLocation(90, 27);
-		label.setSize(100, 30);
+		label.setLocation(80, 10);
+		label.setSize(200, 50);
 		label.setForeground(Color.white);
+		label.setFont(font);
+		
 		
 		//바에 넣을 뒤로가기 버튼
-		JButton button = new JButton("<");
-		button.setLocation(11, 13);
+		Image backImg = new ImageIcon("images/back sky.PNG").getImage().getScaledInstance(50, 50, 0);
+		JButton button = new JButton(new ImageIcon(backImg));
+		button.setLocation(10, 10);
 		button.setSize(50, 50);
 		
 		//==========지금부터 내용==============
