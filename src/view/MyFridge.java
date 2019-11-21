@@ -3,6 +3,7 @@ package view;
 import java.awt.Color;
 import java.awt.Desktop;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
@@ -16,7 +17,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import view.MainMenu.MyMouseAdapter5;
-import view.ModiMember.MyMouseAdapter;
 
 public class MyFridge extends JPanel{
 
@@ -57,27 +57,35 @@ public class MyFridge extends JPanel{
 
 
 		JLabel lb = new JLabel("My 냉장고");
-		lb.setBounds(64, 25, 150, 26); 
+		lb.setBounds(95, 11 ,207 ,46); 
 		lb.setLayout(null);
 
 		lb.setForeground(Color.white);
-		lb.setFont(new Font("Serif", Font.BOLD, 20));     
+		lb.setFont(new Font("맑은 고딕", Font.BOLD, 27));     
 		this.add(lb);
-
+		
+          
 		JPanel panel2 = new JPanel();
-		panel2.setSize(445,73);
+		panel2.setSize(445,70);
 		panel2.setLayout(null);
-		panel2.setBackground(new Color(100, 149, 237));
+		panel2.setBackground(new Color(102, 204, 204));
 
+        Image logoutImg = new ImageIcon("images/logout sky.png").getImage().getScaledInstance(50,50,0);
+        JButton logOut = new JButton(new ImageIcon(logoutImg));
+        logOut.setLocation(380,10);
+        logOut.setSize(50,50);
+        logOut.addMouseListener(new MyMouseAdapter5());
+        panel2.add(logOut);
+        
+        
+        Image backImg = new ImageIcon("images/back sky.png").getImage().getScaledInstance(50,50,0);
+        JButton back = new JButton(new ImageIcon(backImg));
+        back.setLocation(10,10);
+        back.setSize(50,50);
+        back.addMouseListener(new MyMouseAdapter6());
+        panel2.add(back);
 
-		JButton jbt2 = new JButton("←");
-		jbt2.setBounds(14,25,50,27);
-		jbt2.addMouseListener(new MyMouseAdapter5());
-		panel2.add(lb);
-		panel2.add(jbt2);
-		this.add(panel2);
-
-
+        this.add(panel2);
 
 		JPanel panel3 = new JPanel();
 		panel3.setBounds(0, 685, 450, 78);
@@ -103,37 +111,42 @@ public class MyFridge extends JPanel{
 
 		});
 	}
-	class MyMouseAdapter1 extends MouseAdapter{
+	class MyMouseAdapter1 extends MouseAdapter{//재료입력
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			ChangePanel.changePanel(mf, myFridge, new InputIngred(mf));
 		}
 	}
-	class MyMouseAdapter2 extends MouseAdapter{
+	class MyMouseAdapter2 extends MouseAdapter{//재료확인
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			ChangePanel.changePanel(mf, myFridge, new CheckIngred(mf)); 
 		}
 	}
-	class MyMouseAdapter3 extends MouseAdapter{
+	class MyMouseAdapter3 extends MouseAdapter{//히스토리
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			ChangePanel.changePanel(mf, myFridge, new History(mf));
 		}
 	}
-	class MyMouseAdapter4 extends MouseAdapter{
+	class MyMouseAdapter4 extends MouseAdapter{//회원정보
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			ChangePanel.changePanel(mf, myFridge, new ModiMember(mf));
 		}
 	}
-	class MyMouseAdapter5 extends MouseAdapter{
+	class MyMouseAdapter5 extends MouseAdapter{//로그인페이지
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			ChangePanel.changePanel(mf, myFridge, new LoginPage(mf)); 
+		}          
+	}
+	class MyMouseAdapter6 extends MouseAdapter{//메인메뉴(뒤로가기)
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			ChangePanel.changePanel(mf, myFridge, new MainMenu(mf)); 
 		}          
 	}
-
 
 
 }

@@ -1,8 +1,10 @@
 package view;
 
 import java.awt.Color;
+
 import java.awt.Dialog;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -21,6 +23,7 @@ import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -31,7 +34,6 @@ import javax.swing.JTextField;
 
 import model.vo.User;
 import model.dao.UserDao;
-import view.MainMenu.MyMouseAdapter5;
 
 public class ModiMember extends JPanel{
 
@@ -54,9 +56,9 @@ public class ModiMember extends JPanel{
 
 		this.setBounds(0,0,445,770);
 		this.setLayout(null);
-		JLabel lb1 = new JLabel("회원정보 수정");
-		lb1.setBounds(120, 50, 200 ,100);
-		lb1.setFont(new Font("Serif", Font.BOLD, 30));  
+		JLabel lb1 = new JLabel("회원정보");
+		lb1.setBounds(25, 40, 200 ,100);
+		lb1.setFont(new Font("Serif", Font.BOLD, 20));  
 		JLabel lb2 = new JLabel("ID");
 		lb2.setBounds(60, 155, 27, 50);
 		lb2.setFont(new Font("Serif", Font.BOLD, 20));
@@ -84,7 +86,9 @@ public class ModiMember extends JPanel{
 		this.add(lb6);
 		this.add(lb7);
 
-
+      
+		
+		
 
 		JPanel panel = new JPanel();
 		panel.setSize(90,50);
@@ -100,7 +104,7 @@ public class ModiMember extends JPanel{
 		jbt1.setBackground(Color.orange);
 
 
-		jbt1.addMouseListener(new MyMouseAdapter() {
+		jbt1.addMouseListener(new MyMouseAdapter1() {
 
 
 			@Override        
@@ -180,22 +184,33 @@ public class ModiMember extends JPanel{
 
 		JPanel panel2 = new JPanel();
 		panel2.setLocation(0,0);  
-		panel2.setSize(445,73);
+		panel2.setSize(445,70);
 		panel2.setLayout(null);
-		panel2.setBackground(new Color(100, 149, 237));
+		panel2.setBackground(new Color(102, 204, 204));
 		this.add(panel2);
 
 
 		JLabel label = new JLabel("회원정보 수정");
-		label.setFont(new Font("Serif", Font.BOLD, 20)); 
+		label.setFont(new Font("맑은 고딕", Font.BOLD, 27)); 
 		label.setForeground(Color.WHITE);
-		label.setBounds(64, 25, 150, 26);
+		label.setBounds(95, 11 ,207, 46);
 		panel2.add(label);
 
-		JButton jbt2 = new JButton("←");
-		jbt2.setBounds(14,25,50,27);
-		panel2.add(jbt2);
-		jbt2.addMouseListener(new MyMouseAdapter());
+		Image person = new ImageIcon("images/person sky.png").getImage().getScaledInstance(50,50,0);
+	      JButton logIn = new JButton(new ImageIcon(person));
+	      logIn.setLocation(380,10);
+	      logIn.setSize(50,50);
+	      logIn.addMouseListener(new MyMouseAdapter1());
+	      panel2.add(logIn);
+	      
+	      
+	      
+	      Image backImg = new ImageIcon("images/back sky.png").getImage().getScaledInstance(50,50,0);
+	      JButton back = new JButton(new ImageIcon(backImg));
+	      back.setLocation(10,10);
+	      back.setSize(50,50);
+          back.addMouseListener(new MyMouseAdapter2());
+	      panel2.add(back);
 
 		jtf1 = new JTextField();
 
@@ -262,7 +277,7 @@ public class ModiMember extends JPanel{
 		JButton jbt3 = new JButton("회원 탈퇴");
 		jbt3.setBounds(325, 700, 96, 35);
 		jbt3.setBackground(Color.LIGHT_GRAY);
-		jbt3.addMouseListener(new MyMouseAdapter2());
+		jbt3.addMouseListener(new MyMouseAdapter3());
 		this.add(jbt3);
 	}
 
@@ -270,16 +285,26 @@ public class ModiMember extends JPanel{
 	//TextField passwordText = new TextField(6);
 	//passwordText.setEchoChar('*'); 안정성떨어질거같음   
 	
-	class MyMouseAdapter extends MouseAdapter{//My냉장고로 돌아가기
+	class MyMouseAdapter1 extends MouseAdapter{//메인메뉴로
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			ChangePanel.changePanel(mf, modiMember, new MainMenu(mf));
+		}
+	}
+	class MyMouseAdapter2 extends MouseAdapter{//My냉장고로 돌아가기(뒤로가기)
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			ChangePanel.changePanel(mf, modiMember, new MyFridge(mf));
 		}
 	}
-	class MyMouseAdapter2 extends MouseAdapter{//회원탈퇴로
+	class MyMouseAdapter3 extends MouseAdapter{//회원탈퇴로
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			ChangePanel.changePanel(mf, modiMember, new QuitMember(mf));
 		}
 	}
 }
+
+	
+
+
