@@ -10,6 +10,8 @@ public class Recipe implements java.io.Serializable {
 	private String recipePicAdr;
 	private ArrayList recipeIngred;
 	
+	public Recipe() {}
+	
 	public Recipe(String recipeName, String recipeCont, String recipePicAdr, ArrayList recipeIngred) {
 		super();
 		this.recipeName = recipeName;
