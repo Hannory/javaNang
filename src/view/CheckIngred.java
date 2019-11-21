@@ -52,16 +52,16 @@ public class CheckIngred extends JPanel{
 
 
 
+		
+		
+		
+	
+		
+		
+		
+		
 
-//		//재료확인용 변수 (이미지 경로 설정용)
-//		
-//		int x = 0;
-//		if(Run.mStatic.getIngreds().contains(2)) 
-//		{
-//			x = 2;
-//		}
-		/////////////////버튼 생성 및 바운드 설정, 버튼 이미지 준비 및 이미지 넣기, 마우스클릭드 이벤트 처리//////////////////////////
-//		System.out.println("x : " + x);
+		///////////////버튼 생성 및 바운드 설정, 버튼 이미지 준비 및 이미지 넣기, 마우스클릭드 이벤트 처리//////////////////////////
 		Image imgBtn1 = new ImageIcon("images/sim/btnImg/meatBtnImg/meat09.PNG").getImage().getScaledInstance(145, 200, 0);
 		JButton btn1 = new JButton(new ImageIcon(imgBtn1));
 		btn1.setBounds(0,0,145,200);
@@ -72,12 +72,6 @@ public class CheckIngred extends JPanel{
 				
 				
 				
-				//////삭제할것
-				
-				System.out.println();
-				
-				
-				///////////
 				
 				
 				
@@ -253,6 +247,37 @@ public class CheckIngred extends JPanel{
 
 
 	}//constructor
+	
+	
+	
+	
+	//현재 재료를 확인하여 값(이미지 경로가 될 것)들을 반환하는 메소드
+	public String checkNowIngred() {
+		
+		
+		
+		
+		//밸류만 읽어서
+		//밸류들을  전환
+		//스트링을 넘겨줌
+
+		
+		
+		
+		
+		return null;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 
 

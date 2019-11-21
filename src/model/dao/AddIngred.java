@@ -20,6 +20,7 @@ public class AddIngred{
 	String nowUser = AllRecipe.loginId;
 	HashMap tempMap = new HashMap();
 	User tempU = new User();
+	
 	public static TreeSet ingredStatic = new TreeSet();			//이 라인 없애고 로그인 단계에서 스태틱에 선언하기	//라인32 참고
 	
 	
