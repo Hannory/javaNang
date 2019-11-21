@@ -30,9 +30,6 @@ public class RecMgt {
 	
 	
 	public void categorizing() {
-		//MgrRecipe[] rar = new MgrRecipe[recipeLength];
-		/*TreeSet userIngred01 = ud.fileOpen(0);
-		TreeSet userIngred02 = ud.fileOpen(1);*/
 		TreeSet userIngred = ud.userIngred();
 		//TreeSet userIngred01 = AllRecipe.loginId;
 		

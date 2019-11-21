@@ -23,42 +23,38 @@ public class MgrRecipeDao {
 	
 	//이미 수동 레시피 정보가 dat 파일에 저장되어 있어, 추가로 Recommend에서 하기 메소드를 불러오지 않게 주석처리함.
 	public void fileSave() {
-		//요리1
+		//짜장면
 		ArrayList rcIngred01 = new ArrayList();
-		rcIngred01.add(1009);
-		rcIngred01.add(2004);
+		rcIngred01.add(5005);	//면(도넛)
+		rcIngred01.add(6006);	//짜장소스(요구르트)
 		
-		//요리2
+		//까르보나라
 		ArrayList rcIngred02 = new ArrayList();
-		rcIngred02.add(1009);
-		rcIngred02.add(2004);
-		rcIngred02.add(3010);
+		rcIngred02.add(5005);	//면(도넛)		
+		rcIngred02.add(6002);	//파마산 치즈
+		rcIngred02.add(6005);	//모짜렐라 치즈
 		
-		//요리3
+		//토마토 스파게티
 		ArrayList rcIngred03 = new ArrayList();
-		rcIngred03.add(1009);
-		rcIngred03.add(2004);
-		rcIngred03.add(4001);
-		rcIngred03.add(4002);
-		rcIngred03.add(4003);
+		rcIngred03.add(5005);	//면(도넛)		
+		rcIngred03.add(4004);	//토마토(포도)
+		rcIngred03.add(6002);	//파마산 치즈
+		rcIngred03.add(6005);	//모짜렐라 치즈
 		
-		//요리4
+		//찐감자
 		ArrayList rcIngred04 = new ArrayList();
-		rcIngred04.add(1009);
+		rcIngred04.add(3004);
 		
-		
-		//요리5
+		//치즈볼
 		ArrayList rcIngred05 = new ArrayList();
-		rcIngred05.add(1009);
-		rcIngred05.add(2004);
-		rcIngred05.add(2005);
-		rcIngred05.add(3001);
+		rcIngred05.add(3004);
+		rcIngred05.add(6002);	//파마산 치즈
+		rcIngred05.add(6005);	//모짜렐라 치즈
 		
-		//요리6
+		//감자당근볶음
 		ArrayList rcIngred06 = new ArrayList();
-		rcIngred06.add(1009);
-		rcIngred06.add(2004);
-		rcIngred06.add(2005);
+		rcIngred06.add(3001);
+		rcIngred06.add(3004);
 		
 		//요리 사진들
 		
@@ -71,12 +67,12 @@ public class MgrRecipeDao {
 		
 		recipeList.add(new Recipe("짜장면", "documents/recipe/black noodle.txt", rcPic1, rcIngred01));
 		recipeList.add(new Recipe("까르보나라", "documents/recipe/steamed potato.txt", rcPic2, rcIngred02));
-		recipeList.add(new Recipe("토마토 스파게티", "먼저 토마토를 사세요", rcPic3, rcIngred03));
+		recipeList.add(new Recipe("토마토 스파게티", "documents/recipe/steamed potato.txt", rcPic3, rcIngred03));
 		recipeList.add(new Recipe("찐감자", "documents/recipe/steamed potato.txt", rcPic4, rcIngred04));
-		recipeList.add(new Recipe("치즈볼", "치즈를 녹입니다.", rcPic5, rcIngred05));
-		recipeList.add(new Recipe("감자당근볶음", "감자와 당근을 채썹니다.", rcPic6, rcIngred06));
+		recipeList.add(new Recipe("치즈볼", "documents/recipe/steamed potato.txt", rcPic5, rcIngred05));
+		recipeList.add(new Recipe("감자당근볶음", "documents/recipe/steamed potato.txt", rcPic6, rcIngred06));
 		
-		
+		/*
 		Scanner sc = new Scanner(System.in);
 		System.out.print("요리명 : ");
 		String rcName = sc.nextLine();
@@ -84,7 +80,7 @@ public class MgrRecipeDao {
 		String rcContAdr = sc.nextLine();
 		System.out.print("레시피 사진 이미지파일 주소 : ");
 		String rcPicAdr = sc.nextLine();
-		
+		*/
 		
 		try(ObjectOutputStream objOut = new ObjectOutputStream(new FileOutputStream("MgrRecipe.dat"));) {
 			

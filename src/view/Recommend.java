@@ -50,7 +50,8 @@ public class Recommend extends JPanel {
 		
 		//User, Recipe 정보 저장   ->  향후 입력 값으로 대체
 		//ud.fileSave();
-		//mrd.fileSave();
+		mrd.fileSave();
+		System.out.println("수동레시피 새로 저장");
 		
 		//바탕 패널
 		this.setSize(445, 770);
