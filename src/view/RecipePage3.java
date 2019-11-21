@@ -39,11 +39,11 @@ public class RecipePage3 extends JPanel {
 		bar.setLocation(0, 0);
 		bar.setSize(445, 70);
 		bar.setLayout(null);
-		bar.setBackground(new Color(52, 152, 219));
+		bar.setBackground(new Color(102, 204, 204));
 		
-		Font font = new Font("MD¾ÆÆ®Ã¼", Font.BOLD, 25);
-		Font font2 = new Font("MD¾ÆÆ®Ã¼", Font.BOLD, 20);
-		Font font3 = new Font("MD¾ÆÆ®Ã¼", Font.BOLD, 15);
+		Font font = new Font("¸¼Àº °íµñ", Font.BOLD, 27);
+		Font font2 = new Font("¸¼Àº °íµñ", Font.BOLD, 20);
+		Font font3 = new Font("¸¼Àº °íµñ", Font.BOLD, 15);
 		
 		JLabel barTitle = new JLabel(rc.getRecipeName());
 		barTitle.setLocation(80, 10);
@@ -51,7 +51,7 @@ public class RecipePage3 extends JPanel {
 		barTitle.setForeground(Color.WHITE);
 		barTitle.setFont(font);
 		
-		Image backImg = new ImageIcon("images/park/back blue.png").getImage().getScaledInstance(50,  50,  0);
+		Image backImg = new ImageIcon("images/back sky.png").getImage().getScaledInstance(50,  50,  0);
 		JButton back = new JButton(new ImageIcon(backImg));
 		back.setLocation(10, 10);
 		back.setSize(50, 50);
@@ -66,7 +66,7 @@ public class RecipePage3 extends JPanel {
 			
 		});
 
-		Image person = new ImageIcon("images/park/person in blue.png").getImage().getScaledInstance(50, 50, 0);
+		Image person = new ImageIcon("images/person sky.png").getImage().getScaledInstance(50, 50, 0);
 		JButton logIn = new JButton(new ImageIcon(person));
 		logIn.setLocation(380, 10);
 		logIn.setSize(50, 50);
