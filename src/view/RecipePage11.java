@@ -1,16 +1,10 @@
 package view;
-import java.awt.Color;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JLabel;
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -18,25 +12,27 @@ import java.io.IOException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
 import javax.swing.ScrollPaneConstants;
 
 import model.vo.Recipe;
 
 @SuppressWarnings("serial")
-public class RecipePage extends JPanel {
+public class RecipePage11 extends JPanel {
 
 	MainFrame mf;
 	JPanel rp;
 	JPanel lp;
-	//private ChangePanel cp;
+	private ChangePanel cp;
 	
 		
-		public RecipePage(MainFrame mf, JPanel lp) {
+		public RecipePage11(MainFrame mf, JPanel lp) {
 			
 			this.mf = mf;
 			rp = this;
-			this.lp = lp;
 			
 			this.setSize(445, 770);
 			this.setLayout(null);
@@ -51,7 +47,7 @@ public class RecipePage extends JPanel {
 			Font font2 = new Font("¸¼Àº °íµñ", Font.BOLD, 20);
 			Font font3 = new Font("¸¼Àº °íµñ", Font.BOLD, 15);
 			
-			JLabel barTitle = new JLabel("ÀÚÀå¸é");
+			JLabel barTitle = new JLabel("±î¸£º¸³ª¶ó");
 			barTitle.setLocation(80, 10);
 			barTitle.setSize(200, 50);
 			barTitle.setForeground(Color.WHITE);
@@ -62,13 +58,11 @@ public class RecipePage extends JPanel {
 			back.setLocation(10, 10);
 			back.setSize(50, 50);
 			
-			
-			
-			back.addMouseListener(new MouseAdapter() {
+			back.addActionListener(new ActionListener() {
 
 				@Override
-				public void mouseClicked(MouseEvent e) {
-					ChangePanel.changePanel(mf, rp, new AllRecipe(mf,lp));
+				public void actionPerformed(ActionEvent e) {
+					cp.changePanel(mf, rp, new AllRecipe(mf,lp));
 					
 				}
 				
@@ -83,13 +77,11 @@ public class RecipePage extends JPanel {
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					
 					if(AllRecipe.login == true) {
 						
 						ChangePanel.changePanel(mf, rp, new MyFridge(mf));
 					}else {
-						ChangePanel.changePanel(mf, rp, new Agree(mf));
-					}
+						ChangePanel.changePanel(mf, rp, new LoginPage(mf));					}
 					
 				}
 				
@@ -101,7 +93,7 @@ public class RecipePage extends JPanel {
 			panel.setSize(445, 307);
 			panel.setLayout(null);
 			
-			Image photo = new ImageIcon("images/park/black noodle.jpg").getImage().getScaledInstance(445, 307, 0);
+			Image photo = new ImageIcon("images/park/carbonara.jpg").getImage().getScaledInstance(445, 307, 0);
 			JLabel label = new JLabel(new ImageIcon(photo));
 			label.setSize(445, 307);
 			
@@ -146,7 +138,7 @@ public class RecipePage extends JPanel {
 		private void TextFromFile(JTextPane tp) {
 			FileReader fr = null;
 			try {
-				String terms = "documents/recipe/black noodle.txt";
+				String terms = "documents/recipe/carbonara.txt";
 				
 				
 				File file = new File(terms);
