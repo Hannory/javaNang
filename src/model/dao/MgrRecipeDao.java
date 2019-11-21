@@ -25,18 +25,18 @@ public class MgrRecipeDao {
 	public void fileSave() {
 		//짜장면
 		ArrayList rcIngred01 = new ArrayList();
-		rcIngred01.add(5005);	//면(도넛)
+		rcIngred01.add(5006);	//면(도넛)
 		rcIngred01.add(6006);	//짜장소스(요구르트)
 		
 		//까르보나라
 		ArrayList rcIngred02 = new ArrayList();
-		rcIngred02.add(5005);	//면(도넛)		
+		rcIngred02.add(5006);	//면(도넛)		
 		rcIngred02.add(6002);	//파마산 치즈
 		rcIngred02.add(6005);	//모짜렐라 치즈
 		
 		//토마토 스파게티
 		ArrayList rcIngred03 = new ArrayList();
-		rcIngred03.add(5005);	//면(도넛)		
+		rcIngred03.add(5006);	//면(도넛)		
 		rcIngred03.add(4004);	//토마토(포도)
 		rcIngred03.add(6002);	//파마산 치즈
 		rcIngred03.add(6005);	//모짜렐라 치즈
