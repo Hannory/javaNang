@@ -1,4 +1,3 @@
-//메인메뉴  회원정보 버튼 -> 회원정보로 넘어가게
 package view;
 
 import java.awt.Color;
@@ -21,16 +20,15 @@ import view.ModiMember.MyMouseAdapter;
 
 public class MyFridge extends JPanel{
 
-	 MainFrame mf;
-     JPanel myFridge;
-     
+	MainFrame mf;
+	JPanel myFridge;
+
 	public MyFridge(MainFrame mf) {
 		this.mf = mf;
 		myFridge = this;
 
 		this.setBounds(0,0,445,770);
 		this.setLayout(null);
-		//냉장고아이콘은 천천히바꾸자
 
 		JButton btn1 = new JButton("재료 입력");
 		btn1.setBounds(140, 170, 180, 50);
@@ -55,7 +53,6 @@ public class MyFridge extends JPanel{
 		this.add(btn2);
 		this.add(btn3);
 		this.add(btn4);
-		//이것들도 패널에 붙여야지?
 		mf.add(this);
 
 
@@ -71,8 +68,8 @@ public class MyFridge extends JPanel{
 		panel2.setSize(445,73);
 		panel2.setLayout(null);
 		panel2.setBackground(new Color(100, 149, 237));
- 
-		
+
+
 		JButton jbt2 = new JButton("←");
 		jbt2.setBounds(14,25,50,27);
 		jbt2.addMouseListener(new MyMouseAdapter5());
@@ -80,31 +77,31 @@ public class MyFridge extends JPanel{
 		panel2.add(jbt2);
 		this.add(panel2);
 
-	
 
-	JPanel ad = new JPanel();
-	ad.setBounds(0, 685, 450, 78);
-	add(ad);
-	ad.setLayout(null);
-	
-	JButton adBtn = new JButton(new ImageIcon(new ImageIcon("images/won/ad.PNG").getImage().getScaledInstance(450, 78, 0)));
-	adBtn.setBounds(-10, 0, 455, 88);
-	ad.add(adBtn);
-	
-	
-	adBtn.addMouseListener(new MouseAdapter() {
-		@Override
-		public void mouseClicked(MouseEvent e) {
-			try { Desktop.getDesktop().browse(new URI("https://www.iei.or.kr/main/main.kh")); 
-			} catch (IOException e1) {
-			 e1.printStackTrace(); 
-			} catch (URISyntaxException e1){ 
-			 e1.printStackTrace(); }
 
-		
-		}
-		
-	});
+		JPanel panel3 = new JPanel();
+		panel3.setBounds(0, 685, 450, 78);
+		add(panel3);
+		panel3.setLayout(null);
+
+		JButton btn5 = new JButton(new ImageIcon(new ImageIcon("images/won/ad.PNG").getImage().getScaledInstance(450, 78, 0)));
+		btn5.setBounds(-10, 0, 455, 88);
+		panel3.add(btn5);
+
+
+		btn5.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				try { Desktop.getDesktop().browse(new URI("https://www.iei.or.kr/main/main.kh")); 
+				} catch (IOException e1) {
+					e1.printStackTrace(); 
+				} catch (URISyntaxException e1){ 
+					e1.printStackTrace(); }
+
+
+			}
+
+		});
 	}
 	class MyMouseAdapter1 extends MouseAdapter{
 		@Override
@@ -136,7 +133,7 @@ public class MyFridge extends JPanel{
 			ChangePanel.changePanel(mf, myFridge, new MainMenu(mf)); 
 		}          
 	}
-	
-	
+
+
 
 }
