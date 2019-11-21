@@ -7,8 +7,8 @@ public class Run {
 
 	public static void main(String[] args) {
 		new MainFrame();
-		new AddCont().saveFile2();
-		new AddCont().openFile2();
+		//new AddCont().saveFile2();
+		//new AddCont().openFile2();
 	}
 
 }
