@@ -17,19 +17,15 @@ import view.manager.MainPage.MyItem2;
 //
 public class SecondPage_1 extends JPanel {
 
-	JFrame mf;
+	MainFrame mf;
 	SecondPage_1 mp;
 
-
-
-	public SecondPage_1(JFrame mf) {
+	public SecondPage_1(MainFrame mf) {
 		
 		//필드값 초기화 
 		this.mf=mf;
 		this.mp=this;
-		
-		////
-		
+			
 		setBackground(UIManager.getColor("CheckBox.background"));
 		setLayout(null);
 		setSize(445,770);
@@ -55,9 +51,9 @@ public class SecondPage_1 extends JPanel {
 		button_1.setBackground(new Color(70, 130, 180));
 		button_1.setBounds(33, 32, 61, 40);
 		panel_1.add(button_1);
-		//뒤로가기 버튼 
+	
 
-		//안되면 이거로 바꾸기! 내가 추가한 부분 
+
 		button_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -66,8 +62,6 @@ public class SecondPage_1 extends JPanel {
 		});
 		
 		
-		  
-
 		JPanel panel_2 = new JPanel();
 		panel_2.setBounds(14, 323, 404, 317);
 		add(panel_2);
@@ -80,7 +74,6 @@ public class SecondPage_1 extends JPanel {
 		mf.repaint();
 
 	
-
 		JPanel panel_3 = new JPanel();
 		panel_3.setBounds(14, 112, 404, 199);
 		add(panel_3);
@@ -110,10 +103,7 @@ public class SecondPage_1 extends JPanel {
 
 		mf.repaint();
 
-
 	}
-
-		
-			}
+	}
 
 	

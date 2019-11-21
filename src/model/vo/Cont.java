@@ -6,7 +6,7 @@ import java.util.Date;
 public class Cont implements Serializable{
 	
 //	private String userId;
-//	private String recipeName;
+	private String recipeName;
 	private String recipeCont;
 //	private String recipeFile;
 //	private int boardNo;
@@ -21,7 +21,7 @@ public class Cont implements Serializable{
 		
 		super();  
 //		this.userId = userId;
-//		this.recipeName = recipeName;
+		this.recipeName = recipeName;
 		this.recipeCont = recipeCont;
 //		this.recipeFile = recipeFile;
 //		this.boardNo = boardNo;
@@ -33,12 +33,11 @@ public class Cont implements Serializable{
 //		return userId;
 //	}
 
-//	public String getRecipeName() {
-//		return recipeName;
-//	}
+	public String getRecipeName() {
+		return recipeName;
+	}
 
 	
-
 	public String getRecipeCont() {
 		return recipeCont;
 	}
@@ -63,12 +62,17 @@ public class Cont implements Serializable{
 //		this.userId = userId;
 //	}
 
-//	public void setRecipeName(String recipeName) {
-//		this.recipeName = recipeName;
-//	}
+	public void setRecipeName(String recipeName) {
+		this.recipeName = recipeName;
+	}
 
 	public void setRecipeCont(String recipeCont) {
 		this.recipeCont = recipeCont;
+	}
+
+	@Override
+	public String toString() {
+		return "Cont [recipeName=" + recipeName + ", recipeCont=" + recipeCont + "]";
 	}
 
 
@@ -89,10 +93,8 @@ public class Cont implements Serializable{
 //		this.boardDate = boardDate;
 //	}
 
-	@Override
-	public String toString() {
-		return "Cont [recipeCont=" + recipeCont + "]";
-	}
+
+	//total
 	
 //	@Override
 //	public String toString() {
@@ -100,8 +102,4 @@ public class Cont implements Serializable{
 //				+ recipeFile + ", boardNo=" + boardNo + ", readCount=" + readCount + ", boardDate=" + boardDate + "]";
 //	}
 
-	
-	
-	
-	
 }

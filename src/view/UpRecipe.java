@@ -33,8 +33,8 @@ public class UpRecipe extends JPanel {
 	MainFrame mf;
 	JPanel mp;
 	JTextField recipeCont;
+	JTextField recipeName;
 
-//
 
 	public UpRecipe(MainFrame mf) {
 
@@ -42,7 +42,7 @@ public class UpRecipe extends JPanel {
 		this.mf=mf; 
 		this.mp=this;
 		
-		//전체 패널(제일 큰 패널) 기본 설정 	//색 설정
+		//전체 패널(제일 큰 패널) 기본 설정
 		this.setSize(445,770);
 		this.setBackground(new Color(190,190,190));
 		setLayout(null);
@@ -78,7 +78,7 @@ public class UpRecipe extends JPanel {
 		panel2.setLayout(null);
 
 		JButton button1 = new JButton("공유하기");
-		button1.setBounds(76,632,129,41);
+		button1.setBounds(175,636,129,41);
 		panel2.add(button1);
 		button1.setForeground(Color.DARK_GRAY);
 		button1.setFont(new Font("Dialog", Font.BOLD, 21));
@@ -87,23 +87,20 @@ public class UpRecipe extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				saveFile();
+				saveFile2();
 			}
 		});
 		
-		//공유하기 누르면 upMyRecipe가 나와야함!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-		// 뒤로가기 버튼 
+		
 		button1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				ChangePanel.changePanel(mf, mp, new UpMyRecipe(mf )); //뒤로가기 버튼을 누르면 메인 메뉴가 나와야 함! 
+				ChangePanel.changePanel(mf, mp, new UpMyRecipe(mf)); 
 			}
 		});
 
-		mf.repaint();
-
+		mf.repaint();		
 		
-		
-
 		JButton button2 = new JButton("파일선택");
 		button2.setBounds(305,562,117,37);
 		panel2.add(button2);
@@ -180,39 +177,27 @@ public class UpRecipe extends JPanel {
 
 		//텍스트 필드 추가
 		JTextField recipeName = new JTextField();
+		this.recipeName =recipeName;
 		recipeName.setBounds(116,220,306,35);
 		panel2.add(recipeName);
-
+		saveFile2();
+		
 		JTextField recipeCont = new JTextField();
 		this.recipeCont = recipeCont;
 		recipeCont.setBounds(111,278,311,235);
 		panel2.add(recipeCont);
 		saveFile();
+		
 
 		JTextField recipefile = new JTextField();
 		recipefile.setBounds(112,562,179,32);
 		panel2.add(recipefile);
-		
-		//레시피 리스트 페이지로 감
-		JButton button = new JButton("레시피 리스트");
-		button.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				ChangePanel.changePanel(mf, mp, new RecipeList(mf));
-			}
-		});
-		
-		button.setForeground(Color.DARK_GRAY);
-		button.setFont(new Font("Dialog", Font.BOLD, 21));
-		button.setBackground(Color.WHITE);
-		button.setBounds(243, 632, 179, 41);
-		panel2.add(button);
 
-		// 뒤로가기 버튼 
+		// 뒤로가기 
 		button0.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				ChangePanel.changePanel(mf, mp, new MainMenu(mf )); //뒤로가기 버튼을 누르면 메인 메뉴가 나와야 함! 
+				ChangePanel.changePanel(mf, mp, new MainMenu(mf )); 
 			}
 		});
 
@@ -228,7 +213,7 @@ public class UpRecipe extends JPanel {
 		button1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked (MouseEvent e) {
-				JOptionPane.showMessageDialog(null, "등록이 완료되었습니다. 승인확인이 되는데 2-3일 소요됩니다");
+				JOptionPane.showMessageDialog(null, "등록이 완료되었습니다. 승인 요청에 2-3일 소요됩니다.");
 			}
 		});
 
@@ -236,9 +221,10 @@ public class UpRecipe extends JPanel {
 }
 	
 	
+	//파일찾기
 	public String File(){
 
-		String folderPath = "";
+		String folderPath = " ";
 
 		JFileChooser Photo = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
 		Photo.setCurrentDirectory(new File("/")); 
@@ -255,10 +241,12 @@ public class UpRecipe extends JPanel {
 			folderPath = Photo.getSelectedFile().toString();
 		}else if(returnVal == JFileChooser.CANCEL_OPTION){
 			System.out.println("cancel"); 
-			folderPath = "";
+			folderPath =  " ";
 		}
 
+
 		return folderPath;
+		
 	}
 
 	public void saveFile() {
@@ -267,16 +255,16 @@ public class UpRecipe extends JPanel {
 		
 		try {
 
-			oop = new ObjectOutputStream (new FileOutputStream("recipeTitle.txt"));
+			oop = new ObjectOutputStream (new FileOutputStream("recipeCont.txt"));
 			oop.writeObject(this.recipeCont.getText());
 
 			oop.flush();
 
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+	
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 
 		}finally {
@@ -284,12 +272,36 @@ public class UpRecipe extends JPanel {
 			try {
 				oop.close();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
+
 				e.printStackTrace();
 			}
 
 		}
 
+	}
+	
+	
+	public void saveFile2() {
+		ObjectOutputStream oop2 =null;
+
+			try {
+				oop2 = new ObjectOutputStream(new FileOutputStream("recipeTitle.txt"));
+				oop2.writeObject(this.recipeName.getText());
+				oop2.flush();
+			} catch (FileNotFoundException e) {
+
+				e.printStackTrace();
+			} catch (IOException e) {
+		
+				e.printStackTrace();
+			}finally {
+				try {
+					oop2.close();
+				}catch(IOException e) {
+					e.printStackTrace();
+					
+				}
+			}
 	}
 }
 

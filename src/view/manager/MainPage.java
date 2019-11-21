@@ -21,11 +21,11 @@ import javax.swing.UIManager;
 
 public class MainPage extends JPanel {
 ////
-	JFrame mf;
+	MainFrame mf;
 	JPanel mp; 
 
  
-	public MainPage(JFrame mf) {
+	public MainPage(MainFrame mf) {
 
 		//필드값 초기화 
 		this.mf = mf;
