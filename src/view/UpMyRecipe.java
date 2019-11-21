@@ -16,14 +16,18 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
+import java.awt.SystemColor;
+import javax.swing.JLabel;
 
 public class UpMyRecipe extends JPanel {
 	MainFrame mf;
 	JPanel mp;
 	JTextArea recipeCont2;
 	JTextArea recipeName2;
+	JLabel recipefile2;
 	String str;
 	String str2;
+	String str3;
 	
 
 
@@ -41,7 +45,7 @@ public class UpMyRecipe extends JPanel {
 
 		//»ó´Ü ÆÐ³Î ¼³Á¤
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(70, 130, 180));
+		panel.setBackground(new Color(102, 204, 204));
 		panel.setBounds(0,0,445,70);
 		mp.add(panel);
 		panel.setLayout(null);
@@ -53,38 +57,40 @@ public class UpMyRecipe extends JPanel {
 		mp.add(panel2);
 		panel.setLayout(null);
 
-		JButton button0 = new JButton("<<");
-		button0.setBounds(29,22,58,33);
+		JButton button0 = new JButton("\u2190");
+		button0.setFont(new Font("±¼¸²", Font.BOLD, 20));
+		button0.setForeground(SystemColor.window);
+		button0.setBounds(14,7,61,58);
 		panel.add(button0);
-		button0.setBackground(new Color(70,130,180));
+		button0.setBackground(new Color(72, 209, 204));
 
 		JTextPane textpane4 = new JTextPane();
 		panel.add(textpane4);
 		textpane4.setBounds(133,15,177,43);
 		textpane4.setEditable(false);
-		textpane4.setBackground(new Color(70,130,180));
+		textpane4.setBackground(new Color(102, 204, 204));
 		textpane4.setForeground(Color.white);
-		textpane4.setFont(new Font("±¼¸²",Font.PLAIN,32));
+		textpane4.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 27));
 		textpane4.setText("\uB098\uC758 \uB808\uC2DC\uD53C" );
 		panel2.setLayout(null);
 
 		JTextPane textpane1= new JTextPane();
-		textpane1.setBounds(28,266,69,35);
+		textpane1.setBounds(28,273,69,35);
 		panel2.add(textpane1);
 		textpane1.setText("¿ä¸®¸í"); 
-		textpane1.setFont(new Font("¸¼Àº°íµñ",Font.BOLD,20));
+		textpane1.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 21));
 
 		JTextPane textpane2 = new JTextPane();
 		textpane2.setBounds(28,320,69,35);
 		panel2.add(textpane2);
 		textpane2.setText("·¹½ÃÇÇ");
-		textpane2.setFont(new Font("¸¼Àº°íµñ",Font.BOLD,20));
+		textpane2.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 21));
 
 		JTextPane textpane3= new JTextPane();
-		textpane3.setBounds(28,12,48,35);
+		textpane3.setBounds(28,22,48,35);
 		panel2.add(textpane3);
 		textpane3.setText("»çÁø");
-		textpane3.setFont(new Font("¸¼Àº°íµñ",Font.BOLD,20));
+		textpane3.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 21));
 
 
 		
@@ -132,21 +138,42 @@ public class UpMyRecipe extends JPanel {
 				e1.printStackTrace();
 			}
 		}
-
+		
+		ObjectInputStream oip3 = null;
+		try {
+			oip3 = new ObjectInputStream(new FileInputStream("recipefile.txt"));
+			this.str3 = (String) oip3.readObject();
+			
+		} catch (FileNotFoundException e1) {
+			
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			
+			e1.printStackTrace();
+		} catch (ClassNotFoundException e1) {
+			
+			e1.printStackTrace();
+		}finally {
+			try {
+				oip3.close();
+			}catch(IOException e1) {
+				e1.printStackTrace();
+			}
+		}
+		
+		
+		
 		//ÅØ½ºÆ® ÇÊµå Ãß°¡
 		
 		JTextArea recipeName2 = new JTextArea(this.str2);
+		recipeName2.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 23));
 		recipeName2.setBounds(111, 282, 306, 35);
 		panel2.add(recipeName2);
 		
 		JTextArea recipeCont2 = new JTextArea(this.str);
+		recipeCont2.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 17));
 		recipeCont2.setBounds(111, 338, 320, 290);
 		panel2.add(recipeCont2);
-
-
-		JTextField recipefile2= new JTextField();
-		recipefile2.setBounds(104,24,327,224);
-		panel2.add(recipefile2);
 		
 		JButton btnNewButton = new JButton("<<");
 		btnNewButton.setBounds(60, 661, 105, 27);
@@ -155,6 +182,10 @@ public class UpMyRecipe extends JPanel {
 		JButton btnNewButton_1 = new JButton(">>");
 		btnNewButton_1.setBounds(283, 661, 105, 27);
 		panel2.add(btnNewButton_1);
+		
+		JLabel recipefile2 = new JLabel(this.str3);
+		recipefile2.setBounds(103, 23, 328, 224);
+		panel2.add(recipefile2);
 		
 
 		// µÚ·Î°¡±â ¹öÆ° 

@@ -41,6 +41,21 @@ public class AddCont {
 			e.printStackTrace();
 		}
 	}
+	
+	public void saveFile3() {
+		ObjectOutputStream oop2 =null;
+		try {
+			oop2 = new ObjectOutputStream(new FileOutputStream("recipefile.txt"));
+			oop2.writeObject("»÷µåÀ§Ä¡");
+			oop2.flush();
+		}catch(IOException e) {
+			e.printStackTrace();
+		}try {
+			oop2.close();
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 public void openFile() {
 	ObjectInputStream oip = null;
@@ -79,6 +94,26 @@ public void openFile2() {
 	}finally {
 		try {
 			oip2.close();
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+	}
+}
+public void openFile3() {
+	ObjectInputStream oip3 =null;
+	try {
+		oip3 = new ObjectInputStream(new FileInputStream ("recipefile.txt"));
+		System.out.println(oip3.readObject().toString());
+		
+	}catch(FileNotFoundException e) {
+		e.printStackTrace();
+	}catch (IOException e) {
+		e.printStackTrace();
+	}catch(ClassNotFoundException e) {
+		e.printStackTrace();
+	}finally {
+		try {
+			oip3.close();
 		}catch(IOException e) {
 			e.printStackTrace();
 		}
