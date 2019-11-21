@@ -1,6 +1,8 @@
 package view;
 
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.FileInputStream;
@@ -39,6 +41,22 @@ public class LoginPage extends JPanel {
 		this.setBackground(Color.white);
 		setLayout(null);
 		
+		JPanel bar = new JPanel();
+		bar.setLocation(0, 0);
+		bar.setSize(445, 70);
+		bar.setLayout(null);
+		bar.setBackground(new Color(102, 204, 204));
+		bar.setLayout(null);
+		add(bar);
+		
+		
+		JLabel label = new JLabel("로그인");
+		label.setFont(new Font("맑은 고딕", Font.BOLD, 27));
+		label.setBackground(Color.WHITE);
+		label.setForeground(Color.white);
+		label.setBounds(70, 18, 146, 39);
+		bar.add(label);
+		
 		JLabel logo = new JLabel(new ImageIcon(new ImageIcon("images/won/java.PNG").getImage().getScaledInstance(130, 100, 0)));
 		logo.setBounds(140, 101, 150, 180);
 		add(logo);
@@ -69,6 +87,7 @@ public class LoginPage extends JPanel {
 		loginBtn.setBorderPainted(false);
 		add(loginBtn);
 		
+		
 		JButton signUpBtn = new JButton("회원가입");
 		signUpBtn.setBounds(151, 605, 150, 40);
 		//외각선 없애주기
@@ -76,14 +95,14 @@ public class LoginPage extends JPanel {
 		signUpBtn.setFocusPainted(false);
 		add(signUpBtn);
 		
-		JButton backBtn = new JButton("<-");
-		backBtn.setForeground(Color.WHITE);
-		backBtn.setBackground(Color.BLACK);
-		backBtn.setBounds(14, 49, 74, 27);
-		add(backBtn);
+		Image backImg = new ImageIcon("images/back sky.png").getImage().getScaledInstance(50,  50,  0);
+		JButton back = new JButton(new ImageIcon(backImg));
+		back.setLocation(10, 10);
+		back.setSize(50, 50);
+		bar.add(back);
 		
 		
-		backBtn.addMouseListener(new MouseAdapter() {
+		back.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				ChangePanel.changePanel(mf, lp, new AllRecipe(mf, lp));

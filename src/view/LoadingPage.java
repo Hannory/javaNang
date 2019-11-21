@@ -6,6 +6,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import model.vo.Recipe;
+
 public class LoadingPage extends JPanel {
 	
 	MainFrame mf;
