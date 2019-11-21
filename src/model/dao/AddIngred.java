@@ -14,6 +14,7 @@ import java.util.TreeSet;
 
 import model.vo.User;
 import view.AllRecipe;
+import view.LoginPage;
 
 public class AddIngred{
 
@@ -21,7 +22,7 @@ public class AddIngred{
 	HashMap tempMap = new HashMap();
 	User tempU = new User();
 	
-	public static TreeSet ingredStatic = new TreeSet();			//이 라인 없애고 로그인 단계에서 스태틱에 선언하기	//라인32 참고
+	
 	
 	
 	
@@ -30,10 +31,9 @@ public class AddIngred{
 	public void makeTreeSet(int ingredNo) {
 		
 		
-		//기존 유저는 냉장고 정보 유지해야하므로 로그인 단계에서 스태틱재료에 값 넣어줄것 	//라인23 참고
 		
-		ingredStatic.add(ingredNo);
-		System.out.println(ingredStatic.toString());
+		LoginPage.ingredStatic.add(ingredNo);
+		System.out.println(LoginPage.ingredStatic.toString());
 		
 		
 		
@@ -47,7 +47,7 @@ public class AddIngred{
 			tempMap = (HashMap) in.readObject();
 			tempU = (User) tempMap.get(nowUser);
 			
-			tempU.setUserIngred(ingredStatic);
+			tempU.setUserIngred(LoginPage.ingredStatic);
 			
 			tempMap.put(nowUser, tempU);
 			
