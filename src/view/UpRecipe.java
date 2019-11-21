@@ -5,18 +5,15 @@ import java.awt.Font;
 import java.awt.Panel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -25,16 +22,12 @@ import javax.swing.JTextPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.filechooser.FileSystemView;
 
-import model.vo.Cont;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-
 public class UpRecipe extends JPanel {
 	MainFrame mf;
 	JPanel mp;
 	JTextField recipeCont;
 	JTextField recipeName;
-
+	
 
 	public UpRecipe(MainFrame mf) {
 
@@ -192,6 +185,7 @@ public class UpRecipe extends JPanel {
 		JTextField recipefile = new JTextField();
 		recipefile.setBounds(112,562,179,32);
 		panel2.add(recipefile);
+	
 
 		// 뒤로가기 
 		button0.addMouseListener(new MouseAdapter() {
@@ -200,12 +194,16 @@ public class UpRecipe extends JPanel {
 				ChangePanel.changePanel(mf, mp, new MainMenu(mf )); 
 			}
 		});
-
+		
 
 		button2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				File();
+				//File();
+				
+				JTextField recipefile = new JTextField(File());
+				recipefile.setBounds(112,562,179,32);
+				panel2.add(recipefile);
 			}
 		});
 
@@ -223,10 +221,12 @@ public class UpRecipe extends JPanel {
 	
 	//파일찾기
 	public String File(){
-
+		
 		String folderPath = " ";
 
 		JFileChooser Photo = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+	
+		
 		Photo.setCurrentDirectory(new File("/")); 
 		Photo.setAcceptAllFileFilterUsed(true);  
 		Photo.setDialogTitle("레시피 사진 탐색"); // 
@@ -238,13 +238,16 @@ public class UpRecipe extends JPanel {
 		int returnVal = Photo.showOpenDialog(null); 
 
 		if(returnVal == JFileChooser.APPROVE_OPTION) { 
+		
 			folderPath = Photo.getSelectedFile().toString();
 		}else if(returnVal == JFileChooser.CANCEL_OPTION){
 			System.out.println("cancel"); 
 			folderPath =  " ";
 		}
-
-
+		
+		System.out.println("폴더 어딨냐 : " + folderPath);		
+		
+		
 		return folderPath;
 		
 	}
@@ -304,5 +307,4 @@ public class UpRecipe extends JPanel {
 			}
 	}
 }
-
 
