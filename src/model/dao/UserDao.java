@@ -15,43 +15,70 @@ import model.vo.User;
 import view.AllRecipe;
 
 public class UserDao {
-	
-	public void writeUserList(JPanel SignUp, User u) {	
-		
-		HashMap umap = new HashMap();
-		umap.put(u.getUserId(), u);
-		
-		System.out.print("umap : " );
-		System.out.println(umap);
-		
-		/*Collection users = umap.values();
-		
-		Object[] uar = users.toArray();*/
-		
-		ObjectOutputStream oos = null;
-		
-		try {
-			oos = new ObjectOutputStream(new FileOutputStream("userList.dat", true));
-		
-			oos.writeObject(umap);
-			
-			
-			oos.flush();
-			
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}finally {
-			try {
-				oos.close();
-			} catch (IOException e) {
+	//userList를 생성하여 SignUp 패널에 입력받은 값들 쓰기
+			public void writeUserList(JPanel SignUp, User u) { //SignUp 패널때문에 더러워진 매개변수,,
+				
+				HashMap<String, User> umap = new HashMap();  //해쉬원용의 독재로 회원정보를 입출력하게 되었습니다..
+				umap.put(u.getUserId(), u);                  //키 값으로 userId를, value 값으로 객체 u를 넣어u~
+				
+				System.out.print("umap : " );
+				System.out.println(umap);
+				
+				
+				ObjectOutputStream oos = null;
+				
+				try {
+					oos = new ObjectOutputStream(new FileOutputStream("userList.dat", true)); //true를 써줘야 정보가 누적
+				
+					oos.writeObject(umap);
+					
+					
+					oos.flush();      //막힌 거 뚫어드립니다.
+					
+				} catch (FileNotFoundException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}finally {
+					try {
+						oos.close();                   
+					} catch (IOException e) {
 
-				e.printStackTrace();
+						e.printStackTrace();
+					}
+				}
+
 			}
-		}
-
-	}
+			
+			//유저리스트를 읽어주는 메소드
+			//리턴타입으로 HashMap 
+			public HashMap<String, User> readUserList() {
+				HashMap<String, User> umap = null;
+				User u = new User();
+				ObjectInputStream ois = null;
+				
+				try {
+					ois = new ObjectInputStream(new FileInputStream("userList.dat"));
+					
+					umap = (HashMap<String, User>)ois.readObject();     //압줵을 해쉬맵으로 다운캐스트~~
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				}finally {
+					try {
+						if(ois != null) {
+							ois.close();
+						}
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+				
+				System.out.println(umap);
+				
+				return umap;
+			}
+	
 	
 	//하기 메소드는 재료입력을 수동으로 해준 것임.
 	//향후 원용이가 재료입력을 사용자에서 받아 저장해주면 필요없어질 메소드.

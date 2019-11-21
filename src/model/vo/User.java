@@ -6,7 +6,6 @@ public class User implements java.io.Serializable{
 
 	private String userId;
 	private String userPw;
-	//private String checkPw;
 	private String nickname;
 	private String email;
 	private TreeSet userIngred;
@@ -36,9 +35,6 @@ public class User implements java.io.Serializable{
 		return userPw;
 	}
 
-	/*public String getCheckPw() {
-		return checkPw;
-	}*/
 
 	public String getNickname() {
 		return nickname;
@@ -60,9 +56,6 @@ public class User implements java.io.Serializable{
 		this.userPw = userPw;
 	}
 
-	/*public void setCheckPw(String checkPw) {
-		this.checkPw = checkPw;
-	}*/
 
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
