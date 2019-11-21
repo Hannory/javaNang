@@ -8,7 +8,7 @@ public class Cont implements Serializable{
 //	private String userId;
 	private String recipeName;
 	private String recipeCont;
-//	private String recipeFile;
+	private String recipefile;
 //	private int boardNo;
 //	private int readCount;
 //	private Date boardDate;
@@ -23,7 +23,7 @@ public class Cont implements Serializable{
 //		this.userId = userId;
 		this.recipeName = recipeName;
 		this.recipeCont = recipeCont;
-//		this.recipeFile = recipeFile;
+		this.recipefile = recipefile;
 //		this.boardNo = boardNo;
 //		this.readCount = readCount;
 //		this.boardDate = boardDate;
@@ -42,9 +42,9 @@ public class Cont implements Serializable{
 		return recipeCont;
 	}
 
-//	public String getRecipeFile() {
-//		return recipeFile;
-//	}
+	public String getRecipefile() {
+		return recipefile;
+	}
 
 //	public int getBoardNo() {
 //		return boardNo;
@@ -70,16 +70,10 @@ public class Cont implements Serializable{
 		this.recipeCont = recipeCont;
 	}
 
-	@Override
-	public String toString() {
-		return "Cont [recipeName=" + recipeName + ", recipeCont=" + recipeCont + "]";
+
+	public void setRecipeFile(String recipefile) {
+		this.recipefile = recipefile;
 	}
-
-
-
-//	public void setRecipeFile(String recipeFile) {
-//		this.recipeFile = recipeFile;
-//	}
 
 //	public void setBoardNo(int boardNo) {
 //		this.boardNo = boardNo;
@@ -93,7 +87,10 @@ public class Cont implements Serializable{
 //		this.boardDate = boardDate;
 //	}
 
-
+	@Override
+	public String toString() {
+		return "Cont [recipeName=" + recipeName + ", recipeCont=" + recipeCont + ", recipefile=" + recipefile + "]";
+	}
 	//total
 	
 //	@Override

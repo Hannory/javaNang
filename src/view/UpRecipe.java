@@ -21,13 +21,16 @@ import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.filechooser.FileSystemView;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.SystemColor;
 
 public class UpRecipe extends JPanel {
 	MainFrame mf;
 	JPanel mp;
 	JTextField recipeCont;
 	JTextField recipeName;
-	
+	JLabel recipefile;
 
 	public UpRecipe(MainFrame mf) {
 
@@ -43,7 +46,7 @@ public class UpRecipe extends JPanel {
 
 		//»ó´Ü ÆÐ³Î ¼³Á¤
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(63,141,197));
+		panel.setBackground(new Color(102, 204, 204));
 		panel.setBounds(0,0,445,70);
 		mp.add(panel);
 		panel.setLayout(null);
@@ -55,18 +58,25 @@ public class UpRecipe extends JPanel {
 		mp.add(panel2);
 		panel.setLayout(null);
 
-		JButton button0 = new JButton("<<");
-		button0.setBounds(29,22,58,33);
+		JButton button0 = new JButton("\u2190");
+		button0.setFont(new Font("±¼¸²", Font.BOLD, 20));
+		button0.setForeground(new Color(255, 255, 255));
+		button0.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		
+		button0.setBounds(14,7,59,58);
 		panel.add(button0);
-		button0.setBackground(new Color(70,130,180));
+		button0.setBackground(new Color(72, 209, 204));
 
 		JTextPane textpane4 = new JTextPane();
 		panel.add(textpane4);
 		textpane4.setBounds(112,15,209,43);
 		textpane4.setEditable(false);
-		textpane4.setBackground(new Color(70,130,180));
+		textpane4.setBackground(new Color(102, 204, 204));
 		textpane4.setForeground(Color.white);
-		textpane4.setFont(new Font("±¼¸²",Font.PLAIN,32));
+		textpane4.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 27));
 		textpane4.setText("·¹½ÃÇÇ ¾÷·Îµå" );
 		panel2.setLayout(null);
 
@@ -81,6 +91,7 @@ public class UpRecipe extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 				saveFile();
 				saveFile2();
+				saveFile3();
 			}
 		});
 		
@@ -105,13 +116,13 @@ public class UpRecipe extends JPanel {
 		textpane1.setBounds(28,210,69,35);
 		panel2.add(textpane1);
 		textpane1.setText("¿ä¸®¸í"); 
-		textpane1.setFont(new Font("¸¼Àº°íµñ",Font.BOLD,20));
+		textpane1.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 20));
 
 		JTextPane textpane2 = new JTextPane();
 		textpane2.setBounds(28,267,69,35);
 		panel2.add(textpane2);
 		textpane2.setText("·¹½ÃÇÇ");
-		textpane2.setFont(new Font("¸¼Àº°íµñ",Font.BOLD,20));
+		textpane2.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 20));
 
 		Panel panel3 = new Panel();
 		panel3.setBounds(0,12,90,162);
@@ -135,10 +146,10 @@ public class UpRecipe extends JPanel {
 		panel4.setLayout(null);
 
 		JTextPane textpane3= new JTextPane();
-		textpane3.setBounds(28,562,48,35);
+		textpane3.setBounds(42,562,48,35);
 		panel2.add(textpane3);
 		textpane3.setText("»çÁø");
-		textpane3.setFont(new Font("¸¼Àº°íµñ",Font.BOLD,20));
+		textpane3.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 20));
 
 		Panel panel7 = new Panel();
 		panel7.setBounds(354,12,80,162);
@@ -181,10 +192,8 @@ public class UpRecipe extends JPanel {
 		panel2.add(recipeCont);
 		saveFile();
 		
-
-		JTextField recipefile = new JTextField();
-		recipefile.setBounds(112,562,179,32);
-		panel2.add(recipefile);
+		
+		
 	
 
 		// µÚ·Î°¡±â 
@@ -204,6 +213,7 @@ public class UpRecipe extends JPanel {
 				JTextField recipefile = new JTextField(File());
 				recipefile.setBounds(112,562,179,32);
 				panel2.add(recipefile);
+				saveFile3();
 			}
 		});
 
@@ -306,5 +316,33 @@ public class UpRecipe extends JPanel {
 				}
 			}
 	}
+	
+	public void saveFile3() {
+		
+		
+		ObjectOutputStream oop3 = null;
+		
+		try {
+			oop3= new ObjectOutputStream(new FileOutputStream("recipefile.txt"));
+			oop3.writeObject(((Object) this.recipefile));/////////////ÀÌºÎºÐÃ³¸®ÇÒ°Í!!!!!!!!!!!!!!!!!!!!!!!!!
+		oop3.flush();
+		} catch (FileNotFoundException e) {
+		
+			e.printStackTrace();
+		} catch (IOException e) {
+		
+			e.printStackTrace();
+		}finally {
+			try {
+				oop3.close();
+			}catch(IOException e) {
+				e.printStackTrace();
+							}
+		}
+		
+	}
+	
+	
+	
 }
 

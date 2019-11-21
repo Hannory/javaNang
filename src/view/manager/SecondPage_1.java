@@ -14,6 +14,7 @@ import javax.swing.UIManager;
 
 import view.manager.MainPage.MyItem;
 import view.manager.MainPage.MyItem2;
+import java.awt.SystemColor;
 //
 public class SecondPage_1 extends JPanel {
 
@@ -32,24 +33,27 @@ public class SecondPage_1 extends JPanel {
 
 
 		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(new Color(70, 130, 180));
+		panel_1.setBackground(new Color(102, 204, 204));
 		panel_1.setForeground(new Color(70, 130, 180));
-		panel_1.setBounds(0, 0, 432, 84);
+		panel_1.setBounds(0, 0, 445, 70);
 		this.add(panel_1);
 		panel_1.setLayout(null);
 
 		JTextField textField = new JTextField();
-		textField.setBackground(new Color(70, 130, 180));
-		textField.setFont(new Font("¹®Ã¼ºÎ ¾²±â Á¤Ã¼", Font.BOLD, 32));
+		textField.setForeground(new Color(255, 255, 255));
+		textField.setBackground(new Color(102, 204, 204));
+		textField.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 27));
 		textField.setText("\uB808\uC2DC\uD53C \uC2B9\uC778");
-		textField.setBounds(108, 32, 196, 40);
+		textField.setBounds(108, 18, 196, 40);
 		panel_1.add(textField);
 		textField.setColumns(10);
 		textField.setLayout(null);
 		
-		JButton button_1 = new JButton("<<");
-		button_1.setBackground(new Color(70, 130, 180));
-		button_1.setBounds(33, 32, 61, 40);
+		JButton button_1 = new JButton("\u2190");
+		button_1.setForeground(SystemColor.window);
+		button_1.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 19));
+		button_1.setBackground(new Color(102, 204, 204));
+		button_1.setBounds(14, 12, 51, 46);
 		panel_1.add(button_1);
 	
 
@@ -80,7 +84,7 @@ public class SecondPage_1 extends JPanel {
 		panel_3.setLayout(null);
 
 		JButton btnNewButton_1 = new JButton("\uD68C\uC6D0\uC81C\uC7AC");
-		btnNewButton_1.setFont(new Font("¹®Ã¼ºÎ ¾²±â Á¤Ã¼", Font.PLAIN, 15));
+		btnNewButton_1.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 15));
 		btnNewButton_1.setBounds(220, 662, 105, 27);
 		add(btnNewButton_1);
 
@@ -89,7 +93,7 @@ public class SecondPage_1 extends JPanel {
 		add(button);
 
 		JButton btnNewButton = new JButton("\uC2B9\uC778");
-		btnNewButton.setFont(new Font("¹®Ã¼ºÎ ¾²±â Á¤Ã¼", Font.PLAIN, 15));
+		btnNewButton.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 15));
 		btnNewButton.setBounds(101, 662, 105, 27);
 		add(btnNewButton);
 
