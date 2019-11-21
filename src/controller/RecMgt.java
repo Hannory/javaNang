@@ -11,6 +11,7 @@ import model.dao.MgrRecipeDao;
 import model.dao.UserDao;
 import model.vo.Recipe;
 import view.AllRecipe;
+import view.LoginPage;
 
 public class RecMgt {
 	
@@ -30,7 +31,8 @@ public class RecMgt {
 	
 	
 	public void categorizing() {
-		TreeSet userIngred = ud.userIngred();
+		TreeSet userIngred = LoginPage.ingredStatic;
+		//TreeSet userIngred = ud.userIngred();
 		//TreeSet userIngred01 = AllRecipe.loginId;
 		
 		ArrayList recipeList = new ArrayList();
