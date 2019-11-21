@@ -23,8 +23,6 @@ public class MyFridge extends JPanel{
 
 	 MainFrame mf;
      JPanel myFridge;
-
-     
      
 	public MyFridge(MainFrame mf) {
 		this.mf = mf;
@@ -41,7 +39,7 @@ public class MyFridge extends JPanel{
 		JButton btn2 = new JButton("재료 확인");
 		btn2.setBounds(140,300, 180, 50);
 		btn2.setBackground(Color.LIGHT_GRAY);
-	//	btn2.addMouseListener(new MyMouseAdapter2());
+		btn2.addMouseListener(new MyMouseAdapter2());
 		JButton btn3 = new JButton("히스토리");
 		btn3.setBounds(140,430, 180, 50);
 		btn3.setBackground(Color.LIGHT_GRAY);
@@ -70,7 +68,7 @@ public class MyFridge extends JPanel{
 		this.add(lb);
 
 		JPanel panel2 = new JPanel();
-		panel2.setSize(432,73);
+		panel2.setSize(445,73);
 		panel2.setLayout(null);
 		panel2.setBackground(new Color(100, 149, 237));
  
@@ -89,7 +87,7 @@ public class MyFridge extends JPanel{
 	add(ad);
 	ad.setLayout(null);
 	
-	JButton adBtn = new JButton(new ImageIcon(new ImageIcon("images/won/광고2.PNG").getImage().getScaledInstance(450, 78, 0)));
+	JButton adBtn = new JButton(new ImageIcon(new ImageIcon("images/won/ad.PNG").getImage().getScaledInstance(450, 78, 0)));
 	adBtn.setBounds(-10, 0, 455, 88);
 	ad.add(adBtn);
 	
@@ -114,12 +112,12 @@ public class MyFridge extends JPanel{
 			ChangePanel.changePanel(mf, myFridge, new InputIngred(mf));
 		}
 	}
-//	class MyMouseAdapter2 extends MouseAdapter{
-//		@Override
-//		public void mouseClicked(MouseEvent e) {
-//			ChangePanel.changePanel(mf, myFridge, new CheckIngred(mf)); 
-//		}
-//	}
+	class MyMouseAdapter2 extends MouseAdapter{
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			ChangePanel.changePanel(mf, myFridge, new CheckIngred(mf)); 
+		}
+	}
 	class MyMouseAdapter3 extends MouseAdapter{
 		@Override
 		public void mouseClicked(MouseEvent e) {

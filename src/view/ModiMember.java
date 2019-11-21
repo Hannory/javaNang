@@ -16,6 +16,8 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Properties;
@@ -36,7 +38,7 @@ import view.MainMenu.MyMouseAdapter5;
 
 public class ModiMember extends JPanel{
   
-	 UserDao ud = new UserDao();
+	UserDao ud = new UserDao();
 	
      MainFrame mf;
 	 JPanel modiMember;
@@ -49,18 +51,14 @@ public class ModiMember extends JPanel{
     private JTextField jtf2;
     private JTextField jtf3;
 	
-	private String userId = "";
-	private String userPw = "";
-	private String checkPw = "";
-	private String nickname = "";
-	private String email = "";
-	
-	
-	
 	public ModiMember(MainFrame mf) {
 	
 		this.mf = mf;
 		this.modiMember = this;
+		
+		String id = AllRecipe.loginId; //로그인한 아이디를 변수 id로 설정
+	
+		
 		
 		this.setBounds(0,0,445,770);
         this.setLayout(null);
@@ -112,51 +110,78 @@ public class ModiMember extends JPanel{
 	    
 	//if(입력한 PW가 현재 PW와 같고 && 패스워드 유효성검사에 통과한다면) { //회원의 PW를 변경 PW로 변경해주는 작업도 해야한다.(덮어쓰기?)
 	jbt1.addMouseListener(new MyMouseAdapter() {
-		     @Override
-	    	public void mouseClicked(MouseEvent e) {
-		    	 char[] input = jpf2.getPassword();
-		 	    String input2 = new String(input);
-		 			
-		 	    Pattern p = Pattern.compile("([a-zA-Z0-9].*[!,@,#,$,%,^,&,*,?,_,~])|([!,@,#,$,%,^,&,*,?,_,~].*[a-zA-Z0-9])");
-		 	    m = p.matcher(input2);
-		    	 
-		 	    if(jpf1.getText().equals(ud.mar[0].getUserPw())&&
-	    				jpf2.getText().equals(jpf3.getText())&&
-	    				jpf2.getText().length() <= 12 &&
-	    				jpf2.getText().length() >= 8  &&    //getPassword()는 값이 제대로 안 불러와져서 비교불가. . 
-	    		        m.find()){ //패스워드필드에 입력한 값이 유저의 패스워드와 같고 &&
-		 	    	              //변경 PW와 확인 PW이 같고 &&
-		 	    	              //변경 PW이 8~12글자 사이이고
-		 	    	              //특수문자와영문자를 적어도 하나씩 포함하고 있으면
-	    			JOptionPane.showMessageDialog(null, "수정이 완료되었습니다");
-	    			ud.mar[0].setUserPw(input2); //입력받은 PW로 수정하기 위한 작업 이 작업이 맞으려나?
-	    			//회원정보가 담긴 파일에서 패스워드를 수정해주는 작업도 해야 한다.
-	   	}else if (!jpf1.getText().equals(ud.mar[0].getUserPw())) {
-	   		        JOptionPane.showMessageDialog(null, "현재 PW를 정확하게 입력해주세요");
-	    		}else if(!jpf2.getText().equals(jpf3.getText())) {
-	    			JOptionPane.showMessageDialog(null, "변경할 PW를 정확하게 입력해주세요");
-	    		}else if(jpf2.getText().length() > 12 || jpf3.getText().length() > 12
-	    		|| jpf3.getText().length() < 8 || jpf3.getText().length() < 8) {
-	    			JOptionPane.showMessageDialog(null, "변경할 PW는 8글자이상 12자 이하로 입력해주세요");
-	    		}
-	    		else {
-	    			JOptionPane.showMessageDialog(null, "변경할 PW는 영문자와 특수문자를 적어도 하나씩 포함하고 있어야 합니다.");
-	    		}
-	    	
-	    	 }
-	    	});
+		
+		@Override
+	    	public void mouseClicked(MouseEvent e) { //여기서 파일에 담겨있는 해쉬맵에 담긴 asds를  삭제하자.
+			                                         //일단 해쉬맵
+			                                         //값변경하려고 User형의 u1 설정 해놓은듯
+                             
+			char[] input = jpf2.getPassword();
+			String input2 = new String(input);
+			
+			String JPF1 = String.valueOf(jpf1.getPassword());
+			String JPF2 = String.valueOf(jpf2.getPassword());
+			String JPF3 = String.valueOf(jpf3.getPassword());
+			
+			Pattern p = Pattern.compile("([a-zA-Z0-9].*[!,@,#,$,%,^,&,*,?,_,~])|([!,@,#,$,%,^,&,*,?,_,~].*[a-zA-Z0-9])");
+			m = p.matcher(input2);
 
+			try {
+				
+				ObjectInputStream objIn = new ObjectInputStream(new FileInputStream("userList.dat"));
+			  //  ObjectOutputStream oosOut = new ObjectOutputStream(new FileOutputStream("userList.dat"));
+				try {
+					HashMap asds = (HashMap) objIn.readObject();
+					
+					User u1 = (User) asds.get(id);//키가 id인 해쉬맵을 u1에 담았다. 
+					
+					if(JPF1.equals(u1.getUserPw()) && //필드에 입력한 값이랑  
+							JPF2.equals(JPF3) &&
+							JPF2.length() <= 12 &&
+							JPF2.length() >= 8  &&    //getPassword()는 값이 제대로 안 불러와져서 비교불가. . 
+							m.find()){ //패스워드필드에 입력한 값이 유저의 패스워드와 같고 &&
+						//변경 PW와 확인 PW이 같고 &&
+						//변경 PW이 8~12글자 사이이고
+						//특수문자와영문자를 적어도 하나씩 포함하고 있으면
+                        
+						
+						
+						JOptionPane.showMessageDialog(null, "수정이 완료되었습니다");
+						//			ud.mar[0].setUserPw(input2); //입력받은 PW로 수정하기 위한 작업 이 작업이 맞으려나?
+						//회원정보가 담긴 파일에서 패스워드를 수정해주는 작업도 해야 한다.
+					}else if (!JPF1.equals(u1.getUserPw())) {
+						JOptionPane.showMessageDialog(null, "현재 PW를 정확하게 입력해주세요");
+					}else if(!JPF2.equals(JPF3)) {
+						JOptionPane.showMessageDialog(null, "변경할 PW를 정확하게 입력해주세요");
+					}else if(JPF2.length() > 12 || JPF3.length() > 12
+							|| JPF3.length() < 8 || JPF3.length() < 8) {
+						JOptionPane.showMessageDialog(null, "변경할 PW는 8글자이상 12자 이하로 입력해주세요");
+					}
+					else {
+						JOptionPane.showMessageDialog(null, "변경할 PW는 영문자와 특수문자를 적어도 하나씩 포함하고 있어야 합니다.");
+					}
+					
+				} catch (ClassNotFoundException e1) {
+					e1.printStackTrace();
+				}
+				
+			} catch (FileNotFoundException e1) {
+				e1.printStackTrace();
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+			 
+		    	 
+	        }
 	
-	//}else if(입력한 PW가 현재PW와 맞지 않을 때){
-	// 현재 PW를 정확하게 입력해주세요 
-	//}else if(변경PW와 확인 PW가 서로 같지 않을때)     
-	// 변경 PW를 정확하게 입력해주세요    
+	    	});
+	   
 	    panel.add(jbt1);
 	    
 	    
 	    JPanel panel2 = new JPanel();
         panel2.setLocation(0,0);  
-        panel2.setSize(432,73);
+        panel2.setSize(445,73);
         panel2.setLayout(null);
         panel2.setBackground(new Color(100, 149, 237));
 	    this.add(panel2);
@@ -181,7 +206,7 @@ public class ModiMember extends JPanel{
         jtf1.setEditable(false);
         //회원정보를 불러 올 수 있어야 한다. 어떤식으로 불러올지? get을 이용하긴해야할텐데.
          
-        JLabel Label = new JLabel(ud.mar[0].getUserId()); 
+        JLabel Label = new JLabel(id); 
         Label.setBounds(5,0,239,35);
         jtf1.add(Label);
         
@@ -203,8 +228,16 @@ public class ModiMember extends JPanel{
         jtf2.setBounds(135,362,239,35);
         this.add(jtf2);
         jtf2.setEditable(false);
-        
-        JLabel Label2 = new JLabel(ud.mar[0].getNickname());
+        try {
+			
+			ObjectInputStream objIn = new ObjectInputStream(new FileInputStream("userList.dat"));
+			
+			try {
+				HashMap asds = (HashMap) objIn.readObject();
+				
+				User u1 = (User) asds.get(id);//키가 id인 해쉬맵을 u1에 담았다. 
+      
+				JLabel Label2 = new JLabel(u1.getNickname());
         Label2.setBounds(5,0,239,35);
         jtf2.add(Label2);
         
@@ -213,13 +246,21 @@ public class ModiMember extends JPanel{
         this.add(jtf3);
         jtf3.setEditable(false);
 	    
-        JLabel Label3 = new JLabel(ud.mar[0].getEmail());
+        JLabel Label3 = new JLabel(u1.getEmail());
         Label3.setBounds(5,0,239,35);
         jtf3.add(Label3);
         //텍스트,패스워드필드에 입력된 값들을 꺼내려면은 => 변수.getText(); 사용한다
         //각 필드들은 회원정보가 들어있는 파일을 불러와서 써야한다. 
         //그럼 JTF,TPF랑 파일 읽는 부분의 클래스가 다를텐데 그걸 어떻게 받을지?
-
+			} catch (ClassNotFoundException e1) {
+				e1.printStackTrace();
+			}
+			
+		} catch (FileNotFoundException e1) {
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
 	    JLabel label2 = new JLabel("");
 	    label2.setBounds(176, 220, 62, 18);
 	    this.add(label2);
@@ -235,7 +276,7 @@ public class ModiMember extends JPanel{
 //	   void insertData() {
 //		      User u = new User();
 //		        u.setUserId(jtf1.getText());
-//		        u.setUserPw(jpf1.getText());
+//		        u.setUserPw(JPF1);
 //		        u.setCheckPw(jpf2.getPassword());
 //		        u.setNickname(jtf2.getText());
 //		        u.setEmail(jtf3.getText()); // User

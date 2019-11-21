@@ -10,6 +10,13 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.font.TextAttribute;
+import java.io.EOFException;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -24,6 +31,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import model.dao.UserDao;
+import model.vo.User;
 import view.ModiMember.MyMouseAdapter;
 
 public class QuitMember extends JPanel{
@@ -36,13 +44,12 @@ public class QuitMember extends JPanel{
      private JPasswordField jpf1;
      private JTextField jtf1;
      
-     private String userId;
- 	 private String userPw;
-     
 	public QuitMember(MainFrame mf) {
 		this.mf = mf;
 		this.quitMember = this;
 
+		String id = AllRecipe.loginId;
+		
 		this.setBounds(0,0,445,770);
 		this.setLayout(null);
 
@@ -105,7 +112,7 @@ public class QuitMember extends JPanel{
 
 			JPanel panel2 = new JPanel(); // 여기 윗 부분
 			panel2.setLocation(0, 0);
-			panel2.setSize(432,73);
+			panel2.setSize(445,73);
 			panel2.setLayout(null);
 			panel2.setBackground(new Color(100, 149, 237));
 			
@@ -141,34 +148,52 @@ public class QuitMember extends JPanel{
                
 	//if(PW입력을 정확하게 했을 때){//그 회원의 정보를 삭제한다. delete? or 
 			btnNewButton.addMouseListener(new MyMouseAdapter1() {
-			 @Override
+				
+				@Override
 			 public void mouseClicked(MouseEvent e) {
-				 if(jpf1.getText().equals(ud.mar[0].getUserPw())) {
-				//jpf1.getText()는 패스워드필드에 입력한 PW, 뒤에건 배열에 담긴 유저의 PW
-				//나중에 뒤에건 파일에 담긴 ~번째유저의 PW값을 받아와야 한다.
-	            //그리고 나중에 파일에 담긴 로그인한 회원 객체의 정보를 삭제해야한다	
-					 JOptionPane.showMessageDialog(null, "탈퇴가 완료되었습니다");
-					 
-					 ChangePanel.changePanel(mf, quitMember, new AllRecipe(mf, quitMember));
-				     //UserDao에 있는 회원정보를 어떻게 지울까??
-					 //ud.mar[0].
-                      ud.delete();
-				 }else {
-					 JOptionPane.showMessageDialog(null, "비밀번호를 확인하세요");
+					
+					try {
+						ObjectInputStream objIn = new ObjectInputStream(new FileInputStream("userList.dat"));
+					
+						try {
+							HashMap asds = (HashMap) objIn.readObject();
+							
+							User u1 = (User) asds.get(id);
+						    
+							String JPF1 = String.valueOf(jpf1.getPassword());
+							
+							if(JPF1.equals(u1.getUserPw())) {
+
+								//이 안에서 파일에 담긴 회원정보를 삭제하는 작업을 해줘야 할텐데 . . 
+								
+								JOptionPane.showMessageDialog(null, "탈퇴가 완료되었습니다");
+
+								ChangePanel.changePanel(mf, quitMember, new LoginPage(mf));
+								
+							}else {
+								JOptionPane.showMessageDialog(null, "비밀번호를 정확하게 입력해주세요");
+							}
+							
+							
+						} catch (ClassNotFoundException e1) {
+							e1.printStackTrace();
+						} 
+					} catch (FileNotFoundException e1) {
+						e1.printStackTrace();
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}
+					
+					
+					
 				 }
-			 }
-			});
-           			
+		});
+           	
+			
 			
 				
 			panel3.add(btnNewButton);
-			
 		
-				
-			
-			
-			
-			
 			JLabel label = new JLabel("현재 비밀번호를 입력해 주세요"); // 왜 안뜨누
 			label.setBounds(140, 400, 197, 34);
 			this.add(label);
@@ -184,7 +209,7 @@ public class QuitMember extends JPanel{
             jtf1.setEditable(false);
 			this.add(jtf1);
 	
-			 JLabel Label = new JLabel(ud.mar[0].getUserId());
+			 JLabel Label = new JLabel(id);
 		        Label.setBounds(5,0,230,29);
 		        jtf1.add(Label);
 		        
@@ -196,8 +221,27 @@ public class QuitMember extends JPanel{
 			textArea.setBounds(135, 462, 230, 130);
 			this.add(textArea);
 			
-
-
+//			try {
+//				ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("userList.dat"));
+//			
+//				try {
+//					HashMap asds = (HashMap) pps.readObject();
+//					
+//					User u1 = (User) asds.get(id);
+//				
+//					String JPF1 = String.valueOf(jpf1.getPassword());
+//					
+//				} catch (ClassNotFoundException e1) {
+//					e1.printStackTrace();
+//				} 
+//			} catch (FileNotFoundException e1) {
+//				e1.printStackTrace();
+//			} catch (IOException e1) {
+//				e1.printStackTrace();
+//			}
+			
+			
+	
 	}
 
 //	//게시물 삭제용 메소드 //게시물이 아닌 회원삭제때도 쓰일 수 있지 않을까 일단 주석처리
