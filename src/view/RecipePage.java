@@ -88,8 +88,9 @@ public class RecipePage extends JPanel {
 						
 						ChangePanel.changePanel(mf, rp, new MyFridge(mf));
 					}else {
-						ChangePanel.changePanel(mf, rp, new Agree(mf));
+						ChangePanel.changePanel(mf, rp, new LoginPage(mf));
 					}
+					
 					
 				}
 				

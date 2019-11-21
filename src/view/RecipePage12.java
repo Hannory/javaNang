@@ -84,6 +84,7 @@ public class RecipePage12 extends JPanel {
 					ChangePanel.changePanel(mf, rp, new LoginPage(mf));				}
 			}
 
+			
 		});
 
 		//사진 패널

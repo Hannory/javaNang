@@ -87,6 +87,7 @@ public class LoginPage extends JPanel {
 		loginBtn.setBorderPainted(false);
 		add(loginBtn);
 		
+		
 		JButton signUpBtn = new JButton("회원가입");
 		signUpBtn.setBounds(151, 605, 150, 40);
 		//외각선 없애주기
