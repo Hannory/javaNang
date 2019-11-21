@@ -1,28 +1,23 @@
 package view;
 
 import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.HashMap;
-import java.util.Map;
+import java.util.TreeSet;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import model.dao.UserDao;
 import model.vo.User;
 
 public class LoginPage extends JPanel {
@@ -31,7 +26,7 @@ public class LoginPage extends JPanel {
 	JPanel lp;
 	private JTextField idField;
 	private JTextField pwField;
-
+	public static TreeSet ingredStatic = new TreeSet();	
 
 	
 	public LoginPage(MainFrame mf) {
@@ -107,14 +102,13 @@ public class LoginPage extends JPanel {
 				
 			try {
 				ObjectInputStream objIn = new ObjectInputStream(new FileInputStream("userList.dat"));
-				
-				try {
-					HashMap asds = (HashMap) objIn.readObject();
 					
+					//해쉬맵으로 읽어온 객체를 형변환해줌
+					HashMap map = (HashMap) objIn.readObject();
 					
-					String idd = idField.getText();
+					String id = idField.getText();
 					
-					User u1 = (User) asds.get(idd);
+					User u1 = (User) map.get(id);
 					
 					if(pwField.getText().equals(u1.getUserPw())) {
 						
@@ -124,24 +118,18 @@ public class LoginPage extends JPanel {
 						
 						AllRecipe.loginId = idField.getText();
 						
+						TreeSet ts = (TreeSet) u1.getUserIngred().clone();
+						System.out.println(ts);
+						ingredStatic = ts;
 						
 					}else {
 						JOptionPane.showMessageDialog(null, "아이디 또는 비밀번호를 확인 후\n다시 로그인해주세요.");
 						AllRecipe.login  = false;
 					}
 					
-					
-				  
-				  
-				  
-				  
-					
-					
 				} catch (ClassNotFoundException e1) {
 					e1.printStackTrace();
-				}
-				
-			} catch (FileNotFoundException e1) {
+				} catch (FileNotFoundException e1) {
 				e1.printStackTrace();
 			} catch (IOException e1) {
 				e1.printStackTrace();
@@ -151,16 +139,12 @@ public class LoginPage extends JPanel {
 			}
 		});
 		
-		
 		signUpBtn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				ChangePanel.changePanel(mf, lp, new Agree(mf));
 			}
 		});
-		
-		
-		
 		
 		}
 }
