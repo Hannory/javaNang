@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -14,7 +15,7 @@ import model.dao.AddIngred;
 
 public class InputIngredFish extends JPanel {
 	//(육류) 페이지
-	
+
 	MainFrame mf ;
 	JPanel nowp ;
 
@@ -30,10 +31,20 @@ public class InputIngredFish extends JPanel {
 		JPanel topP = new JPanel();
 		topP.setLayout(null);
 		topP.setBounds(0,0,445,70);
+		topP.setBackground(new Color(102, 204, 204));
 
-		//상단 바 패널 꾸미기 //임시 색상 지정 //뒤로가기 버튼 셋팅
-		topP.setBackground(Color.BLUE);
-		JButton btnBack = new JButton("<");
+
+		//상단 타이틀 셋팅
+		Font font = new Font("맑은 고딕", Font.BOLD, 27);
+		JLabel barTitle = new JLabel("<해산물>");
+		barTitle.setLocation(80, 10);
+		barTitle.setSize(200, 50);
+		barTitle.setForeground(Color.WHITE);
+		barTitle.setFont(font);
+
+		//상단 바 패널 꾸미기 //뒤로가기 버튼 셋팅
+		Image backImg = new ImageIcon("images/back sky.png").getImage().getScaledInstance(50, 50, 0);
+		JButton btnBack = new JButton(new ImageIcon(backImg));
 		btnBack.setBounds(10,10,50,50);
 		btnBack.addMouseListener(new MouseAdapter() {
 			@Override
@@ -44,18 +55,32 @@ public class InputIngredFish extends JPanel {
 		}
 				);
 
+		//상단 바 우측 마이페이지 버튼 셋팅
+		Image person = new ImageIcon("images/person sky.png").getImage().getScaledInstance(50, 50, 0);
+		JButton logIn = new JButton(new ImageIcon(person));
+		logIn.setBounds(380,10,50,50);
+		logIn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				System.out.println("뒤로가기 클릭");
+				new ChangePanel().changePanel(mf, nowp, new MyFridge(mf));
+			}
+		});
+
+
+
 
 		//하단 패널 셋팅
 		JPanel botP = new JPanel();
 		botP.setLayout(null);
 		botP.setBounds(5,75,432,680);
 
-		
 
-		
+
+
 
 		/////////////////버튼 생성 및 바운드 설정, 버튼 이미지 준비 및 이미지 넣기, 마우스클릭드 이벤트 처리//////////////////////////
-		Image imgBtn1 = new ImageIcon("images/sim/btnImg/fishBtnImg/2001.PNG").getImage().getScaledInstance(145, 230, 0);
+		Image imgBtn1 = new ImageIcon("images/sim/btnImg/2001.PNG").getImage().getScaledInstance(145, 230, 0);
 		JButton btn1 = new JButton(new ImageIcon(imgBtn1));
 		btn1.setBounds(0,0,145,230);
 		btn1.addMouseListener(new MouseAdapter() {
@@ -63,15 +88,15 @@ public class InputIngredFish extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 				System.out.println("버튼1 클릭");
 				new AddIngred().makeTreeSet(2001);
-				
+
 				ChangePanel.changePanel(mf, nowp, new CheckIngred(mf));
 
 			}
 		}
 				);
 
-		
-		Image imgBtn2 = new ImageIcon("images/sim/btnImg/fishBtnImg/2002.PNG").getImage().getScaledInstance(145, 230, 0);
+
+		Image imgBtn2 = new ImageIcon("images/sim/btnImg/2002.PNG").getImage().getScaledInstance(145, 230, 0);
 		JButton btn2 = new JButton(new ImageIcon(imgBtn2));
 		btn2.setBounds(0,230,145,230);
 		btn2.addMouseListener(new MouseAdapter() {
@@ -83,11 +108,11 @@ public class InputIngredFish extends JPanel {
 		}
 				);
 		btn2.setOpaque(false);
-		
-		
-		
-		
-		Image imgBtn3 = new ImageIcon("images/sim/btnImg/fishBtnImg/2003.PNG").getImage().getScaledInstance(145, 230, 0);
+
+
+
+
+		Image imgBtn3 = new ImageIcon("images/sim/btnImg/2003.PNG").getImage().getScaledInstance(145, 230, 0);
 		JButton btn3 = new JButton(new ImageIcon(imgBtn3));
 		btn3.setBounds(0,460,145,230);
 		btn3.addMouseListener(new MouseAdapter() {
@@ -99,11 +124,11 @@ public class InputIngredFish extends JPanel {
 		}
 				);
 		btn3.setOpaque(false);
-		
-		
-		
-		
-		Image imgBtn4 = new ImageIcon("images/sim/btnImg/fishBtnImg/2004.PNG").getImage().getScaledInstance(145, 230, 0);
+
+
+
+
+		Image imgBtn4 = new ImageIcon("images/sim/btnImg/2004.PNG").getImage().getScaledInstance(145, 230, 0);
 		JButton btn4 = new JButton(new ImageIcon(imgBtn4));
 		btn4.setBounds(145,0,145,230);
 		btn4.addMouseListener(new MouseAdapter() {
@@ -115,12 +140,12 @@ public class InputIngredFish extends JPanel {
 		}
 				);
 		btn4.setOpaque(false);
-		
-		
-		
-		
-		
-		Image imgBtn5 = new ImageIcon("images/sim/btnImg/fishBtnImg/2005.PNG").getImage().getScaledInstance(145, 230, 0);
+
+
+
+
+
+		Image imgBtn5 = new ImageIcon("images/sim/btnImg/2005.PNG").getImage().getScaledInstance(145, 230, 0);
 		JButton btn5 = new JButton(new ImageIcon(imgBtn5));
 		btn5.setBounds(145,230,145,230);
 		btn5.addMouseListener(new MouseAdapter() {
@@ -132,11 +157,11 @@ public class InputIngredFish extends JPanel {
 		}
 				);
 		btn5.setOpaque(false);
-		
-		
-		
-		
-		Image imgBtn6 = new ImageIcon("images/sim/btnImg/fishBtnImg/2006.PNG").getImage().getScaledInstance(145, 230, 0);
+
+
+
+
+		Image imgBtn6 = new ImageIcon("images/sim/btnImg/2006.PNG").getImage().getScaledInstance(145, 230, 0);
 		JButton btn6 = new JButton(new ImageIcon(imgBtn6));
 		btn6.setBounds(145,460,145,230);
 		btn6.addMouseListener(new MouseAdapter() {
@@ -148,11 +173,11 @@ public class InputIngredFish extends JPanel {
 		}
 				);
 		btn6.setOpaque(false);
-		
-		
-		
-		
-		Image imgBtn7 = new ImageIcon("images/sim/btnImg/fishBtnImg/2007.PNG").getImage().getScaledInstance(145, 230, 0);
+
+
+
+
+		Image imgBtn7 = new ImageIcon("images/sim/btnImg/2007.PNG").getImage().getScaledInstance(145, 230, 0);
 		JButton btn7 = new JButton(new ImageIcon(imgBtn7));
 		btn7.setBounds(290,0,145,230);
 		btn7.addMouseListener(new MouseAdapter() {
@@ -164,11 +189,11 @@ public class InputIngredFish extends JPanel {
 		}
 				);
 		btn7.setOpaque(false);
-		
-		
-		
-		
-		Image imgBtn8 = new ImageIcon("images/sim/btnImg/fishBtnImg/2008.PNG").getImage().getScaledInstance(145, 230, 0);
+
+
+
+
+		Image imgBtn8 = new ImageIcon("images/sim/btnImg/2008.PNG").getImage().getScaledInstance(145, 230, 0);
 		JButton btn8 = new JButton(new ImageIcon(imgBtn8));
 		btn8.setBounds(290,230,145,230);
 		btn8.addMouseListener(new MouseAdapter() {
@@ -180,11 +205,11 @@ public class InputIngredFish extends JPanel {
 		}
 				);
 		btn8.setOpaque(false);
-		
-		
-		
-		
-		Image imgBtn9 = new ImageIcon("images/sim/btnImg/fishBtnImg/2009.PNG").getImage().getScaledInstance(145, 230, 0);
+
+
+
+
+		Image imgBtn9 = new ImageIcon("images/sim/btnImg/2009.PNG").getImage().getScaledInstance(145, 230, 0);
 		JButton btn9 = new JButton(new ImageIcon(imgBtn9));
 		btn9.setBounds(290,460,145,230);
 		btn9.addMouseListener(new MouseAdapter() {
@@ -196,29 +221,31 @@ public class InputIngredFish extends JPanel {
 		}
 				);
 		btn9.setOpaque(false);
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 		//상단 패널 화면 구성
 		topP.add(btnBack);
-		
+		topP.add(logIn);
+		topP.add(barTitle);
+
+
 
 
 		//하단 패널 화면 구성/////////////
@@ -233,7 +260,7 @@ public class InputIngredFish extends JPanel {
 		botP.add(btn8);
 		botP.add(btn9);
 
-		
+
 		//화면 완성 //component < eachP < nowp < mf
 		this.add(botP);
 		this.add(topP);
@@ -246,11 +273,11 @@ public class InputIngredFish extends JPanel {
 
 
 
-		
-		
-		
+
+
+
 	}//constructor
-	
-	
+
+
 
 }//class

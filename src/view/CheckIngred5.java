@@ -5,7 +5,6 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -16,13 +15,13 @@ import javax.swing.JPanel;
 import model.dao.AddIngred;
 import run.Run;
 
-public class CheckIngred extends JPanel{
+public class CheckIngred5 extends JPanel{
 	//재료 확인 페이지
 	MainFrame mf ;
 	JPanel nowp ;
 
 
-	public CheckIngred(MainFrame mf) {
+	public CheckIngred5(MainFrame mf) {
 
 		//기본 패널 셋팅
 		this.mf = mf;
@@ -39,7 +38,7 @@ public class CheckIngred extends JPanel{
 
 		//상단 타이틀 셋팅
 		Font font = new Font("맑은 고딕", Font.BOLD, 27);
-		JLabel barTitle = new JLabel("재료확인 <1>");
+		JLabel barTitle = new JLabel("재료확인 <5>");
 		barTitle.setLocation(80, 10);
 		barTitle.setSize(200, 50);
 		barTitle.setForeground(Color.WHITE);
@@ -82,6 +81,7 @@ public class CheckIngred extends JPanel{
 
 
 
+
 		//현재 재료를 통해 인덱스 만들기
 		Object[] al = LoginPage.ingredStatic.toArray();
 		String[] sarr = new String[55];
@@ -94,19 +94,30 @@ public class CheckIngred extends JPanel{
 			sarr[i] = String.valueOf(al[i]) ;
 		}
 
+
+
 		///////////////버튼 생성 및 바운드 설정, 버튼 이미지 준비 및 이미지 넣기, 마우스클릭드 이벤트 처리//////////////////////////
-		Image imgBtn1 = new ImageIcon("images/sim/BtnImg/"+ sarr[0] +".PNG").getImage().getScaledInstance(145, 200, 0);
+		Image imgBtn1 = new ImageIcon("images/sim/BtnImg/"+ sarr[36] +".PNG").getImage().getScaledInstance(145, 200, 0);
 		JButton btn1 = new JButton(new ImageIcon(imgBtn1));
 		btn1.setBounds(0,0,145,200);
 		btn1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				System.out.println("재료확인에 있는 버튼");
+
+
+
+
+
+
+
+
+
 			}
 		}
 				);
 
-		Image imgBtn2 = new ImageIcon("images/sim/BtnImg/"+ sarr[1] +".PNG").getImage().getScaledInstance(145, 200, 0);
+		Image imgBtn2 = new ImageIcon("images/sim/BtnImg/"+ sarr[37] +".PNG").getImage().getScaledInstance(145, 200, 0);
 		JButton btn2 = new JButton(new ImageIcon(imgBtn2));
 		btn2.setBounds(0,200,145,200);
 		btn2.addMouseListener(new MouseAdapter() {
@@ -117,7 +128,7 @@ public class CheckIngred extends JPanel{
 		}
 				);
 
-		Image imgBtn3 = new ImageIcon("images/sim/BtnImg/"+ sarr[2] +".PNG").getImage().getScaledInstance(145, 200, 0);
+		Image imgBtn3 = new ImageIcon("images/sim/BtnImg/"+ sarr[38] +".PNG").getImage().getScaledInstance(145, 200, 0);
 		JButton btn3 = new JButton(new ImageIcon(imgBtn3));
 		btn3.setBounds(0,400,145,200);
 		btn3.addMouseListener(new MouseAdapter() {
@@ -128,7 +139,7 @@ public class CheckIngred extends JPanel{
 		}
 				);
 
-		Image imgBtn4 = new ImageIcon("images/sim/BtnImg/"+ sarr[3] +".PNG").getImage().getScaledInstance(145, 200, 0);
+		Image imgBtn4 = new ImageIcon("images/sim/BtnImg/"+ sarr[39] +".PNG").getImage().getScaledInstance(145, 200, 0);
 		JButton btn4 = new JButton(new ImageIcon(imgBtn4));
 		btn4.setBounds(145,0,145,200);
 		btn4.addMouseListener(new MouseAdapter() {
@@ -139,7 +150,7 @@ public class CheckIngred extends JPanel{
 		}
 				);
 
-		Image imgBtn5= new ImageIcon("images/sim/BtnImg/"+ sarr[4] +".PNG").getImage().getScaledInstance(145, 200, 0);
+		Image imgBtn5= new ImageIcon("images/sim/BtnImg/"+ sarr[40] +".PNG").getImage().getScaledInstance(145, 200, 0);
 		JButton btn5= new JButton(new ImageIcon(imgBtn5));
 		btn5.setBounds(145,200,145,200);
 		btn5.addMouseListener(new MouseAdapter() {
@@ -150,7 +161,7 @@ public class CheckIngred extends JPanel{
 		}
 				);
 
-		Image imgBtn6 = new ImageIcon("images/sim/BtnImg/"+ sarr[5] +".PNG").getImage().getScaledInstance(145, 200, 0);
+		Image imgBtn6 = new ImageIcon("images/sim/BtnImg/"+ sarr[41] +".PNG").getImage().getScaledInstance(145, 200, 0);
 		JButton btn6 = new JButton(new ImageIcon(imgBtn6));
 		btn6.setBounds(145,400,145,200);
 		btn6.addMouseListener(new MouseAdapter() {
@@ -161,7 +172,7 @@ public class CheckIngred extends JPanel{
 		}
 				);
 
-		Image imgBtn7 = new ImageIcon("images/sim/BtnImg/"+ sarr[6] +".PNG").getImage().getScaledInstance(145, 200, 0);
+		Image imgBtn7 = new ImageIcon("images/sim/BtnImg/"+ sarr[42] +".PNG").getImage().getScaledInstance(145, 200, 0);
 		JButton btn7 = new JButton(new ImageIcon(imgBtn7));
 		btn7.setBounds(290,0,145,200);
 		btn7.addMouseListener(new MouseAdapter() {
@@ -172,7 +183,7 @@ public class CheckIngred extends JPanel{
 		}
 				);
 
-		Image imgBtn8 = new ImageIcon("images/sim/BtnImg/"+ sarr[7] +".PNG").getImage().getScaledInstance(145, 200, 0);
+		Image imgBtn8 = new ImageIcon("images/sim/BtnImg/"+ sarr[43] +".PNG").getImage().getScaledInstance(145, 200, 0);
 		JButton btn8 = new JButton(new ImageIcon(imgBtn8));
 		btn8.setBounds(290,200,145,200);
 		btn8.addMouseListener(new MouseAdapter() {
@@ -183,7 +194,7 @@ public class CheckIngred extends JPanel{
 		}
 				);
 
-		Image imgBtn9 = new ImageIcon("images/sim/BtnImg/"+ sarr[8] +".PNG").getImage().getScaledInstance(145, 200, 0);
+		Image imgBtn9 = new ImageIcon("images/sim/BtnImg/"+ sarr[44] +".PNG").getImage().getScaledInstance(145, 200, 0);
 		JButton btn9 = new JButton(new ImageIcon(imgBtn9));
 		btn9.setBounds(290,400,145,200);
 		btn9.addMouseListener(new MouseAdapter() {
@@ -193,9 +204,6 @@ public class CheckIngred extends JPanel{
 			}
 		}
 				);
-
-
-
 
 
 		//하단 목록 페이지 추가
@@ -264,7 +272,6 @@ public class CheckIngred extends JPanel{
 
 
 		});
-
 
 
 
