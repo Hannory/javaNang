@@ -20,6 +20,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import model.vo.Recipe;
 import model.vo.User;
 
 public class LoginPage extends JPanel {
@@ -101,10 +102,11 @@ public class LoginPage extends JPanel {
 		back.setSize(50, 50);
 		bar.add(back);
 		
-		
 		back.addMouseListener(new MouseAdapter() {
+			
+
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mouseReleased(MouseEvent e) {
 				ChangePanel.changePanel(mf, lp, new AllRecipe(mf, lp));
 				
 			}
@@ -115,7 +117,7 @@ public class LoginPage extends JPanel {
 		
 		loginBtn.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mouseReleased(MouseEvent e) {
 				
 				
 				
@@ -160,7 +162,7 @@ public class LoginPage extends JPanel {
 		
 		signUpBtn.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mouseReleased(MouseEvent e) {
 				ChangePanel.changePanel(mf, lp, new Agree(mf));
 			}
 		});

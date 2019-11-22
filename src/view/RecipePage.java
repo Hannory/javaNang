@@ -29,16 +29,16 @@ public class RecipePage extends JPanel {
 	MainFrame mf;
 	JPanel rp;
 	JPanel lp;
-	//private ChangePanel cp;
-	
-		
-		public RecipePage(MainFrame mf, JPanel lp) {
+
+		public RecipePage(MainFrame mf, JPanel lp, Recipe rc) {
 			
 			this.mf = mf;
 			rp = this;
 			this.lp = lp;
+			//this.rc = rc;
 			
 			this.setSize(445, 770);
+			
 			this.setLayout(null);
 			
 			JPanel bar = new JPanel();
@@ -51,7 +51,7 @@ public class RecipePage extends JPanel {
 			Font font2 = new Font("맑은 고딕", Font.BOLD, 20);
 			Font font3 = new Font("맑은 고딕", Font.BOLD, 15);
 			
-			JLabel barTitle = new JLabel("자장면");
+			JLabel barTitle = new JLabel(rc.getRecipeName());
 			barTitle.setLocation(80, 10);
 			barTitle.setSize(200, 50);
 			barTitle.setForeground(Color.WHITE);
@@ -67,7 +67,7 @@ public class RecipePage extends JPanel {
 			back.addMouseListener(new MouseAdapter() {
 
 				@Override
-				public void mouseClicked(MouseEvent e) {
+				public void mouseReleased(MouseEvent e) {
 					ChangePanel.changePanel(mf, rp, new AllRecipe(mf,lp));
 					
 				}
@@ -79,10 +79,10 @@ public class RecipePage extends JPanel {
 			logIn.setLocation(380, 10);
 			logIn.setSize(50, 50);
 			
-			logIn.addActionListener(new ActionListener() {
-
+			logIn.addMouseListener(new MouseAdapter() {
+				
 				@Override
-				public void actionPerformed(ActionEvent e) {
+				public void mouseReleased(MouseEvent e) {
 					
 					if(AllRecipe.login == true) {
 						
@@ -90,11 +90,8 @@ public class RecipePage extends JPanel {
 					}else {
 						ChangePanel.changePanel(mf, rp, new LoginPage(mf));
 					}
-					
-					
-				}
 				
-			});
+				}});
 			
 			//사진 패널
 			JPanel panel = new JPanel();
@@ -102,16 +99,9 @@ public class RecipePage extends JPanel {
 			panel.setSize(445, 307);
 			panel.setLayout(null);
 			
-			Image photo = new ImageIcon("images/park/black noodle.jpg").getImage().getScaledInstance(445, 307, 0);
+			Image photo = new ImageIcon(rc.getRecipePicAdr()).getImage().getScaledInstance(445, 307, 0);
 			JLabel label = new JLabel(new ImageIcon(photo));
 			label.setSize(445, 307);
-			
-			
-			/*//레시피 설명
-			JLabel recipeCont = new JLabel(rc.getRecipeCont());
-			recipeCont.setSize(345, 200);
-			recipeCont.setLocation(50, 427);
-			recipeCont.setFont(font3);*/
 			
 			//"레시피 순서" 글씨
 			JLabel contTitle = new JLabel("레시피 순서");
@@ -122,7 +112,7 @@ public class RecipePage extends JPanel {
 
 			//txt파일 레시피 설명
 			JTextPane tp = new JTextPane();
-			TextFromFile(tp);
+			TextFromFile(tp, rc);
 
 			//스크롤바
 			JScrollPane scrollPane = new JScrollPane(tp, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -144,10 +134,11 @@ public class RecipePage extends JPanel {
 			mf.add(this);
 		}
 		
-		private void TextFromFile(JTextPane tp) {
+		private void TextFromFile(JTextPane tp, Recipe rc) {
 			FileReader fr = null;
 			try {
-				String terms = "documents/recipe/black noodle.txt";
+				System.out.println(rc.getRecipeCont());
+				String terms = rc.getRecipeCont();
 				
 				
 				File file = new File(terms);
