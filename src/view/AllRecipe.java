@@ -2,9 +2,12 @@ package view;
 import java.awt.Color;
 import java.awt.Desktop;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.image.ImageObserver;
+import java.awt.image.ImageProducer;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -73,20 +76,7 @@ public class AllRecipe extends JPanel {
 		
 		mrd.fileSave();
 		
-		
-		//Recipe rc = new Recipe();
-		
-		
-		
-		
-		
-		/*for(int i = 0; i < 4; i++) {
-			System.out.print("렌덤 배열 출력" + rd[i] + " ,");
-		}
-		
-		System.out.println();	*/
-		
-		
+
 		try(ObjectInputStream objIn = new ObjectInputStream(new FileInputStream("MgrRecipe.dat"));) {
 			
 			for(int i = 0; i < MgrRecipeDao.recipeLength; i++) {
@@ -129,8 +119,12 @@ public class AllRecipe extends JPanel {
 		JLabel recipeImage1 = new JLabel(new ImageIcon(rcPic));
 		recipeImage1.setBounds(0, 0, 220, 145);
 		recipe1.add(recipeImage1);
-
-		System.out.println("1st check : " + rc[rd[0]].getRecipePicAdr());
+		
+		
+		/*JButton like = new JButton(new ImageIcon(new ImageIcon("images/won/java.png").getImage().getScaledInstance(50, 50, 0)));				
+		like.setBounds(350,100,50,50);
+		recipe1.add(like);*/
+		
 		
 		//JLabel rp1 = new JLabel(rc[0].getRecipeName());
 		JLabel rp1 = new JLabel/*("<html># 중국집 부럽지 않은<br>짜장면 만들기 ~!!<br></html>");*/(rc[rd[0]].getRecipeMent());
