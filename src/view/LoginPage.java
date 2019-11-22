@@ -165,7 +165,6 @@ public class LoginPage extends JPanel {
 
 			}
 		});
-
 		signUpBtn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent e) {

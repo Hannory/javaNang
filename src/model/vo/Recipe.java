@@ -25,6 +25,7 @@ public class Recipe implements java.io.Serializable {
 	
 	
 	
+	
 	public String getRecipeName() {
 		return recipeName;
 	}

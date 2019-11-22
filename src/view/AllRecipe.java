@@ -33,6 +33,7 @@ public class AllRecipe extends JPanel {
 	MainFrame mf;
 	JPanel mp;
 	JPanel lp;
+	
 
 	MgrRecipeDao mrd = new MgrRecipeDao();
 	

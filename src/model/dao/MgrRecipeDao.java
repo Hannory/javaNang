@@ -76,6 +76,7 @@ public class MgrRecipeDao {
 		
 		
 		
+		
 		recipeList.add(new Recipe("짜장면", "documents/recipe/black noodle.txt", rcPic1,rcMent1, rcIngred01));
 		recipeList.add(new Recipe("까르보나라", "documents/recipe/carbonara.txt", rcPic2,rcMent2, rcIngred02));
 		recipeList.add(new Recipe("토마토 스파게티", "documents/recipe/tomato seafood spaghetti.txt", rcPic3,rcMent3, rcIngred03));
