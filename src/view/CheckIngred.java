@@ -26,6 +26,9 @@ public class CheckIngred extends JPanel{
 
 
 	public CheckIngred(MainFrame mf) {
+		
+		//유통기한 정보 맵 확인(기존에 있으면 불러오고, 없으면 new 유지)
+		new IngredAll().setIngredExpiryMap();
 
 		//기본 패널 셋팅
 		this.mf = mf;
@@ -54,7 +57,7 @@ public class CheckIngred extends JPanel{
 		btnBack.setBounds(10,10,50,50);
 		btnBack.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mouseReleased(MouseEvent e) {
 				System.out.println("뒤로가기 클릭");
 				new ChangePanel().changePanel(mf, nowp, new MyFridge(mf));
 			}
@@ -67,7 +70,7 @@ public class CheckIngred extends JPanel{
 		logIn.setBounds(380,10,50,50);
 		logIn.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mouseReleased(MouseEvent e) {
 				System.out.println("뒤로가기 클릭");
 				new ChangePanel().changePanel(mf, nowp, new MyFridge(mf));
 			}
@@ -103,7 +106,7 @@ public class CheckIngred extends JPanel{
 		btn1.setBounds(0,0,145,200);
 		btn1.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mouseReleased(MouseEvent e) {
 				IngredAll.tempNo = Integer.parseInt(sarr[0]);
 				System.out.println("재료확인에 있는 버튼");
 				ChangePanel.changePanel(mf, nowp, new IngredInfoSet(mf, IngredAll.tempNo));
@@ -116,7 +119,7 @@ public class CheckIngred extends JPanel{
 		btn2.setBounds(0,200,145,200);
 		btn2.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mouseReleased(MouseEvent e) {
 				IngredAll.tempNo = Integer.parseInt(sarr[1]);
 				System.out.println("재료확인에 있는 버튼");
 				ChangePanel.changePanel(mf, nowp, new IngredInfoSet(mf, IngredAll.tempNo));
@@ -130,7 +133,7 @@ public class CheckIngred extends JPanel{
 		btn3.setBounds(0,400,145,200);
 		btn3.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mouseReleased(MouseEvent e) {
 				IngredAll.tempNo = Integer.parseInt(sarr[2]);
 				System.out.println("재료확인에 있는 버튼");
 				ChangePanel.changePanel(mf, nowp, new IngredInfoSet(mf, IngredAll.tempNo));
@@ -144,7 +147,7 @@ public class CheckIngred extends JPanel{
 		btn4.setBounds(145,0,145,200);
 		btn4.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mouseReleased(MouseEvent e) {
 				IngredAll.tempNo = Integer.parseInt(sarr[3]);
 				System.out.println("재료확인에 있는 버튼");
 				ChangePanel.changePanel(mf, nowp, new IngredInfoSet(mf, IngredAll.tempNo));
@@ -157,7 +160,7 @@ public class CheckIngred extends JPanel{
 		btn5.setBounds(145,200,145,200);
 		btn5.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mouseReleased(MouseEvent e) {
 				IngredAll.tempNo = Integer.parseInt(sarr[4]);
 				System.out.println("재료확인에 있는 버튼");
 				ChangePanel.changePanel(mf, nowp, new IngredInfoSet(mf, IngredAll.tempNo));
@@ -170,7 +173,7 @@ public class CheckIngred extends JPanel{
 		btn6.setBounds(145,400,145,200);
 		btn6.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mouseReleased(MouseEvent e) {
 				IngredAll.tempNo = Integer.parseInt(sarr[5]);
 				System.out.println("재료확인에 있는 버튼");
 				ChangePanel.changePanel(mf, nowp, new IngredInfoSet(mf, IngredAll.tempNo));
@@ -183,7 +186,7 @@ public class CheckIngred extends JPanel{
 		btn7.setBounds(290,0,145,200);
 		btn7.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mouseReleased(MouseEvent e) {
 				IngredAll.tempNo = Integer.parseInt(sarr[6]);
 				System.out.println("재료확인에 있는 버튼");
 				ChangePanel.changePanel(mf, nowp, new IngredInfoSet(mf, IngredAll.tempNo));
@@ -196,7 +199,7 @@ public class CheckIngred extends JPanel{
 		btn8.setBounds(290,200,145,200);
 		btn8.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mouseReleased(MouseEvent e) {
 				IngredAll.tempNo = Integer.parseInt(sarr[7]);
 				System.out.println("재료확인에 있는 버튼");
 				ChangePanel.changePanel(mf, nowp, new IngredInfoSet(mf, IngredAll.tempNo));
@@ -209,7 +212,7 @@ public class CheckIngred extends JPanel{
 		btn9.setBounds(290,400,145,200);
 		btn9.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mouseReleased(MouseEvent e) {
 				IngredAll.tempNo = Integer.parseInt(sarr[8]);
 				System.out.println("재료확인에 있는 버튼");
 				ChangePanel.changePanel(mf, nowp, new IngredInfoSet(mf, IngredAll.tempNo));			}
@@ -225,7 +228,7 @@ public class CheckIngred extends JPanel{
 		btnList1.setBounds(70,600,50,50);
 		btnList1.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mouseReleased(MouseEvent e) {
 				new ChangePanel().changePanel(mf, nowp, new CheckIngred(mf));
 			}
 
@@ -236,7 +239,7 @@ public class CheckIngred extends JPanel{
 		btnList2.setBounds(120,600,50,50);
 		btnList2.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mouseReleased(MouseEvent e) {
 				new ChangePanel().changePanel(mf, nowp, new CheckIngred2(mf));
 			}
 
@@ -247,7 +250,7 @@ public class CheckIngred extends JPanel{
 		btnList3.setBounds(170,600,50,50);
 		btnList3.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mouseReleased(MouseEvent e) {
 				new ChangePanel().changePanel(mf, nowp, new CheckIngred3(mf));
 			}
 
@@ -258,7 +261,7 @@ public class CheckIngred extends JPanel{
 		btnList4.setBounds(220,600,50,50);
 		btnList4.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mouseReleased(MouseEvent e) {
 				new ChangePanel().changePanel(mf, nowp, new CheckIngred4(mf));
 			}
 
@@ -269,7 +272,7 @@ public class CheckIngred extends JPanel{
 		btnList5.setBounds(270,600,50,50);
 		btnList5.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mouseReleased(MouseEvent e) {
 				new ChangePanel().changePanel(mf, nowp, new CheckIngred5(mf));
 			}
 
@@ -280,7 +283,7 @@ public class CheckIngred extends JPanel{
 		btnList6.setBounds(320,600,50,50);
 		btnList6.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mouseReleased(MouseEvent e) {
 				new ChangePanel().changePanel(mf, nowp, new CheckIngred6(mf));
 			}
 
