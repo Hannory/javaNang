@@ -2,6 +2,7 @@ package view;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.Panel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -11,6 +12,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -31,13 +33,14 @@ public class UpRecipe extends JPanel {
 	JTextField recipeCont;
 	JTextField recipeName;
 	JLabel recipefile;
+	
 
 	public UpRecipe(MainFrame mf) {
 
 		//필드값 초기화  
 		this.mf=mf; 
 		this.mp=this;
-		
+
 		//전체 패널(제일 큰 패널) 기본 설정
 		this.setSize(445,770);
 		this.setBackground(new Color(190,190,190));
@@ -65,7 +68,7 @@ public class UpRecipe extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		
+
 		button0.setBounds(14,7,59,58);
 		panel.add(button0);
 		button0.setBackground(new Color(72, 209, 204));
@@ -88,23 +91,23 @@ public class UpRecipe extends JPanel {
 		button1.setBackground(Color.white);
 		button1.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mouseReleased(MouseEvent e) {
 				saveFile();
 				saveFile2();
 				saveFile3();
 			}
 		});
-		
-		
+
+
 		button1.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mouseReleased(MouseEvent e) {
 				ChangePanel.changePanel(mf, mp, new UpMyRecipe(mf)); 
 			}
 		});
 
 		mf.repaint();		
-		
+
 		JButton button2 = new JButton("파일선택");
 		button2.setBounds(305,562,117,37);
 		panel2.add(button2);
@@ -185,31 +188,31 @@ public class UpRecipe extends JPanel {
 		recipeName.setBounds(116,220,306,35);
 		panel2.add(recipeName);
 		saveFile2();
-		
+
 		JTextField recipeCont = new JTextField();
 		this.recipeCont = recipeCont;
 		recipeCont.setBounds(111,278,311,235);
 		panel2.add(recipeCont);
 		saveFile();
-		
-		
-		
-	
+
+
+
+
 
 		// 뒤로가기 
 		button0.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mouseReleased(MouseEvent e) {
 				ChangePanel.changePanel(mf, mp, new MainMenu(mf )); 
 			}
 		});
-		
+
 
 		button2.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mouseReleased(MouseEvent e) {
 				//File();
-				
+
 				JTextField recipefile = new JTextField(File());
 				recipefile.setBounds(112,562,179,32);
 				panel2.add(recipefile);
@@ -220,23 +223,23 @@ public class UpRecipe extends JPanel {
 
 		button1.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked (MouseEvent e) {
+			public void mouseReleased (MouseEvent e) {
 				JOptionPane.showMessageDialog(null, "등록이 완료되었습니다. 승인 요청에 2-3일 소요됩니다.");
 			}
 		});
 
 		mf.repaint();
-}
-	
-	
+	}
+
+
 	//파일찾기
 	public String File(){
-		
+
 		String folderPath = " ";
 
 		JFileChooser Photo = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
-	
-		
+
+
 		Photo.setCurrentDirectory(new File("/")); 
 		Photo.setAcceptAllFileFilterUsed(true);  
 		Photo.setDialogTitle("레시피 사진 탐색"); // 
@@ -248,24 +251,32 @@ public class UpRecipe extends JPanel {
 		int returnVal = Photo.showOpenDialog(null); 
 
 		if(returnVal == JFileChooser.APPROVE_OPTION) { 
-		
-			folderPath = Photo.getSelectedFile().toString();
+
+			folderPath = Photo.getSelectedFile().getPath();
 		}else if(returnVal == JFileChooser.CANCEL_OPTION){
 			System.out.println("cancel"); 
 			folderPath =  " ";
+
 		}
-		
+
+
 		System.out.println("폴더 어딨냐 : " + folderPath);		
-		
-		
+
 		return folderPath;
-		
+
+
+		//파일탐색기에서 이미지 불러오기
+		//텍스트 두줄 나오게 하기 
+		//재료입력
+		//로그인을 하면 관리자페이지랑 연결  
+		//관리자 레시피 승인 및 회원 제제 
+		//시험
 	}
 
 	public void saveFile() {
-		
+
 		ObjectOutputStream oop =null;
-		
+
 		try {
 
 			oop = new ObjectOutputStream (new FileOutputStream("recipeCont.txt"));
@@ -274,7 +285,7 @@ public class UpRecipe extends JPanel {
 			oop.flush();
 
 		} catch (FileNotFoundException e) {
-	
+
 			e.printStackTrace();
 		} catch (IOException e) {
 
@@ -292,57 +303,67 @@ public class UpRecipe extends JPanel {
 		}
 
 	}
-	
-	
+
+
 	public void saveFile2() {
 		ObjectOutputStream oop2 =null;
 
-			try {
-				oop2 = new ObjectOutputStream(new FileOutputStream("recipeTitle.txt"));
-				oop2.writeObject(this.recipeName.getText());
-				oop2.flush();
-			} catch (FileNotFoundException e) {
-
-				e.printStackTrace();
-			} catch (IOException e) {
-		
-				e.printStackTrace();
-			}finally {
-				try {
-					oop2.close();
-				}catch(IOException e) {
-					e.printStackTrace();
-					
-				}
-			}
-	}
-	
-	public void saveFile3() {
-		
-		
-		ObjectOutputStream oop3 = null;
-		
 		try {
-			oop3= new ObjectOutputStream(new FileOutputStream("recipefile.txt"));
-			oop3.writeObject(((Object) this.recipefile));/////////////이부분처리할것!!!!!!!!!!!!!!!!!!!!!!!!!
-		oop3.flush();
+			oop2 = new ObjectOutputStream(new FileOutputStream("recipeTitle.txt"));
+			oop2.writeObject(this.recipeName.getText());
+			oop2.flush();
 		} catch (FileNotFoundException e) {
-		
+
 			e.printStackTrace();
 		} catch (IOException e) {
-		
+
+			e.printStackTrace();
+		}finally {
+			try {
+				oop2.close();
+			}catch(IOException e) {
+				e.printStackTrace();
+
+			}
+		}
+	}
+
+	public void saveFile3() {
+
+	
+		ObjectOutputStream oop3 = null;
+
+		try {
+			oop3= new ObjectOutputStream(new FileOutputStream("recipefile.txt"));
+			//File();
+			oop3.writeObject(this.recipefile);
+					//.folderPath.getImage().getScaledInstance(180,180,0));
+			
+			//oop3.writeObject(recipefile) (new ImageIcon(folderPath).getImage().getScaledInstance(180, 180, 0));
+			
+			//recipefile.setIcon(new ImageIcon("filePath").getImage().getScaledInstance(180, 180, 0));
+			//oop3.writeObject(((Object) this.recipefile.folderpath()));/////////////이부분처리할것!!!!!!!!!!!!!!!!!!!!!!!!!
+			//Image recipefile = new ImageIcon("folderpath").getImage().getScaledInstance(130, 180, 0);
+			//	JLabel recipePhoto2 = new JLabel(new ImageIcon(new ImageIcon("images/yu/milk.png").getImage().getScaledInstance(130, 180, 0)));
+			//	Image recipefile = new ImageIcon("folderpath").getImage().getScaledInstance(130, 180, 0);
+
+			oop3.flush();
+		} catch (FileNotFoundException e) {
+
+			e.printStackTrace();
+		} catch (IOException e) {
+
 			e.printStackTrace();
 		}finally {
 			try {
 				oop3.close();
 			}catch(IOException e) {
 				e.printStackTrace();
-							}
+			}
 		}
-		
+
 	}
-	
-	
-	
-}
+
+	}
+
 
