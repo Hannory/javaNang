@@ -2,9 +2,12 @@ package view;
 import java.awt.Color;
 import java.awt.Desktop;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.image.ImageObserver;
+import java.awt.image.ImageProducer;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -12,6 +15,7 @@ import java.io.ObjectInputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.Random;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -29,13 +33,17 @@ public class AllRecipe extends JPanel {
 	MainFrame mf;
 	JPanel mp;
 	JPanel lp;
+	
+	
 
 	MgrRecipeDao mrd = new MgrRecipeDao();
 	
+	Recipe[] rc = new Recipe[MgrRecipeDao.recipeLength];;
 	
 
 	public AllRecipe(MainFrame mf,JPanel lp) {
-
+		
+		
 		this.lp = lp;
 
 		this.mf = mf;
@@ -61,23 +69,22 @@ public class AllRecipe extends JPanel {
 		logIn.setSize(50, 50);
 		panel.add(logIn);
 
-		JLabel label = new JLabel("모든 레시피");
+		JLabel label = new JLabel("오늘의 메뉴 추천");
 		label.setFont(new Font("맑은 고딕", Font.BOLD, 27));
 		label.setBackground(Color.WHITE);
 		label.setForeground(Color.white);
-		label.setBounds(138, 26, 146, 39);
+		label.setBounds(108, 26, 350, 39);
 		panel.add(label);
 		
 		mrd.fileSave();
 		
-		Recipe[] rc = new Recipe[MgrRecipeDao.recipeLength];
-		//Recipe rc = new Recipe();
-		
+
 		try(ObjectInputStream objIn = new ObjectInputStream(new FileInputStream("MgrRecipe.dat"));) {
 			
 			for(int i = 0; i < MgrRecipeDao.recipeLength; i++) {
 				rc[i] = (Recipe) objIn.readObject();
 			}
+			
  		//ArrayList arr = (ArrayList) objIn.readObject();
 		
 		//rc = (Recipe) arr.get(0);
@@ -89,21 +96,40 @@ public class AllRecipe extends JPanel {
 		} catch (ClassNotFoundException e1) {
 			e1.printStackTrace();
 		}
-
+		//레시피패널
+		
+		int rd[] = new int[4];
+		
+		for(int i = 0; i < 4; i++) {		
+			rd[i] = (int)(Math.random()* (rc.length - 1));
+			
+			for(int j = 0; j < i; j++) {
+				if(rd[i]==rd[j]) {
+					i--;
+					break;
+				}
+			}
+		}
+		
+		
 		JPanel recipe1 = new JPanel();
 		recipe1.setBounds(0, 85, 445, 145);
 		add(recipe1);
 		recipe1.setLayout(null);
 
-		Image rcPic = new ImageIcon(rc[0].getRecipePicAdr()).getImage().getScaledInstance(220, 145, 0);
+		Image rcPic = new ImageIcon(rc[rd[0]].getRecipePicAdr()).getImage().getScaledInstance(220, 145, 0);
 		JLabel recipeImage1 = new JLabel(new ImageIcon(rcPic));
-		recipeImage1.setBounds(0, 0, 220, 180);
+		recipeImage1.setBounds(0, 0, 220, 145);
 		recipe1.add(recipeImage1);
-
-		System.out.println("1st check : " + rc[0].getRecipePicAdr());
+		
+		
+		/*JButton like = new JButton(new ImageIcon(new ImageIcon("images/won/java.png").getImage().getScaledInstance(50, 50, 0)));				
+		like.setBounds(350,100,50,50);
+		recipe1.add(like);*/
+		
 		
 		//JLabel rp1 = new JLabel(rc[0].getRecipeName());
-		JLabel rp1 = new JLabel("<html># 중국집 부럽지 않은<br>짜장면 만들기 ~!!<br></html>");
+		JLabel rp1 = new JLabel/*("<html># 중국집 부럽지 않은<br>짜장면 만들기 ~!!<br></html>");*/(rc[rd[0]].getRecipeMent());
 		rp1.setFont(new Font("굴림", Font.BOLD, 15));
 		rp1.setBounds(240,-50,350,250);
 		recipe1.add(rp1);
@@ -113,11 +139,11 @@ public class AllRecipe extends JPanel {
 		add(recipe2);
 		recipe2.setLayout(null);
 
-		JLabel recipeImage2  = new JLabel(new ImageIcon(new ImageIcon(rc[1].getRecipePicAdr()).getImage().getScaledInstance(220, 145, 0)));
+		JLabel recipeImage2  = new JLabel(new ImageIcon(new ImageIcon(rc[rd[1]].getRecipePicAdr()).getImage().getScaledInstance(220, 145, 0)));
 		recipeImage2.setBounds(0, 0, 220 , 145);
 		recipe2.add(recipeImage2);
 
-		JLabel rp2 = new JLabel("<html># 레스토랑 부럽지 않은<br>크림 파스타 만들기 ~!!<br></html>");
+		JLabel rp2 = new JLabel(/*"<html># 레스토랑 부럽지 않은<br>크림 파스타 만들기 ~!!<br></html>"*/rc[rd[1]].getRecipeMent());
 		rp2.setBounds(240, -50, 350, 250);
 		recipe2.add(rp2);
 		rp2.setFont(new Font("굴림", Font.BOLD, 15));
@@ -127,11 +153,11 @@ public class AllRecipe extends JPanel {
 		add(recipe3);
 		recipe3.setLayout(null);
 
-		JLabel recipeImage3 =  new JLabel(new ImageIcon(new ImageIcon(rc[2].getRecipePicAdr()).getImage().getScaledInstance(220, 145, 0)));
+		JLabel recipeImage3 =  new JLabel(new ImageIcon(new ImageIcon(rc[rd[2]].getRecipePicAdr()).getImage().getScaledInstance(220, 145, 0)));
 		recipeImage3.setBounds(0, 0, 220, 145);
 		recipe3.add(recipeImage3);
 
-		JLabel rp3 = new JLabel("<html>#해물 맛이 가득 담긴 <br>토마토 스파게티 만들기 ~!!");
+		JLabel rp3 = new JLabel(/*"<html>#해물 맛이 가득 담긴 <br>토마토 스파게티 만들기 ~!!"*/rc[rd[2]].getRecipeMent());
 		rp3.setFont(new Font("굴림",Font.BOLD, 15));
 		rp3.setBounds(240, -50, 350, 250);
 		recipe3.add(rp3);
@@ -141,15 +167,17 @@ public class AllRecipe extends JPanel {
 		add(recipe4);
 		recipe4.setLayout(null);
 
-		JLabel recipeImage4 = new JLabel(new ImageIcon(new ImageIcon(rc[3].getRecipePicAdr()).getImage().getScaledInstance(220, 145, 0)));
+		JLabel recipeImage4 = new JLabel(new ImageIcon(new ImageIcon(rc[rd[3]].getRecipePicAdr()).getImage().getScaledInstance(220, 145, 0)));
 		recipeImage4.setBounds(0, 0, 220, 145);
 		recipe4.add(recipeImage4);
 
-		JLabel rp4 = new JLabel("<html>#휴게소에서 먹는 그맛  <br>영양만점 찐감자 만들기 ~!!");
+		JLabel rp4 = new JLabel(/*"<html>#휴게소에서 먹는 그맛  <br>영양만점 찐감자 만들기 ~!!"*/rc[rd[3]].getRecipeMent());
 		rp4.setFont(new Font("굴림", Font.BOLD, 15));
 		rp4.setBounds(240, -50, 350, 250);
 		recipe4.add(rp4);
 
+		
+		
 		JPanel ad = new JPanel();
 		ad.setBounds(0, 685, 450, 78);
 		add(ad);
@@ -164,18 +192,20 @@ public class AllRecipe extends JPanel {
 		recipe1.addMouseListener(new MouseAdapter() {
 
 			@Override 
-			public void mouseClicked(MouseEvent e) {
-				ChangePanel.changePanel(mf, mp, new RecipePage(mf, lp));
+			public void	mouseReleased(MouseEvent e) {
+				ChangePanel.changePanel(mf, mp, new RecipePage(mf, lp, rc[rd[0]]));
 
 			}
 
 		});
 		
+		//new RecipePage(mf, lp, rc(rd[0]));
+		
 		recipe2.addMouseListener(new MouseAdapter() {
 
 			@Override 
-			public void mouseClicked(MouseEvent e) {
-				ChangePanel.changePanel(mf, mp, new RecipePage11(mf,lp));
+			public void mouseReleased(MouseEvent e) {
+				ChangePanel.changePanel(mf, mp, new RecipePage(mf,lp,rc[rd[1]]));
 				//ChangePanel.changePanel(mf, mp, new RecipePage11(mf,rc1));
 			}
 
@@ -183,8 +213,8 @@ public class AllRecipe extends JPanel {
 		recipe3.addMouseListener(new MouseAdapter() {
 
 			@Override 
-			public void mouseClicked(MouseEvent e) {
-				ChangePanel.changePanel(mf, mp, new RecipePage12(mf,lp));
+			public void mouseReleased(MouseEvent e) {
+				ChangePanel.changePanel(mf, mp, new RecipePage(mf,lp,rc[rd[2]]));
 
 			}
 
@@ -192,8 +222,8 @@ public class AllRecipe extends JPanel {
 		recipe4.addMouseListener(new MouseAdapter() {
 
 			@Override 
-			public void mouseClicked(MouseEvent e) {
-				ChangePanel.changePanel(mf, mp, new RecipePage13(mf,lp));
+			public void mouseReleased(MouseEvent e) {
+				ChangePanel.changePanel(mf, mp, new RecipePage(mf,lp,rc[rd[3]]));
 
 			}
 
@@ -203,7 +233,7 @@ public class AllRecipe extends JPanel {
 		logIn.addMouseListener(new MouseAdapter(){
 
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mouseReleased(MouseEvent e) {
 				if(AllRecipe.login == true) {
 
 					ChangePanel.changePanel(mf, mp, new MainMenu(mf));
@@ -219,7 +249,7 @@ public class AllRecipe extends JPanel {
 
 		adBtn.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mouseReleased(MouseEvent e) {
 				try { Desktop.getDesktop().browse(new URI("https://www.iei.or.kr/main/main.kh")); 
 				} catch (IOException e1) {
 					e1.printStackTrace(); 

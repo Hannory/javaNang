@@ -9,6 +9,7 @@ import java.io.ObjectOutputStream;
 import java.util.HashMap;
 import java.util.TreeSet;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import model.vo.User;
@@ -18,7 +19,15 @@ public class UserDao {
 	//userList를 생성하여 SignUp 패널에 입력받은 값들 쓰기
 			public void writeUserList(JPanel SignUp, User u) { //SignUp 패널때문에 더러워진 매개변수,,
 				
-				HashMap<String, User> umap = new HashMap();  //해쉬원용의 독재로 회원정보를 입출력하게 되었습니다..
+				
+				
+				//<jeff> 주석처리: 하기대로 하면 HashMap을 여러 개 저장하게 됨. 
+				//HashMap은 하나만 저장되고 그 하나의 HashMap에 누적해야함.
+				//readUserList(); 로 userList.dat에 있는 HashMap을 불러와서 그 HashMap에 누적해야함.
+				
+				//HashMap<String, User> umap = new HashMap();  //해쉬원용의 독재로 회원정보를 입출력하게 되었습니다..
+				
+				HashMap<String, User> umap = readUserList();
 				umap.put(u.getUserId(), u);                  //키 값으로 userId를, value 값으로 객체 u를 넣어u~
 				
 				System.out.print("umap : " );
@@ -27,8 +36,9 @@ public class UserDao {
 				
 				ObjectOutputStream oos = null;
 				
+				//<jeff> 주석처리: true 불필요.
 				try {
-					oos = new ObjectOutputStream(new FileOutputStream("userList.dat", true)); //true를 써줘야 정보가 누적
+					oos = new ObjectOutputStream(new FileOutputStream("userList.dat"/*, true*/)); //true를 써줘야 정보가 누적
 				
 					oos.writeObject(umap);
 					
@@ -53,13 +63,25 @@ public class UserDao {
 			//유저리스트를 읽어주는 메소드
 			//리턴타입으로 HashMap 
 			public HashMap readUserList() {
-				HashMap<String, User> umap = null;
+				HashMap<String, User> umap = new HashMap();
 				ObjectInputStream ois = null;
 				
 				try {
 					ois = new ObjectInputStream(new FileInputStream("userList.dat"));
 					
 					umap = (HashMap<String, User>)ois.readObject();     //압줵을 해쉬맵으로 다운캐스트~~
+					
+				}catch (FileNotFoundException e) {
+					//<Jeff> userList.dat가 없을 경우 새로 생성해주는 구문
+					try {
+						ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("userList.dat"));
+						oos.writeObject(umap);
+						oos.flush();
+					} catch (FileNotFoundException e1) {
+						e1.printStackTrace();
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}
 					
 				} catch (Exception e) {
 					e.printStackTrace();
