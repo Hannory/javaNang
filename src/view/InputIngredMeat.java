@@ -36,7 +36,7 @@ public class InputIngredMeat extends JPanel {
 
 		//상단 타이틀 셋팅
 		Font font = new Font("맑은 고딕", Font.BOLD, 27);
-		JLabel barTitle = new JLabel("재료 입력<육류>");
+		JLabel barTitle = new JLabel("<육류>");
 		barTitle.setLocation(80, 10);
 		barTitle.setSize(200, 50);
 		barTitle.setForeground(Color.WHITE);
@@ -50,6 +50,7 @@ public class InputIngredMeat extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				System.out.println("뒤로가기 클릭");
+				new AddIngred().modifyData();
 				new ChangePanel().changePanel(mf, nowp, new InputIngred(mf));
 			}
 		}
@@ -62,7 +63,7 @@ public class InputIngredMeat extends JPanel {
 		logIn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				System.out.println("뒤로가기 클릭");
+				System.out.println("마이페이지 클릭");
 				new ChangePanel().changePanel(mf, nowp, new MyFridge(mf));
 			}
 		});

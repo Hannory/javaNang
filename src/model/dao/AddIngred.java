@@ -39,7 +39,7 @@ public class AddIngred{
 		
 	}
 	
-	
+	//현재 냉장고(static set) 수정 + 저장 메소드 호출
 	public void modifyData() {
 		
 		try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("userList.dat"));){
@@ -51,7 +51,7 @@ public class AddIngred{
 			
 			tempMap.put(nowUser, tempU);
 			
-			saveData(tempMap);	//메소드 호출
+			saveData(tempMap);	//저장 메소드 호출
 			
 			
 			
@@ -69,6 +69,7 @@ public class AddIngred{
 	
 	
 	
+	//변경된 데이터(static set/현재 냉장고) 저장하는 메소드
 	public void saveData(HashMap m) {
 		
 		File f = new File("userList.dat");
