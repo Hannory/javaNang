@@ -131,8 +131,12 @@ public class LoginPage extends JPanel {
 					String id = idField.getText();
 
 					User u1 = (User) map.get(id);
-
-					if(pwField.getText().equals(u1.getUserPw())) {
+					
+					/*if(idField.getText() != map.get(id)) {
+						System.out.println("아이디트림");
+					}*/
+					
+					 if (map.containsKey(id) &&/*idField.getText().equals(map.get(id))*/ pwField.getText().equals(u1.getUserPw())) {
 
 						ChangePanel.changePanel(mf, lp, new MainMenu(mf));
 
@@ -143,12 +147,13 @@ public class LoginPage extends JPanel {
 						TreeSet ts = (TreeSet) u1.getUserIngred().clone();
 						System.out.println(ts);
 						ingredStatic = ts;
-
-					}else {
+						
+					}else if(!map.containsKey(id)||pwField.getText() != u1.getUserPw()) {
 						JOptionPane.showMessageDialog(null, "아이디 또는 비밀번호를 확인 후\n다시 로그인해주세요.");
 						AllRecipe.login  = false;
+						System.out.println("아이디비밀번호틀림");
 					}
-
+					
 				} catch (ClassNotFoundException e1) {
 					e1.printStackTrace();
 				} catch (FileNotFoundException e1) {
