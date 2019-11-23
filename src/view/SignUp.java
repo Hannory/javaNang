@@ -60,11 +60,11 @@ public class SignUp extends JPanel{
 	UserDao ud = new UserDao();  //ÆÄÀÏÀÔÃâ·Â ¸Ş¼Òµå ¼ÒÈ¯À» À§ÇÑ °´Ã¼ »ı¼º
 	HashMap<String, User> umap = null;
 	
-	boolean cid = false;         //¾ÆÀÌµğ Áßº¹È®ÀÎ¿¡ ¾²ÀÏ °ª
-	boolean cnick = false;       //´Ğ³×ÀÓ Áßº¹È®ÀÎ¿¡ ¾²ÀÏ °ª
-	boolean cn = false;          //ÀÌ¸ŞÀÏ ÀÎÁõ¹øÈ£ È®ÀÎ¿¡ ¾²ÀÏ °ª
+	boolean cid = true;         //¾ÆÀÌµğ Áßº¹È®ÀÎ¿¡ ¾²ÀÏ °ª
+	boolean cnick = true;       //´Ğ³×ÀÓ Áßº¹È®ÀÎ¿¡ ¾²ÀÏ °ª
+	boolean cn = true;          //ÀÌ¸ŞÀÏ ÀÎÁõ¹øÈ£ È®ÀÎ¿¡ ¾²ÀÏ °ª
 	
-	String str = null;
+	String str = null;           //int¹è¿­ÀÎ ÀÌ¸ŞÀÏ ÀÎÁõ¹øÈ£¸¦ String Å¸ÀÔÀ¸·Î º¯È¯ÇÏ¿© ÀúÀåÇÒ º¯¼ö
 	
 	public SignUp() {}       //±âº» »ı¼ºÀÚ 
 	
@@ -131,6 +131,10 @@ public class SignUp extends JPanel{
 		pwpf.setLocation(90, 220);
 		pwpf.setSize(210, 30);
 		
+		JLabel pwlb2 = new JLabel("¡Ø¿µ¹®ÀÚ, ¼ıÀÚ, Æ¯¼ö¹®ÀÚ 3°¡Áö Á¶ÇÕ 8~16ÀÚ·Î ¼³Á¤");
+		pwlb2.setLocation(90, 255);
+		pwlb2.setSize(340, 15);
+		pwlb2.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 11));
 		
 		//Ã¼Å©ÆĞ½º¿öµå ¶óº§
 		JLabel cpwlb = new JLabel("PW È®ÀÎ");
@@ -182,12 +186,21 @@ public class SignUp extends JPanel{
 		emailbtn = new JButton("ÀÎÁõ¹Ş±â");
 		emailbtn.setLocation(310, 490);
 		emailbtn.setSize(100, 30);
+		
+		//ÀÎÁõ¹Ş±â ¹öÆ°À» ´©¸£¸é ÀÌ¸ŞÀÏ À¯È¿¼º °Ë»çÇÏ¿© Çü½ÄÀÌ ¸ÂÀ¸¸é ÀÌ¸ŞÀÏÀÌ ¹ß¼Û µÆ´Ù´Â ÆË¾÷Ã¢ÀÌ ¶ß°í, ¾Æ´Ï¸é Çü½ÄÀÌ ¿Ã¹Ù¸£Áö ¾Ê´Ù°í ÆË¾÷Ã¢ÀÌ ¶á´Ù.
 		emailbtn.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				Pattern p = Pattern.compile("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
+				Matcher m = p.matcher(emailtf.getText());
 				
-			sendEmail();
+				if(m.find() == true) {
+					JOptionPane.showMessageDialog(null, "ÀÌ¸ŞÀÏÀÌ ¹ß¼ÛµÇ¾ú½À´Ï´Ù.", "CHECK_EMAIL", JOptionPane.INFORMATION_MESSAGE);
+					sendEmail();
+				}else {
+					JOptionPane.showMessageDialog(null, "ÀÌ¸ŞÀÏ Çü½ÄÀÌ ¿Ã¹Ù¸£Áö ¾Ê½À´Ï´Ù.", "CHECK_EMAIL", JOptionPane.ERROR_MESSAGE);
+				}
 				
 				
 				
@@ -229,7 +242,7 @@ public class SignUp extends JPanel{
 		join.addMouseListener(new MouseAdapter() {
 			
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mouseReleased(MouseEvent e) {
 				register();
 		
 				
@@ -251,6 +264,7 @@ public class SignUp extends JPanel{
 		
 		this.add(pwlb);
 		this.add(pwpf);
+		this.add(pwlb2);
 		
 		this.add(cpwlb);
 		this.add(cpwpf);
@@ -280,7 +294,7 @@ public class SignUp extends JPanel{
 	
 	class MyMouseAdapter extends MouseAdapter{
 		@Override
-		public void mouseClicked(MouseEvent e) {//µÚ·Î°¡±â ¹öÆ° ´©¸£¸é ¾à°üµ¿ÀÇ ÆĞ³Î·Î ÀÌµ¿
+		public void mouseReleased(MouseEvent e) {//µÚ·Î°¡±â ¹öÆ° ´©¸£¸é ¾à°üµ¿ÀÇ ÆĞ³Î·Î ÀÌµ¿
 			if(e.getSource() == button) {
 				ChangePanel.changePanel(mf, signUp, new Agree(mf));
 			}
@@ -329,10 +343,10 @@ public class SignUp extends JPanel{
 						JOptionPane.showMessageDialog(null, "»ç¿ë °¡´ÉÇÑ ¾ÆÀÌµğÀÔ´Ï´Ù.", "REGISTER_HELPER", JOptionPane.INFORMATION_MESSAGE);
 						cid = true;
 					}else if(uset.contains(idtf.getText())) {
-						JOptionPane.showMessageDialog(null, "Á¸ÀçÇÏ´Â ¾ÆÀÌµğÀÔ´Ï´Ù.", "REGISTER_HELPER", JOptionPane.WARNING_MESSAGE);
+						JOptionPane.showMessageDialog(null, "Á¸ÀçÇÏ´Â ¾ÆÀÌµğÀÔ´Ï´Ù.", "REGISTER_HELPER", JOptionPane.ERROR_MESSAGE);
 						cid = false;
 					}else if(m.find() == false) {
-						JOptionPane.showMessageDialog(null, "»ç¿ëÇÒ ¼ö ¾ø´Â ¾ÆÀÌµğÀÔ´Ï´Ù.(¿µ¹®, ¼ıÀÚ Á¶ÇÕ, 4~12ÀÚ)", "REGISTER_HELPER", JOptionPane.WARNING_MESSAGE);
+						JOptionPane.showMessageDialog(null, "»ç¿ëÇÒ ¼ö ¾ø´Â ¾ÆÀÌµğÀÔ´Ï´Ù.(¿µ¹®, ¼ıÀÚ Á¶ÇÕ, 4~12ÀÚ)", "REGISTER_HELPER", JOptionPane.ERROR_MESSAGE);
 						cid = false;
 					}
 				//jeff 1
@@ -388,6 +402,8 @@ public class SignUp extends JPanel{
 	public void checkNick(User u) {
 		
 		ObjectInputStream ois = null;
+		Pattern p = Pattern.compile("^[a-zA-Z°¡-ÆR0-9]{2,10}$");
+		Matcher m = p.matcher(nicktf.getText());
 		try {
 			ois = new ObjectInputStream(new FileInputStream("userList.dat"));
 			
@@ -396,21 +412,25 @@ public class SignUp extends JPanel{
 			Collection ucol = umap.values();
 			
 			Object[] uarr = ucol.toArray();
-			
+
 			for(int i = 0; i < uarr.length; i++) {
-				if(nicktf.getText().equals(((User) uarr[i]).getNickname())) {
-					JOptionPane.showMessageDialog(null, "Á¸ÀçÇÏ´Â ´Ğ³×ÀÓÀÔ´Ï´Ù.", "REGISTER_HELPER", JOptionPane.WARNING_MESSAGE);
-					cnick = false;
-				}else {
-					JOptionPane.showMessageDialog(null, "»ç¿ë°¡´ÉÇÑ ´Ğ³×ÀÓÀÔ´Ï´Ù.", "REGISTER_HELPER", JOptionPane.INFORMATION_MESSAGE);
+				if(!nicktf.getText().equals(((User) uarr[i]).getNickname()) && m.find() == true){
+					JOptionPane.showMessageDialog(null, "»ç¿ë°¡´ÉÇÑ ´Ğ³×ÀÓÀÔ´Ï´Ù.", "CHECK_NICKNAME", JOptionPane.INFORMATION_MESSAGE);
 					cnick = true;
+				}else if(nicktf.getText().equals(((User) uarr[i]).getNickname())) {
+					JOptionPane.showMessageDialog(null, "Á¸ÀçÇÏ´Â ´Ğ³×ÀÓÀÔ´Ï´Ù.", "CHECK_NICKNAME", JOptionPane.ERROR_MESSAGE);
+					cnick = false;
+				}else if(m.find() == false) {
+					JOptionPane.showMessageDialog(null, "»ç¿ëÇÒ ¼ö ¾ø´Â ´Ğ³×ÀÓÀÔ´Ï´Ù.", "CHECK_NICKNAME", JOptionPane.ERROR_MESSAGE);
+					cnick = false;
 				}
+				return;
 			}
 			//jeff 2
 			//¹®Á¦: userList.dat°¡ ¾ø´Âµ¥ ´Ğ³×ÀÓ Áßº¹°Ë»çÇÏ¸é FileNotFoundException ¹ß»ı 
 			//ÇØ°áÃ¥: ´Ğ³×ÀÓ ¾ÆÀÌµğ Áßº¹°Ë»ç try~catch ±¸¹®¿¡ FileNotFoundExcpetion Ãß°¡
 		} catch (FileNotFoundException e) {
-			JOptionPane.showMessageDialog(null, "»ç¿ë °¡´ÉÇÑ ´Ğ³×ÀÓÀÔ´Ï´Ù.", "À¯½ÂÀÌ°¡ ¹Ù²Û ³»¿ë", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(null, "»ç¿ë °¡´ÉÇÑ ´Ğ³×ÀÓÀÔ´Ï´Ù.", "CHECK_NICKNAME", JOptionPane.INFORMATION_MESSAGE);
 			cnick = true;
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -502,7 +522,7 @@ public class SignUp extends JPanel{
 			JOptionPane.showMessageDialog(null, "ÀÌ¸ŞÀÏÀÌ ÀÎÁõµÇ¾ú½À´Ï´Ù.", "REGISTER_HELPER", JOptionPane.INFORMATION_MESSAGE);
 			cn = true;
 		}else {
-			JOptionPane.showMessageDialog(null, "ÀÎÁõ¹øÈ£°¡ Æ²¸³´Ï´Ù.", "REGISTER_HELPER", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(null, "ÀÎÁõ¹øÈ£°¡ Æ²¸³´Ï´Ù.", "REGISTER_HELPER", JOptionPane.ERROR_MESSAGE);
 			cn = false;
 		}
 	}
@@ -512,36 +532,29 @@ public class SignUp extends JPanel{
 	
 	//°¡ÀÔÇÏ±â ¹öÆ°À» ´­·¯ °¡ÀÔ(À§ÀÇ ¸Ş¼ÒµåµéÀÌ trueÀÏ °æ¿ì¸¸ °¡´É)
 	//¸¶¿ì½ºÅ¬¸¯¸Ş¼Òµå¸¦ ¾²¸é ¿À·ù¹ß»ı È½¼ö±îÁö Áßº¹µÇ¾î °ªÀÌ ÀúÀåµÇ¾î ¾×¼ÇÀ¸·Î ¹Ù²Ş
+	//¾×¼Çµµ °°Àº ¿À·ù ¹ß»ı
 	public void register() {
 		join.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
-				System.out.println(cid + ", " + pwPattern() + ", " + checkPw() + ", " + cnick + ", " + checkEmail() + ", " + cn);
-				
-				if(cid == true && pwPattern() == true && checkPw() == true && cnick == true && checkEmail() == true && cn == true) {
+				if(cid == true && pwPattern() == true && checkPw() == true && cnick == true && cn == true) {
 
 					ud.writeUserList(signUp, inputUser());
 
 					JOptionPane.showMessageDialog(null, "°¡ÀÔÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù.");
 					ChangePanel.changePanel(mf, signUp, new LoginPage(mf));
 				
-				}else if(cid == false) {
-					JOptionPane.showMessageDialog(null, "¾ÆÀÌµğ¸¦ ´Ù½Ã ÀÔ·ÂÇÏ¼¼¿ä.");
+				}else if(cid == false || e.getSource() != idbtn) {
+					JOptionPane.showMessageDialog(null, "¾ÆÀÌµğ Áßº¹Ã¼Å©¸¦ ÇØÁÖ¼¼¿ä.", "CHECK_ID", JOptionPane.ERROR_MESSAGE);
 				}else if(pwPattern() == false) {
-					JOptionPane.showMessageDialog(null, "ºñ¹Ğ¹øÈ£¸¦ ´Ù½Ã ÀÔ·ÂÇÏ¼¼¿ä.(¿µ¹®ÀÚ, ¼ıÀÚ, Æ¯¼ö¹®ÀÚ Á¶ÇÕ, 8~16ÀÚ)", "REGISTER_HELPER", JOptionPane.WARNING_MESSAGE);
-				}else if(checkEmail() == false) {
-					JOptionPane.showMessageDialog(null, "À¯È¿ÇÏÁö ¾Ê´Â ÀÌ¸ŞÀÏ Çü½ÄÀÔ´Ï´Ù.", "REGISTER_HELPER", JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(null, "ºñ¹Ğ¹øÈ£¸¦ ´Ù½Ã ÀÔ·ÂÇÏ¼¼¿ä.(¿µ¹®ÀÚ, ¼ıÀÚ, Æ¯¼ö¹®ÀÚ Á¶ÇÕ, 8~16ÀÚ)", "CHECK_PASSWORD", JOptionPane.ERROR_MESSAGE);
 				}else if(checkPw() == false) {
-					JOptionPane.showMessageDialog(null, "ÀÔ·ÂÇÏ½Å ºñ¹Ğ¹øÈ£°¡ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù.", "REGISTER_HELPER", JOptionPane.WARNING_MESSAGE);
-				}else if(e.getSource() != idbtn) {
-					System.out.println("e.getSource() : " + e.getSource());
-					JOptionPane.showMessageDialog(null, "¾ÆÀÌµğ Áßº¹Ã¼Å©¸¦ ÇØÁÖ¼¼¿ä.", "REGISTER_HELPER", JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(null, "ÀÔ·ÂÇÏ½Å ºñ¹Ğ¹øÈ£°¡ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù.", "CHECK_PASSWORD", JOptionPane.ERROR_MESSAGE);
 				}else if(cnick == false || e.getSource() != nickbtn){
-					JOptionPane.showMessageDialog(null, "´Ğ³×ÀÓ Áßº¹Ã¼Å©¸¦ ÇØÁÖ¼¼¿ä.", "REGISTER_HELPER", JOptionPane.WARNING_MESSAGE);
-				}else if(cn == false || e.getSource() != emailbtn) {
-					JOptionPane.showMessageDialog(null, "ÀÌ¸ŞÀÏ ÀÎÁõÀ» ÇØÁÖ¼¼¿ä.", "REGISTER_HELPER", JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(null, "´Ğ³×ÀÓ Áßº¹Ã¼Å©¸¦ ÇØÁÖ¼¼¿ä.", "CHECK_NICKNAME", JOptionPane.ERROR_MESSAGE);
+				}else if(cn == false || e.getSource() != numbtn) {
+					JOptionPane.showMessageDialog(null, "ÀÌ¸ŞÀÏ ÀÎÁõÀ» ÇØÁÖ¼¼¿ä.", "CHECK_EMAIL", JOptionPane.ERROR_MESSAGE);
 				}
 			}
 

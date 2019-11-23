@@ -79,6 +79,7 @@ public class Agree extends JPanel{
 		terms2.setLayout(null);
 		tp.setLocation(40, 140);
 		tp.setPreferredSize(new Dimension(360, 170));
+		tp.setEditable(false);
 		
 		//스크롤바
 		final JScrollPane scrollPane = new JScrollPane(tp, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -107,6 +108,7 @@ public class Agree extends JPanel{
 		pterms2.setLayout(null);
 		tp2.setLocation(40, 400);
 		tp2.setPreferredSize(new Dimension(360, 170));
+		tp2.setEditable(false);
 		
 		//스크롤바
 		final JScrollPane scrollPane2 = new JScrollPane(tp2, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -151,7 +153,7 @@ public class Agree extends JPanel{
 		//뒤로가기 버튼 클릭시 로그인 패널로 이동
 		button.addMouseListener(new MyMouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mouseReleased(MouseEvent e) {
 				ChangePanel.changePanel(mf, agree, new LoginPage(mf));
 			}
 		});
@@ -181,7 +183,7 @@ public class Agree extends JPanel{
 		//동의안함 버튼 클릭시 로그인 패널로 이동
 		btn2.addMouseListener(new MyMouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mouseReleased(MouseEvent e) {
 				ChangePanel.changePanel(mf, agree, new LoginPage(mf));
 			}
 		});
@@ -249,7 +251,7 @@ public class Agree extends JPanel{
 	//회원가입 패널로 넘어가기 위한...
 	class MyMouseAdapter extends MouseAdapter{
 		@Override
-		public void mouseClicked(MouseEvent e) {
+		public void mouseReleased(MouseEvent e) {
 			//약관 체크박스 두 개 다 누른 후 동의함 버튼을 눌러야 회원가입 패널로 이동
 			if(button1.isSelected() && button2.isSelected()) {
 				if(e.getSource() == btn1) {
