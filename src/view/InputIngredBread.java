@@ -50,6 +50,7 @@ public class InputIngredBread extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				System.out.println("뒤로가기 클릭");
+				new AddIngred().modifyData();
 				new ChangePanel().changePanel(mf, nowp, new InputIngred(mf));
 			}
 		}
