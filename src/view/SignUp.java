@@ -17,6 +17,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Properties;
 import java.util.Set;
+import java.util.TreeSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -185,7 +186,8 @@ public class SignUp extends JPanel{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				sendEmail();
+				
+			sendEmail();
 				
 				
 				
@@ -295,6 +297,14 @@ public class SignUp extends JPanel{
 		u.setUserPw(String.valueOf(pwpf.getPassword()));
 		u.setNickname(nicktf.getText());
 		u.setEmail(emailtf.getText());
+		
+		//jeff 4
+		//문제점: 최초 가입시 사용자가 갖고 있는 재료가 없기 때문에, 로그인 하면 NullPointerException 발생
+		//해결책: 재료의 자료형인 TreeSet 자료형 변수를 선언하고 9999라는 번호만 있는 재료를 넣어주기. TreeSet import 해야함.
+		TreeSet ts = new TreeSet();
+		ts.add(9999);
+		u.setUserIngred(ts);
+		
 
 		return u;
 	}
@@ -309,6 +319,7 @@ public class SignUp extends JPanel{
 					
 					ois = new ObjectInputStream(new FileInputStream("userList.dat"));
 					
+					//System.out.println("ois.readObject() : " + ois.readObject());
 					umap = (HashMap) ois.readObject();
 					
 					Set uset = umap.keySet();
@@ -324,11 +335,17 @@ public class SignUp extends JPanel{
 						JOptionPane.showMessageDialog(null, "사용할 수 없는 아이디입니다.(영문, 숫자 조합, 4~12자)", "REGISTER_HELPER", JOptionPane.WARNING_MESSAGE);
 						cid = false;
 					}
-				
-				
+				//jeff 1
+				//문제: userList.dat가 없는데 아이디 중복검사하면 FileNotFoundException 발생 
+				//해결책: 아이디 중복검사 try~catch 구문에 FileNotFoundExcpetion 추가
+				} catch (FileNotFoundException e) {
+					JOptionPane.showMessageDialog(null, "사용 가능한 아이디입니다.", "유승이가 바꾼 내용", JOptionPane.INFORMATION_MESSAGE);
+					cid = true;
 				} catch (EOFException e1) {
+
 					e1.printStackTrace();
 				}catch(Exception e1){
+
 					e1.printStackTrace();
 				}finally {
 					try {
@@ -350,6 +367,9 @@ public class SignUp extends JPanel{
 		Matcher m = p.matcher(String.valueOf(pwpf.getPassword()));
 		
 		return m.find();
+		
+		//비번 쉬운 마스터 아이디 만들기 위해
+		//return true;
 	}
 	
 	
@@ -376,7 +396,7 @@ public class SignUp extends JPanel{
 			Collection ucol = umap.values();
 			
 			Object[] uarr = ucol.toArray();
-
+			
 			for(int i = 0; i < uarr.length; i++) {
 				if(nicktf.getText().equals(((User) uarr[i]).getNickname())) {
 					JOptionPane.showMessageDialog(null, "존재하는 닉네임입니다.", "REGISTER_HELPER", JOptionPane.WARNING_MESSAGE);
@@ -386,12 +406,22 @@ public class SignUp extends JPanel{
 					cnick = true;
 				}
 			}
-		
+			//jeff 2
+			//문제: userList.dat가 없는데 닉네임 중복검사하면 FileNotFoundException 발생 
+			//해결책: 닉네임 아이디 중복검사 try~catch 구문에 FileNotFoundExcpetion 추가
+		} catch (FileNotFoundException e) {
+			JOptionPane.showMessageDialog(null, "사용 가능한 닉네임입니다.", "유승이가 바꾼 내용", JOptionPane.INFORMATION_MESSAGE);
+			cnick = true;
 		}catch (Exception e) {
 			e.printStackTrace();
 		}finally {
+			//jeff 3
+			//문제: 닉네임 중복검사하면 NullPointerException 발생 
+			//해결책: 닉네임 중복검사 try~catch 구문 finally에 null 감지 if문 추가
 			try {
-				ois.close();
+				if(ois != null) {
+					ois.close();
+				}
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -406,6 +436,7 @@ public class SignUp extends JPanel{
 		Matcher m = p.matcher(emailtf.getText());
 		
 		return m.find();
+		
 	}
 	
 	//이메일 보내기
@@ -486,13 +517,16 @@ public class SignUp extends JPanel{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
+				System.out.println(cid + ", " + pwPattern() + ", " + checkPw() + ", " + cnick + ", " + checkEmail() + ", " + cn);
+				
 				if(cid == true && pwPattern() == true && checkPw() == true && cnick == true && checkEmail() == true && cn == true) {
 
 					ud.writeUserList(signUp, inputUser());
 
 					JOptionPane.showMessageDialog(null, "가입이 완료되었습니다.");
 					ChangePanel.changePanel(mf, signUp, new LoginPage(mf));
-
+				
 				}else if(cid == false) {
 					JOptionPane.showMessageDialog(null, "아이디를 다시 입력하세요.");
 				}else if(pwPattern() == false) {
@@ -502,6 +536,7 @@ public class SignUp extends JPanel{
 				}else if(checkPw() == false) {
 					JOptionPane.showMessageDialog(null, "입력하신 비밀번호가 일치하지 않습니다.", "REGISTER_HELPER", JOptionPane.WARNING_MESSAGE);
 				}else if(e.getSource() != idbtn) {
+					System.out.println("e.getSource() : " + e.getSource());
 					JOptionPane.showMessageDialog(null, "아이디 중복체크를 해주세요.", "REGISTER_HELPER", JOptionPane.WARNING_MESSAGE);
 				}else if(cnick == false || e.getSource() != nickbtn){
 					JOptionPane.showMessageDialog(null, "닉네임 중복체크를 해주세요.", "REGISTER_HELPER", JOptionPane.WARNING_MESSAGE);
