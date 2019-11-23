@@ -63,7 +63,7 @@ public class IngredInfoSet extends JPanel{
 			@Override
 			public void mouseReleased(MouseEvent e) {
 				System.out.println("뒤로가기 클릭");
-				new ChangePanel().changePanel(mf, nowp, new MyFridge(mf));
+				new ChangePanel().changePanel(mf, nowp, new CheckIngred(mf));
 			}
 		}
 				);
@@ -107,6 +107,12 @@ public class IngredInfoSet extends JPanel{
 		    public void mouseReleased(MouseEvent e) {
 				System.out.println("재료 삭제 버튼 클릭됨");
 				new IngredAll().deleteIngred(IngredAll.tempNo);
+				
+				//유통기한 객체에서도 해당 키,값 삭제
+				IngredAll.ingredExpiryMap.remove( String.valueOf(LoginPage.ingredStatic) + IngredAll.tempNo);
+				//수정된 객체정보 저장
+				new IngredAll().saveIngredExpiryMap();
+				
 			}
 
 			
@@ -133,15 +139,15 @@ public class IngredInfoSet extends JPanel{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				//콤보박스에서 날짜 선택시 진입
 
 				JComboBox cb = (JComboBox) e.getSource();
 
 				String expiry = (String) cb.getSelectedItem();
-				int expiryDay = Integer.parseInt(expiry);
+				int expiryDay = Integer.parseInt(expiry);	//클릭된 값 int 타입으로 저장
 				
-				System.out.println("int expiryDay : " + expiryDay);
-				UserIngredInfo.userIngredInfo.setExpiry(IngredNo);
-				System.out.println("현재 냉장고 의 유통기한" + UserIngredInfo.userIngredInfo.getExpiry());
+				new IngredAll().modifyIngredExpiryMap(expiryDay);	//스태틱의 냉장고 정보 수정
+				new IngredAll().saveIngredExpiryMap();				//수정된 정보 파일에 저장
 				
 				
 				///////////////
@@ -227,7 +233,9 @@ public class IngredInfoSet extends JPanel{
 
 
 	}
-
+	
+	
+	
 	
 	
 	

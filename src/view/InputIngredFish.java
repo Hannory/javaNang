@@ -9,6 +9,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import model.dao.AddIngred;
@@ -48,7 +49,7 @@ public class InputIngredFish extends JPanel {
 		btnBack.setBounds(10,10,50,50);
 		btnBack.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mouseReleased(MouseEvent e) {
 				System.out.println("뒤로가기 클릭");
 				new AddIngred().modifyData();
 				new ChangePanel().changePanel(mf, nowp, new InputIngred(mf));
@@ -62,7 +63,7 @@ public class InputIngredFish extends JPanel {
 		logIn.setBounds(380,10,50,50);
 		logIn.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mouseReleased(MouseEvent e) {
 				System.out.println("뒤로가기 클릭");
 				new ChangePanel().changePanel(mf, nowp, new MyFridge(mf));
 			}
@@ -86,11 +87,9 @@ public class InputIngredFish extends JPanel {
 		btn1.setBounds(0,0,145,230);
 		btn1.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
-				System.out.println("버튼1 클릭");
+			public void mouseReleased(MouseEvent e) {
+				JOptionPane.showMessageDialog(null, "재료 입력 완료 !", "재료 입력", JOptionPane.ERROR_MESSAGE);
 				new AddIngred().makeTreeSet(2001);
-
-				ChangePanel.changePanel(mf, nowp, new CheckIngred(mf));
 
 			}
 		}
@@ -102,8 +101,8 @@ public class InputIngredFish extends JPanel {
 		btn2.setBounds(0,230,145,230);
 		btn2.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
-				System.out.println("버튼2 클릭");
+			public void mouseReleased(MouseEvent e) {
+				JOptionPane.showMessageDialog(null, "재료 입력 완료 !", "재료 입력", JOptionPane.ERROR_MESSAGE);
 				new AddIngred().makeTreeSet(2002);
 			}
 		}
@@ -118,8 +117,8 @@ public class InputIngredFish extends JPanel {
 		btn3.setBounds(0,460,145,230);
 		btn3.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
-				System.out.println("버튼3 클릭");
+			public void mouseReleased(MouseEvent e) {
+				JOptionPane.showMessageDialog(null, "재료 입력 완료 !", "재료 입력", JOptionPane.ERROR_MESSAGE);
 				new AddIngred().makeTreeSet(2003);
 			}
 		}
@@ -134,8 +133,8 @@ public class InputIngredFish extends JPanel {
 		btn4.setBounds(145,0,145,230);
 		btn4.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
-				System.out.println("버튼4 클릭");
+			public void mouseReleased(MouseEvent e) {
+				JOptionPane.showMessageDialog(null, "재료 입력 완료 !", "재료 입력", JOptionPane.ERROR_MESSAGE);
 				new AddIngred().makeTreeSet(2004);
 			}
 		}
@@ -151,8 +150,8 @@ public class InputIngredFish extends JPanel {
 		btn5.setBounds(145,230,145,230);
 		btn5.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
-				System.out.println("버튼5 클릭");
+			public void mouseReleased(MouseEvent e) {
+				JOptionPane.showMessageDialog(null, "재료 입력 완료 !", "재료 입력", JOptionPane.ERROR_MESSAGE);
 				new AddIngred().makeTreeSet(2005);
 			}
 		}
@@ -167,8 +166,8 @@ public class InputIngredFish extends JPanel {
 		btn6.setBounds(145,460,145,230);
 		btn6.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
-				System.out.println("버튼6 클릭");
+			public void mouseReleased(MouseEvent e) {
+				JOptionPane.showMessageDialog(null, "재료 입력 완료 !", "재료 입력", JOptionPane.ERROR_MESSAGE);
 				new AddIngred().makeTreeSet(2006);
 			}
 		}
@@ -183,8 +182,8 @@ public class InputIngredFish extends JPanel {
 		btn7.setBounds(290,0,145,230);
 		btn7.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
-				System.out.println("버튼7 클릭");
+			public void mouseReleased(MouseEvent e) {
+				JOptionPane.showMessageDialog(null, "재료 입력 완료 !", "재료 입력", JOptionPane.ERROR_MESSAGE);
 				new AddIngred().makeTreeSet(2007);
 			}
 		}
@@ -199,8 +198,8 @@ public class InputIngredFish extends JPanel {
 		btn8.setBounds(290,230,145,230);
 		btn8.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
-				System.out.println("버튼8 클릭");
+			public void mouseReleased(MouseEvent e) {
+				JOptionPane.showMessageDialog(null, "재료 입력 완료 !", "재료 입력", JOptionPane.ERROR_MESSAGE);
 				new AddIngred().makeTreeSet(2008);
 			}
 		}
@@ -215,8 +214,8 @@ public class InputIngredFish extends JPanel {
 		btn9.setBounds(290,460,145,230);
 		btn9.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
-				System.out.println("버튼9 클릭");
+			public void mouseReleased(MouseEvent e) {
+				JOptionPane.showMessageDialog(null, "재료 입력 완료 !", "재료 입력", JOptionPane.ERROR_MESSAGE);
 				new AddIngred().makeTreeSet(2009);
 			}
 		}

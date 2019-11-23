@@ -50,7 +50,7 @@ public class InputIngred extends JPanel{
 		btnBack.setBounds(10,10,50,50);
 		btnBack.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mouseReleased(MouseEvent e) {
 				System.out.println("뒤로가기 클릭");
 				new ChangePanel().changePanel(mf, nowp, new MyFridge(mf));
 			}
@@ -63,7 +63,7 @@ public class InputIngred extends JPanel{
 		logIn.setBounds(380,10,50,50);
 		logIn.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mouseReleased(MouseEvent e) {
 				System.out.println("뒤로가기 클릭");
 				new ChangePanel().changePanel(mf, nowp, new MyFridge(mf));
 			}
@@ -93,7 +93,7 @@ public class InputIngred extends JPanel{
 		btn1.setBounds(0,0,220,220);
 		btn1.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mouseReleased(MouseEvent e) {
 				System.out.println("카테고리 버튼1 클릭");
 				ChangePanel.changePanel(mf, nowp, new InputIngredMeat(mf));
 			}
@@ -109,7 +109,7 @@ public class InputIngred extends JPanel{
 		btn2.setBounds(0,220,220,220);
 		btn2.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mouseReleased(MouseEvent e) {
 				System.out.println("버튼2 클릭");
 				ChangePanel.changePanel(mf, nowp, new InputIngredVegetables(mf));
 			}
@@ -125,7 +125,7 @@ public class InputIngred extends JPanel{
 		btn3.setBounds(0,440,220,220);
 		btn3.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mouseReleased(MouseEvent e) {
 				System.out.println("버튼3 클릭");
 				ChangePanel.changePanel(mf, nowp, new InputIngredBread(mf));
 
@@ -141,7 +141,7 @@ public class InputIngred extends JPanel{
 		btn4.setBounds(220,0,220,220);
 		btn4.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mouseReleased(MouseEvent e) {
 				System.out.println("버튼4 클릭");
 				ChangePanel.changePanel(mf, nowp, new InputIngredFish(mf));
 
@@ -157,7 +157,7 @@ public class InputIngred extends JPanel{
 		btn5.setBounds(220,220,220,220);
 		btn5.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mouseReleased(MouseEvent e) {
 				System.out.println("버튼5 클릭");
 				ChangePanel.changePanel(mf, nowp, new InputIngredFruits(mf));
 
@@ -174,7 +174,7 @@ public class InputIngred extends JPanel{
 		btn6.setBounds(220,440,220,220);
 		btn6.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mouseReleased(MouseEvent e) {
 				System.out.println("버튼6 클릭");
 				ChangePanel.changePanel(mf, nowp, new InputIngredMilk(mf));
 
