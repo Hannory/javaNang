@@ -191,7 +191,7 @@ public class UpMyRecipe extends JPanel {
 		// 뒤로가기 버튼 
 		button0.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mouseReleased(MouseEvent e) {
 				ChangePanel.changePanel(mf, mp, new UpRecipe(mf)); 
 			}
 		});
@@ -199,107 +199,3 @@ public class UpMyRecipe extends JPanel {
 		mf.repaint();
 	}
 }
-//	public void saveFile() {
-//
-//		ObjectOutputStream oop =null;
-//
-//		try {
-//
-//			oop = new ObjectOutputStream (new FileOutputStream("recipeCont.txt"));
-//			oop.writeObject(this.recipeCont2.getText());
-//
-//			oop.flush();
-//
-//		} catch (FileNotFoundException e) {
-//
-//			e.printStackTrace();
-//		} catch (IOException e) {
-//
-//			e.printStackTrace();
-//
-//		}finally {
-//
-//			try {
-//				oop.close();
-//			} catch (IOException e) {
-//
-//				e.printStackTrace();
-//			}
-//		}
-//	}
-//	
-//	
-//	public void saveFile2() {
-//		ObjectOutputStream oop2 = null;
-//		try {
-//			oop2 =new ObjectOutputStream (new FileOutputStream("recipeTitle"));
-//			oop2.writeObject(this.recipeName2.getText());
-//			oop2.flush();
-//			
-//		} catch (FileNotFoundException e) {
-//		
-//			e.printStackTrace();
-//		} catch (IOException e) {
-//		
-//			e.printStackTrace();
-//		}finally {
-//			try{
-//				oop2.close();
-//			}catch(IOException e) {
-//				e.printStackTrace();
-//			}
-//		}
-//		
-//	}
-//	
-//	
-//	public void openFile() {
-//		
-//		ObjectInputStream oip = null;
-//
-//		try {
-//			oip =new ObjectInputStream(new FileInputStream ("recipeCont.txt"));
-//			//콘솔창에서 잘 출력이 되는지 보기 위함
-//			oip.readObject().toString();
-//
-//		}catch (FileNotFoundException e) {
-//			e.printStackTrace();
-//		}catch (IOException e) {
-//			e.printStackTrace();
-//		}catch (ClassNotFoundException e) {
-//			e.printStackTrace();
-//		}finally {
-//			try {
-//				oip.close();
-//			}catch (IOException e) {
-//				e.printStackTrace();
-//			}
-//		}	
-//	}
-//	public void openFile2() {
-//		
-//		ObjectInputStream oip2 = null;
-//		try {
-//			oip2 = new ObjectInputStream (new FileInputStream("recipeTitle"));
-//			oip2.readObject().toString();
-//		} catch (FileNotFoundException e) {
-//
-//			e.printStackTrace();
-//		} catch (IOException e) {
-//	
-//			e.printStackTrace();
-//		} catch (ClassNotFoundException e) {
-//		
-//			e.printStackTrace();
-//		}finally {
-//			try {
-//				oip2.close();
-//			}catch(IOException e) {
-//				e.printStackTrace();
-//			}
-//		}
-//		
-//	}
-//
-//}
-

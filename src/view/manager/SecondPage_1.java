@@ -60,7 +60,7 @@ public class SecondPage_1 extends JPanel {
 
 		button_1.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mouseReleased(MouseEvent e) {
 				ChangePanel.changePanel(mf,mp, new MainPage(mf));
 			}
 		});
@@ -100,7 +100,7 @@ public class SecondPage_1 extends JPanel {
 		
 		btnNewButton_1.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked (MouseEvent e) {
+			public void mouseReleased (MouseEvent e) {
 				JOptionPane.showMessageDialog(null, "사용자 제제 등록이 완료 되었습니다.");
 			}
 		});
