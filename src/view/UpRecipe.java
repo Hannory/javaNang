@@ -34,7 +34,8 @@ public class UpRecipe extends JPanel {
 	JTextField recipeName;
 	JLabel recipefile;
 	
-
+	public UpRecipe() {}
+	
 	public UpRecipe(MainFrame mf) {
 
 		//필드값 초기화  
@@ -94,7 +95,7 @@ public class UpRecipe extends JPanel {
 			public void mouseReleased(MouseEvent e) {
 				saveFile();
 				saveFile2();
-				saveFile3();
+			//	saveFile3();
 			}
 		});
 
@@ -216,7 +217,7 @@ public class UpRecipe extends JPanel {
 				JTextField recipefile = new JTextField(File());
 				recipefile.setBounds(112,562,179,32);
 				panel2.add(recipefile);
-				saveFile3();
+				//saveFile3();
 			}
 		});
 
@@ -328,16 +329,17 @@ public class UpRecipe extends JPanel {
 		}
 	}
 
-	public void saveFile3() {
-
+//	public void saveFile3() {
+//
+//	
+//		ObjectOutputStream oop3 = null;
+//
+//		try {
+//			oop3= new ObjectOutputStream(new FileOutputStream("recipefile.txt"));
+//			//File();
+//			oop3.writeObject(this.recipefile);
 	
-		ObjectOutputStream oop3 = null;
-
-		try {
-			oop3= new ObjectOutputStream(new FileOutputStream("recipefile.txt"));
-			//File();
-			oop3.writeObject(this.recipefile);
-					//.folderPath.getImage().getScaledInstance(180,180,0));
+			//.folderPath.getImage().getScaledInstance(180,180,0));
 			
 			//oop3.writeObject(recipefile) (new ImageIcon(folderPath).getImage().getScaledInstance(180, 180, 0));
 			
@@ -347,22 +349,22 @@ public class UpRecipe extends JPanel {
 			//	JLabel recipePhoto2 = new JLabel(new ImageIcon(new ImageIcon("images/yu/milk.png").getImage().getScaledInstance(130, 180, 0)));
 			//	Image recipefile = new ImageIcon("folderpath").getImage().getScaledInstance(130, 180, 0);
 
-			oop3.flush();
-		} catch (FileNotFoundException e) {
+//			oop3.flush();
+//		} catch (FileNotFoundException e) {
+//
+//			e.printStackTrace();
+//		} catch (IOException e) {
+//
+//			e.printStackTrace();
+//		}finally {
+//			try {
+//				oop3.close();
+//			}catch(IOException e) {
+//				e.printStackTrace();
+//			}
+//		}
 
-			e.printStackTrace();
-		} catch (IOException e) {
-
-			e.printStackTrace();
-		}finally {
-			try {
-				oop3.close();
-			}catch(IOException e) {
-				e.printStackTrace();
-			}
-		}
-
-	}
+//	}
 
 	}
 

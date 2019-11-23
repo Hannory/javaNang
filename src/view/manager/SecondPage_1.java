@@ -44,7 +44,7 @@ public class SecondPage_1 extends JPanel {
 		textField.setBackground(new Color(102, 204, 204));
 		textField.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 27));
 		textField.setText("\uB808\uC2DC\uD53C \uC2B9\uC778");
-		textField.setBounds(108, 18, 196, 40);
+		textField.setBounds(155, 12, 162, 40);
 		panel_1.add(textField);
 		textField.setColumns(10);
 		textField.setLayout(null);
@@ -53,7 +53,7 @@ public class SecondPage_1 extends JPanel {
 		button_1.setForeground(SystemColor.window);
 		button_1.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 19));
 		button_1.setBackground(new Color(102, 204, 204));
-		button_1.setBounds(14, 12, 51, 46);
+		button_1.setBounds(14, 7, 63, 58);
 		panel_1.add(button_1);
 	
 
