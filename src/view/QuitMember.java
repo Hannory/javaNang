@@ -85,7 +85,7 @@ public class QuitMember extends JPanel{
 		this.add(lb5);
 
 
-		JPanel panel = new JPanel();
+		JPanel panel = new JPanel(); //
 		panel.setSize(402,123);
 		panel.setLocation(20,150);
 		panel.setLayout(null); 
@@ -110,7 +110,7 @@ public class QuitMember extends JPanel{
 		this.add(panel);
 
 
-		JPanel panel2 = new JPanel(); 
+		JPanel panel2 = new JPanel(); //상단 패널
 		panel2.setLocation(0, 0);
 		panel2.setSize(445,70);
 		panel2.setLayout(null);
@@ -157,12 +157,14 @@ public class QuitMember extends JPanel{
 		btnNewButton.addMouseListener(new MyMouseAdapter3() {
 
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mouseReleased(MouseEvent e) {
 
 				HashMap asds = new HashMap();
 				
+				ObjectInputStream objIn = null;
+				
 				try {
-					ObjectInputStream objIn = new ObjectInputStream(new FileInputStream("userList.dat"));
+					objIn = new ObjectInputStream(new FileInputStream("userList.dat"));
 
 					try {
 						 asds = (HashMap) objIn.readObject();
@@ -173,12 +175,24 @@ public class QuitMember extends JPanel{
 
 						if(JPF1.equals(u1.getUserPw())) {
 
-							//이 안에서 파일에 담긴 회원정보를 삭제하는 작업을 해줘야 한다. 
+							//asds.clear();//해쉬맵 삭제 , , 흠
+							//이거 말고 put으로 id 값에 다른걸 줘볼까
+						    u1.setUserId(null);
+							u1.setUserPw(null);
+                            u1.setNickname(null);
+                            u1.setEmail(null);
+                            asds.put(id,u1);
+						    //이 안에서 파일에 담긴 회원정보를 삭제하는 작업을 해줘야 한다. 
+                   JOptionPane.showMessageDialog(null, "탈퇴가 완료되었습니다. 초기페이지로 넘어갑니다.");
+           
+                   ChangePanel.changePanel(mf, quitMember, new LoginPage(mf)); //로그인 페이지로
 
-							JOptionPane.showMessageDialog(null, "탈퇴가 완료되었습니다. 로그인 페이지로 넘어갑니다.");
-
-							ChangePanel.changePanel(mf, quitMember, new LoginPage(mf)); //로그인 페이지로
-
+                   //	String input = JOptionPane.showInputDialog(null, "탈퇴하시려면 탈퇴를 입력해주세요");
+                                                                            
+                 //   if(input.equals("탈퇴")) {
+                //    }else {
+                 //          JOptionPane.showMessageDialog(null, "탈퇴를 입력해주세요"); 
+                  //  }
 						}else {
 							JOptionPane.showMessageDialog(null, "비밀번호를 정확하게 입력해주세요");
 						}
@@ -190,15 +204,20 @@ public class QuitMember extends JPanel{
 					e1.printStackTrace();
 				} catch (IOException e1) {
 					e1.printStackTrace();
+				} finally {
+					try {
+						objIn.close();
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				}
 
                      try {
 						ObjectOutputStream oosOut = new ObjectOutputStream(new FileOutputStream("userList.dat"));
-		                // oosOut.reset(); //파일을 리셋(유저가 1명이라 가정할 때만 가능)
-		                                 
-						//oosOut.writeObject(asds);
-		                oosOut.flush();
-						
+		               
+						oosOut.writeObject(asds);
+		              
                      } catch (FileNotFoundException e1) {
 						e1.printStackTrace();
 					} catch (IOException e1) {
@@ -238,19 +257,19 @@ public class QuitMember extends JPanel{
 
 	class MyMouseAdapter1 extends MouseAdapter{//메인메뉴로(뒤로가기)
 		@Override
-		public void mouseClicked(MouseEvent e) {
+		public void mouseReleased(MouseEvent e) {
 			ChangePanel.changePanel(mf, quitMember, new MainMenu(mf));
 		}
 	}
 	class MyMouseAdapter2 extends MouseAdapter{//회원정보수정으로
 		@Override
-		public void mouseClicked(MouseEvent e) {
+		public void mouseReleased(MouseEvent e) {
 			ChangePanel.changePanel(mf, quitMember, new ModiMember(mf));
 		}
 	}
-	class MyMouseAdapter3 extends MouseAdapter{//회원정보수정으로
+	class MyMouseAdapter3 extends MouseAdapter{//로그인 페이지로
 		@Override
-		public void mouseClicked(MouseEvent e) {
+		public void mouseReleased(MouseEvent e) {
 		}
 	}
 
