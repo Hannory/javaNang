@@ -5,6 +5,8 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.EOFException;
@@ -48,7 +50,9 @@ public class SignUp extends JPanel{
 	JTextField idtf;         //아이디 입력받는 텍스트필드
 	JButton idbtn;           //아이디 중복체크 버튼
 	JPasswordField pwpf;     //패스워드 입력받는 패스워드필드
+	JLabel pwlb2;            //패스워드 유효성 검사 표시 라벨
 	JPasswordField cpwpf;    //체크패스워드 입력받는 패스워드필드
+	JLabel cpwlb2;           //패스워드 일치 확인 표시 라벨
 	JTextField nicktf;       //닉네임 입력받는 텍스트필드
 	JButton nickbtn;         //닉네임 중복체크 버튼
 	JTextField emailtf;      //이메일 입력받는 텍스트필드
@@ -60,9 +64,9 @@ public class SignUp extends JPanel{
 	UserDao ud = new UserDao();  //파일입출력 메소드 소환을 위한 객체 생성
 	HashMap<String, User> umap = null;
 	
-	boolean cid = true;         //아이디 중복확인에 쓰일 값
-	boolean cnick = true;       //닉네임 중복확인에 쓰일 값
-	boolean cn = true;          //이메일 인증번호 확인에 쓰일 값
+	boolean cid = false;         //아이디 중복확인에 쓰일 값
+	boolean cnick = false;       //닉네임 중복확인에 쓰일 값
+	boolean cn = false;          //이메일 인증번호 확인에 쓰일 값
 	
 	String str = null;           //int배열인 이메일 인증번호를 String 타입으로 변환하여 저장할 변수
 	
@@ -73,6 +77,7 @@ public class SignUp extends JPanel{
 		this.signUp = this;
 		
 		this.setSize(445, 770);
+		this.setLayout(null);
 		
 		//바 
 		JPanel panel = new JPanel();
@@ -130,11 +135,36 @@ public class SignUp extends JPanel{
 		pwpf = new JPasswordField();
 		pwpf.setLocation(90, 220);
 		pwpf.setSize(210, 30);
+		pwpf.addKeyListener(new KeyListener() {
+			
+			@Override
+			public void keyTyped(KeyEvent e) {
+				//pwPattern2();
+				
+			}
+			
+			@Override
+			public void keyReleased(KeyEvent e) {
+				pwPattern2();
+				checkPw2();
+			}
+			
+			@Override
+			public void keyPressed(KeyEvent e) {
+				//pwPattern2();
+				
+			}
+		});
 		
-		JLabel pwlb2 = new JLabel("※영문자, 숫자, 특수문자 3가지 조합 8~16자로 설정");
+		pwlb2 = new JLabel("");
 		pwlb2.setLocation(90, 255);
 		pwlb2.setSize(340, 15);
 		pwlb2.setFont(new Font("맑은 고딕", Font.PLAIN, 11));
+		
+		/*JLabel pwlb2 = new JLabel("※영문자, 숫자, 특수문자 3가지 조합 8~16자로 설정");
+		pwlb2.setLocation(90, 255);
+		pwlb2.setSize(340, 15);*/
+		
 		
 		//체크패스워드 라벨
 		JLabel cpwlb = new JLabel("PW 확인");
@@ -145,8 +175,31 @@ public class SignUp extends JPanel{
 		cpwpf = new JPasswordField();
 		cpwpf.setLocation(90, 290);
 		cpwpf.setSize(210, 30);
+		cpwpf.addKeyListener(new KeyListener() {
+			
+			@Override
+			public void keyTyped(KeyEvent e) {
+				//checkPw2();
+				
+			}
+			
+			@Override
+			public void keyReleased(KeyEvent e) {
+				checkPw2();
+				
+			}
+			
+			@Override
+			public void keyPressed(KeyEvent e) {
+				//checkPw2();
+				
+			}
+		});
 		
-		
+		cpwlb2 = new JLabel("");
+		cpwlb2.setLocation(90, 325);
+		cpwlb2.setSize(340, 15);
+		cpwlb2.setFont(new Font("맑은 고딕", Font.PLAIN, 11));
 		
 		//닉네임 라벨
 		JLabel nicklb = new JLabel("닉네임");
@@ -239,17 +292,13 @@ public class SignUp extends JPanel{
 		
 		
 		//가입하기 버튼 누르면 회원가입(텍스트필드에 있는 정보들을 user.dat 파일에 저장) -> 로그인 패널로 이동
-		join.addMouseListener(new MouseAdapter() {
+		join.addActionListener(new ActionListener() {
 			
 			@Override
-			public void mouseReleased(MouseEvent e) {
+			public void actionPerformed(ActionEvent e) {
 				register();
-		
-				
-				
 				
 			}
-			
 		});
 		
 		
@@ -268,6 +317,7 @@ public class SignUp extends JPanel{
 		
 		this.add(cpwlb);
 		this.add(cpwpf);
+		this.add(cpwlb2);
 		
 		this.add(nicklb);
 		this.add(nicktf);
@@ -386,6 +436,14 @@ public class SignUp extends JPanel{
 		//return true;
 	}
 	
+	public void pwPattern2() {
+		if(pwPattern() == true) {
+			pwlb2.setText("사용가능한 비밀번호입니다.");
+		}else {
+			pwlb2.setText("사용불가한 비밀번호입니다.(영문자, 숫자, 특수문자 조합 8~16글자)");
+		}
+	}
+	
 	
 	//비밀번호와 비밀번호 확인이 일치하는지 검사
 	public boolean checkPw() {
@@ -397,6 +455,14 @@ public class SignUp extends JPanel{
 		return false;
 	}
 	
+	public void checkPw2() {
+		if(checkPw() == true) {
+			cpwlb2.setText("비밀번호가 일치합니다.");
+		}else {
+			cpwlb2.setText("비밀번호가 일치하지 않습니다.");
+			
+		}
+	}
 	
 	//닉네임 중복체크
 	public void checkNick(User u) {
@@ -413,23 +479,43 @@ public class SignUp extends JPanel{
 			
 			Object[] uarr = ucol.toArray();
 
+			if(m.find() == false) {
+				JOptionPane.showMessageDialog(null, "사용할 수 없는 닉네임입니다.(한글, 영문, 숫자만 가능 2~10자)", "CHECK_NICKNAME", JOptionPane.ERROR_MESSAGE);
+				cnick = false;
+				return;
+			}
+			
 			for(int i = 0; i < uarr.length; i++) {
-				if(!nicktf.getText().equals(((User) uarr[i]).getNickname()) && m.find() == true){
-					JOptionPane.showMessageDialog(null, "사용가능한 닉네임입니다.", "CHECK_NICKNAME", JOptionPane.INFORMATION_MESSAGE);
-					cnick = true;
-				}else if(nicktf.getText().equals(((User) uarr[i]).getNickname())) {
+				if(nicktf.getText().trim().equals(((User) uarr[i]).getNickname())) {
 					JOptionPane.showMessageDialog(null, "존재하는 닉네임입니다.", "CHECK_NICKNAME", JOptionPane.ERROR_MESSAGE);
 					cnick = false;
-				}else if(m.find() == false) {
-					JOptionPane.showMessageDialog(null, "사용할 수 없는 닉네임입니다.", "CHECK_NICKNAME", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+			}
+			JOptionPane.showMessageDialog(null, "사용가능한 닉네임입니다.", "CHECK_NICKNAME", JOptionPane.INFORMATION_MESSAGE);
+			cnick = true;
+
+
+			/*for(int i = 0; i < uarr.length; i++) {
+				if(!nicktf.getText().trim().equals(((User) uarr[i]).getNickname())) {
+					if(m.find() == true) {
+						JOptionPane.showMessageDialog(null, "사용가능한 닉네임입니다.", "CHECK_NICKNAME", JOptionPane.INFORMATION_MESSAGE);
+						cnick = true;
+					}else {
+						JOptionPane.showMessageDialog(null, "사용할 수 없는 닉네임입니다.(한글, 영문, 숫자만 가능 2~10자)", "CHECK_NICKNAME", JOptionPane.ERROR_MESSAGE);
+						cnick = false;
+					}
+				}else {
+					JOptionPane.showMessageDialog(null, "존재하는 닉네임입니다.", "CHECK_NICKNAME", JOptionPane.ERROR_MESSAGE);
 					cnick = false;
 				}
 				return;
-			}
+			}*/
+			
 			//jeff 2
 			//문제: userList.dat가 없는데 닉네임 중복검사하면 FileNotFoundException 발생 
 			//해결책: 닉네임 아이디 중복검사 try~catch 구문에 FileNotFoundExcpetion 추가
-		} catch (FileNotFoundException e) {
+		}catch (FileNotFoundException e) {
 			JOptionPane.showMessageDialog(null, "사용 가능한 닉네임입니다.", "CHECK_NICKNAME", JOptionPane.INFORMATION_MESSAGE);
 			cnick = true;
 		}catch (Exception e) {
@@ -519,10 +605,10 @@ public class SignUp extends JPanel{
 	//이메일 인증번호 확인
 	public void checkNum() {
 		if(numtf.getText().equals(str)) {
-			JOptionPane.showMessageDialog(null, "이메일이 인증되었습니다.", "REGISTER_HELPER", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(null, "이메일이 인증되었습니다.", "CHECK_EMAIL", JOptionPane.INFORMATION_MESSAGE);
 			cn = true;
 		}else {
-			JOptionPane.showMessageDialog(null, "인증번호가 틀립니다.", "REGISTER_HELPER", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "인증번호가 틀립니다.", "CHECK_EMAIL", JOptionPane.ERROR_MESSAGE);
 			cn = false;
 		}
 	}
@@ -532,36 +618,30 @@ public class SignUp extends JPanel{
 	
 	//가입하기 버튼을 눌러 가입(위의 메소드들이 true일 경우만 가능)
 	//마우스클릭메소드를 쓰면 오류발생 횟수까지 중복되어 값이 저장되어 액션으로 바꿈
-	//액션도 같은 오류 발생
 	public void register() {
-		join.addActionListener(new ActionListener() {
+		if(pwPattern() == true && checkPw() == true && cid == true && cnick == true && cn == true) {
 
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				if(cid == true && pwPattern() == true && checkPw() == true && cnick == true && cn == true) {
+			ud.writeUserList(signUp, inputUser());
 
-					ud.writeUserList(signUp, inputUser());
+			JOptionPane.showMessageDialog(null, "가입이 완료되었습니다.");
+			ChangePanel.changePanel(mf, signUp, new LoginPage(mf));
 
-					JOptionPane.showMessageDialog(null, "가입이 완료되었습니다.");
-					ChangePanel.changePanel(mf, signUp, new LoginPage(mf));
-				
-				}else if(cid == false || e.getSource() != idbtn) {
-					JOptionPane.showMessageDialog(null, "아이디 중복체크를 해주세요.", "CHECK_ID", JOptionPane.ERROR_MESSAGE);
-				}else if(pwPattern() == false) {
-					JOptionPane.showMessageDialog(null, "비밀번호를 다시 입력하세요.(영문자, 숫자, 특수문자 조합, 8~16자)", "CHECK_PASSWORD", JOptionPane.ERROR_MESSAGE);
-				}else if(checkPw() == false) {
-					JOptionPane.showMessageDialog(null, "입력하신 비밀번호가 일치하지 않습니다.", "CHECK_PASSWORD", JOptionPane.ERROR_MESSAGE);
-				}else if(cnick == false || e.getSource() != nickbtn){
-					JOptionPane.showMessageDialog(null, "닉네임 중복체크를 해주세요.", "CHECK_NICKNAME", JOptionPane.ERROR_MESSAGE);
-				}else if(cn == false || e.getSource() != numbtn) {
-					JOptionPane.showMessageDialog(null, "이메일 인증을 해주세요.", "CHECK_EMAIL", JOptionPane.ERROR_MESSAGE);
-				}
-			}
-
-		});
-
+		}else if(pwPattern() == false) {
+			JOptionPane.showMessageDialog(null, "비밀번호를 다시 입력하세요.(영문자, 숫자, 특수문자 조합, 8~16자)", "CHECK_PASSWORD", JOptionPane.ERROR_MESSAGE);
+		}else if(checkPw() == false) {
+			JOptionPane.showMessageDialog(null, "입력하신 비밀번호가 일치하지 않습니다.", "CHECK_PASSWORD", JOptionPane.ERROR_MESSAGE);
+		}else if(cid == false) {
+			JOptionPane.showMessageDialog(null, "아이디 중복체크를 해주세요.", "CHECK_ID", JOptionPane.ERROR_MESSAGE);
+		}else if(cnick == false){
+			JOptionPane.showMessageDialog(null, "닉네임 중복체크를 해주세요.", "CHECK_NICKNAME", JOptionPane.ERROR_MESSAGE);
+		}else if(cn == false ) {
+			JOptionPane.showMessageDialog(null, "이메일 인증을 해주세요.", "CHECK_EMAIL", JOptionPane.ERROR_MESSAGE);
+		}
 	}
 
-	
+
 
 }
+
+
+
