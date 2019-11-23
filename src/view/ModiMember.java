@@ -39,7 +39,7 @@ public class ModiMember extends JPanel{
 
 	MainFrame mf;
 	JPanel modiMember;
-	
+
 	private JPasswordField jpf1;
 	private JPasswordField jpf2;
 	private JPasswordField jpf3;
@@ -52,7 +52,7 @@ public class ModiMember extends JPanel{
 		this.mf = mf;
 		this.modiMember = this;
 
-		String id = AllRecipe.loginId; //로그인한 id값을 사용하기 위해
+		String id = AllRecipe.loginId; //LoginId값을 id에 담음 
 
 		this.setBounds(0,0,445,770);
 		this.setLayout(null);
@@ -86,11 +86,7 @@ public class ModiMember extends JPanel{
 		this.add(lb6);
 		this.add(lb7);
 
-      
-		
-		
-
-		JPanel panel = new JPanel();
+		JPanel panel = new JPanel(); 
 		panel.setSize(90,50);
 		panel.setLocation(191,570);
 		panel.setLayout(null);
@@ -104,11 +100,10 @@ public class ModiMember extends JPanel{
 		jbt1.setBackground(Color.orange);
 
 
-		jbt1.addMouseListener(new MyMouseAdapter1() {
-
+		jbt1.addMouseListener(new MyMouseAdapter1() {//확인 클릭 후
 
 			@Override        
-			public void mouseClicked(MouseEvent e) { 
+			public void mouseReleased(MouseEvent e) { 
 
 				char[] input = jpf2.getPassword();
 				String input2 = new String(input);
@@ -121,11 +116,13 @@ public class ModiMember extends JPanel{
 				Matcher m = p.matcher(input2);        //문자+특수문자or특수문자+문자의 조합으로 생성될 수 있도록
 
 				HashMap asds = new HashMap();
-
+			
+				ObjectInputStream objIn = null;
+			
 				try {
 
-					ObjectInputStream objIn = new ObjectInputStream(new FileInputStream("userList.dat"));
-					//    
+					objIn = new ObjectInputStream(new FileInputStream("userList.dat"));
+					    
 					try {
 						asds = (HashMap) objIn.readObject(); //Object형이니까 ->HashMap으로 받아야
 
@@ -144,10 +141,10 @@ public class ModiMember extends JPanel{
 							//여기서 변경한 PW(JPF2orJPF3)로 로그인 한 유저의 PW(u1.getUserPw)를 변경해줘야 한다
 							u1.setUserPw(JPF2); //이 변경한 Pw를 다시 oosOut파일에 적어야 함
 							asds.put(id, u1); 
-                            //oosOut파일에 넣기 위해서 해쉬맵 asds에 덮어쓰기형식으로 u1을 다시 넣었다.
-							
+							//oosOut파일에 넣기 위해서 해쉬맵 asds에 덮어쓰기형식으로 u1을 다시 넣었다.
+
 							//System.out.println("변경한 PW : " + u1.getUserPw());
-                            
+
 							JOptionPane.showMessageDialog(null, "수정이 완료되었습니다. 다시 로그인 해주세요.");
 
 							ChangePanel.changePanel(mf, modiMember, new LoginPage(mf));
@@ -169,20 +166,30 @@ public class ModiMember extends JPanel{
 					e1.printStackTrace();
 				} catch (IOException e1) {
 					e1.printStackTrace();
+				} finally {
+					try {
+						objIn.close();
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				}
+				
+				
 				try {
 					ObjectOutputStream oosOut = new ObjectOutputStream(new FileOutputStream("userList.dat"));
 					oosOut.writeObject(asds); //PW를 수정한 회원의 정보를 다시 파일에 저장하기
 					oosOut.flush();
+				   oosOut.close();
 				} catch (IOException e1) {
 					e1.printStackTrace();
-				}
+				} 
 			}
 		});
 
 		panel.add(jbt1);
 
-		JPanel panel2 = new JPanel();
+		JPanel panel2 = new JPanel(); //상단 패널
 		panel2.setLocation(0,0);  
 		panel2.setSize(445,70);
 		panel2.setLayout(null);
@@ -197,20 +204,20 @@ public class ModiMember extends JPanel{
 		panel2.add(label);
 
 		Image person = new ImageIcon("images/person sky.png").getImage().getScaledInstance(50,50,0);
-	      JButton logIn = new JButton(new ImageIcon(person));
-	      logIn.setLocation(380,10);
-	      logIn.setSize(50,50);
-	      logIn.addMouseListener(new MyMouseAdapter1());
-	      panel2.add(logIn);
-	      
-	      
-	      
-	      Image backImg = new ImageIcon("images/back sky.png").getImage().getScaledInstance(50,50,0);
-	      JButton back = new JButton(new ImageIcon(backImg));
-	      back.setLocation(10,10);
-	      back.setSize(50,50);
-          back.addMouseListener(new MyMouseAdapter2());
-	      panel2.add(back);
+		JButton logIn = new JButton(new ImageIcon(person));
+		logIn.setLocation(380,10);
+		logIn.setSize(50,50);
+		logIn.addMouseListener(new MyMouseAdapter1());
+		panel2.add(logIn);
+
+
+
+		Image backImg = new ImageIcon("images/back sky.png").getImage().getScaledInstance(50,50,0);
+		JButton back = new JButton(new ImageIcon(backImg));
+		back.setLocation(10,10);
+		back.setSize(50,50);
+		back.addMouseListener(new MyMouseAdapter2());
+		panel2.add(back);
 
 		jtf1 = new JTextField();
 
@@ -233,11 +240,13 @@ public class ModiMember extends JPanel{
 		jpf3 = new JPasswordField();
 		jpf3.setBounds(135,312,239,35);
 		this.add(jpf3);
+	
+		ObjectInputStream objIn = null;
 		
 		try {
 
-			ObjectInputStream objIn = new ObjectInputStream(new FileInputStream("userList.dat"));
-                      
+			objIn = new ObjectInputStream(new FileInputStream("userList.dat"));
+
 			try {
 				HashMap asds = (HashMap) objIn.readObject();
 
@@ -245,13 +254,13 @@ public class ModiMember extends JPanel{
 
 				JLabel Label2 = new JLabel(u1.getNickname()); //로그인한 유저의 닉네임
 				Label2.setBounds(5,0,239,35);
-				
+
 				jtf2 = new JTextField();
 				jtf2.setBounds(135,362,239,35);
 				this.add(jtf2);
 				jtf2.setEditable(false); // 닉네임 변경 불가
 				jtf2.add(Label2);
-       
+
 				jtf3 = new JTextField();
 				jtf3.setBounds(135,412,239,35);
 				this.add(jtf3);
@@ -269,7 +278,16 @@ public class ModiMember extends JPanel{
 			e1.printStackTrace();
 		} catch (IOException e1) {
 			e1.printStackTrace();
+		} finally {
+			try {
+				objIn.close();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
+		
+		
 		JLabel label2 = new JLabel("");
 		label2.setBounds(176, 220, 62, 18);
 		this.add(label2);
@@ -284,27 +302,27 @@ public class ModiMember extends JPanel{
 	//값 안 받아질때 아래처럼 텍스트필드로 받자 
 	//TextField passwordText = new TextField(6);
 	//passwordText.setEchoChar('*'); 안정성떨어질거같음   
-	
+
 	class MyMouseAdapter1 extends MouseAdapter{//메인메뉴로
 		@Override
-		public void mouseClicked(MouseEvent e) {
+		public void mouseReleased(MouseEvent e) {
 			ChangePanel.changePanel(mf, modiMember, new MainMenu(mf));
 		}
 	}
 	class MyMouseAdapter2 extends MouseAdapter{//My냉장고로 돌아가기(뒤로가기)
 		@Override
-		public void mouseClicked(MouseEvent e) {
+		public void mouseReleased(MouseEvent e) {
 			ChangePanel.changePanel(mf, modiMember, new MyFridge(mf));
 		}
 	}
 	class MyMouseAdapter3 extends MouseAdapter{//회원탈퇴로
 		@Override
-		public void mouseClicked(MouseEvent e) {
+		public void mouseReleased(MouseEvent e) {
 			ChangePanel.changePanel(mf, modiMember, new QuitMember(mf));
 		}
 	}
 }
 
-	
+
 
 
