@@ -3,6 +3,7 @@ package view;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
@@ -11,6 +12,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
@@ -28,11 +30,11 @@ public class UpMyRecipe extends JPanel {
 	String str;
 	String str2;
 	String str3;
-	
+
 
 
 	public UpMyRecipe(MainFrame mf) {
-		
+
 		//ÇÊµå°ª ÃÊ±âÈ­
 		this.mf=mf;  
 		this.mp=this;
@@ -93,12 +95,12 @@ public class UpMyRecipe extends JPanel {
 		textpane3.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 21));
 
 
-		
-		
-		
+
+
+
 		ObjectInputStream oip = null;
 
-		
+
 		try {
 			oip = new ObjectInputStream(new FileInputStream("recipeCont.txt"));
 			this. str = (String) oip.readObject().toString(); 
@@ -116,15 +118,15 @@ public class UpMyRecipe extends JPanel {
 		}catch(IOException e) {
 			e.printStackTrace();
 		}
-		
 
-	
+
+
 		ObjectInputStream oip2 = null;
-		
+
 		try {
 			oip2= new ObjectInputStream(new FileInputStream("recipeTitle.txt"));
 			this.str2 = (String) oip2.readObject().toString();
-			
+
 		} catch (FileNotFoundException e1) {
 			e1.printStackTrace();
 		} catch (IOException e1) {
@@ -138,55 +140,61 @@ public class UpMyRecipe extends JPanel {
 				e1.printStackTrace();
 			}
 		}
-		
-		ObjectInputStream oip3 = null;
-		try {
-			oip3 = new ObjectInputStream(new FileInputStream("recipefile.txt"));
-			this.str3 = (String) oip3.readObject();
-			
-		} catch (FileNotFoundException e1) {
-			
-			e1.printStackTrace();
-		} catch (IOException e1) {
-			
-			e1.printStackTrace();
-		} catch (ClassNotFoundException e1) {
-			
-			e1.printStackTrace();
-		}finally {
-			try {
-				oip3.close();
-			}catch(IOException e1) {
-				e1.printStackTrace();
-			}
-		}
-		
-		
-		
+
+		//		ObjectInputStream oip3 = null;
+		//		try {
+		//			oip3 = new ObjectInputStream(new FileInputStream("recipefile.txt"));
+		//			this.str3 = (String) oip3.readObject();
+		//			
+		//		} catch (FileNotFoundException e1) {
+		//			
+		//			e1.printStackTrace();
+		//		} catch (IOException e1) {
+		//			
+		//			e1.printStackTrace();
+		//		} catch (ClassNotFoundException e1) {
+		//			
+		//			e1.printStackTrace();
+		//		}finally {
+		//			try {
+		//				oip3.close();
+		//			}catch(IOException e1) {
+		//				e1.printStackTrace();
+		//			}
+		//		}
+		//		
+		String photoAdr = new UpRecipe().File();
+		Image photo = new ImageIcon(photoAdr).getImage().getScaledInstance(300,240,0);
+		JLabel label = new JLabel(new ImageIcon(photo));
+		label.setSize(300,240);
+		label.setLocation(111,20);
+		panel2.add(label);
+
+
 		//ÅØ½ºÆ® ÇÊµå Ãß°¡
-		
+
 		JTextArea recipeName2 = new JTextArea(this.str2);
 		recipeName2.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 23));
 		recipeName2.setBounds(111, 282, 306, 35);
 		panel2.add(recipeName2);
-		
+
 		JTextArea recipeCont2 = new JTextArea(this.str);
 		recipeCont2.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 17));
 		recipeCont2.setBounds(111, 338, 320, 290);
 		panel2.add(recipeCont2);
-		
+
 		JButton btnNewButton = new JButton("<<");
 		btnNewButton.setBounds(60, 661, 105, 27);
 		panel2.add(btnNewButton);
-		
+
 		JButton btnNewButton_1 = new JButton(">>");
 		btnNewButton_1.setBounds(283, 661, 105, 27);
 		panel2.add(btnNewButton_1);
-		
+
 		JLabel recipefile2 = new JLabel(this.str3);
 		recipefile2.setBounds(103, 23, 328, 224);
 		panel2.add(recipefile2);
-		
+
 
 		// µÚ·Î°¡±â ¹öÆ° 
 		button0.addMouseListener(new MouseAdapter() {

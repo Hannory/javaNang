@@ -38,27 +38,6 @@ public class MainPage extends JPanel {
 		
 		
 		mf.getContentPane().add(this);
-
-		//상단 패널 설정
-		JPanel toppanel = new JPanel();
-		toppanel.setBackground(new Color(63,141,197));
-		toppanel.setBounds(0,0,445,70);
-		mp.add(toppanel);
-		toppanel.setLayout(null);
-		
-				JPanel panel_3 = new JPanel();
-				panel_3.setBounds(0, 0, 432, 77);
-				toppanel.add(panel_3);
-				panel_3.setBackground(new Color(70, 130, 180));
-				panel_3.setLayout(null);
-				
-				JTextArea textArea = new JTextArea();
-				textArea.setBounds(117, 12, 197, 48);
-				panel_3.add(textArea);
-				textArea.setFont(new Font("문체부 쓰기 정체", Font.BOLD, 32));
-				textArea.setBackground(new Color(70, 130, 180));
-				textArea.setText("\uAD00\uB9AC\uC790 \uBAA8\uB4DC");
-				textArea.setLayout(null);
 		
 		//하단 패널 설정
 		JPanel bottpanel = new JPanel();
@@ -80,6 +59,20 @@ public class MainPage extends JPanel {
 		btnNewButton_1.setBounds(126, 374, 174, 58);
 		bottpanel.add(btnNewButton_1);
 		btnNewButton_1.setFont(new Font("문체부 쓰기 정체", Font.BOLD, 23));
+				
+						JPanel panel_3 = new JPanel();
+						panel_3.setBounds(0, 0, 445, 77);
+						add(panel_3);
+						panel_3.setBackground(new Color(72, 209, 204));
+						panel_3.setLayout(null);
+						
+						JTextArea textArea = new JTextArea();
+						textArea.setBounds(117, 12, 197, 48);
+						panel_3.add(textArea);
+						textArea.setFont(new Font("문체부 쓰기 정체", Font.BOLD, 32));
+						textArea.setBackground(new Color(72, 209, 204));
+						textArea.setText("\uAD00\uB9AC\uC790 \uBAA8\uB4DC");
+						textArea.setLayout(null);
 
 
 

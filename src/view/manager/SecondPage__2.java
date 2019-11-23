@@ -137,8 +137,8 @@ public class SecondPage__2 extends JPanel {
 		panel_1.add(textArea);
 		textArea.setLayout(null);
 		
-		JButton button_1 = new JButton("<<");
-		button_1.setBackground(new Color(70, 130, 180));
+		JButton button_1 = new JButton("\u2190");
+		button_1.setBackground(new Color(72, 209, 204));
 		button_1.setBounds(14, 14, 53, 48);
 		panel_1.add(button_1);
 		 
