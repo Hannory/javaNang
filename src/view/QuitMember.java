@@ -174,25 +174,22 @@ public class QuitMember extends JPanel{
 						String JPF1 = String.valueOf(jpf1.getPassword());
 
 						if(JPF1.equals(u1.getUserPw())) {
-
-							//asds.clear();//해쉬맵 삭제 , , 흠
-							//이거 말고 put으로 id 값에 다른걸 줘볼까
-						    u1.setUserId(null);
-							u1.setUserPw(null);
-                            u1.setNickname(null);
-                            u1.setEmail(null);
-                            asds.put(id,u1);
-						    //이 안에서 파일에 담긴 회원정보를 삭제하는 작업을 해줘야 한다. 
-                   JOptionPane.showMessageDialog(null, "탈퇴가 완료되었습니다. 초기페이지로 넘어갑니다.");
-           
-                   ChangePanel.changePanel(mf, quitMember, new LoginPage(mf)); //로그인 페이지로
-
-                   //	String input = JOptionPane.showInputDialog(null, "탈퇴하시려면 탈퇴를 입력해주세요");
-                                                                            
-                 //   if(input.equals("탈퇴")) {
-                //    }else {
-                 //          JOptionPane.showMessageDialog(null, "탈퇴를 입력해주세요"); 
-                  //  }
+                      
+						   int ans = JOptionPane.showConfirmDialog(null, "정말로 탈퇴하시겠습니까?", "회원 탈퇴",
+								   JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+						   if(ans == 0) {
+							   u1.setUserId(null);
+								u1.setUserPw(null);
+	                            u1.setNickname(null);
+	                            u1.setEmail(null);
+	                            asds.put(id,u1);
+	                            JOptionPane.showMessageDialog(null, "탈퇴가 완료되었습니다. 로그인페이지로 넘어갑니다.");
+	                            ChangePanel.changePanel(mf, quitMember, new LoginPage(mf)); //로그인 페이지로
+						   }else if(ans == 1) {
+							   JOptionPane.showMessageDialog(null,"탈퇴가 취소되었습니다.");
+						   }
+							
+							
 						}else {
 							JOptionPane.showMessageDialog(null, "비밀번호를 정확하게 입력해주세요");
 						}
@@ -215,9 +212,8 @@ public class QuitMember extends JPanel{
 
                      try {
 						ObjectOutputStream oosOut = new ObjectOutputStream(new FileOutputStream("userList.dat"));
-		               
 						oosOut.writeObject(asds);
-		              
+		                oosOut.flush();
                      } catch (FileNotFoundException e1) {
 						e1.printStackTrace();
 					} catch (IOException e1) {

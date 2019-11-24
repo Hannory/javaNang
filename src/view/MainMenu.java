@@ -139,7 +139,15 @@ public class MainMenu extends JPanel {
 		back.setSize(50,50);
 		back.addMouseListener(new MyMouseAdapter5());
 		panel2.add(back);
-		this.add(panel2);
+	
+		  Image qstImg = new ImageIcon("images/HELP.png").getImage().getScaledInstance(50,50,0);
+	      JButton qst = new JButton(new ImageIcon(qstImg));
+	      qst.setLocation(380,10);
+	      qst.setSize(50,50);
+	      qst.addMouseListener(new MyMouseAdapter6());
+	      panel2.add(qst);
+	 
+	      this.add(panel2);
 	}
 
 	class MyMouseAdapter1 extends MouseAdapter{//요리추천으로
@@ -170,6 +178,12 @@ public class MainMenu extends JPanel {
 		@Override
 		public void mouseReleased(MouseEvent e) {
 			ChangePanel.changePanel(mf, mainMenu, new AllRecipe(mf, mainMenu));
+		}
+	}
+	class MyMouseAdapter6 extends MouseAdapter{//모든레시피로(뒤로가기)
+		@Override
+		public void mouseReleased(MouseEvent e) {
+			ChangePanel.changePanel(mf, mainMenu, new Help(mf));
 		}
 	}
 }
