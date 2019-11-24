@@ -111,7 +111,7 @@ public class InputIngred extends JPanel{
 			@Override
 			public void mouseReleased(MouseEvent e) {
 				System.out.println("버튼2 클릭");
-				ChangePanel.changePanel(mf, nowp, new InputIngredVegetables(mf));
+				ChangePanel.changePanel(mf, nowp, new InputIngredFish(mf));
 			}
 		}
 				);
@@ -127,7 +127,7 @@ public class InputIngred extends JPanel{
 			@Override
 			public void mouseReleased(MouseEvent e) {
 				System.out.println("버튼3 클릭");
-				ChangePanel.changePanel(mf, nowp, new InputIngredBread(mf));
+				ChangePanel.changePanel(mf, nowp, new InputIngredVegetables(mf));
 
 			}
 		}
@@ -136,7 +136,7 @@ public class InputIngred extends JPanel{
 
 
 
-		Image imgbtn4 = new ImageIcon("images/sim/ingreCategory/ingredCategory04.PNG").getImage().getScaledInstance(220, 220, 0);
+		/*Image imgbtn4 = new ImageIcon("images/sim/ingreCategory/ingredCategory04.PNG").getImage().getScaledInstance(220, 220, 0);
 		JButton btn4 = new JButton(new ImageIcon(imgbtn4));
 		btn4.setBounds(220,0,220,220);
 		btn4.addMouseListener(new MouseAdapter() {
@@ -181,7 +181,7 @@ public class InputIngred extends JPanel{
 			}
 		}
 				);
-		btn6.setOpaque(false);
+		btn6.setOpaque(false);*/
 
 
 
@@ -210,11 +210,10 @@ public class InputIngred extends JPanel{
 		botP.add(btn1);
 		botP.add(btn2);
 		botP.add(btn3);
-		botP.add(btn4);
+		/*botP.add(btn4);
 		botP.add(btn5);
-		botP.add(btn6);
-		//botP.add(btn7);
-		//botP.add(btn8);
+		botP.add(btn6);*/
+		
 
 
 		//화면 완성
