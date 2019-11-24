@@ -57,7 +57,7 @@ public class ModiMember extends JPanel{
 		this.setBounds(0,0,445,770);
 		this.setLayout(null);
 		JLabel lb1 = new JLabel("회원정보");
-		lb1.setBounds(25, 40, 200 ,100);
+		lb1.setBounds(25, 70, 200 ,100);
 		lb1.setFont(new Font("Serif", Font.BOLD, 20));  
 		JLabel lb2 = new JLabel("ID");
 		lb2.setBounds(60, 155, 27, 50);
@@ -110,7 +110,7 @@ public class ModiMember extends JPanel{
 
 				String JPF1 = String.valueOf(jpf1.getPassword());
 				String JPF2 = String.valueOf(jpf2.getPassword());
-				String JPF3 = String.valueOf(jpf3.getPassword()); //PasswordField를 String형으로 변환(문자열비교를 위해)
+				String JPF3 = String.valueOf(jpf3.getPassword()); //PasswordField를 String형으로 변환(문자열로 비교 하기위해)
 
 				Pattern p = Pattern.compile("([a-zA-Z0-9].*[!,@,#,$,%,^,&,*,?,_,~])|([!,@,#,$,%,^,&,*,?,_,~].*[a-zA-Z0-9])");
 				Matcher m = p.matcher(input2);        //문자+특수문자or특수문자+문자의 조합으로 생성될 수 있도록
@@ -124,30 +124,32 @@ public class ModiMember extends JPanel{
 					objIn = new ObjectInputStream(new FileInputStream("userList.dat"));
 					    
 					try {
-						asds = (HashMap) objIn.readObject(); //Object형이니까 ->HashMap으로 받아야
+						asds = (HashMap) objIn.readObject();
 
-						User u1 = (User) asds.get(id);//키가 id인 해쉬맵을 u1에 담았다. 
+						User u1 = (User) asds.get(id);
 
-						//if(입력한 PW가 현재 PW와 같고 && 패스워드 유효성검사에 통과한다면)
-						if(JPF1.equals(u1.getUserPw()) && //jpf1.getPassword()는 값이 문자열이 아니라 비교 불가
+						
+						if(JPF1.equals(u1.getUserPw()) && 
 								JPF2.equals(JPF3) &&
 								JPF2.length() <= 16 &&
 								JPF2.length() >= 8  &&    
-								m.find()){ //패스워드 필드에 입력한 값이 유저의 패스워드와 같고 &&
+								m.find()){ 
+							u1.setUserPw(JPF2); 
+							asds.put(id, u1); 
+							
+							JOptionPane.showMessageDialog(null, "수정이 완료되었습니다. 다시 로그인 해주세요.");
+							
+							ChangePanel.changePanel(mf, modiMember, new LoginPage(mf));
+					
 							//변경 PW와 확인 PW이 같고 &&
 							//변경 PW이 8~16글자 사이이고
 							//특수문자와영문자를 적어도 하나씩 포함하고 있으면
 
 							//여기서 변경한 PW(JPF2orJPF3)로 로그인 한 유저의 PW(u1.getUserPw)를 변경해줘야 한다
-							u1.setUserPw(JPF2); //이 변경한 Pw를 다시 oosOut파일에 적어야 함
-							asds.put(id, u1); 
 							//oosOut파일에 넣기 위해서 해쉬맵 asds에 덮어쓰기형식으로 u1을 다시 넣었다.
 
 							//System.out.println("변경한 PW : " + u1.getUserPw());
 
-							JOptionPane.showMessageDialog(null, "수정이 완료되었습니다. 다시 로그인 해주세요.");
-
-							ChangePanel.changePanel(mf, modiMember, new LoginPage(mf));
 						}else if (!JPF1.equals(u1.getUserPw())) {
 							JOptionPane.showMessageDialog(null, "현재 PW를 정확하게 입력해주세요");
 						}else if(!JPF2.equals(JPF3)) {
@@ -180,7 +182,6 @@ public class ModiMember extends JPanel{
 					ObjectOutputStream oosOut = new ObjectOutputStream(new FileOutputStream("userList.dat"));
 					oosOut.writeObject(asds); //PW를 수정한 회원의 정보를 다시 파일에 저장하기
 					oosOut.flush();
-				   oosOut.close();
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				} 
@@ -257,7 +258,7 @@ public class ModiMember extends JPanel{
 
 				jtf2 = new JTextField();
 				jtf2.setBounds(135,362,239,35);
-				this.add(jtf2);
+				this.add(jtf2);        
 				jtf2.setEditable(false); // 닉네임 변경 불가
 				jtf2.add(Label2);
 
