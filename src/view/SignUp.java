@@ -390,20 +390,20 @@ public class SignUp extends JPanel{
 					
 					
 					if(!uset.contains(idtf.getText()) && m.find() == true){
-						JOptionPane.showMessageDialog(null, "사용 가능한 아이디입니다.", "REGISTER_HELPER", JOptionPane.INFORMATION_MESSAGE);
+						JOptionPane.showMessageDialog(null, "사용 가능한 아이디입니다.", "CHECK_ID", JOptionPane.INFORMATION_MESSAGE);
 						cid = true;
 					}else if(uset.contains(idtf.getText())) {
-						JOptionPane.showMessageDialog(null, "존재하는 아이디입니다.", "REGISTER_HELPER", JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showMessageDialog(null, "존재하는 아이디입니다.", "CHECK_ID", JOptionPane.ERROR_MESSAGE);
 						cid = false;
 					}else if(m.find() == false) {
-						JOptionPane.showMessageDialog(null, "사용할 수 없는 아이디입니다.(영문, 숫자 조합, 4~12자)", "REGISTER_HELPER", JOptionPane.ERROR_MESSAGE);
+						JOptionPane.showMessageDialog(null, "사용할 수 없는 아이디입니다.(영문, 숫자 조합, 4~12자)", "CHECK_ID", JOptionPane.ERROR_MESSAGE);
 						cid = false;
 					}
 				//jeff 1
 				//문제: userList.dat가 없는데 아이디 중복검사하면 FileNotFoundException 발생 
 				//해결책: 아이디 중복검사 try~catch 구문에 FileNotFoundExcpetion 추가
 				} catch (FileNotFoundException e) {
-					JOptionPane.showMessageDialog(null, "사용 가능한 아이디입니다.", "유승이가 바꾼 내용", JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(null, "사용 가능한 아이디입니다.", "CHECK_ID", JOptionPane.INFORMATION_MESSAGE);
 					cid = true;
 				} catch (EOFException e1) {
 
@@ -436,6 +436,7 @@ public class SignUp extends JPanel{
 		//return true;
 	}
 	
+	//비밀번로 유효성 검사에 따른 라벨 표시
 	public void pwPattern2() {
 		if(pwPattern() == true) {
 			pwlb2.setText("사용가능한 비밀번호입니다.");
@@ -455,6 +456,7 @@ public class SignUp extends JPanel{
 		return false;
 	}
 	
+	//비밀번호 일치 여부에 따른 라벨 표시
 	public void checkPw2() {
 		if(checkPw() == true) {
 			cpwlb2.setText("비밀번호가 일치합니다.");
@@ -494,23 +496,6 @@ public class SignUp extends JPanel{
 			}
 			JOptionPane.showMessageDialog(null, "사용가능한 닉네임입니다.", "CHECK_NICKNAME", JOptionPane.INFORMATION_MESSAGE);
 			cnick = true;
-
-
-			/*for(int i = 0; i < uarr.length; i++) {
-				if(!nicktf.getText().trim().equals(((User) uarr[i]).getNickname())) {
-					if(m.find() == true) {
-						JOptionPane.showMessageDialog(null, "사용가능한 닉네임입니다.", "CHECK_NICKNAME", JOptionPane.INFORMATION_MESSAGE);
-						cnick = true;
-					}else {
-						JOptionPane.showMessageDialog(null, "사용할 수 없는 닉네임입니다.(한글, 영문, 숫자만 가능 2~10자)", "CHECK_NICKNAME", JOptionPane.ERROR_MESSAGE);
-						cnick = false;
-					}
-				}else {
-					JOptionPane.showMessageDialog(null, "존재하는 닉네임입니다.", "CHECK_NICKNAME", JOptionPane.ERROR_MESSAGE);
-					cnick = false;
-				}
-				return;
-			}*/
 			
 			//jeff 2
 			//문제: userList.dat가 없는데 닉네임 중복검사하면 FileNotFoundException 발생 
@@ -607,14 +592,13 @@ public class SignUp extends JPanel{
 		if(numtf.getText().equals(str)) {
 			JOptionPane.showMessageDialog(null, "이메일이 인증되었습니다.", "CHECK_EMAIL", JOptionPane.INFORMATION_MESSAGE);
 			cn = true;
-		}else {
-			JOptionPane.showMessageDialog(null, "인증번호가 틀립니다.", "CHECK_EMAIL", JOptionPane.ERROR_MESSAGE);
-			cn = false;
+			return;
 		}
+		JOptionPane.showMessageDialog(null, "인증번호가 틀립니다.", "CHECK_EMAIL", JOptionPane.ERROR_MESSAGE);
+		cn = false;
 	}
-	
-	
-	
+
+
 	
 	//가입하기 버튼을 눌러 가입(위의 메소드들이 true일 경우만 가능)
 	//마우스클릭메소드를 쓰면 오류발생 횟수까지 중복되어 값이 저장되어 액션으로 바꿈
