@@ -1,22 +1,20 @@
 package view.manager;
 
-import javax.swing.JPanel;
-import javax.swing.JTextArea;
-import java.awt.Font;
 import java.awt.Color;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.JRadioButton;
-import java.awt.event.ActionListener;
+import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.ActionEvent;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.UIManager;
 
 import view.MainFrame;
-
-import javax.swing.JTextField;
 
 public class SecondPage__2 extends JPanel {
 ////
@@ -131,7 +129,7 @@ public class SecondPage__2 extends JPanel {
 		panel_2.add(textField);
 		textField.setColumns(10);
 										
-		JTextArea textArea = new JTextArea();
+		JLabel textArea = new JLabel();
 		textArea.setForeground(new Color(255, 255, 255));
 		textArea.setBackground(new Color(102, 204, 204));
 		textArea.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 27));

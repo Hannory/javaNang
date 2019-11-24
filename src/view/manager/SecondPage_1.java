@@ -109,6 +109,8 @@ public class SecondPage_1 extends JPanel {
 		mf.repaint();
 
 	}
+	
+	
 	}
 
 	
