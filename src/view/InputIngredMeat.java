@@ -37,7 +37,7 @@ public class InputIngredMeat extends JPanel {
 
 		//»ó´Ü Å¸ÀÌÆ² ¼ÂÆÃ
 		Font font = new Font("¸¼Àº °íµñ", Font.BOLD, 27);
-		JLabel barTitle = new JLabel("<À°·ù>");
+		JLabel barTitle = new JLabel("<À°·ù/ÇØ»ê¹°>");
 		barTitle.setLocation(80, 10);
 		barTitle.setSize(200, 50);
 		barTitle.setForeground(Color.WHITE);

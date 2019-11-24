@@ -37,7 +37,7 @@ public class InputIngredFish extends JPanel {
 
 		//상단 타이틀 셋팅
 		Font font = new Font("맑은 고딕", Font.BOLD, 27);
-		JLabel barTitle = new JLabel("<해산물>");
+		JLabel barTitle = new JLabel("<야채/과일>");
 		barTitle.setLocation(80, 10);
 		barTitle.setSize(200, 50);
 		barTitle.setForeground(Color.WHITE);

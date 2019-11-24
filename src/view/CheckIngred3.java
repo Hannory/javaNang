@@ -240,7 +240,7 @@ public class CheckIngred3 extends JPanel{
 
 		});
 
-		JButton btnList4 = new JButton("4");
+		/*JButton btnList4 = new JButton("4");
 		btnList4.setBounds(220,600,50,50);
 		btnList4.addMouseListener(new MouseAdapter() {
 			@Override
@@ -272,7 +272,7 @@ public class CheckIngred3 extends JPanel{
 
 
 		});
-
+*/
 
 
 
@@ -303,9 +303,9 @@ public class CheckIngred3 extends JPanel{
 		botP.add(btnList1);
 		botP.add(btnList2);
 		botP.add(btnList3);
-		botP.add(btnList4);
+		/*botP.add(btnList4);
 		botP.add(btnList5);
-		botP.add(btnList6);
+		botP.add(btnList6);*/
 
 		//메인프레임 > 전체패널 > 상단&하단 패널
 		nowp.add(topP);
