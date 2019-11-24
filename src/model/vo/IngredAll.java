@@ -35,9 +35,8 @@ public class IngredAll {
 		File f = new File(AllRecipe.loginId+"ingredInfo.dat");
 		
 		if(f.exists()) {
+			//기존 파일이 존재할경우, 읽어온 후 스태틱에 저장
 			System.out.println("파일 이미 있으므로 불러와서 ingredExpiryMap 에 넣음.");
-			//파일 존재하므로 기존 파일(맵) 읽어와서 복사 후 ingredExpiryMap 에 저장
-			//ingredExpiryMap 수정하여 다시 파일에 덮어쓰기
 			try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(f));){
 				
 				HashMap hm = (HashMap) in.readObject();
@@ -57,7 +56,7 @@ public class IngredAll {
 		}
 		
 		
-		
+		System.out.println("유통기한 파일 정보 : " + IngredAll.ingredExpiryMap);
 		
 	}//method
 	
@@ -83,6 +82,7 @@ public class IngredAll {
 		try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(AllRecipe.loginId+"ingredInfo.dat"));){
 			
 			out.writeObject(ingredExpiryMap);
+			out.flush();
 			
 			
 		} catch (FileNotFoundException e) {

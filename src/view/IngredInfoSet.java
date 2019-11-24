@@ -109,7 +109,8 @@ public class IngredInfoSet extends JPanel{
 				new IngredAll().deleteIngred(IngredAll.tempNo);
 				
 				//유통기한 객체에서도 해당 키,값 삭제
-				IngredAll.ingredExpiryMap.remove( String.valueOf(LoginPage.ingredStatic) + IngredAll.tempNo);
+				IngredAll.ingredExpiryMap.remove(String.valueOf(AllRecipe.loginId) + IngredAll.tempNo);
+				System.out.println("유통기한객체에서 삭제 된 상태, 현재 유통기한 객체 정보  : " + IngredAll.ingredExpiryMap);
 				//수정된 객체정보 저장
 				new IngredAll().saveIngredExpiryMap();
 				
@@ -154,12 +155,6 @@ public class IngredInfoSet extends JPanel{
 
 				
 				
-				
-
-//				Image img = 
-//						new ImageIcon("images/images/" + name + ".PNG").getImage().getScaledInstance(150, 150, 0);
-//
-//				label.setIcon(new ImageIcon(img));
 
 			}
 		});

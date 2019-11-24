@@ -88,7 +88,7 @@ public class InputIngredMeat extends JPanel {
 		btn1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				JOptionPane.showMessageDialog(null, "재료 입력 완료 !", "재료 입력", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "재료 입력 완료 !");
 
 				new AddIngred().makeTreeSet(1001);
 			}
@@ -102,7 +102,7 @@ public class InputIngredMeat extends JPanel {
 		btn2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				JOptionPane.showMessageDialog(null, "재료 입력 완료 !", "재료 입력", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "재료 입력 완료 !");
 
 				new AddIngred().makeTreeSet(1002);
 
@@ -120,7 +120,7 @@ public class InputIngredMeat extends JPanel {
 		btn3.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				JOptionPane.showMessageDialog(null, "재료 입력 완료 !", "재료 입력", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "재료 입력 완료 !");
 				new AddIngred().makeTreeSet(1003);
 			}
 		}
@@ -136,7 +136,7 @@ public class InputIngredMeat extends JPanel {
 		btn4.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				JOptionPane.showMessageDialog(null, "재료 입력 완료 !", "재료 입력", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "재료 입력 완료 !");
 				new AddIngred().makeTreeSet(1004);
 
 			}
@@ -154,7 +154,7 @@ public class InputIngredMeat extends JPanel {
 		btn5.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				JOptionPane.showMessageDialog(null, "재료 입력 완료 !", "재료 입력", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "재료 입력 완료 !");
 				new AddIngred().makeTreeSet(1005);
 			}
 		}
@@ -170,7 +170,7 @@ public class InputIngredMeat extends JPanel {
 		btn6.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				JOptionPane.showMessageDialog(null, "재료 입력 완료 !", "재료 입력", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "재료 입력 완료 !");
 				new AddIngred().makeTreeSet(1006);
 			}
 		}
@@ -186,7 +186,7 @@ public class InputIngredMeat extends JPanel {
 		btn7.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				JOptionPane.showMessageDialog(null, "재료 입력 완료 !", "재료 입력", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "재료 입력 완료 !");
 				new AddIngred().makeTreeSet(1007);
 			}
 		}
@@ -202,7 +202,7 @@ public class InputIngredMeat extends JPanel {
 		btn8.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				JOptionPane.showMessageDialog(null, "재료 입력 완료 !", "재료 입력", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "재료 입력 완료 !");
 				new AddIngred().makeTreeSet(1008);
 			}
 		}
@@ -218,7 +218,7 @@ public class InputIngredMeat extends JPanel {
 		btn9.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				JOptionPane.showMessageDialog(null, "재료 입력 완료 !", "재료 입력", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "재료 입력 완료 !");
 				new AddIngred().makeTreeSet(1009);
 			}
 		}
