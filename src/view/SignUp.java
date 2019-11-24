@@ -430,8 +430,7 @@ public class SignUp extends JPanel{
 		Pattern p = Pattern.compile("^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[$@$!%*#?&])[A-Za-z[0-9]$@$!%*#?&]{8,16}$");
 		Matcher m = p.matcher(String.valueOf(pwpf.getPassword()));
 		
-		return true;
-		//return m.find();
+		return m.find();
 		
 		//비번 쉬운 마스터 아이디 만들기 위해
 		//return true;
@@ -593,7 +592,7 @@ public class SignUp extends JPanel{
 			
 			
 			//이메일 전송
-			//Transport.send(m); 
+			Transport.send(m); 
 			System.out.println("메일 발송 완료");
 			
 		} catch (AddressException e) {
