@@ -16,7 +16,7 @@ import view.MainFrame;
 import view.manager.MainPage.MyItem;
 import view.manager.MainPage.MyItem2;
 import java.awt.SystemColor;
-////
+//
 public class SecondPage_1 extends JPanel {
 
 	MainFrame mf;

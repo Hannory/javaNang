@@ -29,7 +29,7 @@ import view.MainFrame;
 import javax.swing.JTextField;
 
 public class SecondPage__2 extends JPanel {
-//
+////
    MainFrame mf;
    SecondPage__2 mp;
    private JTextField textField;

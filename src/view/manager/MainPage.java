@@ -25,7 +25,7 @@ import javax.swing.JTextField;
 import javax.swing.UIManager;
 
 public class MainPage extends JPanel {
-	//
+	////
 	MainFrame mf;
 	JPanel mp; 
 

@@ -20,7 +20,7 @@ import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import java.awt.SystemColor;
 import javax.swing.JLabel;
-//
+////
 public class UpMyRecipe extends JPanel {
 	MainFrame mf;
 	JPanel mp;
