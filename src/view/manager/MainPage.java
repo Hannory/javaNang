@@ -57,13 +57,13 @@ public class MainPage extends JPanel {
 		JButton btnNewButton = new JButton("\uB808\uC2DC\uD53C \uC2B9\uC778");
 		btnNewButton.setBounds(126, 157, 174, 58);
 		bottpanel.add(btnNewButton);
-		btnNewButton.setFont(new Font("문체부 쓰기 정체", Font.BOLD, 23));
+		btnNewButton.setFont(new Font("맑은 고딕", Font.BOLD, 23));
 		//mp.add(btnNewButton);
 
 		JButton btnNewButton_1 = new JButton("\uD68C\uC6D0 \uC81C\uC7AC");
 		btnNewButton_1.setBounds(126, 374, 174, 58);
 		bottpanel.add(btnNewButton_1);
-		btnNewButton_1.setFont(new Font("문체부 쓰기 정체", Font.BOLD, 23));
+		btnNewButton_1.setFont(new Font("맑은 고딕", Font.BOLD, 23));
 
 		JPanel panel_3 = new JPanel();
 		panel_3.setBounds(0, 0, 445, 77);
@@ -72,9 +72,10 @@ public class MainPage extends JPanel {
 		panel_3.setLayout(null);
 
 		JLabel textArea = new JLabel();
+		textArea.setForeground(Color.WHITE);
 		textArea.setBounds(117, 12, 197, 48);
 		panel_3.add(textArea);
-		textArea.setFont(new Font("문체부 쓰기 정체", Font.BOLD, 32));
+		textArea.setFont(new Font("맑은 고딕", Font.BOLD, 32));
 		textArea.setBackground(new Color(72, 209, 204));
 		textArea.setText("\uAD00\uB9AC\uC790 \uBAA8\uB4DC");
 		textArea.setLayout(null);

@@ -4,26 +4,36 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.util.HashMap;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 
+import model.vo.User;
+import view.AllRecipe;
 import view.MainFrame;
 
 public class SecondPage__2 extends JPanel {
-////
+
 	MainFrame mf;
 	SecondPage__2 mp;
+	HashMap hmap = new HashMap();
 	private JTextField textField;
-
-
-
+	private JPasswordField jpf1;
+	private JTextField jtf1;
+	
+	
 
 	public SecondPage__2(MainFrame mf) {
 		
@@ -31,7 +41,7 @@ public class SecondPage__2 extends JPanel {
 		this.mf=mf;
 		this.mp=this;
 		
-		
+		String id = AllRecipe.loginId;
 		//전체 패널 기본 설정 
 		
 		setBackground(UIManager.getColor("CheckBox.background"));
@@ -81,6 +91,8 @@ public class SecondPage__2 extends JPanel {
 		btnNewButton.setBounds(151, 642, 148, 27);
 		panel_2.add(btnNewButton);
 		btnNewButton.setFont(new Font("맑은 고딕", Font.BOLD, 23));
+		//제제등록 부분 
+		
 										
 		JRadioButton rdbtnNewRadioButton = new JRadioButton(" \uC6F9\uD558\uB4DC \uC544\uC774\uB514 \uD64D\uBCF4");
 		rdbtnNewRadioButton.setBounds(126, 226, 245, 27);
@@ -153,6 +165,37 @@ public class SecondPage__2 extends JPanel {
 
 		//제제 등록 누를때 삭제 기능을 추가 못할 시 팝업창이라도 띄우기
 		btnNewButton.addMouseListener(new MouseAdapter() {
+			
+		/*	@Override
+			public void mouseReleased(MouseEvent e) {
+				HashMap asds = new HashMap();
+				ObjectInputStream objIn = null;
+				
+				try {
+					objIn = new ObjectInputStream(new FileInputStream("userList.dat"));
+					try {
+						asds = (HashMap)objIn.readObject();
+						User u1 = (User)asds.get(id);
+					
+					int ans = JOptionPane.showConfirmDialog(null, "정말로 제제등록 하시곘습니까?", "제제등록");
+					
+					
+					} catch (ClassNotFoundException e1) {
+						
+						e1.printStackTrace();
+					}
+				} catch (FileNotFoundException e1) {
+					
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					
+					e1.printStackTrace();
+				}
+				
+				
+			}
+			*/
+			
 			@Override
 			public void mouseReleased (MouseEvent e) {
 				JOptionPane.showMessageDialog(null, "제제 등록이 완료 되었습니다.");
