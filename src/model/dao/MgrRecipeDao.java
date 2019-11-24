@@ -57,13 +57,12 @@ public class MgrRecipeDao {
 		rcIngred06.add(3004);
 		
 		//요리 사진들
-		
 		String rcPic1 = "images/park/black noodle.jpg";
 		String rcPic2 = "images/park/carbonara.jpg";
 		String rcPic3 = "images/park/tomato seafood spaghetti.jpg";
 		String rcPic4 = "images/park/steamed potato.jpg";
 		String rcPic5 = "images/park/cheeseBall.jpg";
-		String rcPic6 = "images/park/potato.jpg";
+		String rcPic6 = "images/park/potato carrot.jpg";
 		
 		
 		//요라 맨트
@@ -77,13 +76,13 @@ public class MgrRecipeDao {
 		
 		
 		
-		
+		//Recipe 자료형으로 만들기
 		recipeList.add(new Recipe("짜장면", "documents/recipe/black noodle.txt", rcPic1,rcMent1, rcIngred01));
 		recipeList.add(new Recipe("까르보나라", "documents/recipe/carbonara.txt", rcPic2,rcMent2, rcIngred02));
 		recipeList.add(new Recipe("토마토 스파게티", "documents/recipe/tomato seafood spaghetti.txt", rcPic3,rcMent3, rcIngred03));
 		recipeList.add(new Recipe("찐감자", "documents/recipe/steamed potato.txt", rcPic4,rcMent4, rcIngred04));
 		recipeList.add(new Recipe("치즈볼", "documents/recipe/cheeseBall.txt", rcPic5,rcMent5, rcIngred05));
-		recipeList.add(new Recipe("감자당근볶음", "documents/recipe/potato.txt", rcPic6,rcMent6,rcIngred06));
+		recipeList.add(new Recipe("감자당근볶음", "documents/recipe/potato carrot.txt", rcPic6,rcMent6,rcIngred06));
 		
 		/*
 		Scanner sc = new Scanner(System.in);

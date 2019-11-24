@@ -111,6 +111,7 @@ public class RecipePage2 extends JPanel {
 
 		//txt파일 레시피 설명
 		JTextPane tp = new JTextPane();
+		tp.setEditable(false);
 		TextFromFile(tp, rc);
 
 		//스크롤바
