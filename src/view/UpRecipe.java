@@ -34,6 +34,8 @@ public class UpRecipe extends JPanel {
 	JTextField recipeName;
 	JLabel recipefile;
 	
+	static String picAdr;
+	
 	public UpRecipe() {}
 	
 	public UpRecipe(MainFrame mf) {
@@ -90,22 +92,14 @@ public class UpRecipe extends JPanel {
 		button1.setForeground(Color.DARK_GRAY);
 		button1.setFont(new Font("Dialog", Font.BOLD, 21));
 		button1.setBackground(Color.white);
-		button1.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				saveFile();
-				saveFile2();
-			//	saveFile3();
-			}
-		});
 
 
-		button1.addMouseListener(new MouseAdapter() {
+
+		/*button1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				ChangePanel.changePanel(mf, mp, new UpMyRecipe(mf)); 
 			}
-		});
+		});*/
 
 		mf.repaint();		
 
@@ -207,14 +201,37 @@ public class UpRecipe extends JPanel {
 				ChangePanel.changePanel(mf, mp, new MainMenu(mf )); 
 			}
 		});
+		
+		//공유하기
+		button1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				saveFile();
+				saveFile2();
+			//	saveFile3();
+
+				JOptionPane.showMessageDialog(null, "등록이 완료되었습니다. 승인 요청에 2-3일 소요됩니다.");
+
+				ChangePanel.changePanel(mf, mp, new UpMyRecipe(mf)); 
+			}
+		});
 
 
+		/*button1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseReleased (MouseEvent e) {
+			}
+		});*/
+
+		//파일찾기
 		button2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
 				//File();
-
-				JTextField recipefile = new JTextField(File());
+				
+				picAdr = file();
+				
+				JTextField recipefile = new JTextField(picAdr);
 				recipefile.setBounds(112,562,179,32);
 				panel2.add(recipefile);
 				//saveFile3();
@@ -222,19 +239,13 @@ public class UpRecipe extends JPanel {
 		});
 
 
-		button1.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseReleased (MouseEvent e) {
-				JOptionPane.showMessageDialog(null, "등록이 완료되었습니다. 승인 요청에 2-3일 소요됩니다.");
-			}
-		});
 
 		mf.repaint();
 	}
 
 
 	//파일찾기
-	public String File(){
+	public String file(){
 
 		String folderPath = " ";
 
@@ -274,6 +285,7 @@ public class UpRecipe extends JPanel {
 		//시험
 	}
 
+	//레시피 내용 파일 생성
 	public void saveFile() {
 
 		ObjectOutputStream oop =null;
@@ -305,7 +317,7 @@ public class UpRecipe extends JPanel {
 
 	}
 
-
+	//제목 파일 생성
 	public void saveFile2() {
 		ObjectOutputStream oop2 =null;
 

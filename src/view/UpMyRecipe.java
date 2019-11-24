@@ -163,7 +163,7 @@ public class UpMyRecipe extends JPanel {
 		//			}
 		//		}
 		//		
-		String photoAdr = new UpRecipe().File();
+		String photoAdr = UpRecipe.picAdr;
 		Image photo = new ImageIcon(photoAdr).getImage().getScaledInstance(300,240,0);
 		JLabel label = new JLabel(new ImageIcon(photo));
 		label.setSize(300,240);
