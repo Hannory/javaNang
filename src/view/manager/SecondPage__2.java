@@ -13,6 +13,9 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.ActionEvent;
 import javax.swing.UIManager;
+
+import view.MainFrame;
+
 import javax.swing.JTextField;
 
 public class SecondPage__2 extends JPanel {

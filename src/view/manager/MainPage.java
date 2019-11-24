@@ -15,6 +15,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+
+import view.MainFrame;
+
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
@@ -86,7 +89,7 @@ public class MainPage extends JPanel {
 
 	class MyItem extends MouseAdapter{
 		@Override
-		public void mouseClicked(MouseEvent e) {
+		public void mouseReleased(MouseEvent e) {
 			ChangePanel.changePanel(mf, mp, new SecondPage_1(mf));
 
 
@@ -96,7 +99,7 @@ public class MainPage extends JPanel {
 
 	class MyItem2 extends MouseAdapter{
 		@Override
-		public void mouseClicked(MouseEvent e) {
+		public void mouseReleased(MouseEvent e) {
 			ChangePanel.changePanel(mf, mp, new SecondPage__2(mf));
 		}
 	}

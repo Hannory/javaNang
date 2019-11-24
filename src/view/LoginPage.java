@@ -23,6 +23,7 @@ import javax.swing.JTextField;
 
 import model.vo.Recipe;
 import model.vo.User;
+import view.manager.MainPage;
 
 public class LoginPage extends JPanel {
 
@@ -137,17 +138,31 @@ public class LoginPage extends JPanel {
 					}*/
 					
 					 if (map.containsKey(id) &&/*idField.getText().equals(map.get(id))*/ pwField.getText().equals(u1.getUserPw())) {
+						 
+						 if(!id.equals("manager")) {
+							 ChangePanel.changePanel(mf, lp, new MainMenu(mf));
+							 
+							 AllRecipe.login =  true;
+							 
+							 AllRecipe.loginId = idField.getText();
+							 
+							 TreeSet ts = (TreeSet) u1.getUserIngred().clone();
+							 System.out.println(ts);
+							 ingredStatic = ts;
+							 
+						 }else {
+							 ChangePanel.changePanel(mf, lp, new MainPage(mf));
 
-						ChangePanel.changePanel(mf, lp, new MainMenu(mf));
+							 AllRecipe.login =  true;
 
-						AllRecipe.login =  true;
+							 AllRecipe.loginId = idField.getText();
 
-						AllRecipe.loginId = idField.getText();
+							 TreeSet ts = (TreeSet) u1.getUserIngred().clone();
+							 System.out.println(ts);
+							 ingredStatic = ts;
+						 }
+						 	
 
-						TreeSet ts = (TreeSet) u1.getUserIngred().clone();
-						System.out.println(ts);
-						ingredStatic = ts;
-						
 					}else if(!map.containsKey(id)||pwField.getText() != u1.getUserPw()) {
 						JOptionPane.showMessageDialog(null, "아이디 또는 비밀번호를 확인 후\n다시 로그인해주세요.");
 						AllRecipe.login  = false;

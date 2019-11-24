@@ -2,6 +2,8 @@ package view.manager;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import view.MainFrame;
 //
 public class ChangePanel  {
 	

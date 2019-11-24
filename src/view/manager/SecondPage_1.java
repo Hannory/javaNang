@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 
+import view.MainFrame;
 import view.manager.MainPage.MyItem;
 import view.manager.MainPage.MyItem2;
 import java.awt.SystemColor;
