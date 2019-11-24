@@ -32,7 +32,7 @@ public class MainPage extends JPanel {
 
 	public MainPage(MainFrame mf) {
 
-		//필드값 초기화 
+		//필드값 초기화  
 		this.mf = mf;
 		this.mp = this;
 
