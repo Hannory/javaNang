@@ -222,6 +222,7 @@ public class CheckIngred extends JPanel{
 
 
 
+		
 
 		//하단 목록 페이지 추가
 		JButton btnList1 = new JButton("1");
