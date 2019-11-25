@@ -73,13 +73,14 @@ public class MgrRecipeDao {
 		String rcMent5 = "<html># 쫀득쫀득한 치즈가 예술인<br>바삭한 치즈볼 만들기~!!<br></html>";
 		String rcMent6 = "<html># 간편하고 영양만점~ <br> 감자당근볶음 만들기 ~!!<br></html>";
 		
-		
+		//요리 레시피 txt 파일
+		String rcTxt3 = "documents/recipe/tomato seafood spaghetti.txt";
 		
 		
 		//Recipe 자료형으로 만들기
 		recipeList.add(new Recipe("짜장면", "documents/recipe/black noodle.txt", rcPic1,rcMent1, rcIngred01));
 		recipeList.add(new Recipe("까르보나라", "documents/recipe/carbonara.txt", rcPic2,rcMent2, rcIngred02));
-		recipeList.add(new Recipe("토마토 스파게티", "documents/recipe/tomato seafood spaghetti.txt", rcPic3,rcMent3, rcIngred03));
+		recipeList.add(new Recipe("토마토 스파게티", rcTxt3, rcPic3,rcMent3, rcIngred03));
 		recipeList.add(new Recipe("찐감자", "documents/recipe/steamed potato.txt", rcPic4,rcMent4, rcIngred04));
 		recipeList.add(new Recipe("치즈볼", "documents/recipe/cheeseBall.txt", rcPic5,rcMent5, rcIngred05));
 		recipeList.add(new Recipe("감자당근볶음", "documents/recipe/potato carrot.txt", rcPic6,rcMent6,rcIngred06));
