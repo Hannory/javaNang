@@ -161,6 +161,7 @@ public class Recommend extends JPanel {
 		panel.setLocation(0, 140);
 		panel.setSize(445, 233);
 		panel.setLayout(null);
+		panel.setBackground(Color.WHITE);
 		
 		//현재 재료로에 출력될 이미지
 		if(RecMgt.nowCtn != 0) {
@@ -176,9 +177,10 @@ public class Recommend extends JPanel {
 			label.setLocation(50, 0);
 			label.setSize(345, 233);
 			
-			left = new JButton("◀");
-			left.setSize(50, 233);
-			left.setLocation(0, 0);
+			Image leftSky = new ImageIcon("images/park/leftSky.png").getImage().getScaledInstance(50,  50, 0);
+			left = new JButton(new ImageIcon(leftSky));
+			left.setSize(50, 50);
+			left.setLocation(0, 91);
 			
 			left.addActionListener(new ActionListener() {
 				
@@ -201,9 +203,10 @@ public class Recommend extends JPanel {
 				
 			});
 			
-			right = new JButton("▶");
-			right.setSize(50, 233);
-			right.setLocation(395, 0);
+			Image rightSky = new ImageIcon("images/park/rightSky.png").getImage().getScaledInstance(50,  50, 0);
+			right = new JButton(new ImageIcon(rightSky));
+			right.setSize(50, 50);
+			right.setLocation(395, 91);	
 			
 			right.addActionListener(new ActionListener() {
 				
@@ -242,13 +245,15 @@ public class Recommend extends JPanel {
 			label.setLocation(50, 0);
 			label.setSize(345, 233);
 			
-			left = new JButton("◀");
-			left.setSize(50, 233);
-			left.setLocation(0, 0);
+			Image leftSky = new ImageIcon("images/park/leftSky.png").getImage().getScaledInstance(50,  50, 0);
+			left = new JButton(new ImageIcon(leftSky));
+			left.setSize(50, 50);
+			left.setLocation(0, 91);
 			
-			right = new JButton("▶");
-			right.setSize(50, 233);
-			right.setLocation(395, 0);		
+			Image rightSky = new ImageIcon("images/park/rightSky.png").getImage().getScaledInstance(50,  50, 0);
+			right = new JButton(new ImageIcon(rightSky));
+			right.setSize(50, 50);
+			right.setLocation(395, 91);		
 			
 			//My 냉장고 페이지로 이동
 			specificPage = new JButton(" ");
@@ -314,6 +319,7 @@ public class Recommend extends JPanel {
 		panel2.setLocation(0, 140+233+70);
 		panel2.setSize(445, 233);
 		panel2.setLayout(null);
+		panel2.setBackground(Color.white);
 		
 		if(RecMgt.addCtn != 0) {
 			
@@ -327,9 +333,10 @@ public class Recommend extends JPanel {
 			label2.setLocation(50, 0);
 			label2.setSize(345, 233);
 			
-			left2 = new JButton("◀");
-			left2.setSize(50, 233);
-			left2.setLocation(0, 0);
+			Image leftSky = new ImageIcon("images/park/leftSky.png").getImage().getScaledInstance(50,  50, 0);
+			left2 = new JButton(new ImageIcon(leftSky));
+			left2.setSize(50, 50);
+			left2.setLocation(0, 91);
 			
 			left2.addActionListener(new ActionListener() {
 				
@@ -352,9 +359,10 @@ public class Recommend extends JPanel {
 				
 			});
 			
-			right2 = new JButton("▶");
-			right2.setSize(50, 233);
-			right2.setLocation(395, 0);
+			Image rightSky = new ImageIcon("images/park/rightSky.png").getImage().getScaledInstance(50,  50, 0);
+			right2 = new JButton(new ImageIcon(rightSky));
+			right2.setSize(50, 50);
+			right2.setLocation(395, 91);	
 			
 			right2.addActionListener(new ActionListener() {
 				
@@ -394,13 +402,15 @@ public class Recommend extends JPanel {
 			label2.setLocation(50, 0);
 			label2.setSize(345, 233);
 			
-			left2 = new JButton("◀");
-			left2.setSize(50, 233);
-			left2.setLocation(0, 0);
+			Image leftSky = new ImageIcon("images/park/leftSky.png").getImage().getScaledInstance(50,  50, 0);
+			left2 = new JButton(new ImageIcon(leftSky));
+			left2.setSize(50, 50);
+			left2.setLocation(0, 91);
 			
-			right2 = new JButton("▶");
-			right2.setSize(50, 233);
-			right2.setLocation(395, 0);		
+			Image rightSky = new ImageIcon("images/park/rightSky.png").getImage().getScaledInstance(50,  50, 0);
+			right2 = new JButton(new ImageIcon(rightSky));
+			right2.setSize(50, 50);
+			right2.setLocation(395, 91);		
 			
 			//My 냉장고 페이지로 이동
 			specificPage2 = new JButton(" ");

@@ -13,7 +13,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import controller.IngredControl;
-import model.vo.Ingred;
 import model.vo.IngredAll;
 
 public class InputIngred extends JPanel{
