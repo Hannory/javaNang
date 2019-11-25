@@ -161,10 +161,6 @@ public class SignUp extends JPanel{
 		pwlb2.setSize(340, 15);
 		pwlb2.setFont(new Font("맑은 고딕", Font.PLAIN, 11));
 		
-		/*JLabel pwlb2 = new JLabel("※영문자, 숫자, 특수문자 3가지 조합 8~16자로 설정");
-		pwlb2.setLocation(90, 255);
-		pwlb2.setSize(340, 15);*/
-		
 		
 		//체크패스워드 라벨
 		JLabel cpwlb = new JLabel("PW 확인");
@@ -356,20 +352,15 @@ public class SignUp extends JPanel{
 	//텍스트필드, 패스워드필드로 입력받은 값들의 텍스트를 추출하여 setter로 User 클래스의 객체u를 생성..
 	public User inputUser() {
 		
-		
 		u.setUserId(idtf.getText());
 		u.setUserPw(String.valueOf(pwpf.getPassword()));
 		u.setNickname(nicktf.getText());
 		u.setEmail(emailtf.getText());
 		
-		//jeff 4
-		//문제점: 최초 가입시 사용자가 갖고 있는 재료가 없기 때문에, 로그인 하면 NullPointerException 발생
-		//해결책: 재료의 자료형인 TreeSet 자료형 변수를 선언하고 9999라는 번호만 있는 재료를 넣어주기. TreeSet import 해야함.
 		TreeSet ts = new TreeSet();
 		ts.add(9999);
 		u.setUserIngred(ts);
-		
-
+	
 		return u;
 	}
 	
@@ -399,9 +390,7 @@ public class SignUp extends JPanel{
 						JOptionPane.showMessageDialog(null, "사용할 수 없는 아이디입니다.(영문, 숫자 조합, 4~12자)", "CHECK_ID", JOptionPane.ERROR_MESSAGE);
 						cid = false;
 					}
-				//jeff 1
-				//문제: userList.dat가 없는데 아이디 중복검사하면 FileNotFoundException 발생 
-				//해결책: 아이디 중복검사 try~catch 구문에 FileNotFoundExcpetion 추가
+				
 				} catch (FileNotFoundException e) {
 					JOptionPane.showMessageDialog(null, "사용 가능한 아이디입니다.", "CHECK_ID", JOptionPane.INFORMATION_MESSAGE);
 					cid = true;
@@ -431,9 +420,6 @@ public class SignUp extends JPanel{
 		Matcher m = p.matcher(String.valueOf(pwpf.getPassword()));
 		
 		return m.find();
-		
-		//비번 쉬운 마스터 아이디 만들기 위해
-		//return true;
 	}
 	
 	//비밀번로 유효성 검사에 따른 라벨 표시
@@ -444,7 +430,6 @@ public class SignUp extends JPanel{
 			pwlb2.setText("사용불가한 비밀번호입니다.(영문자, 숫자, 특수문자 조합 8~16글자)");
 		}
 	}
-	
 	
 	//비밀번호와 비밀번호 확인이 일치하는지 검사
 	public boolean checkPw() {
@@ -461,8 +446,7 @@ public class SignUp extends JPanel{
 		if(checkPw() == true) {
 			cpwlb2.setText("비밀번호가 일치합니다.");
 		}else {
-			cpwlb2.setText("비밀번호가 일치하지 않습니다.");
-			
+			cpwlb2.setText("비밀번호가 일치하지 않습니다.");	
 		}
 	}
 	
@@ -482,7 +466,8 @@ public class SignUp extends JPanel{
 			Object[] uarr = ucol.toArray();
 
 			if(m.find() == false) {
-				JOptionPane.showMessageDialog(null, "사용할 수 없는 닉네임입니다.(한글, 영문, 숫자만 가능 2~10자)", "CHECK_NICKNAME", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "사용할 수 없는 닉네임입니다.(한글, 영문, 숫자만 가능 2~10자)",
+						"CHECK_NICKNAME", JOptionPane.ERROR_MESSAGE);
 				cnick = false;
 				return;
 			}
@@ -497,18 +482,12 @@ public class SignUp extends JPanel{
 			JOptionPane.showMessageDialog(null, "사용가능한 닉네임입니다.", "CHECK_NICKNAME", JOptionPane.INFORMATION_MESSAGE);
 			cnick = true;
 			
-			//jeff 2
-			//문제: userList.dat가 없는데 닉네임 중복검사하면 FileNotFoundException 발생 
-			//해결책: 닉네임 아이디 중복검사 try~catch 구문에 FileNotFoundExcpetion 추가
 		}catch (FileNotFoundException e) {
 			JOptionPane.showMessageDialog(null, "사용 가능한 닉네임입니다.", "CHECK_NICKNAME", JOptionPane.INFORMATION_MESSAGE);
 			cnick = true;
 		}catch (Exception e) {
 			e.printStackTrace();
 		}finally {
-			//jeff 3
-			//문제: 닉네임 중복검사하면 NullPointerException 발생 
-			//해결책: 닉네임 중복검사 try~catch 구문 finally에 null 감지 if문 추가
 			try {
 				if(ois != null) {
 					ois.close();
@@ -568,7 +547,7 @@ public class SignUp extends JPanel{
 			arr[2] = (int) (Math.random() * 10);
 			arr[3] = (int) (Math.random() * 10);
 			
-			//int배열을 String으로 전환하기
+			//int배열을 String으로 변환하기
 			str = Arrays.toString(arr).replaceAll("[^0-9]", "");
 			System.out.println(str);
 			
@@ -601,7 +580,6 @@ public class SignUp extends JPanel{
 
 	
 	//가입하기 버튼을 눌러 가입(위의 메소드들이 true일 경우만 가능)
-	//마우스클릭메소드를 쓰면 오류발생 횟수까지 중복되어 값이 저장되어 액션으로 바꿈
 	public void register() {
 		if(pwPattern() == true && checkPw() == true && cid == true && cnick == true && cn == true) {
 
