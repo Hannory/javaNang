@@ -225,7 +225,7 @@ public class CheckIngred extends JPanel{
 
 		//하단 목록 페이지 추가
 		JButton btnList1 = new JButton("1");
-		btnList1.setBounds(70,600,50,50);
+		btnList1.setBounds(150,600,50,50);
 		btnList1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
@@ -236,7 +236,7 @@ public class CheckIngred extends JPanel{
 		});
 
 		JButton btnList2 = new JButton("2");
-		btnList2.setBounds(120,600,50,50);
+		btnList2.setBounds(200,600,50,50);
 		btnList2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
@@ -247,7 +247,7 @@ public class CheckIngred extends JPanel{
 		});
 
 		JButton btnList3 = new JButton("3");
-		btnList3.setBounds(170,600,50,50);
+		btnList3.setBounds(250,600,50,50);
 		btnList3.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent e) {

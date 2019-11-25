@@ -67,7 +67,7 @@ public class IngredControl {
 		
 		if(IngredAll.ingredExpiryMap.get(AllRecipe.loginId + minIngredNo) == null) {
 			System.out.println("밸류 널 나옴, 널 유통기한 대입");
-			str = "유통기한을 입력한 재료가 없습니다.";
+			str = "재료 유통기한을 입력해주세요";
 			
 		}else {
 			str = "유통기한이 " + String.valueOf(IngredAll.ingredExpiryMap.get(AllRecipe.loginId + minIngredNo) + "일 남았습니다.");

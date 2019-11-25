@@ -90,26 +90,48 @@ public class MainMenu extends JPanel {
 //		lb1.setFont(new Font("Serif", Font.BOLD, 23));        
 
 //		panel1.add(lb1);
-		this.add(panel1);
+		
+		JButton btnExpiry = new JButton("test");	
+		//btnExpiry.setOpaque(false);
+		btnExpiry.setSize(100,100);
+		btnExpiry.addMouseListener(new MouseAdapter() {
+		    public void mouseReleased(MouseEvent e) {
+		    	new ChangePanel().changePanel(mf, mainMenu, new CheckIngred(mf));
+		    }
+		});
+		
+		panel1.add(btnExpiry);
+		
+		
+		
 
 		JLabel lb2 = new JLabel(new IngredControl().getMinIngredExpiry());
-		lb2.setFont(new Font("Serif", Font.BOLD, 23));
+		lb2.setFont(new Font("Serif", Font.BOLD, 20));
 		lb2.setBounds(120,20,300,100);
 		//여기서는 유통기한이 제일 임박한 재료의 유통기한 남은 일수를 파일에서 불러와야 한다.
 		panel1.add(lb2);
 		this.add(panel1);
+		
+		
+		
+		
+		
+		
+		
 
 		System.out.println("일단 한번 더 부름,,");
 		IngredAll.setIngredExpiryMap();
 		 new IngredControl().method();
-		System.out.println("제발 숫자 제발" + IngredControl.minIngredNo);
+		System.out.println("넘버 " + IngredControl.minIngredNo);
 		Image icon = new ImageIcon("images/sim/BtnImg/" + IngredControl.minIngredNo + ".PNG").getImage().getScaledInstance(110, 110, 0);
 		//여기서는 유통기한이 제일 임박한 재료의 사진을 파일에서 불러와야 한다. 
 
 
 		JLabel lb3 = new JLabel(new ImageIcon(icon));
 		lb3.setBounds(0,0,100,100);
-		panel1.add(lb3); 
+		btnExpiry.add(lb3);
+//		panel1.add(btnExpiry); 		//유통기한에 붙인 버튼 삭제할것 나중에 이상있으면
+		
 
 		this.add(panel1); 
 
