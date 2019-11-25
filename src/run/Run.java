@@ -1,6 +1,5 @@
 package run;
 
-import model.dao.AddCont;
 import view.MainFrame;
 
 public class Run {
