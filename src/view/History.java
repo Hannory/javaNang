@@ -68,7 +68,7 @@ public class History extends JPanel {
 		panel1.setLocation(0, 70);
 		panel1.setSize(445, 175);
 		
-		Image photo1 = new ImageIcon("images/park/potato.jpg").getImage().getScaledInstance(225, 175, 0);
+		Image photo1 = new ImageIcon("images/park/potato carrot.jpg").getImage().getScaledInstance(225, 175, 0);
 		JLabel photoLabel1 = new JLabel(new ImageIcon(photo1));
 		photoLabel1.setLocation(220, 0);
 		photoLabel1.setSize(225, 175);
@@ -114,13 +114,13 @@ public class History extends JPanel {
 		panel3.setLocation(0, 420);
 		panel3.setSize(445, 175);
 		
-		Image photo3 = new ImageIcon("images/park/soup.jpg").getImage().getScaledInstance(225, 175, 0);
+		Image photo3 = new ImageIcon("images/park/carbonara.jpg").getImage().getScaledInstance(225, 175, 0);
 		JLabel photoLabel3 = new JLabel(new ImageIcon(photo3));
 		photoLabel3.setLocation(220, 0);
 		photoLabel3.setSize(225, 175);
 		
 		
-		JLabel recipeName3 = new JLabel("# 소고기찌개");
+		JLabel recipeName3 = new JLabel("# 까르보나라");
 		recipeName3.setLocation(30, 59);
 		recipeName3.setSize(200, 50);
 		recipeName3.setFont(font2);

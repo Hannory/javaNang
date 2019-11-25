@@ -27,29 +27,47 @@ public class MainMenu extends JPanel {
 
 		this.setBounds(0, 0 , 445, 770);
 		this.setLayout(null);
+		
+		Image backImgage = new ImageIcon("images/background.png").getImage().getScaledInstance(445, 770,  0);
+		JLabel background = new JLabel(new ImageIcon(backImgage));
+		background.setSize(445, 770);
+		this.add(background);
 
+		Font font2 = new Font("¸¼Àº °íµñ", Font.BOLD, 20);
 
 		JButton btn1 = new JButton("¿ä¸® ÃßÃµ");
 		btn1.setBounds(140,170,180,50);
 		btn1.setBackground(Color.LIGHT_GRAY);
 		btn1.addMouseListener(new MyMouseAdapter1());
+		btn1.setFont(font2);
+		btn1.setBackground(new Color(241, 196, 15));
+		btn1.setForeground(new Color(192, 57, 43));
 		JButton btn2 = new JButton("Àç·á ÀÔ·Â");
 		btn2.setBounds(140,300,180,50);
 		btn2.setBackground(Color.LIGHT_GRAY);
 		btn2.addMouseListener(new MyMouseAdapter2());
+		btn2.setFont(font2);
+		btn2.setBackground(new Color(243, 156, 18));
+		btn2.setForeground(new Color(13, 145, 68));
 		JButton btn3 = new JButton("·¹½ÃÇÇ °øÀ¯");
 		btn3.setBounds(140,430,180,50);
 		btn3.setBackground(Color.LIGHT_GRAY);
 		btn3.addMouseListener(new MyMouseAdapter3());
+		btn3.setFont(font2);
+		btn3.setBackground(new Color(241, 196, 15));
+		btn3.setForeground(new Color(192, 57, 43));
 		JButton btn4 = new JButton("My ³ÃÀå°í");
 		btn4.setBounds(140,560,180,50);
 		btn4.setBackground(Color.LIGHT_GRAY);
-		btn4.addMouseListener(new MyMouseAdapter4());		
+		btn4.addMouseListener(new MyMouseAdapter4());
+		btn4.setFont(font2);
+		btn4.setBackground(new Color(243, 156, 18));
+		btn4.setForeground(new Color(13, 145, 68));
 		
-		this.add(btn1);
-		this.add(btn2);
-		this.add(btn3);
-		this.add(btn4);
+		background.add(btn1);
+		background.add(btn2);
+		background.add(btn3);
+		background.add(btn4);
 
 		mf.add(this);
 		
@@ -73,10 +91,10 @@ public class MainMenu extends JPanel {
 		panel1.add(btnExpiry);
 		
 		JLabel lb2 = new JLabel(new IngredControl().getMinIngredExpiry());
-		lb2.setFont(new Font("Serif", Font.BOLD, 20));
+		lb2.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 20));
 		lb2.setBounds(120,5,300,100);
 		panel1.add(lb2);
-		this.add(panel1);
+		background.add(panel1);
 
 		IngredAll.setIngredExpiryMap();
 		 new IngredControl().method();
@@ -87,7 +105,7 @@ public class MainMenu extends JPanel {
 		lb3.setBounds(0,0,100,100);
 		btnExpiry.add(lb3);
 
-		this.add(panel1); 
+		background.add(panel1); 
 
 		mf.add(this);
 
@@ -97,7 +115,7 @@ public class MainMenu extends JPanel {
 
 		lb4.setForeground(Color.white);
 		lb4.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 27));     
-		this.add(lb4);
+		background.add(lb4);
 
 //		Image person = new ImageIcon("images/person sky.png").getImage().getScaledInstance(50,50,0);
 //	      JButton logIn = new JButton(new ImageIcon(person));
@@ -127,7 +145,7 @@ public class MainMenu extends JPanel {
 	      qst.addMouseListener(new MyMouseAdapter6());
 	      panel2.add(qst);
 	 
-	      this.add(panel2);
+	      background.add(panel2);
 	}
 
 	class MyMouseAdapter1 extends MouseAdapter{//¿ä¸®ÃßÃµÀ¸·Î

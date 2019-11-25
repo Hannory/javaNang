@@ -47,6 +47,11 @@ public class LoginPage extends JPanel {
 		this.setSize(445,770);
 		this.setBackground(Color.white);
 		setLayout(null);
+		
+		Image backImgage = new ImageIcon("images/background.png").getImage().getScaledInstance(445, 770,  0);
+		JLabel background = new JLabel(new ImageIcon(backImgage));
+		background.setSize(445, 770);
+		this.add(background);
 
 		JPanel bar = new JPanel();
 		bar.setLocation(0, 0);
@@ -54,7 +59,7 @@ public class LoginPage extends JPanel {
 		bar.setLayout(null);
 		bar.setBackground(new Color(102, 204, 204));
 		bar.setLayout(null);
-		add(bar);
+		background.add(bar);
 
 
 		JLabel label = new JLabel("·Î±×ÀÎ");
@@ -64,36 +69,36 @@ public class LoginPage extends JPanel {
 		label.setBounds(70, 18, 146, 39);
 		bar.add(label);
 
-		JLabel logo = new JLabel(new ImageIcon(new ImageIcon("images/won/java.PNG").getImage().getScaledInstance(130, 100, 0)));
-		logo.setBounds(140, 101, 150, 180);
-		add(logo);
+		JLabel logo = new JLabel(new ImageIcon(new ImageIcon("images/won/java.PNG").getImage().getScaledInstance(170, 100, 0)));
+		logo.setBounds(145, 101, 170, 180);
+		background.add(logo);
 
 		JLabel idlb = new JLabel("ID");
 		idlb.setBounds(80, 298, 62, 18);
 		idlb.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 15));
-		add(idlb);
+		background.add(idlb);
 
 		JLabel pwlb = new JLabel("PW");
 		pwlb.setBounds(80, 366, 62, 18);
 		pwlb.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 15));
-		add(pwlb);
+		background.add(pwlb);
 
 		idField = new JTextField();
 		idField.setBounds(151, 294, 171, 32);
-		add(idField);
+		background.add(idField);
 		idField.setColumns(10);
 
 		pwField = new JPasswordField();
 		pwField.setColumns(10);
 		pwField.setBounds(151, 359, 171, 32);
-		add(pwField);
+		background.add(pwField);
 
 		JButton loginBtn = new JButton("·Î±×ÀÎ");
 		loginBtn.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 15));
 		loginBtn.setForeground(Color.WHITE);
 		loginBtn.setBackground(new Color(102, 204, 204));
 		loginBtn.setBounds(151, 525, 150, 40);
-		add(loginBtn);
+		background.add(loginBtn);
 
 
 		JButton signUpBtn = new JButton("È¸¿ø°¡ÀÔ");
@@ -101,7 +106,7 @@ public class LoginPage extends JPanel {
 		signUpBtn.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 15));
 		signUpBtn.setBackground(new Color(224, 224, 224));
 		signUpBtn.setFocusPainted(false);
-		add(signUpBtn);
+		background.add(signUpBtn);
 
 		Image backImg = new ImageIcon("images/back sky.png").getImage().getScaledInstance(50,  50,  0);
 		JButton back = new JButton(new ImageIcon(backImg));

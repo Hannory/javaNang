@@ -31,29 +31,48 @@ public class MyFridge extends JPanel{
 		this.setBounds(0,0,445,770);
 		this.setLayout(null);
 
+		Image backImgage = new ImageIcon("images/background.png").getImage().getScaledInstance(445, 770,  0);
+		JLabel background = new JLabel(new ImageIcon(backImgage));
+		background.setSize(445, 770);
+		this.add(background);
+		
+		Font font2 = new Font("맑은 고딕", Font.BOLD, 20);
+		
 		JButton btn1 = new JButton("재료 입력");
 		btn1.setBounds(140, 170, 180, 50);
 		btn1.setBackground(Color.LIGHT_GRAY);
 		btn1.addMouseListener(new MyMouseAdapter1());
+		btn1.setFont(font2);
+		btn1.setBackground(new Color(241, 196, 15));
+		btn1.setForeground(new Color(192, 57, 43));
 		JButton btn2 = new JButton("재료 확인");
 		btn2.setBounds(140,300, 180, 50);
 		btn2.setBackground(Color.LIGHT_GRAY);
 		btn2.addMouseListener(new MyMouseAdapter2());
+		btn2.setFont(font2);
+		btn2.setBackground(new Color(243, 156, 18));
+		btn2.setForeground(new Color(13, 145, 68));
 		JButton btn3 = new JButton("히스토리");
 		btn3.setBounds(140,430, 180, 50);
 		btn3.setBackground(Color.LIGHT_GRAY);
 		btn3.addMouseListener(new MyMouseAdapter3());
+		btn3.setFont(font2);
+		btn3.setBackground(new Color(241, 196, 15));
+		btn3.setForeground(new Color(192, 57, 43));
 		JButton btn4 = new JButton("회원 정보");
 		btn4.setBounds(140,560, 180, 50);
 		btn4.setBackground(Color.LIGHT_GRAY);
 		btn4.addMouseListener(new MyMouseAdapter4());
+		btn4.setFont(font2);
+		btn4.setBackground(new Color(243, 156, 18));
+		btn4.setForeground(new Color(13, 145, 68));
 
 
 
-		this.add(btn1);
-		this.add(btn2);
-		this.add(btn3);
-		this.add(btn4);
+		background.add(btn1);
+		background.add(btn2);
+		background.add(btn3);
+		background.add(btn4);
 		mf.add(this);
 
 
@@ -63,7 +82,7 @@ public class MyFridge extends JPanel{
 
 		lb.setForeground(Color.white);
 		lb.setFont(new Font("맑은 고딕", Font.BOLD, 27));     
-		this.add(lb);
+		background.add(lb);
 		
           
 		JPanel panel1 = new JPanel(); //상단 패널
@@ -86,7 +105,7 @@ public class MyFridge extends JPanel{
         back.addMouseListener(new MyMouseAdapter6());
         panel1.add(back);
 
-        this.add(panel1);
+        background.add(panel1);
 
 		JPanel panel2 = new JPanel(); //하단 패널
 		panel2.setBounds(0, 685, 450, 78);
@@ -111,6 +130,8 @@ public class MyFridge extends JPanel{
 			}
 
 		});
+		
+		background.add(panel2);
 	}
 	class MyMouseAdapter1 extends MouseAdapter{//재료입력
 		@Override

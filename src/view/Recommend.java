@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -139,7 +140,7 @@ public class Recommend extends JPanel {
 		}
 		recipeName1.setFont(font2);
 		recipeName1.setLocation(215, 28);
-		recipeName1.setSize(170, 50);
+		recipeName1.setSize(165, 50);
 		recipeName1.setForeground(new Color(13, 145, 68));
 		
 		//현재 재료로 추천 개수
@@ -151,8 +152,8 @@ public class Recommend extends JPanel {
 			nowNum.setText(((nowClickCtn) % RecMgt.nowCtn + 1) + "/" + RecMgt.nowCtn);			
 		}
 		nowNum.setFont(font2);
-		nowNum.setLocation(395, 28);
-		nowNum.setSize(45, 50);
+		nowNum.setLocation(385, 28);
+		nowNum.setSize(50, 50);
 		nowNum.setForeground(Color.gray);
 		
 		//현재 재료로 사진이 담기는 패널 영역
@@ -297,15 +298,15 @@ public class Recommend extends JPanel {
 		}
 		recipeName2.setFont(font2);
 		recipeName2.setLocation(215, 28);
-		recipeName2.setSize(170, 50);
+		recipeName2.setSize(165, 50);
 		recipeName2.setForeground(new Color(13, 145, 68));
 		
 		//추가 재료로 추천 개수
 		JTextPane addNum = new JTextPane();
 		addNum.setText(((addClickCtn) % RecMgt.addCtn + 1) + "/" + Integer.valueOf(RecMgt.addCtn).toString());
 		addNum.setFont(font2);
-		addNum.setLocation(395, 28);
-		addNum.setSize(45, 50);
+		addNum.setLocation(380, 28);
+		addNum.setSize(60, 50);
 		addNum.setForeground(Color.gray);
 		
 		//추가 재료로 사진 패널
@@ -422,30 +423,12 @@ public class Recommend extends JPanel {
 		panel3.setLocation(0, 140+233+70+233);
 		panel3.setSize(445, 94);
 		panel3.setLayout(null);
-
-		System.out.println("추가로 필요한 재료 번호" + RecMgt.addNeeded);
-		//System.out.println("추가로 필요한 재료 번호" + RecMgt.toAddIngred);
-		//0번 인덱스 그림, 1번 인덱스 그림, 
-		//RecMgt.toAddIngred;
 		
-		/*
-		//모든 레시피 패널
-		JPanel panel3 = new JPanel();
-		panel3.setLocation(0, 536);
-		panel3.setSize(445, 233);
-		panel3.setLayout(null);
-
-		Image icon3 = new ImageIcon("images/park/allRecipePanel.png").getImage().getScaledInstance(445, 233, 0);
-		JLabel label3 = new JLabel(new ImageIcon(icon3));
-		label3.setSize(445, 233);
-		label3.setLayout(null);
 		
-		JButton allBtn = new JButton("모든 레시피");
-		allBtn.setLocation(175, 75);
-		allBtn.setSize(160, 60);
-		allBtn.setFont(font2);
-		//allBtn.setVisible(false);
-*/		
+		Image bottomBar = new ImageIcon("images/bottomBar.png").getImage().getScaledInstance(445, 94, 0);
+		JLabel panelPic3 = new JLabel(new ImageIcon(bottomBar));
+		panelPic3.setSize(445, 94);
+			
 		//add 영역
 		bar.add(barTitle);
 		bar.add(back);
@@ -473,8 +456,7 @@ public class Recommend extends JPanel {
 		panel2.add(label2);
 		panel2.add(specificPage2);
 		
-		/*label3.add(allBtn);
-		panel3.add(label3);*/
+		panel3.add(panelPic3);
 		
 		this.add(bar);
 		this.add(titleBar1);

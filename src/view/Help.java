@@ -53,52 +53,68 @@ public class Help extends JPanel {
 		panel1.add(back);
 	
 		
-		
+		Font batang = new Font("맑은 고딕", Font.BOLD, 15);
 		
 		JLabel lb1 = new JLabel("<요리추천>");
 		lb1.setBounds(25, 70, 150, 50);
-		lb1.setFont(new Font("Serif", Font.BOLD, 20));  
+		lb1.setFont(new Font("맑은 고딕", Font.BOLD, 20));  
 		JLabel lb1a = new JLabel("상단엔 현재 재료로 조리할 수 있는 요리를 표시해주고");
 		JLabel lb1aa = new JLabel("아래엔 재료를 추가해서 조리할 수 있는 요리를 표시해줍니다.");
 		JLabel lb1aaa = new JLabel("각 좌우 버튼을 누르면 다른 요리들을 확인해 볼 수 있어요!");
 		lb1a.setBounds(25,100, 500, 50);
+		lb1a.setFont(batang);
 		lb1aa.setBounds(25,120, 500, 50);
+		lb1aa.setFont(batang);
 		lb1aaa.setBounds(25,140, 500, 50);
-		
+		lb1aaa.setFont(batang);
 		
 		JLabel lb2 = new JLabel("<재료 입력>");
-		lb2.setBounds(25, 170, 150, 50);
-		lb2.setFont(new Font("Serif", Font.BOLD, 20));
+		lb2.setBounds(25, 180, 150, 50);
+		lb2.setFont(new Font("맑은 고딕", Font.BOLD, 20));
 		JLabel lb2a = new JLabel("카테고리별로 내가 가지고 있는 재료들을 담을 수 있습니다.");
-		JLabel lb2aa = new JLabel("담긴 음식들은 My냉장고의 재료 확인 버튼을 누르면 확인할 수 있어요!");
-		lb2a.setBounds(25,200,500,50);
-		lb2aa.setBounds(25,220,500,50);
+		JLabel lb2aa = new JLabel("담긴 음식들은 My냉장고의 재료 확인 버튼을 누르면");
+		JLabel lb2aaa = new JLabel("확인할 수 있어요!");
+		lb2a.setBounds(25,210,500,50);
+		lb2a.setFont(batang);
+		lb2aa.setBounds(25,230,500,50);
+		lb2aa.setFont(batang);
+		lb2aaa.setBounds(25,250,500,50);
+		lb2aaa.setFont(batang);
 		
 		JLabel lb3 = new JLabel("<레시피 공유>");
-		lb3.setBounds(25, 270, 150 ,50);
-		lb3.setFont(new Font("Serif", Font.BOLD, 20));
+		lb3.setBounds(25, 290, 150 ,50);
+		lb3.setFont(new Font("맑은 고딕", Font.BOLD, 20));
 		JLabel lb3a = new JLabel("자신이 만든 요리의 레시피를 공유할 수도 있습니다.");
 		JLabel lb3aa = new JLabel("다른 유저분들을 위해 사진도 함께 올려주세요!");
-		lb3a.setBounds(25,300,500,50);
-		lb3aa.setBounds(25,320,500,50);
+		lb3a.setBounds(25,320,500,50);
+		lb3a.setFont(batang);
+		lb3aa.setBounds(25,340,500,50);
+		lb3aa.setFont(batang);
 		
 		JLabel lb4 = new JLabel("<재료 확인>");
-		lb4.setBounds(25, 370, 150 ,50);
-		lb4.setFont(new Font("Serif", Font.BOLD, 20));
+		lb4.setBounds(25, 385, 150 ,50);
+		lb4.setFont(new Font("맑은 고딕", Font.BOLD, 20));
 		JLabel lb4a = new JLabel("내가 입력한 재료들을 확인할 수 있습니다.");		
-		lb4a.setBounds(25,400,500,50);		
+		lb4a.setBounds(25,415,500,50);	
+		lb4a.setFont(batang);
 		
 		JLabel lb5 = new JLabel("<히스토리>");
-		lb5.setBounds(25, 470, 150 ,50);
-		lb5.setFont(new Font("Serif", Font.BOLD, 20));
+		lb5.setBounds(25, 475, 150 ,50);
+		lb5.setFont(new Font("맑은 고딕", Font.BOLD, 20));
 		JLabel lb5a = new JLabel("내가 먹은 요리들을 확인할 수 있습니다.");
-		lb5a.setBounds(25,500,500,50);
+		lb5a.setBounds(25,505,500,50);
+		lb5a.setFont(batang);
 		
 		JLabel lb6 = new JLabel("<회원정보>");
-		lb6.setBounds(25, 570, 150,50);
-		lb6.setFont(new Font("Serif", Font.BOLD, 20));
-		JLabel lb6a = new JLabel("자신의 ID,닉네임,E-MAIL을 확인하고 패스워드를 변경할 수 있습니다.");
-		lb6a.setBounds(25,600,500,50);
+		lb6.setBounds(25, 565, 150,50);
+		lb6.setFont(new Font("맑은 고딕", Font.BOLD, 20));
+		JLabel lb6a = new JLabel("자신의 ID,닉네임,E-MAIL을 확인하고");
+		lb6a.setBounds(25,595,500,50);
+		lb6a.setFont(batang);
+		JLabel lb6aa = new JLabel("패스워드를 변경할 수 있습니다.");
+		lb6aa.setBounds(25,615,500,50);
+		lb6aa.setFont(batang);
+
 		
 		this.add(lb1);
 		this.add(lb1a);
@@ -107,6 +123,7 @@ public class Help extends JPanel {
 		this.add(lb2);
 		this.add(lb2a);
 		this.add(lb2aa);
+		this.add(lb2aaa);
 		this.add(lb3);
         this.add(lb3a);
         this.add(lb3aa);
@@ -116,7 +133,8 @@ public class Help extends JPanel {
         this.add(lb5a);
 		this.add(lb6);
 	    this.add(lb6a);
-	
+	    this.add(lb6aa);
+	    
 	    JPanel panel2 = new JPanel(); //하단 패널
 		panel2.setBounds(0, 685, 450, 78);
 		add(panel2);
