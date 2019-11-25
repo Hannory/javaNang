@@ -17,18 +17,19 @@ import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
+import view.ChangePanel;
 import view.LoginPage;
 import view.MainFrame;
+import view.UpRecipe;
 
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 
 public class MainPage extends JPanel {
-	////
+
 	MainFrame mf;
 	JPanel mp; 
-
 
 	public MainPage(MainFrame mf) {
 
@@ -40,8 +41,6 @@ public class MainPage extends JPanel {
 		this.setSize(445, 770);
 		this.setBackground(UIManager.getColor("CheckBox.background"));
 		setLayout(null);
-
-
 		mf.getContentPane().add(this);
 
 		//ÇÏ´Ü ÆÐ³Î ¼³Á¤
@@ -52,13 +51,11 @@ public class MainPage extends JPanel {
 		bottpanel.setLayout(null);
 
 
-
-
 		JButton btnNewButton = new JButton("\uB808\uC2DC\uD53C \uC2B9\uC778");
 		btnNewButton.setBounds(126, 157, 174, 58);
 		bottpanel.add(btnNewButton);
 		btnNewButton.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 23));
-		//mp.add(btnNewButton);
+
 
 		JButton btnNewButton_1 = new JButton("\uD68C\uC6D0 \uC81C\uC7AC");
 		btnNewButton_1.setBounds(126, 374, 174, 58);
@@ -80,48 +77,47 @@ public class MainPage extends JPanel {
 		textArea.setText("\uAD00\uB9AC\uC790 \uBAA8\uB4DC");
 		textArea.setLayout(null);
 
-        Image logoutImg = new ImageIcon("images/logout char.png").getImage().getScaledInstance(79, 34, 0);
-        JButton logout = new JButton(new ImageIcon(logoutImg));
-        logout.setLocation(360,20);
-        logout.setSize(79,34);
-        logout.addMouseListener(new MyItem3());
+		Image logoutImg = new ImageIcon("images/logout char.png").getImage().getScaledInstance(79, 34, 0);
+		JButton logout = new JButton(new ImageIcon(logoutImg));
+		logout.setLocation(360,20);
+		logout.setSize(79,34);
+		logout.addMouseListener(new MyItem3());
 		panel_3.add(logout);
-		
-        this.add(panel_3);
-		  
-		
-		btnNewButton.addMouseListener(new MyItem());
-		btnNewButton_1.addMouseListener(new MyItem2());
+		this.add(panel_3);
+
 
 		mf.repaint();
 
 
+
+
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				ChangePanel.changePanel(mf, mp, new SecondPage_1(mf)); 
+			}
+		});
+
+
+
+		btnNewButton_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				ChangePanel.changePanel(mf, mp, new SecondPage__2(mf)); 
+			}
+		});
+
+
 	}
 
-	class MyItem extends MouseAdapter{
-		@Override
-		public void mouseReleased(MouseEvent e) {
-			ChangePanel.changePanel(mf, mp, new SecondPage_1(mf));
-
-
-		}
-
-	}
-
-	class MyItem2 extends MouseAdapter{
-		@Override
-		public void mouseReleased(MouseEvent e) {
-			ChangePanel.changePanel(mf, mp, new SecondPage__2(mf));
-		}
-	}
- 
 	class MyItem3 extends MouseAdapter{
 		@Override
 		public void mouseReleased(MouseEvent e) {
 			ChangePanel.changePanel(mf, mp, new LoginPage(mf));
 		}
 	}
-    
-	
 }
+
+
+
 

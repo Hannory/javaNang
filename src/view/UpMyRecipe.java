@@ -22,6 +22,7 @@ import java.awt.SystemColor;
 import javax.swing.JLabel;
 
 public class UpMyRecipe extends JPanel {
+
 	MainFrame mf;
 	JPanel mp;
 	JTextArea recipeCont2;
@@ -29,7 +30,6 @@ public class UpMyRecipe extends JPanel {
 	JLabel recipefile2;
 	String str;
 	String str2;
-	String str3;
 
 
 
@@ -49,15 +49,15 @@ public class UpMyRecipe extends JPanel {
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(102, 204, 204));
 		panel.setBounds(0,0,445,70);
-		mp.add(panel);
 		panel.setLayout(null);
+		mp.add(panel);
 
 		//ÇÏ´Ü ÆÐ³Î ¼³Á¤ 
 		JPanel panel2 = new JPanel();
 		panel2.setBackground(Color.WHITE);
 		panel2.setBounds(0,70,445,700);
-		mp.add(panel2);
 		panel.setLayout(null);
+		mp.add(panel2);
 
 		JButton button0 = new JButton("\u2190");
 		button0.setFont(new Font("±¼¸²", Font.BOLD, 20));
@@ -66,15 +66,13 @@ public class UpMyRecipe extends JPanel {
 		panel.add(button0);
 		button0.setBackground(new Color(72, 209, 204));
 
-		JTextPane textpane4 = new JTextPane();
-		panel.add(textpane4);
-		textpane4.setBounds(133,15,177,43);
-		textpane4.setEditable(false);
-		textpane4.setBackground(new Color(102, 204, 204));
-		textpane4.setForeground(Color.white);
-		textpane4.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 27));
-		textpane4.setText("\uB098\uC758 \uB808\uC2DC\uD53C" );
-		panel2.setLayout(null);
+		JButton btnNewButton = new JButton("<<");
+		btnNewButton.setBounds(60, 661, 105, 27);
+		panel2.add(btnNewButton);
+
+		JButton btnNewButton_1 = new JButton(">>");
+		btnNewButton_1.setBounds(283, 661, 105, 27);
+		panel2.add(btnNewButton_1);
 
 		JTextPane textpane1= new JTextPane();
 		textpane1.setBounds(28,273,69,35);
@@ -94,12 +92,18 @@ public class UpMyRecipe extends JPanel {
 		textpane3.setText("»çÁø");
 		textpane3.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 21));
 
-
-
+		JTextPane textpane4 = new JTextPane();
+		panel.add(textpane4);
+		textpane4.setBounds(133,15,177,43);
+		textpane4.setEditable(false);
+		textpane4.setBackground(new Color(102, 204, 204));
+		textpane4.setForeground(Color.white);
+		textpane4.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 27));
+		textpane4.setText("\uB098\uC758 \uB808\uC2DC\uD53C" );
+		panel2.setLayout(null);
 
 
 		ObjectInputStream oip = null;
-
 
 		try {
 			oip = new ObjectInputStream(new FileInputStream("recipeCont.txt"));
@@ -141,28 +145,6 @@ public class UpMyRecipe extends JPanel {
 			}
 		}
 
-		//		ObjectInputStream oip3 = null;
-		//		try {
-		//			oip3 = new ObjectInputStream(new FileInputStream("recipefile.txt"));
-		//			this.str3 = (String) oip3.readObject();
-		//			
-		//		} catch (FileNotFoundException e1) {
-		//			
-		//			e1.printStackTrace();
-		//		} catch (IOException e1) {
-		//			
-		//			e1.printStackTrace();
-		//		} catch (ClassNotFoundException e1) {
-		//			
-		//			e1.printStackTrace();
-		//		}finally {
-		//			try {
-		//				oip3.close();
-		//			}catch(IOException e1) {
-		//				e1.printStackTrace();
-		//			}
-		//		}
-		//		
 		String photoAdr = UpRecipe.picAdr;
 		Image photo = new ImageIcon(photoAdr).getImage().getScaledInstance(300,240,0);
 		JLabel label = new JLabel(new ImageIcon(photo));
@@ -172,7 +154,6 @@ public class UpMyRecipe extends JPanel {
 
 
 		//ÅØ½ºÆ® ÇÊµå Ãß°¡
-
 		JTextArea recipeName2 = new JTextArea(this.str2);
 		recipeName2.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 23));
 		recipeName2.setBounds(111, 282, 306, 35);
@@ -182,18 +163,6 @@ public class UpMyRecipe extends JPanel {
 		recipeCont2.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 17));
 		recipeCont2.setBounds(111, 338, 320, 290);
 		panel2.add(recipeCont2);
-
-		JButton btnNewButton = new JButton("<<");
-		btnNewButton.setBounds(60, 661, 105, 27);
-		panel2.add(btnNewButton);
-
-		JButton btnNewButton_1 = new JButton(">>");
-		btnNewButton_1.setBounds(283, 661, 105, 27);
-		panel2.add(btnNewButton_1);
-
-		JLabel recipefile2 = new JLabel(this.str3);
-		recipefile2.setBounds(103, 23, 328, 224);
-		panel2.add(recipefile2);
 
 
 		// µÚ·Î°¡±â ¹öÆ° 
