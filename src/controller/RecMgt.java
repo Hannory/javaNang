@@ -117,4 +117,20 @@ public class RecMgt {
 	public Recipe addRecipe(int k) {
 		return (Recipe) addRecipe.get(k);
 	}
+	
+	public String nowName(int k) {
+		Recipe recipe = new Recipe();
+		recipe = (Recipe) nowRecipe.get(k);
+		String name = recipe.getRecipeName();
+		
+		return name;
+	}
+	
+	public String addName(int k) {
+		Recipe recipe = new Recipe();
+		recipe = (Recipe) addRecipe.get(k);
+		String name = recipe.getRecipeName();
+		
+		return name;
+	}
 }
