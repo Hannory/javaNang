@@ -36,7 +36,7 @@ public class LoadingPage extends JPanel {
 		mf.repaint();
 		
 		try {
-			Thread.sleep(2500);
+			Thread.sleep(3500);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

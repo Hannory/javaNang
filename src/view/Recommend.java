@@ -107,21 +107,21 @@ public class Recommend extends JPanel {
 		//레시피 추천 분류
 		rm.categorizing();
 		
-		//현재재료로 제목 등이 들어갈 패널	
+		//현재재료로 제목과 요리이름, 개수 등이 들어갈 패널	
 		JPanel titleBar1 = new JPanel();
 		titleBar1.setLocation(0, 70);
 		titleBar1.setSize(445, 70);
 		titleBar1.setLayout(null);
 		titleBar1.setBackground(Color.white);
 		
-		//title background
+		//"현재 재료로"를 감싸는 네모
 		JPanel title1 = new JPanel();
 		title1.setLocation(0, 20);
 		title1.setSize(180, 50);
 		title1.setBackground(new Color(243, 156, 18));
 		title1.setLayout(null);
 		
-		//높이는 50, 
+		//"현재 재료로" 문장
 		JLabel whichRe1 = new JLabel("현재 재료로");
 		whichRe1.setLocation(25, 0);
 		whichRe1.setSize(155, 50);
@@ -142,7 +142,20 @@ public class Recommend extends JPanel {
 		recipeName1.setSize(170, 50);
 		recipeName1.setForeground(new Color(13, 145, 68));
 		
-		//현재 재료로 패널 영역
+		//현재 재료로 추천 개수
+		JTextPane nowNum = new JTextPane();
+		
+		if(RecMgt.nowCtn == 0) {
+			nowNum.setText("0/0");
+		}else {
+			nowNum.setText(((nowClickCtn) % RecMgt.nowCtn + 1) + "/" + RecMgt.nowCtn);			
+		}
+		nowNum.setFont(font2);
+		nowNum.setLocation(395, 28);
+		nowNum.setSize(45, 50);
+		nowNum.setForeground(Color.gray);
+		
+		//현재 재료로 사진이 담기는 패널 영역
 		JPanel panel = new JPanel();
 		panel.setLocation(0, 140);
 		panel.setSize(445, 233);
@@ -176,9 +189,11 @@ public class Recommend extends JPanel {
 						nowClickCtn += RecMgt.nowCtn;
 						label.setIcon(new ImageIcon(nowIcon[nowClickCtn % RecMgt.nowCtn]));
 						recipeName1.setText(rm.nowName((nowClickCtn) % RecMgt.nowCtn));
+						nowNum.setText(((nowClickCtn) % RecMgt.nowCtn + 1) + "/" + RecMgt.nowCtn);
 					}else {
 						label.setIcon(new ImageIcon(nowIcon[nowClickCtn % RecMgt.nowCtn]));
 						recipeName1.setText(rm.nowName((nowClickCtn) % RecMgt.nowCtn));
+						nowNum.setText(((nowClickCtn) % RecMgt.nowCtn + 1) + "/" + RecMgt.nowCtn);
 					}
 					
 				}
@@ -197,7 +212,7 @@ public class Recommend extends JPanel {
 					nowClickCtn++;
 					label.setIcon(new ImageIcon(nowIcon[nowClickCtn % RecMgt.nowCtn]));
 					recipeName1.setText(rm.nowName((nowClickCtn) % RecMgt.nowCtn));
-					
+					nowNum.setText(((nowClickCtn) % RecMgt.nowCtn + 1) + "/" + RecMgt.nowCtn);
 				}
 				
 			});
@@ -285,6 +300,14 @@ public class Recommend extends JPanel {
 		recipeName2.setSize(170, 50);
 		recipeName2.setForeground(new Color(13, 145, 68));
 		
+		//추가 재료로 추천 개수
+		JTextPane addNum = new JTextPane();
+		addNum.setText(((addClickCtn) % RecMgt.addCtn + 1) + "/" + Integer.valueOf(RecMgt.addCtn).toString());
+		addNum.setFont(font2);
+		addNum.setLocation(395, 28);
+		addNum.setSize(45, 50);
+		addNum.setForeground(Color.gray);
+		
 		//추가 재료로 사진 패널
 		JPanel panel2 = new JPanel();
 		panel2.setLocation(0, 140+233+70);
@@ -317,9 +340,11 @@ public class Recommend extends JPanel {
 						addClickCtn += RecMgt.addCtn;
 						label2.setIcon(new ImageIcon(addIcon[addClickCtn % RecMgt.addCtn]));
 						recipeName2.setText(rm.addName((addClickCtn) % RecMgt.addCtn));
+						addNum.setText(((addClickCtn) % RecMgt.addCtn + 1) + "/" + Integer.valueOf(RecMgt.addCtn).toString());
 					}else {
 						label2.setIcon(new ImageIcon(addIcon[addClickCtn % RecMgt.addCtn]));
 						recipeName2.setText(rm.addName((addClickCtn) % RecMgt.addCtn));
+						addNum.setText(((addClickCtn) % RecMgt.addCtn + 1) + "/" + Integer.valueOf(RecMgt.addCtn).toString());
 					}
 					
 				}
@@ -338,6 +363,7 @@ public class Recommend extends JPanel {
 					addClickCtn++;
 					label2.setIcon(new ImageIcon(addIcon[addClickCtn % RecMgt.addCtn]));
 					recipeName2.setText(rm.addName((addClickCtn) % RecMgt.addCtn));
+					addNum.setText(((addClickCtn) % RecMgt.addCtn + 1) + "/" + Integer.valueOf(RecMgt.addCtn).toString());
 					
 				}
 				
@@ -392,6 +418,16 @@ public class Recommend extends JPanel {
 			});
 		}
 		
+		JPanel panel3 = new JPanel();
+		panel3.setLocation(0, 140+233+70+233);
+		panel3.setSize(445, 94);
+		panel3.setLayout(null);
+
+		System.out.println("추가로 필요한 재료 번호" + RecMgt.addNeeded);
+		//System.out.println("추가로 필요한 재료 번호" + RecMgt.toAddIngred);
+		//0번 인덱스 그림, 1번 인덱스 그림, 
+		//RecMgt.toAddIngred;
+		
 		/*
 		//모든 레시피 패널
 		JPanel panel3 = new JPanel();
@@ -417,6 +453,7 @@ public class Recommend extends JPanel {
 		
 		titleBar1.add(title1);
 		titleBar1.add(recipeName1);
+		titleBar1.add(nowNum);
 		
 		title1.add(whichRe1);
 		
@@ -427,6 +464,7 @@ public class Recommend extends JPanel {
 		
 		titleBar2.add(title2);
 		titleBar2.add(recipeName2);
+		titleBar2.add(addNum);
 		
 		title2.add(whichRe2);
 		
@@ -443,7 +481,7 @@ public class Recommend extends JPanel {
 		this.add(panel);
 		this.add(titleBar2);
 		this.add(panel2);
-		//this.add(panel3);
+		this.add(panel3);
 		
 		mf.add(this);
 	}
