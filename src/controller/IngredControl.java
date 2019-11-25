@@ -58,7 +58,22 @@ public class IngredControl {
 	//해당 재료 남은 유통기한 일자 반환
 	public String getMinIngredExpiry() {
 		
-		String str = String.valueOf(IngredAll.ingredExpiryMap.get(AllRecipe.loginId + minIngredNo));
+		
+		String str = null;
+		
+		
+		
+		str = String.valueOf(IngredAll.ingredExpiryMap.get(AllRecipe.loginId + minIngredNo));
+		
+		if(IngredAll.ingredExpiryMap.get(AllRecipe.loginId + minIngredNo) == null) {
+			System.out.println("밸류 널 나옴, 널 유통기한 대입");
+			str = "유통기한을 입력한 재료가 없습니다.";
+			
+		}else {
+			str = "유통기한이 " + String.valueOf(IngredAll.ingredExpiryMap.get(AllRecipe.loginId + minIngredNo) + "일 남았습니다.");
+		}
+		
+		
 		
 		return str;
 	}

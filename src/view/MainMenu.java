@@ -92,7 +92,7 @@ public class MainMenu extends JPanel {
 //		panel1.add(lb1);
 		this.add(panel1);
 
-		JLabel lb2 = new JLabel("유통기한이 " + new IngredControl().getMinIngredExpiry() + " 일 남았습니다.");
+		JLabel lb2 = new JLabel(new IngredControl().getMinIngredExpiry());
 		lb2.setFont(new Font("Serif", Font.BOLD, 23));
 		lb2.setBounds(120,20,300,100);
 		//여기서는 유통기한이 제일 임박한 재료의 유통기한 남은 일수를 파일에서 불러와야 한다.
