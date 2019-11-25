@@ -13,8 +13,10 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import controller.IngredControl;
 import model.vo.IngredAll;
 import model.vo.UserIngredInfo;
 
@@ -106,13 +108,20 @@ public class IngredInfoSet extends JPanel{
 			@Override
 		    public void mouseReleased(MouseEvent e) {
 				System.out.println("재료 삭제 버튼 클릭됨");
+				JOptionPane.showMessageDialog(null, "재료 삭제 완료 !");
+
 				new IngredAll().deleteIngred(IngredAll.tempNo);
+				
+				
 				
 				//유통기한 객체에서도 해당 키,값 삭제
 				IngredAll.ingredExpiryMap.remove(String.valueOf(AllRecipe.loginId) + IngredAll.tempNo);
 				System.out.println("유통기한객체에서 삭제 된 상태, 현재 유통기한 객체 정보  : " + IngredAll.ingredExpiryMap);
 				//수정된 객체정보 저장
 				new IngredAll().saveIngredExpiryMap();
+				
+				IngredAll.setIngredExpiryMap();		//유통기한 정보 셋팅
+				 new IngredControl().method();		//유통기한 정보 셋팅
 				
 			}
 
@@ -149,6 +158,11 @@ public class IngredInfoSet extends JPanel{
 				
 				new IngredAll().modifyIngredExpiryMap(expiryDay);	//스태틱의 냉장고 정보 수정
 				new IngredAll().saveIngredExpiryMap();				//수정된 정보 파일에 저장
+				
+				IngredAll.setIngredExpiryMap();
+				 new IngredControl().method();
+				
+				//IngredControl.minIngredExpiry = expiry;			//스태틱 내 유통기한 값 변경 
 				
 				
 				///////////////

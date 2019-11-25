@@ -3,6 +3,7 @@ package controller;
 import java.util.Iterator;
 
 import model.vo.IngredAll;
+import view.AllRecipe;
 
 public class IngredControl {
 
@@ -13,8 +14,8 @@ public class IngredControl {
 	//substring 참조
 	
 	
-	String minIngredNo;			//유통기한 제일 짧은 재료 번호
-	String minIngredExpiry; 
+	public static String minIngredNo;			//유통기한 제일 짧은 재료 번호
+	public static String minIngredExpiry; 
 	
 	
 	public void method() {
@@ -34,13 +35,14 @@ public class IngredControl {
 			if(arr[i] < min) {		
 				min = arr[i];		//최소값 저장(남은 일자 반환을 위함)
 				minKey = tempKey;	//반환용 키 값 추출
+				minIngredNo = minKey.substring(minKey.length()-4,minKey.length());		//미니멈 value 를 가지는 key값의 재료 번호
+				minIngredExpiry = String.valueOf(min);
 			}
 			
 		}
+		System.out.println("minIngredNo : " + minIngredNo);
+		System.out.println("minIngredExpiry : " + minIngredExpiry);
 		
-		this.minIngredNo = minKey.substring(minKey.length()-4,minKey.length());		//미니멈 value 를 가지는 key값의 재료 번호
-		
-		this.minIngredExpiry = String.valueOf(min);
 		
 		
 	}//method 
@@ -51,11 +53,14 @@ public class IngredControl {
 	
 	//유통기한 제일 짧은 재료 번호 반환
 	public String getMinIngredNo() {
-		return this.minIngredNo;
+		return minIngredNo;
 	}
 	//해당 재료 남은 유통기한 일자 반환
 	public String getMinIngredExpiry() {
-		return this.minIngredExpiry;
+		
+		String str = String.valueOf(IngredAll.ingredExpiryMap.get(AllRecipe.loginId + minIngredNo));
+		
+		return str;
 	}
 	
 	

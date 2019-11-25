@@ -12,7 +12,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import controller.IngredControl;
 import model.vo.Ingred;
+import model.vo.IngredAll;
 
 public class InputIngred extends JPanel{
 	//재료입력 누르면 나오는 페이지
@@ -22,6 +24,14 @@ public class InputIngred extends JPanel{
 	JPanel nowp ;
 
 	public InputIngred(MainFrame mf) {
+		
+		
+		//내 클래스에서 테스트용 //원래는 로그인페이지 생성되는곳에서 넣어야함
+		IngredAll.setIngredExpiryMap();
+		new IngredControl().method();
+		
+		
+		
 
 		//기본 패널 셋팅
 		this.mf = mf;
@@ -136,14 +146,14 @@ public class InputIngred extends JPanel{
 
 
 
-		/*Image imgbtn4 = new ImageIcon("images/sim/ingreCategory/ingredCategory04.PNG").getImage().getScaledInstance(220, 220, 0);
+		Image imgbtn4 = new ImageIcon("images/sim/ingreCategory/ingredCategory04.PNG").getImage().getScaledInstance(220, 220, 0);
 		JButton btn4 = new JButton(new ImageIcon(imgbtn4));
 		btn4.setBounds(220,0,220,220);
 		btn4.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
 				System.out.println("버튼4 클릭");
-				ChangePanel.changePanel(mf, nowp, new InputIngredFish(mf));
+				ChangePanel.changePanel(mf, nowp, new InputIngredMeat(mf));
 
 			}
 		}
@@ -159,7 +169,7 @@ public class InputIngred extends JPanel{
 			@Override
 			public void mouseReleased(MouseEvent e) {
 				System.out.println("버튼5 클릭");
-				ChangePanel.changePanel(mf, nowp, new InputIngredFruits(mf));
+				ChangePanel.changePanel(mf, nowp, new InputIngredFish(mf));
 
 			}
 		}
@@ -176,12 +186,12 @@ public class InputIngred extends JPanel{
 			@Override
 			public void mouseReleased(MouseEvent e) {
 				System.out.println("버튼6 클릭");
-				ChangePanel.changePanel(mf, nowp, new InputIngredMilk(mf));
+				ChangePanel.changePanel(mf, nowp, new InputIngredVegetables(mf));
 
 			}
 		}
 				);
-		btn6.setOpaque(false);*/
+		btn6.setOpaque(false);
 
 
 
@@ -210,9 +220,9 @@ public class InputIngred extends JPanel{
 		botP.add(btn1);
 		botP.add(btn2);
 		botP.add(btn3);
-		/*botP.add(btn4);
+		botP.add(btn4);
 		botP.add(btn5);
-		botP.add(btn6);*/
+		botP.add(btn6);
 		
 
 
