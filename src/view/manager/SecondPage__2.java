@@ -34,6 +34,7 @@ public class SecondPage__2 extends JPanel {
 	MainFrame mf;
 	SecondPage__2 mp;
 	private JTextField textField;
+	
 
 
 	public SecondPage__2(MainFrame mf) {
@@ -63,6 +64,16 @@ public class SecondPage__2 extends JPanel {
 		mp.add(panel_2);
 		panel_2.setLayout(null);
 
+
+		JTextArea textArea = new JTextArea();
+		textArea.setForeground(new Color(255, 255, 255));
+		textArea.setBackground(new Color(102, 204, 204));
+		textArea.setFont(new Font("맑은 고딕", Font.BOLD, 27));
+		textArea.setText("\uD68C\uC6D0 \uC81C\uC7AC");
+		textArea.setBounds(145, 13, 153, 47);
+		panel_1.add(textArea);
+		textArea.setLayout(null);
+
 		JTextArea textArea_1 = new JTextArea();
 		textArea_1.setBounds(130, 33, 208, 41);
 		panel_2.add(textArea_1);
@@ -70,12 +81,6 @@ public class SecondPage__2 extends JPanel {
 		textArea_1.setFont(new Font("맑은 고딕", Font.BOLD, 32));
 		textArea_1.setText("\uD68C\uC6D0\uC81C\uC7AC\uB300\uC0C1");
 
-		JTextArea txtrId = new JTextArea();
-		txtrId.setBounds(39, 108, 42, 32);
-		panel_2.add(txtrId);
-		txtrId.setBackground(new Color(255, 255, 255));
-		txtrId.setFont(new Font("맑은 고딕", Font.BOLD, 23));
-		txtrId.setText("ID");
 
 		JTextArea textArea_2 = new JTextArea();
 		textArea_2.setBounds(14, 186, 113, 32);
@@ -84,76 +89,30 @@ public class SecondPage__2 extends JPanel {
 		textArea_2.setText("\uC81C\uC7AC \uC0AC\uC720");
 		textArea_2.setFont(new Font("맑은 고딕", Font.BOLD, 23));
 
+
+		JTextArea txtrId = new JTextArea();
+		txtrId.setBounds(39, 108, 42, 32);
+		panel_2.add(txtrId);
+		txtrId.setBackground(new Color(255, 255, 255));
+		txtrId.setFont(new Font("맑은 고딕", Font.BOLD, 23));
+		txtrId.setText("ID");
+
+
+		JButton button_1 = new JButton("\u2190");
+		button_1.setBackground(new Color(72, 209, 204));
+		button_1.setBounds(14, 14, 53, 48);
+		panel_1.add(button_1);
+
 		JButton btnNewButton = new JButton("\uC81C\uC7AC \uB4F1\uB85D");
 		btnNewButton.setBounds(151, 642, 148, 27);
 		panel_2.add(btnNewButton);
 		btnNewButton.setFont(new Font("맑은 고딕", Font.BOLD, 23));
 
-		textField = new JTextField();
+		JTextField textField = new JTextField();
 		textField.setBounds(126, 112, 245, 31);
 		panel_2.add(textField);
 		textField.setColumns(10);
 
-		btnNewButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseReleased (MouseEvent e) {
-
-				HashMap asds = new HashMap();
-
-				ObjectInputStream objIn = null;
-
-				try {
-					objIn = new ObjectInputStream(new FileInputStream("userList.dat"));
-
-					try {
-						asds = (HashMap) objIn.readObject();
-						System.out.println("asds : " + asds);
-						User u1 = (User) asds.get(textField.getText());
-						System.out.println("u1 : " + u1);
-						System.out.println("textField : " + textField.getText());
-						System.out.println("asds.containsKey(textField)" + asds.containsKey(textField));
-
-						if(/*u1.getUserId().equals(textField)*/asds.containsKey(textField.getText())) {
-							u1.setUserId(null);
-							u1.setUserPw(null);
-							u1.setNickname(null);
-							u1.setEmail(null);
-
-
-							asds.put(textField, u1);
-							JOptionPane.showMessageDialog(null, "회원 제재가 완료되었습니다.");
-						}else {
-							JOptionPane.showMessageDialog(null, "존재하는 회원의 아이디를 입력하세요.");
-						}
-
-
-					} catch (ClassNotFoundException e1) {
-						e1.printStackTrace();
-					} 
-				} catch (FileNotFoundException e1) {
-					e1.printStackTrace();
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				} finally {
-					try {
-						objIn.close();
-					} catch (IOException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-				}
-
-				try {
-					ObjectOutputStream oosOut = new ObjectOutputStream(new FileOutputStream("userList.dat"));
-					oosOut.writeObject(asds);
-					oosOut.flush();
-				} catch (FileNotFoundException e1) {
-					e1.printStackTrace();
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				}
-			}
-		});
 
 		JCheckBox checkBox = new JCheckBox("\uC6F9\uD558\uB4DC \uC544\uC774\uB514 \uD64D\uBCF4 ");
 		checkBox.setBackground(Color.WHITE);
@@ -204,19 +163,69 @@ public class SecondPage__2 extends JPanel {
 		chckbxNewCheckBox_6.setBounds(130, 575, 131, 27);
 		panel_2.add(chckbxNewCheckBox_6);
 
-		JTextArea textArea = new JTextArea();
-		textArea.setForeground(new Color(255, 255, 255));
-		textArea.setBackground(new Color(102, 204, 204));
-		textArea.setFont(new Font("맑은 고딕", Font.BOLD, 27));
-		textArea.setText("\uD68C\uC6D0 \uC81C\uC7AC");
-		textArea.setBounds(145, 13, 153, 47);
-		panel_1.add(textArea);
-		textArea.setLayout(null);
 
-		JButton button_1 = new JButton("\u2190");
-		button_1.setBackground(new Color(72, 209, 204));
-		button_1.setBounds(14, 14, 53, 48);
-		panel_1.add(button_1);
+
+
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseReleased (MouseEvent e) {
+
+				HashMap asds = new HashMap();
+
+				ObjectInputStream objIn = null;
+
+				try {
+					objIn = new ObjectInputStream(new FileInputStream("userList.dat"));
+
+					try {
+						asds = (HashMap) objIn.readObject();
+						System.out.println("asds : " + asds);
+						User u1 = (User) asds.get(textField.getText());
+						System.out.println("u1 : " + u1);
+						System.out.println("textField : " + textField.getText());
+						System.out.println("asds.containsKey(textField)" + asds.containsKey(textField));
+
+						if(/*u1.getUserId().equals(textField)*/asds.containsKey(textField.getText())) {
+							u1.setUserId(null);
+							u1.setUserPw(null);
+							u1.setNickname(null);
+							u1.setEmail(null);
+
+							asds.put(textField, u1);
+							JOptionPane.showMessageDialog(null, "회원 제재가 완료되었습니다.");
+						}else {
+							JOptionPane.showMessageDialog(null, "존재하는 회원의 아이디를 입력하세요.");
+						}
+
+
+					} catch (ClassNotFoundException e1) {
+						e1.printStackTrace();
+					} 
+				} catch (FileNotFoundException e1) {
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				} finally {
+					try {
+						objIn.close();
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
+
+				try {
+					ObjectOutputStream oosOut = new ObjectOutputStream(new FileOutputStream("userList.dat"));
+					oosOut.writeObject(asds);
+					oosOut.flush();
+				} catch (FileNotFoundException e1) {
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
+
 
 
 		button_1.addMouseListener(new MouseAdapter() {
