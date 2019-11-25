@@ -25,21 +25,24 @@ public class MgrRecipeDao {
 	public void fileSave() {
 		//짜장면
 		ArrayList rcIngred01 = new ArrayList();
-		rcIngred01.add(5005);	//면(도넛)
-		rcIngred01.add(6006);	//짜장소스(요구르트)
+		rcIngred01.add(1006);	
+		rcIngred01.add(1007);
+		rcIngred01.add(2001);
+		rcIngred01.add(2008);
+		rcIngred01.add(3002);
+		rcIngred01.add(3006);		
 		
 		//까르보나라
 		ArrayList rcIngred02 = new ArrayList();
-		rcIngred02.add(5005);	//면(도넛)		
-		rcIngred02.add(6002);	//파마산 치즈
-		rcIngred02.add(6005);	//모짜렐라 치즈
-		
+		rcIngred02.add(1005);			
+		rcIngred02.add(3002);	
+		rcIngred02.add(3005);	
+				
 		//토마토 스파게티
 		ArrayList rcIngred03 = new ArrayList();
-		rcIngred03.add(5005);	//면(도넛)		
-		rcIngred03.add(4004);	//토마토(포도)
-		rcIngred03.add(6002);	//파마산 치즈
-		rcIngred03.add(6005);	//모짜렐라 치즈
+		rcIngred03.add(1006);			
+		rcIngred03.add(2009);	
+		rcIngred03.add(3002);	
 		
 		//찐감자
 		ArrayList rcIngred04 = new ArrayList();
@@ -47,66 +50,96 @@ public class MgrRecipeDao {
 		
 		//치즈볼
 		ArrayList rcIngred05 = new ArrayList();
-		rcIngred05.add(3004);
-		rcIngred05.add(6002);	//파마산 치즈
-		rcIngred05.add(6005);	//모짜렐라 치즈
+		rcIngred05.add(2004);
+		rcIngred05.add(3008);
 		
 		//감자당근볶음
 		ArrayList rcIngred06 = new ArrayList();
-		rcIngred06.add(3001);
-		rcIngred06.add(3004);
+		rcIngred06.add(2001);
+		rcIngred06.add(2004);
 		
 		//계란찜
 		ArrayList rcIngred07 = new ArrayList();
-		
+		rcIngred07.add(1005);
+		rcIngred07.add(2005);
 		
 		//고등어조림
 		ArrayList rcIngred08 = new ArrayList();
-		
+		rcIngred08.add(1003);
+		rcIngred08.add(2004);
+		rcIngred08.add(2005);
+		rcIngred08.add(2007);
 		
 		//닭안심데리아끼
 		ArrayList rcIngred09 = new ArrayList();
+		rcIngred09.add(1004);
+		rcIngred09.add(2007);
+		rcIngred09.add(3009);
 		
 		
 		//떡볶이
 		ArrayList rcIngred10 = new ArrayList();
-		
+		rcIngred10.add(2005);
+		rcIngred10.add(3003);
+		rcIngred10.add(3007);
 		
 		//미역국
 		ArrayList rcIngred11 = new ArrayList();
+		rcIngred11.add(1007);
+		rcIngred11.add(1008);
 		
 		
 		//샌드위치
 		ArrayList rcIngred12 = new ArrayList();
-		
+		rcIngred12.add(1002);
+		rcIngred12.add(2008);
+		rcIngred12.add(2009);
+		rcIngred12.add(3001);
 		
 		
 		//소갈비찜
 		ArrayList rcIngred13 = new ArrayList();
+		rcIngred13.add(1001);
+		rcIngred13.add(2001);
+		rcIngred13.add(2003);
+		rcIngred13.add(2005);
 		
 		
 		//칠리새우
 		ArrayList rcIngred14 = new ArrayList();
+		rcIngred14.add(1009);
+		rcIngred14.add(2005);
+		rcIngred14.add(2008);
 		
 		
 		//콩나물국
 		ArrayList rcIngred15 = new ArrayList();
+		rcIngred15.add(2002);
+		rcIngred15.add(2005);
+		rcIngred15.add(2006);
 		
 		
 		//콩나물무침
 		ArrayList rcIngred16 = new ArrayList();
+		rcIngred16.add(2002);
+		rcIngred16.add(2005);
+		rcIngred16.add(2006);
+		rcIngred16.add(2007);
 		
 		
 		//토스트
 		ArrayList rcIngred17 = new ArrayList();
+		rcIngred17.add(1005);
+		rcIngred17.add(3001);
 		
-		
-		
+				
 		//햄버거
 		ArrayList rcIngred18 = new ArrayList();
-		
-		
-		
+		rcIngred18.add(1004);
+		rcIngred18.add(2008);
+		rcIngred18.add(2009);
+		rcIngred18.add(3004);
+		rcIngred18.add(3009);
 		
 		
 		//요리 레시피 txt 파일
