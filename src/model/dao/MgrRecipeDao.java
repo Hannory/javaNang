@@ -46,7 +46,7 @@ public class MgrRecipeDao {
 		
 		//찐감자
 		ArrayList rcIngred04 = new ArrayList();
-		rcIngred04.add(3004);
+		rcIngred04.add(2004);
 		
 		//치즈볼
 		ArrayList rcIngred05 = new ArrayList();

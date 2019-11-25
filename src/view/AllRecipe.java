@@ -238,7 +238,7 @@ public class AllRecipe extends JPanel {
 		adBtn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				try { Desktop.getDesktop().browse(new URI("https://www.iei.or.kr/main/main.kh")); 
+				try { Desktop.getDesktop().browse(new URI("https://chqdlstjd2.github.io/web1/")); 
 				} catch (IOException e1) {
 					e1.printStackTrace(); 
 				} catch (URISyntaxException e1){ 
