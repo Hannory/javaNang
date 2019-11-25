@@ -32,22 +32,14 @@ public class RecMgt {
 	//'추가 재료로' 추천 메뉴에서 필요한 재료
 	public static ArrayList addNeeded = new ArrayList();
 	
-	//public static ArrayList toAddIngred;
-	
-	
 	public void categorizing() {
-		TreeSet userIngred = LoginPage.ingredStatic;
-		//TreeSet userIngred = ud.userIngred();
-		//TreeSet userIngred01 = AllRecipe.loginId;
-		
-		//전체 레시피 수
-		ArrayList recipeList = new ArrayList();
-
+		TreeSet userIngred = LoginPage.ingredStatic;		//로그인한 유저가 갖고 있는 재료 목록
+		ArrayList recipeList = new ArrayList();				//전체 레시피 수
+		//레시피 목록 불러오기
 		try(ObjectInputStream objIn = 
 				new ObjectInputStream(new FileInputStream("MgrRecipe.dat"));) {
 			
 			for(int i = 0; i < MgrRecipeDao.recipeLength; i++) {
-				//rar[i] = (MgrRecipe) objIn.readObject();
 				recipeList.add(objIn.readObject());
 			}
 			
@@ -59,16 +51,11 @@ public class RecMgt {
 			e.printStackTrace();
 		}
 		
-		System.out.println("레시피 목록 수: " + MgrRecipeDao.recipeLength);
-			
 		for(int i = 0; i < MgrRecipeDao.recipeLength; i++) {
 			
 			Recipe[] mr = new Recipe[MgrRecipeDao.recipeLength];
 			
-			
 			mr[i] = (Recipe) recipeList.get(i);
-			
-			
 			
 			if(judgement(userIngred, mr[i].getRecipeIngred()) == 'a') {
 				now.add(mr[i].getRecipePicAdr());
@@ -76,45 +63,31 @@ public class RecMgt {
 			}else if(judgement(userIngred, mr[i].getRecipeIngred()) == 'b') {
 				add.add(mr[i].getRecipePicAdr());
 				addRecipe.add(mr[i]);
-				
-				
-				//재료 표시 테스트
-				/*for(int k = 0; k < mr[i].getRecipeIngred().size(); k++) {
-					if(!userIngred.contains(mr[i].getRecipeIngred().get(k))) {
-						addNeeded.add(mr[i].getRecipeIngred().get(k));
-					}
-					
-				}*/
-				
 			}
-			//System.out.println((i + 1) + "번째 요리의 추천 여부 : " + judgement(userIngred01, mr[i].getRecipeIngred()));
 		}
 		
+		//현재/추가재료로 추천할 수 있는 총 개수
 		nowCtn = now.size();
 		addCtn = add.size();
 		
+		System.out.println("레시피 목록 수: " + MgrRecipeDao.recipeLength);
 		System.out.println("now.size() : " + now.size());
 		System.out.println("add.size() : " + add.size());
 	}
 	
+	//"현재료로로/추가재료로/추천 안 함"을 구분하기 위한 메소드
 	public char judgement(TreeSet userIngred, ArrayList recipeIngred) {
-		
-		//추가 재료 표시 하기 위해서 시도
-		//toAddIngred = new ArrayList();
-		
+			
 		int count = 0;
 		for(int i = 0; i < recipeIngred.size(); i++) {
 			boolean contains = userIngred.contains(recipeIngred.get(i));
 			if(contains == false) {
 				count++;
-				//이렇게 하면 현재 추천 아니면 모두 들어감. 게다가 버튼과 연동시켜야함.
-				//toAddIngred.add(recipeIngred.get(i));
 			}
 		}
-		
-		//System.out.println(userIngred.contains(recipeIngred.get(i));
 
 		char recommend = ' ';
+		
 		switch(count) {
 		case 0: recommend = 'a'; break;
 		case 1: case 2: recommend = 'b'; break;

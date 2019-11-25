@@ -18,7 +18,6 @@ import javax.swing.JPanel;
 
 import controller.IngredControl;
 import model.vo.IngredAll;
-import model.vo.UserIngredInfo;
 
 public class IngredInfoSet extends JPanel{
 

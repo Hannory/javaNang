@@ -132,7 +132,7 @@ public class RecipePage3 extends JPanel {
 		this.add(ate);
 		this.add(contTitle);
 		this.add(scrollPane);
-		this.add(addRcTitle);
+		//this.add(addRcTitle);
 		
 		mf.add(this);		
 	}
