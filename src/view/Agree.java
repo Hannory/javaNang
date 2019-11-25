@@ -73,7 +73,7 @@ public class Agree extends JPanel{
 		terms.setSize(180, 20);
 		
 		//약관 내용물
-		final JPanel terms2 = new JPanel();
+		JPanel terms2 = new JPanel();
 		JTextPane tp = new JTextPane();
 		TextFromFile(tp);
 		terms2.setLayout(null);
@@ -82,7 +82,7 @@ public class Agree extends JPanel{
 		tp.setEditable(false);
 		
 		//스크롤바
-		final JScrollPane scrollPane = new JScrollPane(tp, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		JScrollPane scrollPane = new JScrollPane(tp, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		scrollPane.setBounds(40, 140, 360, 170);
 		this.add(scrollPane);
 		scrollPane.setVisible(true);
@@ -102,7 +102,7 @@ public class Agree extends JPanel{
 
 		
 		//개인정보 수집 약관 내용
-		final JPanel pterms2 = new JPanel();
+		JPanel pterms2 = new JPanel();
 		JTextPane tp2 = new JTextPane();
 		TextFromFile2(tp2);
 		pterms2.setLayout(null);
@@ -111,7 +111,7 @@ public class Agree extends JPanel{
 		tp2.setEditable(false);
 		
 		//스크롤바
-		final JScrollPane scrollPane2 = new JScrollPane(tp2, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		JScrollPane scrollPane2 = new JScrollPane(tp2, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		scrollPane2.setBounds(40, 400, 360, 170);
 		this.add(scrollPane2);
 		scrollPane2.setVisible(true);
