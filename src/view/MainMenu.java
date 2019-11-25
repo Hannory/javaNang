@@ -13,6 +13,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import controller.IngredControl;
+import model.vo.IngredAll;
 import view.QuitMember.MyMouseAdapter1;
 
 public class MainMenu extends JPanel {
@@ -80,25 +82,28 @@ public class MainMenu extends JPanel {
 		panel1.setLocation(0,665);
 		panel1.setLayout(null);
 
-		panel1.setBackground(Color.LIGHT_GRAY);
-		JLabel lb1 = new JLabel("우유");
+		panel1.setBackground(new Color(128,128,192));
+//		JLabel lb1 = new JLabel("우유");
 		//여기서는 유통기한이 제일 임박한 재료의 이름을 파일에서 불러와야 한다.
 
-		lb1.setBounds(120,20,110,25);
-		lb1.setFont(new Font("Serif", Font.BOLD, 23));        
+//		lb1.setBounds(120,20,110,25);
+//		lb1.setFont(new Font("Serif", Font.BOLD, 23));        
 
-		panel1.add(lb1);
+//		panel1.add(lb1);
 		this.add(panel1);
 
-		JLabel lb2 = new JLabel("유통기한이 3일 남았습니다.");
-		lb2.setBounds(120,50,210,25);
+		JLabel lb2 = new JLabel("유통기한이 " + new IngredControl().getMinIngredExpiry() + " 일 남았습니다.");
+		lb2.setFont(new Font("Serif", Font.BOLD, 23));
+		lb2.setBounds(120,20,300,100);
 		//여기서는 유통기한이 제일 임박한 재료의 유통기한 남은 일수를 파일에서 불러와야 한다.
 		panel1.add(lb2);
 		this.add(panel1);
 
-
-
-		Image icon = new ImageIcon("images/hwang/milk.PNG").getImage().getScaledInstance(110, 110, 0);
+		System.out.println("일단 한번 더 부름,,");
+		IngredAll.setIngredExpiryMap();
+		 new IngredControl().method();
+		System.out.println("제발 숫자 제발" + IngredControl.minIngredNo);
+		Image icon = new ImageIcon("images/sim/BtnImg/" + IngredControl.minIngredNo + ".PNG").getImage().getScaledInstance(110, 110, 0);
 		//여기서는 유통기한이 제일 임박한 재료의 사진을 파일에서 불러와야 한다. 
 
 

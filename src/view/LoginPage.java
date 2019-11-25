@@ -21,6 +21,8 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import controller.IngredControl;
+import model.vo.IngredAll;
 import model.vo.Recipe;
 import model.vo.User;
 import view.manager.MainPage;
@@ -35,6 +37,8 @@ public class LoginPage extends JPanel {
 
 
 	public LoginPage(MainFrame mf) {
+		
+		
 
 
 		this.mf = mf;
@@ -140,18 +144,24 @@ public class LoginPage extends JPanel {
 					 if (map.containsKey(id) &&/*idField.getText().equals(map.get(id))*/ pwField.getText().equals(u1.getUserPw())) {
 						 
 						 if(!id.equals("manager")) {
+							 
+							 AllRecipe.login =  true;
+							 
+							 AllRecipe.loginId = idField.getText();
+							 
+							 TreeSet ts = (TreeSet) u1.getUserIngred().clone();
+							 System.out.println(ts);
+							 ingredStatic = ts;
+							 
+							 
+							 //¿Ø≈Î±‚«— ∞¥√º ∫“∑Øø»
+							 IngredAll.setIngredExpiryMap();
+							 new IngredControl().method();
+							 System.out.println("§µ§µ§µ");
+							 
+							 
 							 ChangePanel.changePanel(mf, lp, new MainMenu(mf));
-							 
-							 AllRecipe.login =  true;
-							 
-							 AllRecipe.loginId = idField.getText();
-							 
-							 TreeSet ts = (TreeSet) u1.getUserIngred().clone();
-							 System.out.println(ts);
-							 ingredStatic = ts;
-							 
 						 }else {
-							 ChangePanel.changePanel(mf, lp, new MainPage(mf));
 
 							 AllRecipe.login =  true;
 
@@ -160,6 +170,16 @@ public class LoginPage extends JPanel {
 							 TreeSet ts = (TreeSet) u1.getUserIngred().clone();
 							 System.out.println(ts);
 							 ingredStatic = ts;
+							 
+								
+							 
+							//¿Ø≈Î±‚«— ∞¥√º ∫“∑Øø»
+							 IngredAll.setIngredExpiryMap();
+							 new IngredControl().method();
+							 System.out.println("§µ§µ§µ");
+								
+							 ChangePanel.changePanel(mf, lp, new MainPage(mf));
+								
 						 }
 						 	
 
