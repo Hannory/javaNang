@@ -53,45 +53,15 @@ public class MainMenu extends JPanel {
 
 		mf.add(this);
 		
-//		Image backImg1 = new ImageIcon("images/a.png").getImage().getScaledInstance(180,50,0);
-//		JButton back1 = new JButton(new ImageIcon(backImg1));
-//		back1.setBounds(140,150,180,50);
-//		back1.addMouseListener(new MyMouseAdapter1());
-//
-//		Image backImg2 = new ImageIcon("images/a.png").getImage().getScaledInstance(180,50,0);
-//		JButton back2 = new JButton(new ImageIcon(backImg2));
-//        back2.setBounds(140,280,180,50);
-//		back2.addMouseListener(new MyMouseAdapter2());
-//		Image backImg3 = new ImageIcon("images/a.png").getImage().getScaledInstance(180,50,0);
-//		JButton back3 = new JButton(new ImageIcon(backImg3));
-//        back3.setBounds(140,410,180,50);
-//		back3.addMouseListener(new MyMouseAdapter3());
-//		Image backImg4 = new ImageIcon("images/a.png").getImage().getScaledInstance(180,50,0);
-//		JButton back4 = new JButton(new ImageIcon(backImg4));
-//        back4.setBounds(140,540,180,50);
-//		back4.addMouseListener(new MyMouseAdapter4());
-//
-//		this.add(back1);
-//		this.add(back2);
-//		this.add(back3);
-//		this.add(back4);
-
-
 		JPanel panel1 = new JPanel(); //하단 패널
 		panel1.setSize(500,100);
 		panel1.setLocation(0,665);
 		panel1.setLayout(null);
 
 		panel1.setBackground(new Color(128,128,192));
-//		JLabel lb1 = new JLabel("우유");
-		//여기서는 유통기한이 제일 임박한 재료의 이름을 파일에서 불러와야 한다.
-
-//		lb1.setBounds(120,20,110,25);
-//		lb1.setFont(new Font("Serif", Font.BOLD, 23));        
-
-//		panel1.add(lb1);
 		
-		JButton btnExpiry = new JButton("test");	
+		Image expi = new ImageIcon("images/sim/BtnImg/9999.PNG").getImage().getScaledInstance(180, 100, 0);
+		JButton btnExpiry = new JButton(new ImageIcon(expi));	
 		//btnExpiry.setOpaque(false);
 		btnExpiry.setSize(100,100);
 		btnExpiry.addMouseListener(new MouseAdapter() {
@@ -100,42 +70,24 @@ public class MainMenu extends JPanel {
 		    }
 		});
 		
-		
 		panel1.add(btnExpiry);
 		
-		
-		
-
 		JLabel lb2 = new JLabel(new IngredControl().getMinIngredExpiry());
 		lb2.setFont(new Font("Serif", Font.BOLD, 20));
-		lb2.setBounds(120,20,300,100);
-		//여기서는 유통기한이 제일 임박한 재료의 유통기한 남은 일수를 파일에서 불러와야 한다.
+		lb2.setBounds(120,5,300,100);
 		panel1.add(lb2);
 		this.add(panel1);
-		
-		
-		
-		
-		
-		
-		
 
-		System.out.println("일단 한번 더 부름,,");
 		IngredAll.setIngredExpiryMap();
 		 new IngredControl().method();
-		System.out.println("넘버 " + IngredControl.minIngredNo);
-		Image icon = new ImageIcon("images/sim/BtnImg/" + IngredControl.minIngredNo + ".PNG").getImage().getScaledInstance(110, 110, 0);
-		//여기서는 유통기한이 제일 임박한 재료의 사진을 파일에서 불러와야 한다. 
-
+		Image icon = new ImageIcon("images/sim/BtnImg/" + IngredControl.minIngredNo + ".PNG")
+				.getImage().getScaledInstance(110, 110, 0);
 
 		JLabel lb3 = new JLabel(new ImageIcon(icon));
 		lb3.setBounds(0,0,100,100);
 		btnExpiry.add(lb3);
-//		panel1.add(btnExpiry); 		//유통기한에 붙인 버튼 삭제할것 나중에 이상있으면
-		
 
 		this.add(panel1); 
-
 
 		mf.add(this);
 
