@@ -36,11 +36,6 @@ public class AllRecipe extends JPanel {
 	
 	
 
-	MgrRecipeDao mrd = new MgrRecipeDao();
-	
-	Recipe[] rc = new Recipe[MgrRecipeDao.recipeLength];;
-	
-
 	public AllRecipe(MainFrame mf,JPanel lp) {
 		
 		
@@ -76,19 +71,19 @@ public class AllRecipe extends JPanel {
 		label.setBounds(108, 26, 350, 39);
 		panel.add(label);
 		
+
+		
+		MgrRecipeDao mrd = new MgrRecipeDao();
+		
+		Recipe[] rc = new Recipe[MgrRecipeDao.recipeLength];;
+		
 		mrd.fileSave();
 		
-
 		try(ObjectInputStream objIn = new ObjectInputStream(new FileInputStream("MgrRecipe.dat"));) {
 			
 			for(int i = 0; i < MgrRecipeDao.recipeLength; i++) {
 				rc[i] = (Recipe) objIn.readObject();
 			}
-			
- 		//ArrayList arr = (ArrayList) objIn.readObject();
-		
-		//rc = (Recipe) arr.get(0);
-		
 		} catch (FileNotFoundException e2) {
 			e2.printStackTrace();
 		} catch (IOException e2) {
@@ -123,14 +118,9 @@ public class AllRecipe extends JPanel {
 		recipe1.add(recipeImage1);
 		
 		
-		/*JButton like = new JButton(new ImageIcon(new ImageIcon("images/won/java.png").getImage().getScaledInstance(50, 50, 0)));				
-		like.setBounds(350,100,50,50);
-		recipe1.add(like);*/
 		
-		
-		//JLabel rp1 = new JLabel(rc[0].getRecipeName());
-		JLabel rp1 = new JLabel/*("<html># Áß±¹Áý ºÎ·´Áö ¾ÊÀº<br>Â¥Àå¸é ¸¸µé±â ~!!<br></html>");*/(rc[rd[0]].getRecipeMent());
-		rp1.setFont(new Font("±¼¸²", Font.BOLD, 15));
+		JLabel rp1 = new JLabel(rc[rd[0]].getRecipeMent());
+		rp1.setFont(new Font("¸¼Àº°íµñ", Font.BOLD, 15));
 		rp1.setBounds(240,-50,350,250);
 		recipe1.add(rp1);
 
@@ -143,10 +133,10 @@ public class AllRecipe extends JPanel {
 		recipeImage2.setBounds(0, 0, 220 , 145);
 		recipe2.add(recipeImage2);
 
-		JLabel rp2 = new JLabel(/*"<html># ·¹½ºÅä¶û ºÎ·´Áö ¾ÊÀº<br>Å©¸² ÆÄ½ºÅ¸ ¸¸µé±â ~!!<br></html>"*/rc[rd[1]].getRecipeMent());
+		JLabel rp2 = new JLabel(rc[rd[1]].getRecipeMent());
 		rp2.setBounds(240, -50, 350, 250);
 		recipe2.add(rp2);
-		rp2.setFont(new Font("±¼¸²", Font.BOLD, 15));
+		rp2.setFont(new Font("¸¼Àº°íµñ", Font.BOLD, 15));
 
 		JPanel recipe3 = new JPanel();
 		recipe3.setBounds(0, 385, 445, 145);
@@ -157,8 +147,8 @@ public class AllRecipe extends JPanel {
 		recipeImage3.setBounds(0, 0, 220, 145);
 		recipe3.add(recipeImage3);
 
-		JLabel rp3 = new JLabel(/*"<html>#ÇØ¹° ¸ÀÀÌ °¡µæ ´ã±ä <br>Åä¸¶Åä ½ºÆÄ°ÔÆ¼ ¸¸µé±â ~!!"*/rc[rd[2]].getRecipeMent());
-		rp3.setFont(new Font("±¼¸²",Font.BOLD, 15));
+		JLabel rp3 = new JLabel(rc[rd[2]].getRecipeMent());
+		rp3.setFont(new Font("¸¼Àº°íµñ",Font.BOLD, 15));
 		rp3.setBounds(240, -50, 350, 250);
 		recipe3.add(rp3);
 
@@ -171,8 +161,8 @@ public class AllRecipe extends JPanel {
 		recipeImage4.setBounds(0, 0, 220, 145);
 		recipe4.add(recipeImage4);
 
-		JLabel rp4 = new JLabel(/*"<html>#ÈÞ°Ô¼Ò¿¡¼­ ¸Ô´Â ±×¸À  <br>¿µ¾ç¸¸Á¡ Âð°¨ÀÚ ¸¸µé±â ~!!"*/rc[rd[3]].getRecipeMent());
-		rp4.setFont(new Font("±¼¸²", Font.BOLD, 15));
+		JLabel rp4 = new JLabel(rc[rd[3]].getRecipeMent());
+		rp4.setFont(new Font("¸¼Àº°íµñ", Font.BOLD, 15));
 		rp4.setBounds(240, -50, 350, 250);
 		recipe4.add(rp4);
 
@@ -199,14 +189,12 @@ public class AllRecipe extends JPanel {
 
 		});
 		
-		//new RecipePage(mf, lp, rc(rd[0]));
 		
 		recipe2.addMouseListener(new MouseAdapter() {
 
 			@Override 
 			public void mouseReleased(MouseEvent e) {
 				ChangePanel.changePanel(mf, mp, new RecipePage(mf,lp,rc[rd[1]]));
-				//ChangePanel.changePanel(mf, mp, new RecipePage11(mf,rc1));
 			}
 
 		});
